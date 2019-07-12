@@ -22,7 +22,7 @@ import {
 } from '@material-ui/core';
 
 // Material icons
-import { ArrowBack as ArrowBackIcon } from '@material-ui/icons';
+import { ArrowBack as ArrowBackIcon, Search, Dvr, Public } from '@material-ui/icons';
 
 // Shared utilities
 import validators from 'common/validators';
@@ -154,38 +154,73 @@ class SignUp extends Component {
           <Grid
             className={classes.quoteWrapper}
             item
-            lg={5}
+            lg={7}
           >
             <div className={classes.quote}>
               <div className={classes.quoteInner}>
-                <Typography
-                  className={classes.quoteText}
-                  variant="h1"
-                >
-                  Hella narwhal Cosby sweater McSweeney's, salvia kitsch before
-                  they sold out High Life.
+                <table>
+                  <tr>
+                    <td>
+                      <IconButton className={classes.largeButton} aria-label="Delete">
+                        <Search className={classes.frontIcons} />
+                      </IconButton>
+                    </td>
+                    <td>
+                      <Typography
+                        className={classes.quoteText}
+                        variant="h3"
+                        fontWeight='500'
+                      >
+
+                        Monitor profiles, channels, pages, blogs, trends and hashtag simultaneously.
                 </Typography>
-                <div className={classes.person}>
-                  <Typography
-                    className={classes.name}
-                    variant="body1"
-                  >
-                    Takamaru Ayako
-                  </Typography>
-                  <Typography
-                    className={classes.bio}
-                    variant="body2"
-                  >
-                    Manager at inVision
-                  </Typography>
-                </div>
+                    </td>
+                  </tr>
+                  <br />
+                  <tr>
+                    <td>
+                      <IconButton className={classes.largeButton} >
+                        <Dvr className={classes.frontIcons} />
+                      </IconButton>
+                    </td>
+                    <td>
+                      <Typography
+                        className={classes.quoteText}
+                        variant="h3"
+                        fontWeight='500'
+                      >
+
+                        Perform visual analytics and generate reports.
+                </Typography>
+                    </td>
+                  </tr>
+                  <br />
+                  <tr>
+                    <td>
+                      <IconButton className={classes.largeButton} aria-label="Delete">
+                        <Public className={classes.frontIcons} />
+                      </IconButton>
+                    </td>
+                    <td>
+                      <Typography
+                        className={classes.quoteText}
+                        variant="h3"
+                        fontWeight='500'
+                      >
+
+                        Support for Twitter, Facebook, Youtube, and counting....
+                </Typography>
+                    </td>
+                  </tr>
+                </table>
               </div>
             </div>
+
           </Grid>
           <Grid
             className={classes.content}
             item
-            lg={7}
+            lg={5}
             xs={12}
           >
             <div className={classes.content}>
@@ -199,6 +234,12 @@ class SignUp extends Component {
               </div>
               <div className={classes.contentBody}>
                 <form className={classes.form}>
+                <Typography
+                  >
+                    <div className={classes.logodiv}>
+                      <img src="/images/logo.png" className={classes.titlelogo} />
+                    </div>
+                  </Typography>
                   <Typography
                     className={classes.title}
                     variant="h2"
@@ -214,25 +255,7 @@ class SignUp extends Component {
                   <div className={classes.fields}>
                     <TextField
                       className={classes.textField}
-                      label="First name"
-                      name="firstName"
-                      onChange={event =>
-                        this.handleFieldChange('firstName', event.target.value)
-                      }
-                      value={values.firstName}
-                      variant="outlined"
-                    />
-                    {showFirstNameError && (
-                      <Typography
-                        className={classes.fieldError}
-                        variant="body2"
-                      >
-                        {errors.firstName[0]}
-                      </Typography>
-                    )}
-                    <TextField
-                      className={classes.textField}
-                      label="Last name"
+                      label="Project name"
                       onChange={event =>
                         this.handleFieldChange('lastName', event.target.value)
                       }
@@ -327,17 +350,17 @@ class SignUp extends Component {
                   {isLoading ? (
                     <CircularProgress className={classes.progress} />
                   ) : (
-                    <Button
-                      className={classes.signUpButton}
-                      color="primary"
-                      disabled={!isValid}
-                      onClick={this.handleSignUp}
-                      size="large"
-                      variant="contained"
-                    >
-                      Sign up now
+                      <Button
+                        className={classes.signUpButton}
+                        color="primary"
+                        disabled={!isValid}
+                        onClick={this.handleSignUp}
+                        size="large"
+                        variant="contained"
+                      >
+                        Sign up now
                     </Button>
-                  )}
+                    )}
                   <Typography
                     className={classes.signIn}
                     variant="body1"

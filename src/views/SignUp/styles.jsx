@@ -1,4 +1,10 @@
 export default theme => ({
+  logodiv:{
+    textAlign: 'center',
+  },
+  titlelogo:{
+    height: '70px',
+  },
   root: {
     backgroundColor: theme.palette.background.default,
     height: '100vh'
@@ -10,6 +16,12 @@ export default theme => ({
     [theme.breakpoints.down('md')]: {
       display: 'none'
     }
+  },
+  frontIcons: {
+    width: 40,
+    height: 40,
+    fontSize: '40px',
+    color: theme.palette.common.white,
   },
   quote: {
     backgroundColor: theme.palette.common.neutral,
@@ -23,12 +35,12 @@ export default theme => ({
     backgroundPosition: 'center'
   },
   quoteInner: {
-    textAlign: 'center',
-    flexBasis: '600px'
+    textAlign: 'left',
+    flexBasis: '500px'
   },
   quoteText: {
     color: theme.palette.common.white,
-    fontWeight: 300
+    fontSize: '18px',
   },
   name: {
     marginTop: theme.spacing.unit * 3,

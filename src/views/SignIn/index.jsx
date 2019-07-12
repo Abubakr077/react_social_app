@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
+import Paper from '@material-ui/core/Paper';
+
+
 
 // Externals
 import PropTypes from 'prop-types';
@@ -20,18 +23,19 @@ import {
   Typography
 } from '@material-ui/core';
 
-// Material icons
-import { ArrowBack as ArrowBackIcon } from '@material-ui/icons';
+import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
 
-// Shared components
-import { Facebook as FacebookIcon, Google as GoogleIcon } from 'icons';
+// Material icons
+import { ArrowBack as ArrowBackIcon, Search, Dvr, Public } from '@material-ui/icons';
 
 // Component styles
 import styles from './styles';
 
 // Form validation schema
 import schema from './schema';
-
 // Service methods
 const signIn = () => {
   return new Promise(resolve => {
@@ -73,7 +77,7 @@ class SignIn extends Component {
     const errors = validate(values, schema);
 
     newState.errors = errors || {};
-    newState.isValid = !errors;
+    newState.isValid = errors ? false : true;
 
     this.setState(newState);
   }, 300);
@@ -131,38 +135,73 @@ class SignIn extends Component {
           <Grid
             className={classes.quoteWrapper}
             item
-            lg={5}
+            lg={7}
           >
             <div className={classes.quote}>
               <div className={classes.quoteInner}>
-                <Typography
-                  className={classes.quoteText}
-                  variant="h1"
-                >
-                  Hella narwhal Cosby sweater McSweeney's, salvia kitsch before
-                  they sold out High Life.
+                <table>
+                  <tr>
+                    <td>
+                      <IconButton className={classes.largeButton} aria-label="Delete">
+                        <Search className={classes.frontIcons} />
+                      </IconButton>
+                    </td>
+                    <td>
+                      <Typography
+                        className={classes.quoteText}
+                        variant="h3"
+                        fontWeight='500'
+                      >
+
+                        Monitor profiles, channels, pages, blogs, trends and hashtag simultaneously.
                 </Typography>
-                <div className={classes.person}>
-                  <Typography
-                    className={classes.name}
-                    variant="body1"
-                  >
-                    Takamaru Ayako
-                  </Typography>
-                  <Typography
-                    className={classes.bio}
-                    variant="body2"
-                  >
-                    Manager at inVision
-                  </Typography>
-                </div>
+                    </td>
+                  </tr>
+                  <br />
+                  <tr>
+                    <td>
+                      <IconButton className={classes.largeButton} >
+                        <Dvr className={classes.frontIcons} />
+                      </IconButton>
+                    </td>
+                    <td>
+                      <Typography
+                        className={classes.quoteText}
+                        variant="h3"
+                        fontWeight='500'
+                      >
+
+                        Perform visual analytics and generate reports.
+                </Typography>
+                    </td>
+                  </tr>
+                  <br />
+                  <tr>
+                    <td>
+                      <IconButton className={classes.largeButton} aria-label="Delete">
+                        <Public className={classes.frontIcons} />
+                      </IconButton>
+                    </td>
+                    <td>
+                      <Typography
+                        className={classes.quoteText}
+                        variant="h3"
+                        fontWeight='500'
+                      >
+
+                        Support for Twitter, Facebook, Youtube, and counting....
+                </Typography>
+                    </td>
+                  </tr>
+                </table>
               </div>
             </div>
+
           </Grid>
           <Grid
             className={classes.content}
             item
-            lg={7}
+            lg={5}
             xs={12}
           >
             <div className={classes.content}>
@@ -177,41 +216,16 @@ class SignIn extends Component {
               <div className={classes.contentBody}>
                 <form className={classes.form}>
                   <Typography
+                  >
+                    <div className={classes.logodiv}>
+                      <img src="/images/logo.png" className={classes.titlelogo} />
+                    </div>
+                  </Typography>
+                  <Typography
                     className={classes.title}
                     variant="h2"
                   >
                     Sign in
-                  </Typography>
-                  <Typography
-                    className={classes.subtitle}
-                    variant="body1"
-                  >
-                    Sign in with social media
-                  </Typography>
-                  <Button
-                    className={classes.facebookButton}
-                    color="primary"
-                    onClick={this.handleSignIn}
-                    size="large"
-                    variant="contained"
-                  >
-                    <FacebookIcon className={classes.facebookIcon} />
-                    Login with Facebook
-                  </Button>
-                  <Button
-                    className={classes.googleButton}
-                    onClick={this.handleSignIn}
-                    size="large"
-                    variant="contained"
-                  >
-                    <GoogleIcon className={classes.googleIcon} />
-                    Login with Google
-                  </Button>
-                  <Typography
-                    className={classes.sugestion}
-                    variant="body1"
-                  >
-                    or login with email address
                   </Typography>
                   <div className={classes.fields}>
                     <TextField
@@ -264,17 +278,17 @@ class SignIn extends Component {
                   {isLoading ? (
                     <CircularProgress className={classes.progress} />
                   ) : (
-                    <Button
-                      className={classes.signInButton}
-                      color="primary"
-                      disabled={!isValid}
-                      onClick={this.handleSignIn}
-                      size="large"
-                      variant="contained"
-                    >
-                      Sign in now
+                      <Button
+                        className={classes.signInButton}
+                        color="primary"
+                        disabled={!isValid}
+                        onClick={this.handleSignIn}
+                        size="large"
+                        variant="contained"
+                      >
+                        Sign in now
                     </Button>
-                  )}
+                    )}
                   <Typography
                     className={classes.signUp}
                     variant="body1"
