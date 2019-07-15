@@ -32,7 +32,6 @@ const styles = theme => ({
 class Dashboard extends Component {
   render() {
     const { classes } = this.props;
-
     return (
       <DashboardLayout title="Dashboard">
         <div className={classes.root}>
