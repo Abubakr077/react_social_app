@@ -6,10 +6,22 @@ import PropTypes from 'prop-types';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 
 // Material helpers
-import {CircularProgress, Grid, Table, TableBody, TableCell, TableHead, TableRow, withStyles} from '@material-ui/core';
+import {
+  CardActions,
+  CircularProgress,
+  Grid,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableRow,
+  withStyles
+} from '@material-ui/core';
 
 // Material components
 import { Typography,Paper } from '@material-ui/core';
+
+
 
 // Shared services
 import { getProjects } from 'services/project';
@@ -26,6 +38,9 @@ import {
 // Component styles
 import styles from './styles';
 import ProjectCard from "./ProjectCard";
+import Button from "@material-ui/core/Button";
+import IconButton from "@material-ui/core/IconButton";
+import Card from "@material-ui/core/Card";
 
 class Projects extends Component {
   signal = false;

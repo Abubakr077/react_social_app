@@ -8,10 +8,8 @@ import {withStyles} from '@material-ui/core';
 
 // Material components
 import {
-  Grid,
-  Fab
+  Grid
 } from '@material-ui/core';
-import AddIcon from '@material-ui/icons/Add';
 
 // Shared layouts
 import {
@@ -46,7 +44,7 @@ const styles = theme => ({
   },
   extendedIcon: {
     marginRight: theme.spacing(1),
-  },
+  }
 });
 
 class Dashboard extends Component {
@@ -62,6 +60,7 @@ class Dashboard extends Component {
     }
 
     render() {
+
       const {classes} = this.props;
       const {isInitUser, projects} = {...this.state};
 
@@ -74,17 +73,6 @@ class Dashboard extends Component {
             <div className={classes.root}>
               { !this.state.isRecords && <NoRecords/> }
               { this.state.isRecords && <Projects />                         }
-
-              <Fab
-                aria-label="Delete"
-                className={classes.fab}
-                color="primary"
-                onClick={this.handleIconClick}
-                variant="extended"
-              >
-                <AddIcon className={classes.extendedIcon} />
-                                Add Project
-              </Fab>
             </div>
           </DashboardLayout>
         );

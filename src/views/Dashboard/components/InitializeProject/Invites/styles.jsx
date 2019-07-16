@@ -45,5 +45,11 @@ export default theme => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  cardActions: {
+    squared: false,
+    outlined: true,
+    elevation: 1,
+    borderRadius: '8px',
   }
 });

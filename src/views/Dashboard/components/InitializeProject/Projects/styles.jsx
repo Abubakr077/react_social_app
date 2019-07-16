@@ -1,14 +1,17 @@
 export default theme => ({
   root: {
-    cursor: 'pointer',
-    minHeight: 200
+    padding: theme.spacing.unit * 3,
   },
   content: {
     alignItems: 'center',
+    display: 'flex'
   },
   title: {
-    color: 'primary',
+    color: theme.palette.text.secondary,
     fontWeight: 700
+  },
+  value: {
+    marginTop: theme.spacing.unit
   },
   iconWrapper: {
     alignItems: 'center',
@@ -38,14 +41,15 @@ export default theme => ({
   caption: {
     marginLeft: theme.spacing.unit
   },
-  extendedIcon: {
-    marginBottom: theme.spacing(2),
-  },
   newCard: {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    alignSelf: 'center',
-    flexDirection: 'column'
+  },
+  cardActions: {
+    squared: false,
+    outlined: true,
+    elevation: 1,
+    borderRadius: '8px',
   }
 });

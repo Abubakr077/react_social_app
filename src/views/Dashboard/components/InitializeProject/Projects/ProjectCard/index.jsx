@@ -6,17 +6,17 @@ import PropTypes from 'prop-types';
 import moment from 'moment';
 
 // Material helpers
-import {Fab, TableCell, withStyles} from '@material-ui/core';
+import {CardActions, Fab, TableCell, withStyles} from '@material-ui/core';
 
 // Material components
 import { Typography } from '@material-ui/core';
+import AddIcon from '@material-ui/icons/Add';
 
 // Shared components
 import { Paper,Card } from 'components';
 
 // Component styles
 import styles from './styles';
-import AddIcon from '@material-ui/icons/Add';
 
 
 class ProjectCard extends Component {
@@ -26,6 +26,7 @@ class ProjectCard extends Component {
     project: this.props.project,
     isNewCard: false
   };
+
   render() {
     const { classes, className, isNewCard, ...rest } = this.props;
     const { project } = this.state;
@@ -34,14 +35,17 @@ class ProjectCard extends Component {
 
     if (isNewCard){
       return (
+
+
           <Card
+              onClick={this.me}
               {...rest}
               className={rootClassName}
+              newCard={true}
           >
             <div className={classes.newCard}>
               <AddIcon
                   color="primary"
-                  fontSize="large"
                   className={classes.extendedIcon} />
                 <Typography
                     variant="button"
@@ -58,35 +62,29 @@ class ProjectCard extends Component {
           <Card
               {...rest}
               className={rootClassName}
+              newCard={false}
           >
-            <div className={classes.content}>
-              <div className={classes.details}>
+            <div className={classes.details}>
                 <Typography
                     className={classes.title}
-                    variant="body2"
-                >
-                  {project.role}
-                </Typography>
-                <Typography
-                    className={classes.value}
                     variant="h3"
                 >
                   {project.name}
                 </Typography>
-              </div>
-            </div>
-            <div className={classes.footer}>
-              <Typography
-                  className={classes.difference}
-                  variant="caption"
-              >
-                {moment(project.createdAt).format('DD/MM/YYYY')}
-              </Typography>
+                <Typography
+                    variant="caption"
+                >
+                  {project.role}
+                </Typography>
             </div>
           </Card>
       );
     }
 
+  }
+
+  me() {
+    alert('here')
   }
 }
 

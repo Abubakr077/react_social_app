@@ -5,31 +5,51 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 // Material helpers
-import { withStyles } from '@material-ui/core';
+import {CardActions, withStyles} from '@material-ui/core';
 
 // Material components
 import {
   Card ,
   CardContent
 }from "@material-ui/core";
+import Button from "@material-ui/core/Button";
+import IconButton from "@material-ui/core/IconButton";
+import ShareIcon from '@material-ui/icons/Share';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import {white} from "../../../../../../common/colors";
 
+let isNewCard;
 // Component styles
 const styles = theme => {
   return {
     root: {
-      borderRadius: '8px'
-    },
+      cursor: 'pointer',
+      borderRadius: '8px',
+      minHeight: 140
+    }
+    ,
     squared: {
       borderRadius: '10px'
     },
     outlined: {
       border: `1px  ${theme.palette.border}`
+    },
+    button: {
+      minHeight: 140
+    },
+    customIcon: {
+      color: 'white',
+      hover: false
+    },
+    cardActions: {
+      marginLeft: 'auto'
     }
   };
 };
 
 const CustomCard = props => {
   const { classes, className, outlined, squared, children, ...rest } = props;
+
 
   const rootClassName = classNames(
     {
@@ -41,13 +61,23 @@ const CustomCard = props => {
   );
 
   return (
-    <Card
+      <Card
       {...rest}
       className={rootClassName}
     >
-      <CardContent>
-      {children}
-      </CardContent>
+        <Button fullWidth={true} className={classes.button}>
+        {children}
+        </Button>
+            < CardActions>
+              <div className={classes.cardActions}>
+                <Button size="small" color="primary">
+                  Share
+                </Button>
+                <Button size="small" color="primary">
+                  Learn More
+                </Button>
+              </div>
+            </CardActions>
     </Card>
   );
 };
