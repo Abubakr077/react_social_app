@@ -2,23 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dd3ce922-fc2e-4ee9-bab7-fcc4b32420c3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/views/Invites/components/InvitesView/styles.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/Invites/components/index.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/Invites/index.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Routes.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Routes.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/index.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Dashboard/components/InitializeProject/Invites/Card/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Invites/components/InviteCard/index.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Dashboard/components/InitializeProject/Invites/InviteCard/index.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Dashboard/components/InitializeProject/Invites/InviteCard/styles.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Dashboard/components/InitializeProject/Invites/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Invites/components/InvitesView/index.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Dashboard/components/InitializeProject/Invites/styles.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Dashboard/components/Projects/styles.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Dashboard/components/InitializeProject/Projects/Card/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Dashboard/components/Projects/Card/index.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Dashboard/components/InitializeProject/Projects/ProjectCard/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Dashboard/components/Projects/ProjectCard/index.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Dashboard/components/InitializeProject/Projects/ProjectCard/styles.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Dashboard/components/Projects/ProjectCard/styles.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Dashboard/components/InitializeProject/Projects/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Dashboard/components/Projects/index.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Dashboard/components/InitializeProject/Projects/styles.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Invites/styles.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Dashboard/components/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Dashboard/components/index.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Dashboard/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Dashboard/index.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/constants/endpoints.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/endpoints.json" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -44,7 +28,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Routes.jsx">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="272">
@@ -52,6 +36,15 @@
               <folding>
                 <element signature="e#112#148#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/constants/endpoints.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="51">
+              <caret line="3" column="29" lean-forward="true" selection-start-line="3" selection-start-column="29" selection-end-line="3" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -82,6 +75,7 @@
       <list>
         <option value="$PROJECT_DIR$/src/views/Dashboard/index.jsx" />
         <option value="$PROJECT_DIR$/src/Routes.jsx" />
+        <option value="$PROJECT_DIR$/src/constants/endpoints.json" />
       </list>
     </option>
   </component>
@@ -111,6 +105,12 @@
               <item name="edit-react-material-dashboard-master" type="b2602c69:ProjectViewProjectNode" />
               <item name="edit-react-material-dashboard-master" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="edit-react-material-dashboard-master" type="b2602c69:ProjectViewProjectNode" />
+              <item name="edit-react-material-dashboard-master" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="constants" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="edit-react-material-dashboard-master" type="b2602c69:ProjectViewProjectNode" />
@@ -164,12 +164,12 @@
       <option name="presentableId" value="Default" />
       <updated>1563866054001</updated>
       <workItem from="1563866071365" duration="5214000" />
-      <workItem from="1563876123288" duration="1010000" />
+      <workItem from="1563876123288" duration="1397000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7265000" />
+    <option name="totallyTimeSpent" value="7652000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="855" extended-state="6" />
@@ -298,6 +298,13 @@
           <folding>
             <element signature="e#112#148#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/constants/endpoints.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="29" lean-forward="true" selection-start-line="3" selection-start-column="29" selection-end-line="3" selection-end-column="29" />
         </state>
       </provider>
     </entry>

@@ -1,6 +1,5 @@
 {
   "host": "http://localhost:5000",
-  "login": "/users/login",
+  "login": "/login",
   "signUp": "/users/register"
-
 }
