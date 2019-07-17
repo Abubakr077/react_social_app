@@ -10,15 +10,18 @@ import {CardActions, withStyles} from '@material-ui/core';
 // Material components
 import {
   Card ,
-  CardContent
+  IconButton,
+  Button
 }from "@material-ui/core";
-import Button from "@material-ui/core/Button";
-import IconButton from "@material-ui/core/IconButton";
-import ShareIcon from '@material-ui/icons/Share';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import {white} from "../../../../../../common/colors";
 
-let isNewCard;
+import {
+  Delete as DeleteIcon,
+  ExitToAppOutlined as RemoveIcon,
+} from '@material-ui/icons';
+
+
+import {white} from "../../../../../common/colors";
+
 // Component styles
 const styles = theme => {
   return {
@@ -37,18 +40,25 @@ const styles = theme => {
     button: {
       minHeight: 140
     },
+    newCardButton: {
+      minHeight: 200
+    },
     customIcon: {
       color: 'white',
       hover: false
     },
     cardActions: {
-      marginLeft: 'auto'
+        position: 'relative',
+        right: 'auto',
+    },
+    deleteIcon: {
+      color: '#ff0229',
     }
   };
 };
 
 const CustomCard = props => {
-  const { classes, className, outlined, squared, children, ...rest } = props;
+  const { classes, className, outlined, squared, children,newCard, ...rest } = props;
 
 
   const rootClassName = classNames(
@@ -60,26 +70,33 @@ const CustomCard = props => {
     className
   );
 
+
   return (
       <Card
       {...rest}
       className={rootClassName}
     >
-        <Button fullWidth={true} className={classes.button}>
+        <Button fullWidth={true} className={newCard? classes.newCardButton : classes.button}>
         {children}
         </Button>
+
+        {!newCard && (
             < CardActions>
               <div className={classes.cardActions}>
-                <Button size="small" color="primary">
-                  Share
-                </Button>
-                <Button size="small" color="primary">
-                  Learn More
-                </Button>
+              <IconButton aria-label="Share">
+                <RemoveIcon />
+              </IconButton>
+                  <IconButton aria-label="Add to favorites">
+                      <DeleteIcon className={classes.deleteIcon} />
+                  </IconButton>
               </div>
             </CardActions>
+        )}
+
     </Card>
   );
+
+
 };
 
 CustomCard.propTypes = {

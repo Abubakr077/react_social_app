@@ -19,7 +19,7 @@ import {
 } from '@material-ui/core';
 
 // Material components
-import { Typography,Paper } from '@material-ui/core';
+import { Typography } from '@material-ui/core';
 
 
 
@@ -27,23 +27,13 @@ import { Typography,Paper } from '@material-ui/core';
 import { getProjects } from 'services/project';
 
 // Shared components
-import {
-  Portlet,
-  PortletHeader,
-  PortletLabel,
-  PortletContent,
-} from 'components';
-
+import {   Card } from '../../components';
 
 // Component styles
 import styles from './styles';
-import ProjectCard from "./ProjectCard";
-import Button from "@material-ui/core/Button";
-import IconButton from "@material-ui/core/IconButton";
-import Card from "@material-ui/core/Card";
-import InviteCard from "./InviteCard";
 
-class Invites extends Component {
+
+class InvitesView extends Component {
   signal = false;
 
   state = {
@@ -110,16 +100,32 @@ class Invites extends Component {
                   >
                     {
                       projects.map(project => (
-                        <Grid
-                            item
-                            lg={3}
-                            sm={4}
-                            xl={3}
-                            xs={6}
-                        >
-                        <InviteCard project={project} />
-                        </Grid>
-                    ))
+                          <Grid
+                              item
+                              lg={3}
+                              sm={4}
+                              xl={3}
+                              xs={6}
+                          >
+                            <Card
+                                {...rest}
+                            >
+                              <div className={classes.details}>
+                                <Typography
+                                    className={classes.title}
+                                    variant="h3"
+                                >
+                                  {project.name}
+                                </Typography>
+                                <Typography
+                                    variant="caption"
+                                >
+                                  {project.role}
+                                </Typography>
+                              </div>
+                            </Card>
+                          </Grid>
+                      ))
                     }
                   </Grid>
               )}
@@ -131,9 +137,9 @@ class Invites extends Component {
   }
 }
 
-Invites.propTypes = {
+InvitesView.propTypes = {
   className: PropTypes.string,
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(Invites);
+export default withStyles(styles)(InvitesView);

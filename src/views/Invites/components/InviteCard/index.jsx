@@ -10,22 +10,27 @@ import {CardActions, withStyles} from '@material-ui/core';
 // Material components
 import {
   Card ,
-  CardContent
+  CardContent,
+  IconButton,
+  Button
 }from "@material-ui/core";
-import Button from "@material-ui/core/Button";
-import IconButton from "@material-ui/core/IconButton";
-import ShareIcon from '@material-ui/icons/Share';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import {white} from "../../../../../../common/colors";
 
-let isNewCard;
+import {
+  CloseOutlined as CancelIcon,
+  Check as CheckIcon
+} from '@material-ui/icons';
+
+
+
 // Component styles
 const styles = theme => {
   return {
     root: {
-      cursor: 'pointer',
       borderRadius: '8px',
-      minHeight: 140
+      minHeight: 140,
+      paddingTop: theme.spacing.unit *2,
+      paddingLeft: theme.spacing.unit *2
+
     }
     ,
     squared: {
@@ -34,22 +39,25 @@ const styles = theme => {
     outlined: {
       border: `1px  ${theme.palette.border}`
     },
-    button: {
-      minHeight: 140
-    },
-    customIcon: {
-      color: 'white',
-      hover: false
-    },
     cardActions: {
-      marginLeft: 'auto'
+      marginLeft: 'auto',
+      marginTop: theme.spacing.unit *6
+    },
+    acceptButton: {
+      color: 'green',
+      width: 25,
+      height: 25
+    },
+    cancelButton: {
+      color: '#ff0229',
+      width: 25,
+      height: 25
     }
   };
 };
 
 const CustomCard = props => {
-  const { classes, className, outlined, squared, children,newCard, ...rest } = props;
-
+  const { classes, className, outlined, squared, children, ...rest } = props;
 
   const rootClassName = classNames(
     {
@@ -60,36 +68,28 @@ const CustomCard = props => {
     className
   );
 
+
   return (
       <Card
       {...rest}
       className={rootClassName}
     >
-        <Button fullWidth={true} className={classes.button}>
         {children}
-        </Button>
-        {!newCard && (
-            < CardActions>
+            < CardActions >
               <div className={classes.cardActions}>
-              <IconButton aria-label="Add to favorites">
-                <FavoriteIcon />
-              </IconButton>
               <IconButton aria-label="Share">
-                <ShareIcon />
+                <CancelIcon className={classes.cancelButton}/>
               </IconButton>
+                <IconButton aria-label="Add to favorites">
+                  <CheckIcon className={classes.acceptButton} />
+                </IconButton>
               </div>
             </CardActions>
-        )}
-        {newCard && (
-            < CardActions >
-              <IconButton  disableRipple={false} aria-label="Share">
-                <ShareIcon className={classes.customIcon} />
-              </IconButton>
 
-            </CardActions>
-        )}
     </Card>
   );
+
+
 };
 
 CustomCard.propTypes = {

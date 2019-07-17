@@ -13,11 +13,15 @@ import { Typography } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
 
 // Shared components
-import { Paper,Card } from 'components';
+import { Paper,  CustomCard as Card} from 'components';
+
 
 // Component styles
 import styles from './styles';
-
+import Button from "@material-ui/core/Button";
+import IconButton from "@material-ui/core/IconButton";
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import ShareIcon from '@material-ui/icons/Share';
 
 class ProjectCard extends Component {
   signal = false;
@@ -42,6 +46,7 @@ class ProjectCard extends Component {
               {...rest}
               className={rootClassName}
               newCard={true}
+              type = {'project'}
           >
             <div className={classes.newCard}>
               <AddIcon
@@ -63,6 +68,7 @@ class ProjectCard extends Component {
               {...rest}
               className={rootClassName}
               newCard={false}
+              type = {'project'}
           >
             <div className={classes.details}>
                 <Typography

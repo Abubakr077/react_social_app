@@ -2,18 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dd3ce922-fc2e-4ee9-bab7-fcc4b32420c3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/views/Dashboard/components/InitializeProject/Invites/InviteCard/index.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/Dashboard/components/InitializeProject/Invites/index.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/Dashboard/components/InitializeProject/Projects/Card/index.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/Dashboard/components/InitializeProject/Projects/ProjectCard/styles.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Card/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Dashboard/components/InitializeProject/Invites/Card/index.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/Invites/components/InvitesView/styles.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/Invites/components/index.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/Invites/index.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Routes.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Routes.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/index.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Dashboard/components/InviteCard/index.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Dashboard/components/InviteCard/styles.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Dashboard/components/InitializeProject/Invites/InviteCard/styles.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Dashboard/components/Projects/ProjectCard/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Dashboard/components/InitializeProject/Projects/ProjectCard/index.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Dashboard/components/Projects/ProjectCard/styles.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Dashboard/components/InitializeProject/Projects/styles.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Dashboard/components/Projects/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Dashboard/components/InitializeProject/Projects/index.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Dashboard/components/Projects/styles.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Dashboard/components/InitializeProject/Invites/styles.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/Dashboard/components/InitializeProject/Invites/Card/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Invites/components/InviteCard/index.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/Dashboard/components/InitializeProject/Invites/InviteCard/index.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/Dashboard/components/InitializeProject/Invites/InviteCard/styles.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/Dashboard/components/InitializeProject/Invites/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Invites/components/InvitesView/index.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/Dashboard/components/InitializeProject/Invites/styles.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Dashboard/components/Projects/styles.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/Dashboard/components/InitializeProject/Projects/Card/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Dashboard/components/Projects/Card/index.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/Dashboard/components/InitializeProject/Projects/ProjectCard/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Dashboard/components/Projects/ProjectCard/index.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/Dashboard/components/InitializeProject/Projects/ProjectCard/styles.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Dashboard/components/Projects/ProjectCard/styles.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/Dashboard/components/InitializeProject/Projects/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Dashboard/components/Projects/index.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/Dashboard/components/InitializeProject/Projects/styles.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Invites/styles.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/Dashboard/components/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Dashboard/components/index.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/Dashboard/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Dashboard/index.jsx" afterDir="false" />
     </list>
@@ -27,15 +30,27 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="true">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/views/Dashboard/index.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1655">
-              <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+            <state relative-caret-position="198">
+              <caret line="125" column="7" lean-forward="true" selection-start-line="125" selection-start-column="7" selection-end-line="125" selection-end-column="7" />
               <folding>
-                <element signature="e#181#231#0" expanded="true" />
-                <element signature="e#378#456#0" expanded="true" />
+                <element signature="e#244#302#0" expanded="true" />
+                <element signature="e#325#403#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Routes.jsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="108" column="14" lean-forward="true" selection-start-line="108" selection-start-column="14" selection-end-line="108" selection-end-column="14" />
+              <folding>
+                <element signature="e#112#148#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -66,6 +81,7 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/views/Dashboard/index.jsx" />
+        <option value="$PROJECT_DIR$/src/Routes.jsx" />
       </list>
     </option>
   </component>
@@ -83,6 +99,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -112,7 +129,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -148,16 +164,17 @@
       <option name="presentableId" value="Default" />
       <updated>1563866054001</updated>
       <workItem from="1563866071365" duration="5214000" />
+      <workItem from="1563876123288" duration="1010000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6255000" />
+    <option name="totallyTimeSpent" value="7265000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="855" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.256654" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.256654" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -173,7 +190,7 @@
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="TypeScript" order="10" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="12" visible="true" weight="0.2603878" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="12" visible="true" weight="0.3767313" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -196,7 +213,7 @@
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="TypeScript" order="10" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="12" visible="true" weight="0.2603878" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="12" visible="true" weight="0.3767313" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -212,16 +229,6 @@
         <state split_layout="SPLIT">
           <first_editor />
           <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Routes.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-170">
-          <caret line="8" selection-start-line="8" selection-end-line="8" />
-          <folding>
-            <element signature="e#112#148#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -266,6 +273,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/Dashboard/index.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="125" column="7" lean-forward="true" selection-start-line="125" selection-start-column="7" selection-end-line="125" selection-end-column="7" />
+          <folding>
+            <element signature="e#244#302#0" expanded="true" />
+            <element signature="e#325#403#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/.eslintrc">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
@@ -273,13 +291,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/Dashboard/index.jsx">
+    <entry file="file://$PROJECT_DIR$/src/Routes.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1655">
-          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+        <state relative-caret-position="272">
+          <caret line="108" column="14" lean-forward="true" selection-start-line="108" selection-start-column="14" selection-end-line="108" selection-end-column="14" />
           <folding>
-            <element signature="e#181#231#0" expanded="true" />
-            <element signature="e#378#456#0" expanded="true" />
+            <element signature="e#112#148#0" expanded="true" />
           </folding>
         </state>
       </provider>
