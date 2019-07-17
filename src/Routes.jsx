@@ -59,7 +59,7 @@ export default class Routes extends Component {
         <Route
           component={SignIn}
           exact
-          path="/sign-in"
+          path="/login"
         />
         {/*<Route*/}
         {/*  component={UnderDevelopment}*/}
