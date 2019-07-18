@@ -1,0 +1,6 @@
+{
+  "host": "http://localhost:5000",
+  "loginEndpoint": "/users/login",
+  "signUp": "/signup"
+
+}

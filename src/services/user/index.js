@@ -2,7 +2,6 @@
 import users from 'data/users';
 import monitorUsers from 'data/monitorUsers';
 import topProfiles from 'data/TopProfiles';
-
 export const getUsers = (limit = 10) => {
   return new Promise(resolve => {
     setTimeout(() => {

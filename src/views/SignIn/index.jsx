@@ -9,9 +9,12 @@ import PropTypes from 'prop-types';
 import compose from 'recompose/compose';
 import validate from 'validate.js';
 import _ from 'underscore';
+import { toast } from 'react-toastify';
 
 // Material helpers
 import { withStyles } from '@material-ui/core';
+import request from 'helpers/request.js';
+import endpoints from 'constants/endpoints.json';
 
 // Material components
 import {
@@ -36,17 +39,41 @@ import styles from './styles';
 
 // Form validation schema
 import schema from './schema';
+import axios from 'axios';
+import {Message, optionsError} from "../../constants/constants";
+
+
+
 // Service methods
-const signIn = () => {
-  return new Promise(resolve => {
-    setTimeout(() => {
-      resolve(true);
-    }, 1500);
-  });
+const signIn = (email,password) => {
+
+  // axios.post(endpoints.host + endpoints.loginEndpoint , {user},{ headers: user})
+  //     .then(response => response.json())
+  //     .then(json => {
+  //         this.setState({ isLoading: false ,  user: json.data });
+  //         toast.success("Login Successfully")
+  //     })
+  //     .catch((error) => {
+  //         toast.error(<Message name={error.message}/>,optionsError);
+  //         return false;
+  //     });
+
+    return new Promise(resolve => {
+
+        setTimeout(() => {
+            resolve({
+                // user: userLookup,
+                status: true
+            });
+        }, 1000);
+    });
 };
 
 class SignIn extends Component {
-  state = {
+
+
+    state = {
+    user: null,
     values: {
       email: '',
       password: ''
@@ -61,12 +88,12 @@ class SignIn extends Component {
     },
     isValid: false,
     isLoading: false,
-    submitError: null
+    submitError: false,
+    serviceError: null
   };
 
   handleBack = () => {
     const { history } = this.props;
-
     history.goBack();
   };
 
@@ -77,7 +104,7 @@ class SignIn extends Component {
     const errors = validate(values, schema);
 
     newState.errors = errors || {};
-    newState.isValid = errors ? false : true;
+    newState.isValid = !errors;
 
     this.setState(newState);
   }, 300);
@@ -93,26 +120,44 @@ class SignIn extends Component {
   };
 
   handleSignIn = async () => {
+
     try {
       const { history } = this.props;
       const { values } = this.state;
 
       this.setState({ isLoading: true });
 
-      await signIn(values.email, values.password);
+        const user =await request({
+            url:    endpoints.loginEndpoint,
+            method: 'POST',
+            data:   {
+                email: values.email,
+                password: values.password
+            }
+        });
+     // const { status,user} = await signIn(values.email, values.password);
 
-      localStorage.setItem('isAuthenticated', true);
 
-      history.push('/dashboard');
+         this.setState({
+             isLoading: false,
+             user
+         });
+         console.log('here');
+         console.log(user);
+
+     // localStorage.seItem('isAuthenticated', true);
+
+      // history.push('/dashboard');
     } catch (error) {
       this.setState({
         isLoading: false,
-        serviceError: error
+        serviceError: error.data,
+        submitError: true,
       });
     }
   };
 
-  render() {
+    render() {
     const { classes } = this.props;
     const {
       values,
@@ -120,6 +165,7 @@ class SignIn extends Component {
       errors,
       isValid,
       submitError,
+      serviceError,
       isLoading
     } = this.state;
 
@@ -270,9 +316,9 @@ class SignIn extends Component {
                   {submitError && (
                     <Typography
                       className={classes.submitError}
-                      variant="body2"
+                      variant="subtitle2"
                     >
-                      {submitError}
+                        {serviceError}
                     </Typography>
                   )}
                   {isLoading ? (

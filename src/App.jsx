@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Router } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
+import { ToastContainer } from 'react-toastify';
 
 // Externals
 import { Chart } from 'react-chartjs-2';
@@ -17,6 +18,7 @@ import theme from './theme';
 // Styles
 import 'react-perfect-scrollbar/dist/css/styles.css';
 import './assets/scss/index.scss';
+import 'react-toastify/dist/ReactToastify.min.css'
 
 // Routes
 import Routes from './Routes';
@@ -32,11 +34,14 @@ Chart.helpers.extend(Chart.elements.Rectangle.prototype, {
 export default class App extends Component {
   render() {
     return (
+        <div>
       <ThemeProvider theme={theme}>
         <Router history={browserHistory}>
           <Routes />
         </Router>
       </ThemeProvider>
+            <ToastContainer />
+        </div>
     );
   }
 }
