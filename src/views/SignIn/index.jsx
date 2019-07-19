@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import Paper from '@material-ui/core/Paper';
-
+import { connect } from 'react-redux';
 
 
 // Externals
@@ -15,7 +14,7 @@ import { toast } from 'react-toastify';
 import { withStyles } from '@material-ui/core';
 import request from 'helpers/request.js';
 import endpoints from 'constants/endpoints.json';
-
+import * as constants from 'constants/constants'
 // Material components
 import {
   Grid,
@@ -111,17 +110,10 @@ class SignIn extends Component {
         });
      // const { status,user} = await signIn(values.email, values.password);
 
-
-         this.setState({
-             isLoading: false,
-             user
-         });
-         console.log('here');
-         console.log(user);
-
-     localStorage.seItem('isAuthenticated', true);
-
-      history.push('/dashboard');
+      this.setState({isLoading: false});
+      this.props.loginUser(user);
+     // localStorage.seItem('isAuthenticated', true);
+        history.push('/dashboard');
     } catch (error) {
       this.setState({
         isLoading: false,
@@ -337,7 +329,23 @@ SignIn.propTypes = {
   history: PropTypes.object.isRequired
 };
 
-export default compose(
-  withRouter,
+const mapStateToProps = (state, ownProps) => {
+  return {
+    user: state.user
+  }
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    loginUser: user => dispatch(
+          {
+          type:constants.ADD_USER, user}
+          )
+  }
+};
+export default
+compose(
+    connect(mapStateToProps, mapDispatchToProps),
+withRouter,
   withStyles(styles)
 )(SignIn);

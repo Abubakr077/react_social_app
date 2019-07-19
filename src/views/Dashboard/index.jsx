@@ -18,6 +18,8 @@ import {
   MonitorUsersTable
 } from './components';
 import TopProfilesTable from "./components/TopProfilesTable";
+import compose from "recompose/compose";
+import {connect} from "react-redux";
 
 // Component styles
 const styles = theme => ({
@@ -32,6 +34,8 @@ const styles = theme => ({
 class Dashboard extends Component {
   render() {
     const { classes } = this.props;
+    console.log('user check here');
+    console.log(this.props.authenticate);
     return (
       <DashboardLayout title="Dashboard">
         <div className={classes.root}>
@@ -74,8 +78,18 @@ class Dashboard extends Component {
   }
 }
 
+const mapStateToProps = (state, ownProps) => {
+  return {
+    user: state.user,
+    authenticate: state.authenticate
+  }
+};
 Dashboard.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(Dashboard);
+export default
+
+connect(mapStateToProps)
+(withStyles(styles)
+(Dashboard));

@@ -6,20 +6,18 @@ import moment from 'moment';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import PropTypes from 'prop-types';
 
+
 // Material helpers
 import { withStyles } from '@material-ui/core';
 
 // Material components
 import {
-  Button,
   CircularProgress,
   Table,
   TableBody,
   TableCell,
   TableHead,
-  TableRow,
-  Tooltip,
-  TableSortLabel
+  TableRow
 } from '@material-ui/core';
 
 // Shared services

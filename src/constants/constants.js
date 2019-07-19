@@ -16,3 +16,7 @@ export const optionsSuccess = {
     type: toast.TYPE.SUCCESS,
     hideProgressBar: true,
 };
+
+// redux actions
+
+export const ADD_USER = 'ADD_USER';

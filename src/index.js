@@ -2,13 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 // Service worker
-import * as serviceWorker from './common/serviceWorker';
+import * as serviceWorker from 'common/serviceWorker';
 
 // App
 import App from './App';
 
 //redux
-import Reducers  from "./common/reducers/index";
+import Reducers  from "common/reducers/index";
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 
