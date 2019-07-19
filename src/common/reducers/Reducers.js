@@ -1,4 +1,4 @@
-const AppReducer = (state = [], action) => {
+const Reducers = (state = [], action) => {
     switch(action.type) {
         case 'UPDATE_NOTE_BOOKS':
             // return state.concat([action.data]);
@@ -8,4 +8,4 @@ const AppReducer = (state = [], action) => {
             return state;
     }
 }
-export default AppReducer;
+export default Reducers;

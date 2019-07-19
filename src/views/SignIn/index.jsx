@@ -43,32 +43,6 @@ import axios from 'axios';
 import {Message, optionsError} from "../../constants/constants";
 
 
-
-// Service methods
-const signIn = (email,password) => {
-
-  // axios.post(endpoints.host + endpoints.loginEndpoint , {user},{ headers: user})
-  //     .then(response => response.json())
-  //     .then(json => {
-  //         this.setState({ isLoading: false ,  user: json.data });
-  //         toast.success("Login Successfully")
-  //     })
-  //     .catch((error) => {
-  //         toast.error(<Message name={error.message}/>,optionsError);
-  //         return false;
-  //     });
-
-    return new Promise(resolve => {
-
-        setTimeout(() => {
-            resolve({
-                // user: userLookup,
-                status: true
-            });
-        }, 1000);
-    });
-};
-
 class SignIn extends Component {
 
 
@@ -145,9 +119,9 @@ class SignIn extends Component {
          console.log('here');
          console.log(user);
 
-     // localStorage.seItem('isAuthenticated', true);
+     localStorage.seItem('isAuthenticated', true);
 
-      // history.push('/dashboard');
+      history.push('/dashboard');
     } catch (error) {
       this.setState({
         isLoading: false,
