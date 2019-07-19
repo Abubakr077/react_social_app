@@ -20,7 +20,7 @@ import {
 } from '@material-ui/icons';
 
 
-import {white} from "../../../../../common/colors";
+import * as color from "../../../../../common/colors";
 
 // Component styles
 const styles = theme => {
@@ -44,7 +44,7 @@ const styles = theme => {
       minHeight: 200
     },
     customIcon: {
-      color: 'white',
+      color: color.white,
       hover: false
     },
     cardActions: {
@@ -52,7 +52,7 @@ const styles = theme => {
         right: 'auto',
     },
     deleteIcon: {
-      color: '#ff0229',
+      color: color.red,
     }
   };
 };

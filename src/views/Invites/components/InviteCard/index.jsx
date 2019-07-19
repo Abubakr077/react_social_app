@@ -20,7 +20,7 @@ import {
   Check as CheckIcon
 } from '@material-ui/icons';
 
-
+import * as color from '../../../../common/colors';
 
 // Component styles
 const styles = theme => {
@@ -44,12 +44,12 @@ const styles = theme => {
       marginTop: theme.spacing.unit *6
     },
     acceptButton: {
-      color: 'green',
+      color: color.green,
       width: 25,
       height: 25
     },
     cancelButton: {
-      color: '#ff0229',
+      color: color.red,
       width: 25,
       height: 25
     }
