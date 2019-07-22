@@ -35,6 +35,10 @@ const request = function(options) {
             // other than 2xx
             console.error('Status:',  error.response.status);
             console.error('Data:',    error.response.data);
+
+            if (error.response.status === 500){
+                error.response.data = 'Error Message:' + ' Internal server error'
+            }
             // toast.error(<Message name={error.response.data}/>, optionsError);
             console.error('Headers:', error.response.headers);
 
@@ -42,7 +46,7 @@ const request = function(options) {
             // Something else happened while setting up the request
             // triggered the error
             console.error('Error Message:', error.message);
-            // toast.error(<Message name={error.message}/>, optionsError);
+            toast.error(<Message name={error.message}/>, optionsError);
 
         }
 

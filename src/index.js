@@ -9,11 +9,11 @@ import App from './App';
 
 //redux
 import Reducers  from "common/reducers/index";
-import { createStore } from 'redux';
+import { createStore ,applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
+import thunk from 'redux-thunk';
 
-
-const store = createStore(Reducers);
+const store = createStore(Reducers,applyMiddleware(thunk));
 
 ReactDOM.render(
     <Provider store={store}>

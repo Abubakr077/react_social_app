@@ -32,10 +32,14 @@ const styles = theme => ({
 });
 
 class Dashboard extends Component {
+  constructor(props){
+    super(props);
+    console.log(localStorage.getItem("isAuthenticated"));
+    console.log(this.props.authenticate);
+  }
+
   render() {
     const { classes } = this.props;
-    console.log('user check here');
-    console.log(this.props.authenticate);
     return (
       <DashboardLayout title="Dashboard">
         <div className={classes.root}>
@@ -89,7 +93,6 @@ Dashboard.propTypes = {
 };
 
 export default
-
 connect(mapStateToProps)
 (withStyles(styles)
 (Dashboard));

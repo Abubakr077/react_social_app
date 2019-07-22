@@ -6,18 +6,40 @@ import SignUp from './views/SignUp';
 import SignIn from './views/SignIn';
 import NotFound from './views/NotFound';
 import Dashboard from './views/Dashboard';
+import {connect} from "react-redux";
+import { Link } from 'react-router-dom'
 
-export default class Routes extends Component {
+let isAuth;
+
+
+const PrivateRoute = ({ component: Component, ...rest }) =>
+    (
+    <Route {...rest} render={(props) => (
+         isAuth === true || isAuth=== 'true'
+            ? <Component {...props} />
+            : <Redirect to={{
+                pathname: '/login',
+                state: { from: props.location }
+            }} />
+    )} />
+);
+
+
+class Routes extends Component {
+
+
   render() {
-    return (
+      isAuth = localStorage.getItem('isAuthenticated');
+
+      return (
       <Switch>
         <Redirect
           exact
           from="/"
           to="/dashboard"
         />
-        <Route
-          component={Dashboard}
+        <PrivateRoute
+            component={Dashboard}
           exact
           path="/dashboard"
         />
@@ -30,16 +52,6 @@ export default class Routes extends Component {
         {/*  component={ProductList}*/}
         {/*  exact*/}
         {/*  path="/products"*/}
-        {/*/>*/}
-        {/*<Route*/}
-        {/*  component={Typography}*/}
-        {/*  exact*/}
-        {/*  path="/typography"*/}
-        {/*/>*/}
-        {/*<Route*/}
-        {/*  component={Icons}*/}
-        {/*  exact*/}
-        {/*  path="/icons"*/}
         {/*/>*/}
         {/*<Route*/}
         {/*  component={Account}*/}
@@ -76,3 +88,14 @@ export default class Routes extends Component {
     );
   }
 }
+const mapStateToProps = (state, ownProps) => {
+    return {
+        authenticate: state.authenticate,
+        current: state
+    }
+};
+
+export default
+connect(mapStateToProps)
+(Routes)
+

@@ -92,8 +92,8 @@ class SignIn extends Component {
     this.setState(newState, this.validateForm);
   };
 
-  handleSignIn = async () => {
-
+  handleSignIn = async (e) => {
+    e.preventDefault();
     try {
       const { history } = this.props;
       const { values } = this.state;
@@ -108,12 +108,11 @@ class SignIn extends Component {
                 password: values.password
             }
         });
-     // const { status,user} = await signIn(values.email, values.password);
 
-      this.setState({isLoading: false});
+      localStorage.setItem('isAuthenticated', true);
       this.props.loginUser(user);
-     // localStorage.seItem('isAuthenticated', true);
-        history.push('/dashboard');
+
+      history.push('/dashboard');
     } catch (error) {
       this.setState({
         isLoading: false,
@@ -294,7 +293,7 @@ class SignIn extends Component {
                         className={classes.signInButton}
                         color="primary"
                         disabled={!isValid}
-                        onClick={this.handleSignIn}
+                        onClick={(e) => {this.handleSignIn(e)}}
                         size="large"
                         variant="contained"
                       >
@@ -337,10 +336,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    loginUser: user => dispatch(
-          {
-          type:constants.ADD_USER, user}
-          )
+    loginUser: user => dispatch({type:constants.ADD_USER, user})
   }
 };
 export default
