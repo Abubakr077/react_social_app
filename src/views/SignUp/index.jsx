@@ -34,6 +34,8 @@ import styles from './styles';
 
 // Form validation schema
 import schema from './schema';
+import request from "helpers/request";
+import endpoints from "constants/endpoints";
 
 validate.validators.checked = validators.checked;
 
@@ -49,29 +51,27 @@ const signUp = () => {
 class SignUp extends Component {
   state = {
     values: {
-      firstName: '',
-      lastName: '',
+      name: '',
       email: '',
       password: '',
       policy: false
     },
     touched: {
-      firstName: false,
-      lastName: false,
+      name: false,
       email: false,
       password: false,
       policy: null
     },
     errors: {
-      firstName: null,
-      lastName: null,
+      name: null,
       email: null,
       password: null,
       policy: null
     },
     isValid: false,
     isLoading: false,
-    submitError: null
+    submitError: false,
+    serviceError: null
   };
 
   handleBack = () => {
@@ -87,7 +87,7 @@ class SignUp extends Component {
     const errors = validate(values, schema);
 
     newState.errors = errors || {};
-    newState.isValid = errors ? false : true;
+    newState.isValid = !errors;
 
     this.setState(newState);
   }, 300);
@@ -109,18 +109,23 @@ class SignUp extends Component {
 
       this.setState({ isLoading: true });
 
-      await signUp({
-        firstName: values.firstName,
-        lastName: values.lastName,
-        email: values.email,
-        password: values.password
+      const user =await request({
+        url:    endpoints.signUp,
+        method: 'POST',
+        data:   {
+          name: values.name,
+          email: values.email,
+          password: values.password
+        }
+      }).then(()=>{
+        this.setState({isLoading: false});
+        history.push('/login');
       });
-
-      history.push('/sign-in');
     } catch (error) {
       this.setState({
         isLoading: false,
-        serviceError: error
+        serviceError: error.data,
+        submitError: true,
       });
     }
   };
@@ -133,13 +138,12 @@ class SignUp extends Component {
       errors,
       isValid,
       submitError,
-      isLoading
+      isLoading,
+      serviceError
     } = this.state;
 
-    const showFirstNameError =
-      touched.firstName && errors.firstName ? errors.firstName[0] : false;
     const showLastNameError =
-      touched.lastName && errors.lastName ? errors.lastName[0] : false;
+      touched.name && errors.name ? errors.name[0] : false;
     const showEmailError =
       touched.email && errors.email ? errors.email[0] : false;
     const showPasswordError =
@@ -259,9 +263,9 @@ class SignUp extends Component {
                       className={classes.textField}
                       label="Project name"
                       onChange={event =>
-                        this.handleFieldChange('lastName', event.target.value)
+                        this.handleFieldChange('name', event.target.value)
                       }
-                      value={values.lastName}
+                      value={values.name}
                       variant="outlined"
                     />
                     {showLastNameError && (
@@ -269,7 +273,7 @@ class SignUp extends Component {
                         className={classes.fieldError}
                         variant="body2"
                       >
-                        {errors.lastName[0]}
+                        {errors.name[0]}
                       </Typography>
                     )}
                     <TextField
@@ -346,7 +350,7 @@ class SignUp extends Component {
                       className={classes.submitError}
                       variant="body2"
                     >
-                      {submitError}
+                      {serviceError}
                     </Typography>
                   )}
                   {isLoading ? (
@@ -370,7 +374,7 @@ class SignUp extends Component {
                     Have an account?{' '}
                     <Link
                       className={classes.signInUrl}
-                      to="/sign-in"
+                      to="/login"
                     >
                       Sign In
                     </Link>

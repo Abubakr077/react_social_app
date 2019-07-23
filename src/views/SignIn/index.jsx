@@ -101,7 +101,7 @@ class SignIn extends Component {
       this.setState({ isLoading: true });
 
         const user =await request({
-            url:    endpoints.loginEndpoint,
+            url:    endpoints.login,
             method: 'POST',
             data:   {
                 email: values.email,

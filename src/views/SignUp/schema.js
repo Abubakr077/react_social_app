@@ -1,27 +1,22 @@
 export default {
-  firstName: {
+  name: {
     presence: { allowEmpty: false, message: 'is required' },
     length: {
-      maximum: 32
-    }
-  },
-  lastName: {
-    presence: { allowEmpty: false, message: 'is required' },
-    length: {
-      maximum: 32
+      maximum: 50
     }
   },
   email: {
     presence: { allowEmpty: false, message: 'is required' },
     email: true,
     length: {
-      maximum: 64
+      maximum: 50
     }
   },
   password: {
     presence: { allowEmpty: false, message: 'is required' },
     length: {
-      maximum: 128
+      maximum: 128,
+      minimum: 6
     }
   },
   policy: {

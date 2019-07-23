@@ -8,6 +8,7 @@ import NotFound from './views/NotFound';
 import Dashboard from './views/Dashboard';
 import {connect} from "react-redux";
 import { Link } from 'react-router-dom'
+import * as localStorageHelper from 'helpers/localStorage'
 
 let isAuth;
 
@@ -29,7 +30,7 @@ class Routes extends Component {
 
 
   render() {
-      isAuth = localStorage.getItem('isAuthenticated');
+      isAuth = localStorageHelper.tytPreGetBool('isAuthenticated');
 
       return (
       <Switch>
