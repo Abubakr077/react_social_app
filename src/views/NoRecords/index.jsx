@@ -26,7 +26,7 @@ const styles = theme => ({
   }
 });
 
-class NotFound extends Component {
+class NoRecords extends Component {
   render() {
     const { classes } = this.props;
 
@@ -44,16 +44,15 @@ class NotFound extends Component {
           >
             <div className={classes.content}>
               <Typography variant="h1">
-                404: The page you are looking for isn’t here
+                No projects created yet!
               </Typography>
               <Typography variant="subtitle2">
-                You either tried some shady route or you came here by mistake.
-                Whichever it is, try using the navigation
+                you can add it by clicking add new project
               </Typography>
               <img
                 alt="Under development"
                 className={classes.image}
-                src="/images/under_development.png"
+                src="/images/empty.png"
               />
             </div>
           </Grid>
@@ -63,8 +62,8 @@ class NotFound extends Component {
   }
 }
 
-NotFound.propTypes = {
+NoRecords.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(NotFound);
+export default withStyles(styles)(NoRecords);

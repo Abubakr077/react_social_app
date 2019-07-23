@@ -6,33 +6,38 @@ import SignUp from './views/SignUp';
 import SignIn from './views/SignIn';
 import NotFound from './views/NotFound';
 import Dashboard from './views/Dashboard';
-import {connect} from "react-redux";
-import { Link } from 'react-router-dom'
+import Invites from './views/Invites';
+
+import {connect} from 'react-redux';
 import * as localStorageHelper from 'helpers/localStorage'
 
 let isAuth;
 
 
 const PrivateRoute = ({ component: Component, ...rest }) =>
-    (
-    <Route {...rest} render={(props) => (
-         isAuth === true || isAuth=== 'true'
-            ? <Component {...props} />
-            : <Redirect to={{
-                pathname: '/login',
-                state: { from: props.location }
-            }} />
-    )} />
-);
+  (
+    <Route
+      {...rest}
+      render={(props) => (
+        isAuth === true || isAuth=== 'true'
+          ? <Component {...props} />
+          : <Redirect
+            to={{
+              pathname: '/login',
+              state: { from: props.location }
+            }}
+            />
+      )}
+    />
+  );
 
 
 class Routes extends Component {
 
-
   render() {
-      isAuth = localStorageHelper.tytPreGetBool('isAuthenticated');
+    isAuth = localStorageHelper.tytPreGetBool('isAuthenticated');
 
-      return (
+    return (
       <Switch>
         <Redirect
           exact
@@ -40,9 +45,14 @@ class Routes extends Component {
           to="/dashboard"
         />
         <PrivateRoute
-            component={Dashboard}
+          component={Dashboard}
           exact
           path="/dashboard"
+        />
+        <Route
+          component={Invites}
+          exact
+          path="/invites"
         />
         {/*<Route*/}
         {/*  component={UserList}*/}
@@ -89,11 +99,11 @@ class Routes extends Component {
     );
   }
 }
-const mapStateToProps = (state, ownProps) => {
-    return {
-        authenticate: state.authenticate,
-        current: state
-    }
+const mapStateToProps = (state) => {
+  return {
+    authenticate: state.authenticate,
+    current: state
+  }
 };
 
 export default

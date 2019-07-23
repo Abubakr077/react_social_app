@@ -39,7 +39,7 @@ class Dashboard extends Component {
   };
 
   render() {
-    const { classes, width, title, children } = this.props;
+    const { classes, width, title, children , initUser } = this.props;
     const { isOpen } = this.state;
 
     const isMobile = ['xs', 'sm', 'md'].includes(width);
@@ -63,7 +63,7 @@ class Dashboard extends Component {
           open={isOpen}
           variant={isMobile ? 'temporary' : 'persistent'}
         >
-          <Sidebar className={classes.sidebar} />
+          <Sidebar className={classes.sidebar} initUser={initUser} />
         </Drawer>
         <main
           className={classNames(classes.content, {
