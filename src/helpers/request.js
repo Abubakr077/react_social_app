@@ -23,7 +23,7 @@ const request = function(options) {
     const onSuccess = function(response) {
         console.debug('Request Successful!', response);
         // toast.success(<Message name={'Request Successful'}/>, optionsSuccess);
-        // console.log(response.data);
+        console.log(response.data);
         return response.data;
     }
 
@@ -37,7 +37,7 @@ const request = function(options) {
             console.error('Data:',    error.response.data);
 
             if (error.response.status === 500){
-                error.response.data = 'Error Message:' + ' Internal server error'
+                error.response.data = 'Error Message:' + ' Something went wrong!'
             }
             // toast.error(<Message name={error.response.data}/>, optionsError);
             console.error('Headers:', error.response.headers);
@@ -46,12 +46,13 @@ const request = function(options) {
             // Something else happened while setting up the request
             // triggered the error
             console.error('Error Message:', error.message);
+            error.response.data = 'Error Message:' + error.message;
             toast.error(<Message name={error.message}/>, optionsError);
 
         }
 
         return Promise.reject(error.response || error.message);
-    }
+    };
 
     return client(options)
         .then(onSuccess)

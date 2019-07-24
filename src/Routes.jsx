@@ -12,6 +12,7 @@ import {connect} from 'react-redux';
 import * as localStorageHelper from 'helpers/localStorage'
 
 let isAuth;
+let authToken;
 
 
 const PrivateRoute = ({ component: Component, ...rest }) =>
@@ -19,7 +20,7 @@ const PrivateRoute = ({ component: Component, ...rest }) =>
     <Route
       {...rest}
       render={(props) => (
-        isAuth === true || isAuth=== 'true'
+          (isAuth === true || isAuth=== 'true') && authToken
           ? <Component {...props} />
           : <Redirect
             to={{
@@ -36,6 +37,8 @@ class Routes extends Component {
 
   render() {
     isAuth = localStorageHelper.tytPreGetBool('isAuthenticated');
+      authToken = localStorage.getItem('authToken');
+      console.log(authToken);
 
     return (
       <Switch>

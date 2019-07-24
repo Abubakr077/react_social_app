@@ -108,11 +108,12 @@ class SignIn extends Component {
                 password: values.password
             }
         });
+        localStorage.setItem('isAuthenticated', true);
+        localStorage.setItem('authToken', user.x_auth_token.token);
 
-      localStorage.setItem('isAuthenticated', true);
-      this.props.loginUser(user);
+        this.props.loginUser(user);
 
-      history.push('/dashboard');
+        history.push('/dashboard');
     } catch (error) {
       this.setState({
         isLoading: false,
