@@ -25,7 +25,7 @@ const request = function(options) {
         // toast.success(<Message name={'Request Successful'}/>, optionsSuccess);
         console.log(response.data);
         return response.data;
-    }
+    };
 
     const onError = function(error) {
         console.error('Request Failed:', error.config);
@@ -45,9 +45,10 @@ const request = function(options) {
         } else {
             // Something else happened while setting up the request
             // triggered the error
+            error.response = {};
+            error.response.data = 'Error Message:' + ' Something went wrong!';
             console.error('Error Message:', error.message);
-            error.response.data = 'Error Message:' + error.message;
-            toast.error(<Message name={error.message}/>, optionsError);
+            // toast.error(<Message name={error.message}/>, optionsError);
 
         }
 
@@ -57,6 +58,5 @@ const request = function(options) {
     return client(options)
         .then(onSuccess)
         .catch(onError);
-}
-
+};
 export default request;

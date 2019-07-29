@@ -2,145 +2,30 @@
 import trends from 'data/trends';
 import users from 'data/users';
 
-
-const projects = [
-  {
-    id: 'DEV730658',
-    name: 'project A',
-    role: 'Owner',
-    createdAt: 1555016400000,
-  },
-  {
-    id: 'DEV730658',
-    name: 'project B',
-    role: 'Member',
-    createdAt: 1555016400000,
-  },
-  {
-    id: 'DEV730658',
-    name: 'project C',
-    role: 'Admin',
-    createdAt: 1555016400000,
-  },
-  {
-    id: 'DEV730658',
-    name: 'project C',
-    role: 'Admin',
-    createdAt: 1555016400000,
-  },
-  {
-    id: 'DEV730658',
-    name: 'project C',
-    role: 'Admin',
-    createdAt: 1555016400000,
-  },
-  {
-    id: 'DEV730658',
-    name: 'project C',
-    role: 'Admin',
-    createdAt: 1555016400000,
-  },
-  {
-    id: 'DEV730658',
-    name: 'project C',
-    role: 'Admin',
-    createdAt: 1555016400000,
-  },
-  {
-    id: 'DEV730658',
-    name: 'project C',
-    role: 'Admin',
-    createdAt: 1555016400000,
-  },
-  {
-    id: 'DEV730658',
-    name: 'project C',
-    role: 'Admin',
-    createdAt: 1555016400000,
-  },
-  {
-    id: 'DEV730658',
-    name: 'project C',
-    role: 'Admin',
-    createdAt: 1555016400000,
-  },
-  {
-    id: 'DEV730658',
-    name: 'project C',
-    role: 'Admin',
-    createdAt: 1555016400000,
-  },
-  {
-    id: 'DEV730658',
-    name: 'project C',
-    role: 'Admin',
-    createdAt: 1555016400000,
-  },
-  {
-    id: 'DEV730658',
-    name: 'project C',
-    role: 'Admin',
-    createdAt: 1555016400000,
-  },
-  {
-    id: 'DEV730658',
-    name: 'project C',
-    role: 'Admin',
-    createdAt: 1555016400000,
-  },
-  {
-    id: 'DEV730658',
-    name: 'project C',
-    role: 'Admin',
-    createdAt: 1555016400000,
-  },
-  {
-    id: 'DEV730658',
-    name: 'project C',
-    role: 'Admin',
-    createdAt: 1555016400000,
-  },
-  {
-    id: 'DEV730658',
-    name: 'project C',
-    role: 'Admin',
-    createdAt: 1555016400000,
-  },
-  {
-    id: 'DEV730658',
-    name: 'project C',
-    role: 'Admin',
-    createdAt: 1555016400000,
-  },
-  {
-    id: 'DEV730658',
-    name: 'project C',
-    role: 'Admin',
-    createdAt: 1555016400000,
-  },
-  {
-    id: 'DEV730658',
-    name: 'project C',
-    role: 'Admin',
-    createdAt: 1555016400000,
-  }
-];
-
-function lookupTrend(trend) {
-  trend.customer = users.find(user => user.id === trend.customer);
-
-  return trend;
+function lookupMemberShips(user) {
+  // user.customer = users.find(user => user.id === trend.customer);
+  // return user.memberships;
 }
 
-export const getProjects = (limit = 6) => {
-
+export const getProjects = () => {
+  const projects   = JSON.parse(localStorage.getItem('projects'));
   return new Promise(resolve => {
-    const projectsLookup = JSON.parse(JSON.stringify(projects));
-
     setTimeout(() => {
       resolve({
-        projects: projectsLookup,
+        projects: projects,
         projectsTotal: projects.length
+      });
+    }, 700);
+  });
+};
+export const getInvites = () => {
+  const invites   = JSON.parse(localStorage.getItem('invites'));
+  console.log(invites);
+  return new Promise(resolve => {
+    setTimeout(() => {
+      resolve({
+        projects: invites,
+        projectsTotal: invites.length
       });
     }, 700);
   });

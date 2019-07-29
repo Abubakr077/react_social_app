@@ -5,12 +5,12 @@ export default theme => ({
     alignItems: 'flex-start',
     alignSelf: 'flex-start',
     flexDirection: 'column',
-    padding: theme.spacing.unit * 3
+    padding: theme.spacing(3)
   },
   content: {
   },
   caption: {
-    marginLeft: theme.spacing.unit
+    marginBottom: theme.spacing(1)
   },
   extendedIcon: {
     marginBottom: theme.spacing(1),
@@ -25,7 +25,7 @@ export default theme => ({
     flexDirection: 'column'
   },
   title: {
-    marginBottom: theme.spacing.unit * 1.5
+    marginBottom: theme.spacing(1.5)
   },
   details: {
     display: 'flex',
@@ -36,5 +36,15 @@ export default theme => ({
   },
   button: {
     minHeight: 200
+  },
+  portletContent: {
+    minWidth: '100px'
+  },
+  statusWrapper: {
+    display: 'flex',
+    alignItems: 'center'
+  },
+  status: {
+    marginRight: theme.spacing.unit
   }
 });

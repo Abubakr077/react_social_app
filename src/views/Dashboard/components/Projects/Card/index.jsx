@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 
 // Externals
 import PropTypes from 'prop-types';
@@ -16,11 +16,18 @@ import {
 
 import {
   Delete as DeleteIcon,
+  // FirstPageOutlined as RemoveIcon,
   ExitToAppOutlined as RemoveIcon,
 } from '@material-ui/icons';
 
 
-import * as color from "../../../../../common/colors";
+import * as color from "common/colors";
+import * as endPoints from 'constants/endpoints.json';
+import * as constants from 'constants/constants.js';
+import request from 'helpers/request.js';
+import { toast } from 'react-toastify';
+import {connect} from "react-redux";
+
 
 // Component styles
 const styles = theme => {
@@ -48,19 +55,30 @@ const styles = theme => {
       hover: false
     },
     cardActions: {
-        position: 'relative',
-        right: 'auto',
+      right: 'auto',
+      float: 'right'
+    },
+    actionDiv: {
+      width: '100%'
     },
     deleteIcon: {
-      color: color.red,
+      color: color.red
     }
   };
 };
 
 const CustomCard = props => {
-  const { classes, className, outlined, squared, children,newCard, ...rest } = props;
+  const {
+      classes,
+      className,
+      outlined,
+      squared,
+      children,
+      newCard,
+      cardProject,
+      ...rest } = props;
 
-
+  let delError = null;
   const rootClassName = classNames(
     {
       [classes.root]: true,
@@ -70,8 +88,40 @@ const CustomCard = props => {
     className
   );
 
+    function handleDelete() {
+        const   user   = JSON.parse(localStorage.getItem('user'));
+        const index = props.projects.indexOf(cardProject);
+        const id = cardProject.project.id;
+        console.log(index);
+        console.log(props.projects);
+        try{
+            // const project = request({
+            //     url:    endPoints.deleteProject,
+            //     method: 'DELETE',
+            //     headers: {
+            //         user_id: user.id,
+            //         x_auth_token: user.x_auth_token.token,
+            //         project_id: id
+            //     }
+            // });
+            let data = [...props.projects];
+            data = data.filter(item => item !== cardProject);
+            props.dispatch({
+                type: constants.DELETE_PROJECT,
+                data
+            });
+            console.log(data);
+            // toast.success('Project Deleted Successfully!');
+        }catch (error) {
+            console.log(error);
+            toast.error(error.data);
+            delError = error.data
+        }
 
-  return (
+    }
+
+    return (
+        <Fragment>
       <Card
       {...rest}
       className={rootClassName}
@@ -81,19 +131,28 @@ const CustomCard = props => {
         </Button>
 
         {!newCard && (
-            < CardActions>
-              <div className={classes.cardActions}>
-              <IconButton aria-label="Share">
-                <RemoveIcon />
-              </IconButton>
-                  <IconButton aria-label="Add to favorites">
-                      <DeleteIcon className={classes.deleteIcon} />
-                  </IconButton>
+            <div className={classes.actionDiv}>
+            < CardActions className={classes.cardActions}>
+              {cardProject.role !== 'OWNER' && (
+              <div >
+                  <IconButton onClick={handleDelete}>
+                <RemoveIcon  />
+              </IconButton >
               </div>
+              )}
+              {cardProject.role === 'OWNER' && (
+              <div >
+                <IconButton onClick={handleDelete}>
+                  <DeleteIcon className={classes.deleteIcon} />
+                </IconButton>
+              </div>
+              )}
             </CardActions>
+            </div>
         )}
 
     </Card>
+        </Fragment>
   );
 
 
@@ -113,5 +172,11 @@ CustomCard.defaultProps = {
   outlined: true,
   elevation: 1
 };
-
-export default withStyles(styles)(CustomCard);
+const mapStateToProps = (state, ownProps) => {
+    return {
+        projects: state.projects
+    }
+};
+export default connect(mapStateToProps)
+(withStyles(styles)
+(CustomCard));

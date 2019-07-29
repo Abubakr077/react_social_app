@@ -11,8 +11,8 @@ import Invites from './views/Invites';
 import {connect} from 'react-redux';
 import * as localStorageHelper from 'helpers/localStorage'
 
-let isAuth;
-let authToken;
+let isAuth = false;
+let authToken = null;
 
 
 const PrivateRoute = ({ component: Component, ...rest }) =>
@@ -37,8 +37,12 @@ class Routes extends Component {
 
   render() {
     isAuth = localStorageHelper.tytPreGetBool('isAuthenticated');
-      authToken = localStorage.getItem('authToken');
-      console.log(authToken);
+    const   user   = JSON.parse(localStorage.getItem('user'));
+
+    if (user){
+        authToken = user.x_auth_token.token;
+    }
+
 
     return (
       <Switch>

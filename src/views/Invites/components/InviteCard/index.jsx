@@ -27,7 +27,8 @@ const styles = theme => {
   return {
     root: {
       borderRadius: '8px',
-      minHeight: 140,
+      minHeight: 198,
+      minWidth: 276,
       paddingTop: theme.spacing.unit *2,
       paddingLeft: theme.spacing.unit *2
 
@@ -41,7 +42,7 @@ const styles = theme => {
     },
     cardActions: {
       marginLeft: 'auto',
-      marginTop: theme.spacing.unit *6
+      marginTop: theme.spacing(4)
     },
     acceptButton: {
       color: color.green,

@@ -51,5 +51,9 @@ export default theme => ({
     outlined: true,
     elevation: 1,
     borderRadius: '8px',
+  },
+
+  portletContent: {
+    minWidth: '100px'
   }
 });

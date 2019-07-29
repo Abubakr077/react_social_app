@@ -348,7 +348,7 @@ class SignUp extends Component {
                   {submitError && (
                     <Typography
                       className={classes.submitError}
-                      variant="body2"
+                      variant="subtitle2"
                     >
                       {serviceError}
                     </Typography>

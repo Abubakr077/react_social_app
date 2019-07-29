@@ -28,7 +28,7 @@ const styles = theme => ({
 
 class NoRecords extends Component {
   render() {
-    const { classes } = this.props;
+    const { classes,title,subTitle } = this.props;
 
     return (
       <div className={classes.root}>
@@ -44,10 +44,10 @@ class NoRecords extends Component {
           >
             <div className={classes.content}>
               <Typography variant="h1">
-                No projects created yet!
+                {title}
               </Typography>
               <Typography variant="subtitle2">
-                you can add it by clicking add new project
+                {subTitle}
               </Typography>
               <img
                 alt="Under development"

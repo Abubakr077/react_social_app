@@ -6,8 +6,6 @@ export default theme => ({
     alignSelf: 'flex-start',
     flexDirection: 'column'
   },
-  content: {
-  },
   caption: {
     marginLeft: theme.spacing.unit
   },
@@ -24,7 +22,7 @@ export default theme => ({
     flexDirection: 'column'
   },
   title: {
-    marginBottom: theme.spacing.unit * 1.5
+    marginBottom: theme.spacing(1.5)
   },
   details: {
     display: 'flex',
@@ -35,5 +33,27 @@ export default theme => ({
   },
   button: {
     minHeight: 200
-  }
+  },
+  textField: {
+    width: '100%',
+    '& + & ': {
+      marginTop: theme.spacing.unit * 2
+    }
+  },
+  fieldError: {
+  color: theme.palette.danger.main,
+  marginBottom: theme.spacing.unit * 2,
+  marginTop: theme.spacing.unit
+},
+  progressWrapper: {
+    padding: theme.spacing.unit,
+    display: 'flex',
+    justifyContent: 'center'
+  }  ,
+  dialogueBody: {
+    alignItems: 'center',
+    maxWidth: 'lg',
+
+  },
+
 });

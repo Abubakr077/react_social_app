@@ -51,7 +51,6 @@ class Dashboard extends Component {
 
     state = {
       isInitUser: null,
-      projects: [],
       isRecords: true
     };
 
@@ -62,7 +61,7 @@ class Dashboard extends Component {
     render() {
 
       const {classes} = this.props;
-      const {isInitUser, projects} = {...this.state};
+      const {isInitUser} = {...this.state};
 
       if (!isInitUser) {
         return (
@@ -126,15 +125,13 @@ class Dashboard extends Component {
       }
     }
 
-    handleIconClick() {
-      alert('here');
-    }
 }
 
 const mapStateToProps = (state, ownProps) => {
   return {
     user: state.user,
-    authenticate: state.authenticate
+    authenticate: state.authenticate,
+
   }
 };
 Dashboard.propTypes = {

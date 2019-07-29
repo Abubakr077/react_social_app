@@ -38,8 +38,6 @@ import styles from './styles';
 
 // Form validation schema
 import schema from './schema';
-import axios from 'axios';
-import {Message, optionsError} from "../../constants/constants";
 
 
 class SignIn extends Component {
@@ -109,7 +107,10 @@ class SignIn extends Component {
             }
         });
         localStorage.setItem('isAuthenticated', true);
-        localStorage.setItem('authToken', user.x_auth_token.token);
+        localStorage.setItem('user', JSON.stringify(user));
+        localStorage.setItem('projects', JSON.stringify(user.memberships));
+        localStorage.setItem('invites', JSON.stringify(user.project_invites));
+
 
         this.props.loginUser(user);
 
@@ -331,7 +332,8 @@ SignIn.propTypes = {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    user: state.user
+    user: state.user,
+    projects: state.projects
   }
 };
 

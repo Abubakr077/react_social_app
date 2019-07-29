@@ -24,14 +24,18 @@ import { InvitesView } from "./components";
 
 
 class Invites extends Component {
-  signal = false;
-
   state = {
-    isLoading: false,
     projects: [],
-    isRecords: true
+    isRecords: false
   };
 
+  updateView() {
+    this.setState(
+        {
+          isRecords: true
+        }
+    );
+  }
 
 
 
@@ -42,8 +46,9 @@ class Invites extends Component {
     return (
         <DashboardLayout title="Initialize User" initUser = {true}>
           <div className={classes.root}>
-            { !this.state.isRecords && <NoRecords/> }
-            { this.state.isRecords && <InvitesView />      }
+              <InvitesView/>
+            {/*{(!this.state.isRecords) && < InvitesView view={this.updateView.bind(this)}/>}*/}
+            {/*{(this.state.isRecords) && < NoRecords title={'No Invites at this moment'} subTitle={''}/>}*/}
           </div>
         </DashboardLayout>
     );

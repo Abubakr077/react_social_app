@@ -1,5 +1,7 @@
 {
   "host": "http://localhost:5000",
   "login": "/users/login",
-  "signUp": "/users/register"
+  "signUp": "/users/register",
+  "createProject" : "/projects/create",
+  "deleteProject" : "/projects/delete"
 }

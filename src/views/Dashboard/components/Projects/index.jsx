@@ -1,148 +1,152 @@
-import React, { Component } from 'react';
-
+import React, {Component} from 'react';
 // Externals
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import PerfectScrollbar from 'react-perfect-scrollbar';
-
 // Material helpers
 import {
-  CardActions,
-  CircularProgress,
-  Grid,
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableRow,
-  withStyles
+    CardActions,
+    CircularProgress,
+    Grid,
+    Table,
+    TableBody,
+    TableCell,
+    TableHead,
+    TableRow,
+    withStyles
 } from '@material-ui/core';
-
-// Material components
-import { Typography,Paper } from '@material-ui/core';
-
-
-
 // Shared services
-import { getProjects } from 'services/project';
-
-// Shared components
-import {
-  Portlet,
-  PortletHeader,
-  PortletLabel,
-  PortletContent,
-} from 'components';
-
-
+import {getProjects} from 'services/project';
+import * as constants from 'constants/constants.js'
 // Component styles
 import styles from './styles';
 import ProjectCard from "./ProjectCard";
 import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
 import Card from "@material-ui/core/Card";
+import {connect} from "react-redux";
 
 class Projects extends Component {
-  signal = false;
 
-  state = {
-    isLoading: false,
-    projects: [],
-  };
+    signal = false;
+    state = {
+      isLoading: false,
+      projects: []
+    };
 
+    async getProjects() {
+        try {
+            this.setState({isLoading: true});
 
-  async getProjects(limit) {
-    try {
-      this.setState({ isLoading: true });
+            const {projects} = await getProjects(0);
+            this.props.dispatch({
+                type: constants.ADD_PROJECTS,
+                projects
+            });
 
-      const { projects } = await getProjects(limit);
-
-      if (this.signal) {
-        this.setState({
-          isLoading: false,
-          projects
-        });
-      }
-    } catch (error) {
-      if (this.signal) {
-        this.setState({
-          isLoading: false,
-          error
-        });
-      }
+            if (this.signal) {
+                this.setState({
+                    isLoading: false,
+                    projects
+                });
+            }
+        } catch (error) {
+            if (this.signal) {
+                this.setState({
+                    isLoading: false,
+                    error
+                });
+            }
+        }
     }
-  }
 
-  componentDidMount() {
-    this.signal = true;
+    componentDidMount() {
+        this.signal = true;
+        this.getProjects();
+    }
 
-    const { limit } = this.state;
+    componentWillUnmount() {
+        this.signal = false;
+    }
+    componentWillReceiveProps(nextProps, nextContext) {
+        if(this.props !== nextProps) {
+            console.log('here');
+            this.setState({
+                projects: nextProps.projects
+            });
+            localStorage.setItem('projects', JSON.stringify(nextProps.projects));
+        }
+    }
+    render() {
+        const {classes, className, ...rest} = this.props;
+        const rootClassName = classNames(classes.root, className);
+        const {isLoading} = this.state;
+        const showProjects = !isLoading && this.state.projects;
 
-    this.getProjects(limit);
-  }
-
-  componentWillUnmount() {
-    this.signal = false;
-  }
-
-  render() {
-    const { classes, className, ...rest } = this.props;
-    const rootClassName = classNames(classes.root, className);
-    const { isLoading, projects } = this.state;
-    const showProjects = !isLoading && projects.length > 0;
-
-    return (
-        <div className={rootClassName}>
-          <div>
-            <div
-                className={classes.portletContent}
-            >
-              {isLoading && (
-                  <div className={classes.progressWrapper}>
-                    <CircularProgress />
-                  </div>
-              )}
-              {showProjects && (
-                  <Grid
-                      container
-                      spacing={4}
-                  >
-                    <Grid
-                        item
-                        lg={3}
-                        sm={4}
-                        xl={3}
-                        xs={6}
+        return (
+            <div className={rootClassName}>
+                <div>
+                    <div
+                        className={classes.portletContent}
                     >
-                      <ProjectCard className={classes.newCard} isNewCard={true}/>
-                    </Grid>
+                        {isLoading && (
+                            <div className={classes.progressWrapper}>
+                                <CircularProgress/>
+                            </div>
+                        )}
+                        {!isLoading && (
+                            <Grid
+                                container
+                                spacing={4}
+                            >
+                                <Grid
+                                    item
+                                    lg={3}
+                                    sm={4}
+                                    xl={3}
+                                    xs={6}
+                                >
+                                    <ProjectCard className={classes.newCard} isNewCard={true}/>
+                                </Grid>
 
-                    {
-                      projects.map(project => (
-                        <Grid
-                            item
-                            lg={3}
-                            sm={4}
-                            xl={3}
-                            xs={6}
-                        >
-                        <ProjectCard project={project} isNewCard={false}/>
-                        </Grid>
-                    ))
-                    }
-                  </Grid>
-              )}
+                                {showProjects && (
+                                    this.state.projects.map(project => (
+                                        <Grid
+                                            item
+                                            lg={3}
+                                            sm={4}
+                                            xl={3}
+                                            xs={6}
+                                        >
+                                            <ProjectCard
+                                                project={project}
+                                                isNewCard={false}
+                                            />
+                                        </Grid>
+                                    ))
+                                )}
+                            </Grid>
+                        )}
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
 
-    );
-  }
+        );
+    }
 }
 
-Projects.propTypes = {
-  className: PropTypes.string,
-  classes: PropTypes.object.isRequired
+const mapStateToProps = (state, ownProps) => {
+    return {
+        user: state.user,
+        projects: state.projects
+    }
 };
 
-export default withStyles(styles)(Projects);
+Projects.propTypes = {
+    className: PropTypes.string,
+    classes: PropTypes.object.isRequired
+};
+
+export default connect(mapStateToProps)
+(withStyles(styles)
+(Projects));
