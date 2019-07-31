@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 
 // Externals
 import classNames from 'classnames';
@@ -7,159 +7,193 @@ import PerfectScrollbar from 'react-perfect-scrollbar';
 
 // Material helpers
 import {
-  CardActions,
-  CircularProgress,
-  Grid,
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableRow,
-  withStyles
+    CardActions,
+    CircularProgress,
+    Grid,
+    Table,
+    TableBody,
+    TableCell,
+    TableHead,
+    TableRow,
+    withStyles
 } from '@material-ui/core';
 
 // Material components
-import { Typography } from '@material-ui/core';
-
+import {Typography} from '@material-ui/core';
 
 
 // Shared services
-import { getInvites,getProjects } from 'services/project';
+import {getInvites} from 'services/project';
 
 // Shared components
-import {   Card } from '../../components';
+import {Card} from '../../components';
 
 // Component styles
 import styles from './styles';
 import NoRecords from "../../../NoRecords"
 import {statusColors} from 'constants/constants.js';
 import {Status} from 'components';
+import compose from "recompose/compose";
+import {connect} from "react-redux";
+import {toast} from "react-toastify";
+import {Message, optionsSuccess} from "../../../../constants/constants";
 
 
 class InvitesView extends Component {
-  signal = false;
+    signal = false;
+    showInvites = false;
 
-  state = {
-    isLoading: false,
-    invites: [],
-    projects: []
-  };
+    state = {
+        isLoading: false,
+        invites: []
+    };
 
 
-  async getInvites(limit) {
-    try {
-      this.setState({ isLoading: true });
+    async getInvites(limit) {
+        try {
+            this.setState({isLoading: true});
 
-      const { invites,projects } = await getInvites();
+            const {invites} = await getInvites();
 
-      if (this.signal) {
-        this.setState({
-          isLoading: false,
-          invites,
-          projects
-        });
-      }
-    } catch (error) {
-      if (this.signal) {
-        this.setState({
-          isLoading: false,
-          error
-        });
-      }
+            if (this.signal) {
+                this.setState({
+                    isLoading: false,
+                    invites
+                });
+            }
+        } catch (error) {
+            if (this.signal) {
+                this.setState({
+                    isLoading: false,
+                    error
+                });
+            }
+        }
     }
-  }
 
-  componentDidMount() {
-    this.signal = true;
+    componentDidMount() {
+        this.signal = true;
 
-    const { limit } = this.state;
+        const {limit} = this.state;
 
-    this.getInvites(limit);
-  }
+        this.getInvites(limit);
+    }
 
-  componentWillUnmount() {
-    this.signal = false;
-  }
+    componentWillUnmount() {
+        this.signal = false;
+    }
 
-  render() {
-    const { classes, className, ...rest } = this.props;
-    const rootClassName = classNames(classes.root, className);
-    const { isLoading, invites, projects } = this.state;
-    const showInvites = !isLoading && projects.length > 0;
-    // if (!showProjects){
-    //   this.props.view();
-    // }
+    componentWillReceiveProps(nextProps, nextContext) {
+        if (this.props !== nextProps) {
+            this.setState({
+                invites: nextProps.invites
+            }, () => {
+                localStorage.setItem('invites', JSON.stringify(nextProps.invites));
+            });
+        }
+    }
 
-    return (
-        <div className={rootClassName}>
-          <div>
-            <div
-                className={classes.portletContent}
-            >
-              {isLoading && (
-                  <div className={classes.progressWrapper}>
-                    <CircularProgress />
-                  </div>
-              )}
-              {showInvites && (
-                  <Grid
-                      container
-                      spacing={4}
-                  >
-                    {
-                      projects.map(invite => (
-                          <Grid
-                              item
-                              lg={3}
-                              sm={4}
-                              xl={3}
-                              xs={6}
-                          >
-                            <Card
-                                {...rest}
+    render() {
+        const {classes, className, ...rest} = this.props;
+        const rootClassName = classNames(classes.root, className);
+        const {isLoading, invites} = this.state;
+        this.showInvites = !isLoading && invites.length;
+        if (!this.showInvites) {
+            return (
+                <div>
+                    {isLoading && (
+                        <div className={classes.progressWrapper}>
+                            <CircularProgress/>
+                        </div>
+                    )}
+                    {!isLoading && (
+                        < NoRecords title={'No Invites at this moment'}
+                                    subTitle={'Invites will show, if some owner send you one'}/>
+                    )}
+                </div>
+            )
+        }
+        return (
+
+            <div className={rootClassName}>
+                <div>
+                    <div
+                        className={classes.portletContent}
+                    >
+                        {this.showInvites && (
+                            <Grid
+                                container
+                                spacing={4}
                             >
-                              <div className={classes.details}>
-                                <Typography
-                                    className={classes.title}
-                                    variant="h3"
-                                >
-                                  {invite.project.name}
-                                </Typography>
-                                <Typography
-                                    variant="caption"
-                                    className={classes.caption}
-                                >
-                                  {invite.role}
-                                </Typography>
-                                <Typography
-                                >
-                                  <div className={classes.statusWrapper}>
-                                    <Status
-                                        className={classes.status}
-                                        color={statusColors[invite.status]}
-                                        size="sm"
-                                    />
-                                    {invite.status}
-                                  </div>
-                                </Typography>
-                              </div>
-                            </Card>
-                          </Grid>
-                      ))
-                    }
-                  </Grid>
-              )}
+                                {
+                                    invites.map(invite => (
+                                        <Grid
+                                            item
+                                            lg={3}
+                                            sm={4}
+                                            xl={3}
+                                            xs={6}
+                                        >
+                                            <Card
+                                                {...rest}
+                                                invite={invite}
+                                            >
+                                                <div className={classes.details}>
+                                                    <Typography
+                                                        className={classes.title}
+                                                        variant="h3"
+                                                    >
+                                                        {invite.project.name}
+                                                    </Typography>
+                                                    <Typography
+                                                        variant="caption"
+                                                        className={classes.caption}
+                                                    >
+                                                        {invite.role}
+                                                    </Typography>
+                                                  <Typography
+                                                      variant="caption"
+                                                      className={classes.caption}
+                                                  >
+                                                    {invite.invitee_email}
+                                                  </Typography>
+                                                    <Typography
+                                                    >
+                                                        <div className={classes.statusWrapper}>
+                                                            <Status
+                                                                className={classes.status}
+                                                                color={statusColors[invite.status]}
+                                                                size="sm"
+                                                            />
+                                                            {invite.status}
+                                                        </div>
+                                                    </Typography>
+                                                </div>
+                                            </Card>
+                                        </Grid>
+                                    ))
+                                }
+                            </Grid>
+                        )}
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
+        );
 
-    );
-  }
+    }
 }
 
 InvitesView.propTypes = {
-  className: PropTypes.string,
-  classes: PropTypes.object.isRequired
+    className: PropTypes.string,
+    classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(InvitesView);
+const mapStateToProps = (state) => {
+    return {
+        invites: state.invites
+    }
+};
+export default compose(
+    connect(mapStateToProps),
+    withStyles(styles)
+)(InvitesView);

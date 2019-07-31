@@ -3,5 +3,7 @@
   "login": "/users/login",
   "signUp": "/users/register",
   "createProject" : "/projects/create",
-  "deleteProject" : "/projects/delete"
+  "deleteProject" : "/projects/delete",
+  "acceptInvite" : "/projects/invites/accept",
+  "rejectInvite" : "/projects/invites/reject"
 }

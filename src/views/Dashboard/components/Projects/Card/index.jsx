@@ -27,6 +27,7 @@ import * as constants from 'constants/constants.js';
 import request from 'helpers/request.js';
 import { toast } from 'react-toastify';
 import {connect} from "react-redux";
+import compose from "recompose/compose";
 
 
 // Component styles
@@ -90,10 +91,8 @@ const CustomCard = props => {
 
     function handleDelete() {
         const   user   = JSON.parse(localStorage.getItem('user'));
-        const index = props.projects.indexOf(cardProject);
+        const projects   = JSON.parse(localStorage.getItem('projects'));
         const id = cardProject.project.id;
-        console.log(index);
-        console.log(props.projects);
         try{
             // const project = request({
             //     url:    endPoints.deleteProject,
@@ -103,17 +102,22 @@ const CustomCard = props => {
             //         x_auth_token: user.x_auth_token.token,
             //         project_id: id
             //     }
-            // });
-            let data = [...props.projects];
-            data = data.filter(item => item !== cardProject);
+            // }).then(() => {
+            //         props.dispatch({
+            //             type: constants.DELETE_PROJECT,
+            //             projects,
+            //             id
+            //         });
+            //         toast.success('Project Deleted Successfully!');
+            //     }
+            // );
             props.dispatch({
                 type: constants.DELETE_PROJECT,
-                data
+                projects,
+                id
             });
-            console.log(data);
-            // toast.success('Project Deleted Successfully!');
         }catch (error) {
-            console.log(error);
+            console.error(error);
             toast.error(error.data);
             delError = error.data
         }
@@ -177,6 +181,9 @@ const mapStateToProps = (state, ownProps) => {
         projects: state.projects
     }
 };
-export default connect(mapStateToProps)
-(withStyles(styles)
-(CustomCard));
+export default
+compose(
+    connect(mapStateToProps),
+    withStyles(styles)
+)
+(CustomCard);

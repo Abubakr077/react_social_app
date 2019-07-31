@@ -25,6 +25,7 @@ import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
 import Card from "@material-ui/core/Card";
 import {connect} from "react-redux";
+import compose from "recompose/compose";
 
 class Projects extends Component {
 
@@ -59,23 +60,22 @@ class Projects extends Component {
             }
         }
     }
-
-    componentDidMount() {
-        this.signal = true;
-        this.getProjects();
-    }
-
     componentWillUnmount() {
         this.signal = false;
     }
     componentWillReceiveProps(nextProps, nextContext) {
-        if(this.props !== nextProps) {
-            console.log('here');
+        if (this.props !== nextProps){
             this.setState({
                 projects: nextProps.projects
-            });
-            localStorage.setItem('projects', JSON.stringify(nextProps.projects));
+            },()=>{
+                console.log(nextProps.projects);
+                localStorage.setItem('projects', JSON.stringify(nextProps.projects));
+            })
         }
+    }
+    componentDidMount() {
+        this.signal = true;
+        this.getProjects();
     }
     render() {
         const {classes, className, ...rest} = this.props;
@@ -147,6 +147,8 @@ Projects.propTypes = {
     classes: PropTypes.object.isRequired
 };
 
-export default connect(mapStateToProps)
-(withStyles(styles)
-(Projects));
+export default
+compose(
+    connect(mapStateToProps),
+    withStyles(styles)
+)(Projects);

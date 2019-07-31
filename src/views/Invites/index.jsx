@@ -24,18 +24,6 @@ import { InvitesView } from "./components";
 
 
 class Invites extends Component {
-  state = {
-    projects: [],
-    isRecords: false
-  };
-
-  updateView() {
-    this.setState(
-        {
-          isRecords: true
-        }
-    );
-  }
 
 
 
@@ -44,11 +32,11 @@ class Invites extends Component {
     const rootClassName = classNames(classes.root, className);
 
     return (
-        <DashboardLayout title="Initialize User" initUser = {true}>
+        <DashboardLayout className={rootClassName}
+                         title="Initialize User"
+                         initUser = {true}>
           <div className={classes.root}>
-              <InvitesView/>
-            {/*{(!this.state.isRecords) && < InvitesView view={this.updateView.bind(this)}/>}*/}
-            {/*{(this.state.isRecords) && < NoRecords title={'No Invites at this moment'} subTitle={''}/>}*/}
+              < InvitesView/>
           </div>
         </DashboardLayout>
     );

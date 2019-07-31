@@ -38,6 +38,7 @@ import validate from "validate.js";
 import schema from "./schema";
 import {connect} from "react-redux";
 import {toast} from "react-toastify";
+import compose from "recompose/compose";
 class ProjectCard extends Component {
     state = {
         project: this.props.project,
@@ -263,6 +264,8 @@ ProjectCard.propTypes = {
     classes: PropTypes.object.isRequired
 };
 
-export default connect(mapStateToProps)
-(withStyles(styles)
-(ProjectCard));
+export default
+compose(
+    connect(mapStateToProps),
+    withStyles(styles)
+)(ProjectCard);
