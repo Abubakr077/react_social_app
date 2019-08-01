@@ -6,10 +6,6 @@ export default theme => ({
     alignItems: 'center',
     display: 'flex'
   },
-  title: {
-    color: theme.palette.text.secondary,
-    fontWeight: 700
-  },
   value: {
     marginTop: theme.spacing.unit
   },
@@ -41,11 +37,6 @@ export default theme => ({
   caption: {
     marginLeft: theme.spacing.unit
   },
-  newCard: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
   cardActions: {
     squared: false,
     outlined: true,
@@ -55,5 +46,51 @@ export default theme => ({
 
   portletContent: {
     minWidth: '100px'
-  }
+  },
+  newCard: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    alignSelf: 'center',
+    flexDirection: 'column'
+  },
+  extendedIcon: {
+    marginBottom: theme.spacing(1),
+    width: 35,
+    height: 35
+  },
+  title: {
+    marginBottom: theme.spacing(1.5)
+  },
+  details: {
+    display: 'flex',
+    justifyContent: 'flex-start',
+    alignItems: 'flex-start',
+    alignSelf: 'flex-start',
+    flexDirection: 'column'
+  },
+  progressWrapper: {
+    padding: theme.spacing.unit,
+    display: 'flex',
+    justifyContent: 'center'
+  }  ,
+  dialogueBody: {
+    alignItems: 'center',
+    maxWidth: 'lg',
+
+  },
+  textField: {
+    width: '100%',
+    '& + & ': {
+      marginTop: theme.spacing.unit * 2
+    }
+  },
+  fieldError: {
+    color: theme.palette.danger.main,
+    marginBottom: theme.spacing.unit * 2,
+    marginTop: theme.spacing.unit
+  },
+  button: {
+    minHeight: 200
+  },
 });

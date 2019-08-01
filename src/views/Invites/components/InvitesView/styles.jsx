@@ -46,5 +46,10 @@ export default theme => ({
   },
   status: {
     marginRight: theme.spacing.unit
+  },
+  progressWrapper: {
+    padding: theme.spacing.unit,
+    display: 'flex',
+    justifyContent: 'center'
   }
 });

@@ -28,6 +28,7 @@ import request from 'helpers/request.js';
 import { toast } from 'react-toastify';
 import {connect} from "react-redux";
 import compose from "recompose/compose";
+import {Message, optionsSuccess} from "constants/constants";
 
 
 // Component styles
@@ -94,34 +95,28 @@ const CustomCard = props => {
         const projects   = JSON.parse(localStorage.getItem('projects'));
         const id = cardProject.project.id;
         try{
-            // const project = request({
-            //     url:    endPoints.deleteProject,
-            //     method: 'DELETE',
-            //     headers: {
-            //         user_id: user.id,
-            //         x_auth_token: user.x_auth_token.token,
-            //         project_id: id
-            //     }
-            // }).then(() => {
-            //         props.dispatch({
-            //             type: constants.DELETE_PROJECT,
-            //             projects,
-            //             id
-            //         });
-            //         toast.success('Project Deleted Successfully!');
-            //     }
-            // );
-            props.dispatch({
-                type: constants.DELETE_PROJECT,
-                projects,
-                id
-            });
+            request({
+                url:    endPoints.deleteProject,
+                method: 'DELETE',
+                headers: {
+                    user_id: user.id,
+                    x_auth_token: user.x_auth_token.token,
+                    project_id: id
+                }
+            }).then((res) => {
+                    props.dispatch({
+                        type: constants.DELETE_PROJECT,
+                        projects,
+                        id
+                    });
+                toast.success(<Message name={res}/>,optionsSuccess);
+                }
+            );
         }catch (error) {
             console.error(error);
             toast.error(error.data);
             delError = error.data
         }
-
     }
 
     return (
