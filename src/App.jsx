@@ -36,6 +36,7 @@ export default class App extends Component {
     return (
         <div>
       <ThemeProvider theme={theme}>
+
         <Router history={browserHistory}>
           <Routes />
         </Router>

@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { Link, withRouter } from 'react-router-dom';
 // Externals
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
@@ -56,6 +57,7 @@ class Projects extends Component {
     constructor(props) {
         super(props);
         this.handleOpen = this.handleOpen.bind(this);
+        this.projectDetails = this.projectDetails.bind(this);
         this.handleClose = this.handleClose.bind(this);
         this.handleCloseSave = this.handleCloseSave.bind(this);
     }
@@ -95,7 +97,6 @@ class Projects extends Component {
             this.setState({
                 projects: nextProps.projects
             }, () => {
-                console.log(nextProps.projects);
                 localStorage.setItem('projects', JSON.stringify(nextProps.projects));
             })
         }
@@ -110,6 +111,10 @@ class Projects extends Component {
         this.setState(() => ({
             open: true
         }));
+    }
+    projectDetails =(project) =>{
+        const {history} = this.props;
+        history.push('/dashboard/' + project.project.id);
     }
 
     validateForm = _.debounce(() => {
@@ -213,7 +218,7 @@ class Projects extends Component {
                                     xs={6}
                                 >
                                     <Card
-                                        onClick={this.handleOpen}
+                                        onClick={()=>this.handleOpen}
                                         {...rest}
                                         newCard={true}
                                     >
@@ -245,6 +250,7 @@ class Projects extends Component {
                                                 {...rest}
                                                 newCard={false}
                                                 cardProject={project}
+                                                onClick={()=>this.projectDetails(project)}
                                             >
                                                 <div className={classes.details}>
                                                     <Typography
@@ -344,5 +350,6 @@ Projects.propTypes = {
 
 export default compose(
     connect(mapStateToProps),
+    withRouter,
     withStyles(styles)
 )(Projects);

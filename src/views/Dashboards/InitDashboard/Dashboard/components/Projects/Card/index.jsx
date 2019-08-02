@@ -109,8 +109,12 @@ const CustomCard = props => {
                         projects,
                         id
                     });
-                toast.success(<Message name={res}/>,optionsSuccess);
-                }
+                    if (cardProject.role === 'OWNER'){
+                        toast.success(<Message name={'Project Deleted Successfully'}/>,optionsSuccess);
+                    }else {
+                        toast.success(<Message name={'Project Removed Successfully'}/>,optionsSuccess);
+                    }
+            }
             );
         }catch (error) {
             console.error(error);

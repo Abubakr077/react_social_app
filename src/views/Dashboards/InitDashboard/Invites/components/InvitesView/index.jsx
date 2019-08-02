@@ -26,17 +26,17 @@ import {Typography} from '@material-ui/core';
 import {getInvites} from 'services/project';
 
 // Shared components
-import {Card} from '../../components';
+import {Card} from '../index';
 
 // Component styles
 import styles from './styles';
-import NoRecords from "../../../NoRecords"
+import NoRecords from "../../../../../NoRecords"
 import {statusColors} from 'constants/constants.js';
 import {Status} from 'components';
 import compose from "recompose/compose";
 import {connect} from "react-redux";
 import {toast} from "react-toastify";
-import {Message, optionsSuccess} from "../../../../constants/constants";
+import {Message, optionsSuccess} from "../../../../../../constants/constants";
 
 
 class InvitesView extends Component {

@@ -55,6 +55,7 @@ class Dashboard extends Component {
           isSidebarOpen={isOpen}
           onToggleSidebar={this.handleToggleOpen}
           title={title}
+          variant="h3"
         />
         <Drawer
           anchor="left"

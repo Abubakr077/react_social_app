@@ -17,8 +17,8 @@ import {
 
 // Component styles
 import styles from './styles';
-import NoRecords from "../NoRecords";
 import { InvitesView } from "./components";
+
 
 
 
@@ -33,7 +33,7 @@ class Invites extends Component {
 
     return (
         <DashboardLayout className={rootClassName}
-                         title="Initialize User"
+                         title="Please Select Project"
                          initUser = {true}>
           <div className={classes.root}>
               < InvitesView/>

@@ -1,201 +1,248 @@
-import React, { Component } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import React, {Component} from 'react';
+import {Link, NavLink} from 'react-router-dom';
 
 // Externals
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 
 // Material helpers
-import { withStyles } from '@material-ui/core';
+import {Collapse, withStyles} from '@material-ui/core';
 
 // Material components
 import {
-  Avatar,
-  Divider,
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
-  ListSubheader,
-  Typography
+    Avatar,
+    Divider,
+    List,
+    ListItem,
+    ListItemIcon,
+    ListItemText,
+    ListSubheader,
+    Typography
 } from '@material-ui/core';
 
 // Material icons
 import {
-  DashboardOutlined as DashboardIcon,
-  PeopleOutlined as PeopleIcon,
-  SettingsOutlined as SettingsIcon,
-  TrendingUpOutlined as TrendingIcon,
-  PhotoSizeSelectActualOutlined as VisualsIcon,
-  CreateNewFolderOutlined as CreateProjectIcon,
-  HowToVoteOutlined as InvitesIcon,
+    DashboardOutlined as DashboardIcon,
+    PeopleOutlined as PeopleIcon,
+    SettingsOutlined as SettingsIcon,
+    TrendingUpOutlined as TrendingIcon,
+    PhotoSizeSelectActualOutlined as VisualsIcon,
+    CreateNewFolderOutlined as CreateProjectIcon,
+    HowToVoteOutlined as InvitesIcon, ExpandLess, ExpandMore,
+    VisibilityOutlined as MonitorIcon,
+  PlaylistAddOutlined as CreateIcon,
+  ViewListOutlined as ViewJobs
 } from '@material-ui/icons';
 
 // Component styles
 import styles from './styles';
 
 class Sidebar extends Component {
-  render() {
-    const { classes, className , initUser} = this.props;
+    state = {
+        open: false
+    };
 
-    const rootClassName = classNames(classes.root, className);
+    render() {
+        const {classes, className, initUser} = this.props;
+        const rootClassName = classNames(classes.root, className);
 
-    if (initUser){
-      return (
-          <nav className={rootClassName}>
-            <div className={classes.logoWrapper}>
-              <Link
-                  className={classes.logoLink}
-                  to="/"
-              >
-                <img
-                    alt="Brainalytica logo"
-                    className={classes.logoImage}
-                    src="/images/logos/brainalytica_logo.svg"
-                />
-              </Link>
-            </div>
-            <Divider className={classes.logoDivider} />
-            <List
-                component="div"
-                disablePadding
-            >
-              <ListItem
-                  activeClassName={classes.activeListItem}
-                  className={classes.listItem}
-                  component={NavLink}
-                  to="/dashboard"
-              >
-                <ListItemIcon className={classes.listItemIcon}>
-                  <CreateProjectIcon />
-                </ListItemIcon>
-                <ListItemText
-                    classes={{ primary: classes.listItemText }}
-                    primary="Projects"
-                />
-              </ListItem>
-              <ListItem
-                  activeClassName={classes.activeListItem}
-                  className={classes.listItem}
-                  component={NavLink}
-                  to="/invites"
-              >
-                <ListItemIcon className={classes.listItemIcon}>
-                  <InvitesIcon />
-                </ListItemIcon>
-                <ListItemText
-                    classes={{ primary: classes.listItemText }}
-                    primary="invites"
-                />
-              </ListItem>
-            </List>
-            <Divider className={classes.listDivider} />
-          </nav>
-      );
-    } else {
-      return (
-          <nav className={rootClassName}>
-            <div className={classes.logoWrapper}>
-              <Link
-                  className={classes.logoLink}
-                  to="/"
-              >
-                <img
-                    alt="Brainalytica logo"
-                    className={classes.logoImage}
-                    src="/images/logos/brainalytica_logo.svg"
-                />
-              </Link>
-            </div>
-            <Divider className={classes.logoDivider} />
-            <List
-                component="div"
-                disablePadding
-            >
-              <ListItem
-                  activeClassName={classes.activeListItem}
-                  className={classes.listItem}
-                  component={NavLink}
-                  to="/dashboard"
-              >
-                <ListItemIcon className={classes.listItemIcon}>
-                  <DashboardIcon />
-                </ListItemIcon>
-                <ListItemText
-                    classes={{ primary: classes.listItemText }}
-                    primary="Home"
-                />
-              </ListItem>
-              <ListItem
-                  activeClassName={classes.activeListItem}
-                  className={classes.listItem}
-                  component={NavLink}
-                  to="/visualizations"
-              >
-                <ListItemIcon className={classes.listItemIcon}>
-                  <VisualsIcon />
-                </ListItemIcon>
-                <ListItemText
-                    classes={{ primary: classes.listItemText }}
-                    primary="Visualizations"
-                />
-              </ListItem>
-              <ListItem
-                  activeClassName={classes.activeListItem}
-                  className={classes.listItem}
-                  component={NavLink}
-                  to="/trends"
-              >
-                <ListItemIcon className={classes.listItemIcon}>
-                  <TrendingIcon />
-                </ListItemIcon>
-                <ListItemText
-                    classes={{ primary: classes.listItemText }}
-                    primary="Trends"
-                />
-              </ListItem>
-              <ListItem
-                  activeClassName={classes.activeListItem}
-                  className={classes.listItem}
-                  component={NavLink}
-                  to="/users"
-              >
-                <ListItemIcon className={classes.listItemIcon}>
-                  <PeopleIcon />
-                </ListItemIcon>
-                <ListItemText
-                    classes={{ primary: classes.listItemText }}
-                    primary="Users"
-                />
-              </ListItem>
-              <ListItem
-                  activeClassName={classes.activeListItem}
-                  className={classes.listItem}
-                  component={NavLink}
-                  to="/account"
-              >
-                <ListItemIcon className={classes.listItemIcon}>
-                  <SettingsIcon />
-                </ListItemIcon>
-                <ListItemText
-                    classes={{ primary: classes.listItemText }}
-                    primary="Account Settings"
-                />
-              </ListItem>
-            </List>
-            <Divider className={classes.listDivider} />
+        return (
+            <nav className={rootClassName}>
+                <div className={classes.logoWrapper}>
+                    <Link
+                        className={classes.logoLink}
+                        to="/"
+                    >
+                        <img
+                            alt="Brainalytica logo"
+                            className={classes.logoImage}
+                            src="/images/logos/brainalytica_logo.svg"
+                        />
+                    </Link>
+                </div>
+                <Divider className={classes.logoDivider}/>
+                {initUser && (<List
+                    component="div"
+                    disablePadding
+                >
+                    <ListItem
+                        activeClassName={classes.activeListItem}
+                        className={classes.listItem}
+                        component={NavLink}
+                        to="/dashboard"
+                    >
+                        <ListItemIcon className={classes.listItemIcon}>
+                            <CreateProjectIcon/>
+                        </ListItemIcon>
+                        <ListItemText
+                            classes={{primary: classes.listItemText}}
+                            primary="Projects"
+                        />
+                    </ListItem>
+                    <ListItem
+                        activeClassName={classes.activeListItem}
+                        className={classes.listItem}
+                        component={NavLink}
+                        to="/invites"
+                    >
+                        <ListItemIcon className={classes.listItemIcon}>
+                            <InvitesIcon/>
+                        </ListItemIcon>
+                        <ListItemText
+                            classes={{primary: classes.listItemText}}
+                            primary="invites"
+                        />
+                    </ListItem>
+                </List>)}
+                {!initUser && (<List
+                    component="div"
+                    disablePadding
+                >
+                    <ListItem
+                        activeClassName={classes.activeListItem}
+                        className={classes.listItem}
+                        component={NavLink}
+                        to="/dashboard"
+                    >
+                        <ListItemIcon className={classes.listItemIcon}>
+                            <DashboardIcon/>
+                        </ListItemIcon>
+                        <ListItemText
+                            classes={{primary: classes.listItemText}}
+                            primary="Home"
+                        />
+                    </ListItem>
 
-          </nav>
-      );
+                    <ListItem
+                        activeClassName={classes.activeListItem}
+                        className={classes.listItem}
+                        component={NavLink}
+                        onClick={() => {
+                            this.setState(prev => ({
+                                open: !prev.open
+                            }))
+                        }}>
+                        <ListItemIcon className={classes.listItemIcon}>
+                            <MonitorIcon/>
+                        </ListItemIcon>
+                        <ListItemText
+                            classes={{primary: classes.listItemText}}
+                            primary="Monitoring"/>
+                        {this.state.open ?
+                            <ExpandLess className={classes.listItemIcon}/> :
+                            <ExpandMore className={classes.listItemIcon}/>}
+                    </ListItem>
+                    <Collapse in={this.state.open} timeout="auto" unmountOnExit>
+                        <List disablePadding>
+                          <ListItem activeClassName={classes.activeListItemNested}
+                                    className={classes.listItemNested}
+                                    component={NavLink}
+                                    to="/jobs"
+                          >
+                            <ListItemIcon className={classes.listItemIcon}>
+                              <ViewJobs/>
+                            </ListItemIcon>
+                            <ListItemText
+                                classes={{primary: classes.listItemText}}
+                                primary="View Jobs"/>
+                          </ListItem>
+                          <ListItem activeClassName={classes.activeListItemNested}
+                                      className={classes.listItemNested}
+                                      component={NavLink}
+                                      to="/createJob"
+                            >
+                                <ListItemIcon className={classes.listItemIcon}>
+                                    <CreateIcon/>
+                                </ListItemIcon>
+                                <ListItemText
+                                    classes={{primary: classes.listItemText}}
+                                    primary="Create"/>
+                            </ListItem>
+                        </List>
+                    </Collapse>
+
+
+                    <ListItem
+                        activeClassName={classes.activeListItem}
+                        className={classes.listItem}
+                        component={NavLink}
+                        to="/visualizations"
+                    >
+                        <ListItemIcon className={classes.listItemIcon}>
+                            <VisualsIcon/>
+                        </ListItemIcon>
+                        <ListItemText
+                            classes={{primary: classes.listItemText}}
+                            primary="Visualizations"
+                        />
+                    </ListItem>
+                    <ListItem
+                        activeClassName={classes.activeListItem}
+                        className={classes.listItem}
+                        component={NavLink}
+                        to="/trends"
+                    >
+                        <ListItemIcon className={classes.listItemIcon}>
+                            <TrendingIcon/>
+                        </ListItemIcon>
+                        <ListItemText
+                            classes={{primary: classes.listItemText}}
+                            primary="Trends"
+                        />
+                    </ListItem>
+                  <ListItem
+                      activeClassName={classes.activeListItem}
+                      className={classes.listItem}
+                      component={NavLink}
+                      to="/users"
+                  >
+                    <ListItemIcon className={classes.listItemIcon}>
+                      <PeopleIcon/>
+                    </ListItemIcon>
+                    <ListItemText
+                        classes={{primary: classes.listItemText}}
+                        primary="Activity Log"
+                    />
+                  </ListItem>
+                    <ListItem
+                        activeClassName={classes.activeListItem}
+                        className={classes.listItem}
+                        component={NavLink}
+                        to="/users"
+                    >
+                        <ListItemIcon className={classes.listItemIcon}>
+                            <InvitesIcon/>
+                        </ListItemIcon>
+                        <ListItemText
+                            classes={{primary: classes.listItemText}}
+                            primary="Project Invites"
+                        />
+                    </ListItem>
+                    <ListItem
+                        activeClassName={classes.activeListItem}
+                        className={classes.listItem}
+                        component={NavLink}
+                        to="/account"
+                    >
+                        <ListItemIcon className={classes.listItemIcon}>
+                            <SettingsIcon/>
+                        </ListItemIcon>
+                        <ListItemText
+                            classes={{primary: classes.listItemText}}
+                            primary="Account Settings"
+                        />
+                    </ListItem>
+                </List>)}
+
+                <Divider className={classes.listDivider}/>
+            </nav>
+        );
     }
-
-
-  }
 }
 
 Sidebar.propTypes = {
-  className: PropTypes.string,
-  classes: PropTypes.object.isRequired
+    className: PropTypes.string,
+    classes: PropTypes.object.isRequired
 };
 
 export default withStyles(styles)(Sidebar);

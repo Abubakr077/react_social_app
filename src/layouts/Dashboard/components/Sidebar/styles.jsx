@@ -59,7 +59,37 @@ export default theme => ({
       marginTop: theme.spacing.unit
     }
   },
+  listItemNested: {
+    paddingLeft: theme.spacing(4),
+    cursor: 'pointer',
+    '&:hover': {
+      backgroundColor: theme.palette.primary.light,
+      borderLeft: `4px solid ${theme.palette.primary.main}`,
+      borderRadius: '4px',
+      '& $listItemIcon': {
+        color: theme.palette.primary.main,
+        marginLeft: '-4px'
+      }
+    },
+    '& + &': {
+      marginTop: theme.spacing.unit
+    }
+  },
   activeListItem: {
+    paddingLeft: theme.spacing(4),
+    borderLeft: `4px solid ${theme.palette.primary.main}`,
+    borderRadius: '4px',
+    backgroundColor: theme.palette.primary.light,
+    '& $listItemText': {
+      color: theme.palette.text.primary
+    },
+    '& $listItemIcon': {
+      color: theme.palette.primary.main,
+      marginLeft: '-4px'
+    }
+  },
+  activeListItemNested: {
+    paddingLeft: theme.spacing(4),
     borderLeft: `4px solid ${theme.palette.primary.main}`,
     borderRadius: '4px',
     backgroundColor: theme.palette.primary.light,

@@ -17,12 +17,16 @@ export default theme => ({
     width: 35,
     height: 35
   },
-  newCard: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    alignSelf: 'center',
-    flexDirection: 'column'
+  card: {
+  '&:hover': {
+    backgroundColor: theme.palette.primary.light,
+    borderLeft: `4px solid ${theme.palette.primary.main}`,
+    borderRadius: '4px',
+    '& $listItemIcon': {
+      color: theme.palette.primary.main,
+      marginLeft: '-4px'
+    }
+  }
   },
   title: {
     marginBottom: theme.spacing(1.5)

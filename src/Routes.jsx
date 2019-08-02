@@ -1,15 +1,29 @@
 import React, { Component } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
-
-// Views
-import SignUp from './views/SignUp';
-import SignIn from './views/SignIn';
-import NotFound from './views/NotFound';
-import Dashboard from './views/Dashboard';
-import Invites from './views/Invites';
+import asyncComponent from 'components/AsyncComponent';
 
 import {connect} from 'react-redux';
 import * as localStorageHelper from 'helpers/localStorage'
+
+// Lazy Load Views
+const SignUp = asyncComponent(() =>
+    import('./views/SignUp').then(module => module.default)
+);
+const SignIn = asyncComponent(() =>
+    import('./views/SignIn').then(module => module.default)
+);
+const NotFound = asyncComponent(() =>
+    import('./views/NotFound').then(module => module.default)
+);
+const Dashboard = asyncComponent(() =>
+    import('./views/Dashboards/InitDashboard/Dashboard').then(module => module.default)
+);
+const Dashboard2 = asyncComponent(() =>
+    import('./views/Dashboards/MonitoringDashboard/Dashboard').then(module => module.default)
+);
+const Invites = asyncComponent(() =>
+    import('./views/Dashboards/InitDashboard/Invites').then(module => module.default)
+);
 
 let isAuth = false;
 let authToken = null;
@@ -43,7 +57,6 @@ class Routes extends Component {
         authToken = user.x_auth_token.token;
     }
 
-
     return (
       <Switch>
         <Redirect
@@ -56,31 +69,17 @@ class Routes extends Component {
           exact
           path="/dashboard"
         />
-        <Route
+        <PrivateRoute
+          component={Dashboard2}
+          exact
+          path="/dashboard/:projectId"
+        />
+        <PrivateRoute
           component={Invites}
           exact
           path="/invites"
         />
-        {/*<Route*/}
-        {/*  component={UserList}*/}
-        {/*  exact*/}
-        {/*  path="/users"*/}
-        {/*/>*/}
-        {/*<Route*/}
-        {/*  component={ProductList}*/}
-        {/*  exact*/}
-        {/*  path="/products"*/}
-        {/*/>*/}
-        {/*<Route*/}
-        {/*  component={Account}*/}
-        {/*  exact*/}
-        {/*  path="/account"*/}
-        {/*/>*/}
-        {/*<Route*/}
-        {/*  component={Settings}*/}
-        {/*  exact*/}
-        {/*  path="/settings"*/}
-        {/*/>*/}
+
         <Route
           component={SignUp}
           exact
@@ -91,11 +90,7 @@ class Routes extends Component {
           exact
           path="/login"
         />
-        {/*<Route*/}
-        {/*  component={UnderDevelopment}*/}
-        {/*  exact*/}
-        {/*  path="/under-development"*/}
-        {/*/>*/}
+
         <Route
           component={NotFound}
           exact

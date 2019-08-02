@@ -1,6 +1,4 @@
 // Mock data
-import trends from 'data/trends';
-import users from 'data/users';
 
 
 const projects = [
@@ -129,6 +127,10 @@ const projects = [
 function lookupMemberShips(user) {
   // user.customer = users.find(user => user.id === trend.customer);
   // return user.memberships;
+}
+export function lookupProject(projectId) {
+  const projects   = JSON.parse(localStorage.getItem('projects'));
+  return projects.find(item => item.project.id === projectId);
 }
 
 export const getProjects = () => {
