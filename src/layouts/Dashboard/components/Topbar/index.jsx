@@ -1,37 +1,23 @@
-import React, { Component, Fragment } from 'react';
-import { withRouter } from 'react-router-dom';
-
+import React, {Component, Fragment} from 'react';
+import {withRouter} from 'react-router-dom';
 // Externals
 import classNames from 'classnames';
 import compose from 'recompose/compose';
 import PropTypes from 'prop-types';
-
 // Material helpers
-import { withStyles } from '@material-ui/core';
-
 // Material components
-import {
-  Badge,
-  IconButton,
-  Popover,
-  Toolbar,
-  Typography
-} from '@material-ui/core';
-
+import {Badge, IconButton, Popover, Toolbar, Typography, withStyles} from '@material-ui/core';
 // Material icons
 import {
-  Menu as MenuIcon,
   Close as CloseIcon,
-  NotificationsOutlined as NotificationsIcon,
-  Input as InputIcon
+  Input as InputIcon,
+  Menu as MenuIcon,
+  NotificationsOutlined as NotificationsIcon
 } from '@material-ui/icons';
-
 // Shared services
-import { getNotifications } from 'services/notification';
-
+import {getNotifications} from 'services/notification';
 // Custom components
-import { NotificationList } from './components';
-
+import {NotificationList} from './components';
 // Component styles
 import styles from './styles';
 
@@ -41,8 +27,9 @@ class Topbar extends Component {
   state = {
     notifications: [],
     notificationsLimit: 4,
-    notificationsCount: 0,
-    notificationsEl: null
+    notificationsCount: 5,
+    notificationsEl: null,
+    projectsEl: null,
   };
 
   async getNotifications() {
@@ -89,11 +76,26 @@ class Topbar extends Component {
       notificationsEl: event.currentTarget
     });
   };
+  handleShowProjects = event => {
+    this.setState({
+      projectsEL: event.currentTarget
+    });
+  };
 
   handleCloseNotifications = () => {
     this.setState({
       notificationsEl: null
     });
+  };
+  handleCloseProjects = () => {
+    this.setState({
+      projectsEl: null
+    });
+  };
+
+  getAcronyms = (title) => {
+    let matches = title.match(/\b(\w)/g);
+    return matches.join('');
   };
 
   render() {
@@ -102,12 +104,20 @@ class Topbar extends Component {
       className,
       title,
       isSidebarOpen,
-      onToggleSidebar
+      onToggleSidebar,
+      initUser
     } = this.props;
-    const { notifications, notificationsCount, notificationsEl } = this.state;
+
+    const {
+      notifications,
+      notificationsCount,
+      notificationsEl,
+      projectsEl
+    } = this.state;
 
     const rootClassName = classNames(classes.root, className);
     const showNotifications = Boolean(notificationsEl);
+    const showProjects = Boolean(projectsEl);
 
     return (
       <Fragment>
@@ -138,6 +148,19 @@ class Topbar extends Component {
                 <NotificationsIcon />
               </Badge>
             </IconButton>
+            {!initUser&& (
+                <IconButton
+                className={classes.signOutButton}
+                onClick={this.handleShowProjects}
+            >
+              <Typography
+                  variant="button"
+                  color="primary"
+              >
+                {this.getAcronyms(title)}
+              </Typography>
+            </IconButton>
+            )}
             <IconButton
               className={classes.signOutButton}
               onClick={this.handleSignOut}
@@ -163,6 +186,23 @@ class Topbar extends Component {
             notifications={notifications}
             onSelect={this.handleCloseNotifications}
           />
+        </Popover>
+        <Popover
+            anchorEl={projectsEl}
+            anchorOrigin={{
+              vertical: 'bottom',
+              horizontal: 'center'
+            }}
+            onClose={this.handleCloseProjects}
+            open={showProjects}
+            transformOrigin={{
+              vertical: 'top',
+              horizontal: 'center'
+            }}
+        >
+          <div>
+            hello
+          </div>
         </Popover>
       </Fragment>
     );

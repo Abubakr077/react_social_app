@@ -56,6 +56,7 @@ class Dashboard extends Component {
           onToggleSidebar={this.handleToggleOpen}
           title={title}
           variant="h3"
+          initUser={initUser}
         />
         <Drawer
           anchor="left"
@@ -64,7 +65,9 @@ class Dashboard extends Component {
           open={isOpen}
           variant={isMobile ? 'temporary' : 'persistent'}
         >
-          <Sidebar className={classes.sidebar} initUser={initUser} />
+          <Sidebar
+              className={classes.sidebar}
+              initUser={initUser} />
         </Drawer>
         <main
           className={classNames(classes.content, {

@@ -98,23 +98,29 @@ class SignIn extends Component {
 
       this.setState({ isLoading: true });
 
-        const user =await request({
+        await request({
             url:    endpoints.login,
             method: 'POST',
+          mode: 'no-cors',
+          headers: {
+            'Access-Control-Allow-Origin': '*',
+            "Access-Control-Allow-Headers": "X-Requested-With",
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Methods': 'GET, PUT, POST, DELETE, OPTIONS'
+          },
+          withCredentials: true,
+          credentials: 'same-origin',
             data:   {
                 email: values.email,
                 password: values.password
             }
+        }).then((res) => {
+            localStorage.setItem('isAuthenticated', true);
+            localStorage.setItem('user', JSON.stringify(res));
+            this.props.loginUser(res);
+
+            history.push('/dashboard');
         });
-        localStorage.setItem('isAuthenticated', true);
-        localStorage.setItem('user', JSON.stringify(user));
-        localStorage.setItem('projects', JSON.stringify(user.memberships));
-        localStorage.setItem('invites', JSON.stringify(user.project_invites));
-
-
-        this.props.loginUser(user);
-
-        history.push('/dashboard');
     } catch (error) {
       this.setState({
         isLoading: false,

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import {Link, withRouter} from 'react-router-dom';
 // Externals
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
@@ -7,25 +7,19 @@ import moment from 'moment';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 // Material helpers
 import {
-    CardActions,
     CircularProgress, Dialog, DialogActions, DialogContent, DialogTitle,
     Grid,
-    Table,
-    TableBody,
-    TableCell,
-    TableHead,
-    TableRow, TextField, Typography,
+    TextField, Typography,
     withStyles
 } from '@material-ui/core';
-// Shared services
-import {getProjects} from 'services/project';
+
 // Component styles
 import styles from './styles';
 import Button from "@material-ui/core/Button";
 import {connect} from "react-redux";
 import compose from "recompose/compose";
 import AddIcon from '@material-ui/icons/Add';
-import { CustomCard as Card} from 'components';
+import {CustomCard as Card} from 'components';
 import _ from "underscore";
 import validate from "validate.js";
 import schema from "./schema";
@@ -33,6 +27,8 @@ import {toast} from "react-toastify";
 import * as endPoints from 'constants/endpoints.json';
 import * as constants from 'constants/constants.js';
 import request from 'helpers/request.js';
+import * as endpoints from 'constants/endpoints.json';
+import {Message, optionsError, optionsSuccess} from "../../../../../constants/constants";
 
 class Projects extends Component {
 
@@ -57,28 +53,34 @@ class Projects extends Component {
     constructor(props) {
         super(props);
         this.handleOpen = this.handleOpen.bind(this);
-        this.projectDetails = this.projectDetails.bind(this);
         this.handleClose = this.handleClose.bind(this);
         this.handleCloseSave = this.handleCloseSave.bind(this);
     }
 
     async getProjects() {
         try {
+
             this.setState({isLoading: true});
-
-            const {projects} = await getProjects(0);
-            this.props.dispatch({
-                type: constants.ADD_PROJECTS,
-                projects
+            const user = JSON.parse(localStorage.getItem('user'));
+            await request({
+                url: endpoints.getMemberships,
+                method: 'GET',
+                headers: {
+                    user_id: user.id,
+                    x_auth_token: user.x_auth_token.token
+                }
+            }).then((res) => {
+                localStorage.setItem('projects', JSON.stringify(res.memberships));
+                if (this.signal) {
+                    this.setState({
+                        isLoading: false,
+                        projects: res.memberships
+                    });
+                }
+                this.props.addProjects(res.memberships);
             });
-
-            if (this.signal) {
-                this.setState({
-                    isLoading: false,
-                    projects
-                });
-            }
         } catch (error) {
+            toast.error(<Message name={error.data}/>,optionsError);
             if (this.signal) {
                 this.setState({
                     isLoading: false,
@@ -86,7 +88,7 @@ class Projects extends Component {
                 });
             }
         }
-    }
+    };
 
     componentWillUnmount() {
         this.signal = false;
@@ -111,10 +113,6 @@ class Projects extends Component {
         this.setState(() => ({
             open: true
         }));
-    }
-    projectDetails =(project) =>{
-        const {history} = this.props;
-        history.push('/dashboard/' + project.project.id);
     }
 
     validateForm = _.debounce(() => {
@@ -153,7 +151,7 @@ class Projects extends Component {
         const user = JSON.parse(localStorage.getItem('user'));
 
         try {
-            const project = await request({
+            await request({
                 url: endPoints.createProject,
                 method: 'POST',
                 data: {
@@ -163,15 +161,13 @@ class Projects extends Component {
                     user_id: user.id,
                     x_auth_token: user.x_auth_token.token
                 }
-            });
-            this.props.dispatch({
-                type: constants.ADD_PROJECT,
-                project
-            });
-            localStorage.setItem('projects', JSON.stringify(this.props.projects));
-            this.setState({
-                isLoading: false,
-                open: false
+            }).then((res)=>{
+                localStorage.setItem('projects', JSON.stringify(this.props.projects));
+                this.setState({
+                    isLoading: false,
+                    open: false
+                });
+                this.props.addProject(res);
             });
         } catch (e) {
             toast.error(e.data);
@@ -218,7 +214,7 @@ class Projects extends Component {
                                     xs={6}
                                 >
                                     <Card
-                                        onClick={()=>this.handleOpen}
+                                        onClick={this.handleOpen}
                                         {...rest}
                                         newCard={true}
                                     >
@@ -250,7 +246,6 @@ class Projects extends Component {
                                                 {...rest}
                                                 newCard={false}
                                                 cardProject={project}
-                                                onClick={()=>this.projectDetails(project)}
                                             >
                                                 <div className={classes.details}>
                                                     <Typography
@@ -342,6 +337,12 @@ const mapStateToProps = (state) => {
         projects: state.projects
     }
 };
+const mapDispatchToProps = (dispatch) => {
+    return {
+        addProjects: projects => dispatch({type:constants.ADD_PROJECTS, projects}),
+        addProject: project => dispatch({type:constants.ADD_PROJECT, project}),
+    }
+};
 
 Projects.propTypes = {
     className: PropTypes.string,
@@ -349,7 +350,7 @@ Projects.propTypes = {
 };
 
 export default compose(
-    connect(mapStateToProps),
+    connect(mapStateToProps, mapDispatchToProps),
     withRouter,
     withStyles(styles)
 )(Projects);

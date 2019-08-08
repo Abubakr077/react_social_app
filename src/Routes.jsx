@@ -4,7 +4,6 @@ import asyncComponent from 'components/AsyncComponent';
 
 import {connect} from 'react-redux';
 import * as localStorageHelper from 'helpers/localStorage'
-
 // Lazy Load Views
 const SignUp = asyncComponent(() =>
     import('./views/SignUp').then(module => module.default)
@@ -21,9 +20,11 @@ const Dashboard = asyncComponent(() =>
 const Dashboard2 = asyncComponent(() =>
     import('./views/Dashboards/MonitoringDashboard/Dashboard').then(module => module.default)
 );
+
 const Invites = asyncComponent(() =>
     import('./views/Dashboards/InitDashboard/Invites').then(module => module.default)
 );
+
 
 let isAuth = false;
 let authToken = null;
@@ -52,7 +53,6 @@ class Routes extends Component {
   render() {
     isAuth = localStorageHelper.tytPreGetBool('isAuthenticated');
     const   user   = JSON.parse(localStorage.getItem('user'));
-
     if (user){
         authToken = user.x_auth_token.token;
     }

@@ -23,5 +23,8 @@ export default theme => ({
   },
   signOutButton: {
     marginLeft: theme.spacing.unit
+  },
+  contextButton: {
+    color: "primary"
   }
 });

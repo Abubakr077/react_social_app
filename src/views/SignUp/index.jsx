@@ -36,6 +36,8 @@ import styles from './styles';
 import schema from './schema';
 import request from "helpers/request";
 import endpoints from "constants/endpoints";
+import {Message, optionsSuccess} from "../../constants/constants";
+import { toast } from 'react-toastify';
 
 validate.validators.checked = validators.checked;
 
@@ -119,6 +121,7 @@ class SignUp extends Component {
         }
       }).then(()=>{
         this.setState({isLoading: false});
+        toast.success(<Message name={'Sign up Successfully. Login to continue!'}/>,optionsSuccess);
         history.push('/login');
       });
     } catch (error) {
@@ -261,7 +264,7 @@ class SignUp extends Component {
                   <div className={classes.fields}>
                     <TextField
                       className={classes.textField}
-                      label="Project name"
+                      label="Name"
                       onChange={event =>
                         this.handleFieldChange('name', event.target.value)
                       }

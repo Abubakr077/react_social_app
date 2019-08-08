@@ -134,6 +134,18 @@ class Sidebar extends Component {
                     </ListItem>
                     <Collapse in={this.state.open} timeout="auto" unmountOnExit>
                         <List disablePadding>
+                            <ListItem activeClassName={classes.activeListItemNested}
+                                      className={classes.listItemNested}
+                                      component={NavLink}
+                                      to="/createJob"
+                            >
+                                <ListItemIcon className={classes.listItemIcon}>
+                                    <CreateIcon/>
+                                </ListItemIcon>
+                                <ListItemText
+                                    classes={{primary: classes.listItemText}}
+                                    primary="Create"/>
+                            </ListItem>
                           <ListItem activeClassName={classes.activeListItemNested}
                                     className={classes.listItemNested}
                                     component={NavLink}
@@ -146,18 +158,6 @@ class Sidebar extends Component {
                                 classes={{primary: classes.listItemText}}
                                 primary="View Jobs"/>
                           </ListItem>
-                          <ListItem activeClassName={classes.activeListItemNested}
-                                      className={classes.listItemNested}
-                                      component={NavLink}
-                                      to="/createJob"
-                            >
-                                <ListItemIcon className={classes.listItemIcon}>
-                                    <CreateIcon/>
-                                </ListItemIcon>
-                                <ListItemText
-                                    classes={{primary: classes.listItemText}}
-                                    primary="Create"/>
-                            </ListItem>
                         </List>
                     </Collapse>
 

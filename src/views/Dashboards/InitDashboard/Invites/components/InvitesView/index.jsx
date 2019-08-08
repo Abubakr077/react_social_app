@@ -22,9 +22,6 @@ import {
 import {Typography} from '@material-ui/core';
 
 
-// Shared services
-import {getInvites} from 'services/project';
-
 // Shared components
 import {Card} from '../index';
 
@@ -36,9 +33,10 @@ import {Status} from 'components';
 import compose from "recompose/compose";
 import {connect} from "react-redux";
 import {toast} from "react-toastify";
-import {Message, optionsSuccess} from "../../../../../../constants/constants";
+import {Message, optionsError, optionsSuccess} from "../../../../../../constants/constants";
 
-
+import request from 'helpers/request.js';
+import * as endpoints from 'constants/endpoints.json';
 class InvitesView extends Component {
     signal = false;
     showInvites = false;
@@ -49,19 +47,30 @@ class InvitesView extends Component {
     };
 
 
-    async getInvites(limit) {
+    async getInvites() {
         try {
+
             this.setState({isLoading: true});
-
-            const {invites} = await getInvites();
-
-            if (this.signal) {
-                this.setState({
-                    isLoading: false,
-                    invites
-                });
-            }
+            const user = JSON.parse(localStorage.getItem('user'));
+            await request({
+                url: endpoints.getProjectInvites,
+                method: 'GET',
+                headers: {
+                    user_id: user.id,
+                    x_auth_token: user.x_auth_token.token
+                }
+            }).then((res) => {
+                localStorage.setItem('invites', JSON.stringify(res.project_invites));
+                if (this.signal) {
+                    this.setState({
+                        isLoading: false,
+                        invites: res.project_invites
+                    });
+                }
+                // this.props.addProjects(res.project_invites);
+            });
         } catch (error) {
+            toast.error(<Message name={error.data}/>,optionsError);
             if (this.signal) {
                 this.setState({
                     isLoading: false,
@@ -69,7 +78,7 @@ class InvitesView extends Component {
                 });
             }
         }
-    }
+    };
 
     componentDidMount() {
         this.signal = true;

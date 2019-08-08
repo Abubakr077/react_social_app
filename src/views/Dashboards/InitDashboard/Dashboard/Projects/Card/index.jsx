@@ -29,6 +29,7 @@ import { toast } from 'react-toastify';
 import {connect} from "react-redux";
 import compose from "recompose/compose";
 import {Message, optionsSuccess} from "constants/constants";
+import {optionsError} from "../../../../../../constants/constants";
 
 
 // Component styles
@@ -79,8 +80,6 @@ const CustomCard = props => {
       newCard,
       cardProject,
       ...rest } = props;
-
-  let delError = null;
   const rootClassName = classNames(
     {
       [classes.root]: true,
@@ -103,7 +102,7 @@ const CustomCard = props => {
                     x_auth_token: user.x_auth_token.token,
                     project_id: id
                 }
-            }).then((res) => {
+            }).then(() => {
                     props.dispatch({
                         type: constants.DELETE_PROJECT,
                         projects,
@@ -114,22 +113,26 @@ const CustomCard = props => {
                     }else {
                         toast.success(<Message name={'Project Removed Successfully'}/>,optionsSuccess);
                     }
-            }
+                }
             );
         }catch (error) {
-            console.error(error);
-            toast.error(error.data);
-            delError = error.data
+            toast.error(<Message name={error.data}/>, optionsError);
         }
     }
 
+    const projectDetails = () => {
+        props.history.push('/dashboard/' + cardProject.project.id);
+    };
+
     return (
-        <Fragment>
       <Card
       {...rest}
       className={rootClassName}
     >
-        <Button fullWidth={true} className={newCard? classes.newCardButton : classes.button}>
+        <Button fullWidth={true}
+                className={newCard? classes.newCardButton : classes.button}
+                onClick={!newCard ? projectDetails : null}
+        >
         {children}
         </Button>
 
@@ -137,25 +140,20 @@ const CustomCard = props => {
             <div className={classes.actionDiv}>
             < CardActions className={classes.cardActions}>
               {cardProject.role !== 'OWNER' && (
-              <div >
                   <IconButton onClick={handleDelete}>
                 <RemoveIcon  />
               </IconButton >
-              </div>
               )}
               {cardProject.role === 'OWNER' && (
-              <div >
                 <IconButton onClick={handleDelete}>
                   <DeleteIcon className={classes.deleteIcon} />
                 </IconButton>
-              </div>
               )}
             </CardActions>
             </div>
         )}
 
     </Card>
-        </Fragment>
   );
 
 

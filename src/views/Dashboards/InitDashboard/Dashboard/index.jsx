@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 // Externals
 import PropTypes from 'prop-types';
 
@@ -12,14 +12,18 @@ import {
   Dashboard as DashboardLayout
 
 } from 'layouts';
+import {connect} from 'react-redux';
 
 // Custom components
-import {
-  Projects
-} from './components';
+import asyncComponent from "components/AsyncComponent";
+const Projects = asyncComponent(() =>
+    import('./Projects').then(module => module.default)
+);
+const Invites = asyncComponent(() =>
+    import('../Invites').then(module => module.default)
+);
 
 
-import {connect} from 'react-redux';
 
 // Component styles
 const styles = theme => ({
@@ -48,13 +52,25 @@ class Dashboard extends Component {
     render() {
 
       const {classes} = this.props;
+      const url = this.props.match.url;
+      // console.log(this.props.match.path);
+      // console.log(url+'/invites');
         return (
           <DashboardLayout
             initUser
             title="Please Select Project"
           >
             <div className={classes.root}>
-              { <Projects />                         }
+              <Projects/>
+              {/*<Link to={`${this.props.match.url}/invites`}>Invites</Link>*/}
+              {/*<Route path={url} component={Projects} />*/}
+              {/*/!*<Route path={`${this.props.match.path}/invites`} component={Invites} />*!/*/}
+              {/*<Route*/}
+              {/*    path={`${this.props.match.path}/invites`}*/}
+              {/*    render={*/}
+              {/*        (<Invites/>)*/}
+              {/*    }*/}
+              {/*/>*/}
             </div>
           </DashboardLayout>
         );
@@ -77,3 +93,4 @@ export default
 connect(mapStateToProps)
 (withStyles(styles)
 (Dashboard));
+
