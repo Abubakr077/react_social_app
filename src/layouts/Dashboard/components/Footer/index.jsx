@@ -13,7 +13,8 @@ import { Divider, Typography } from '@material-ui/core';
 // Component styles
 const styles = theme => ({
   root: {
-    padding: theme.spacing.unit * 4
+    padding: theme.spacing.unit * 4,
+      marginTop: 'auto',
   },
   company: {
     marginTop: theme.spacing.unit * 2,
@@ -34,11 +35,11 @@ class Footer extends Component {
           className={classes.company}
           variant="body1"
         >
-          &copy; Devias Io. 2019
+          Social Media Forensics &copy; NCCS. 2019
         </Typography>
         <Typography variant="caption">
-          Created with love for the environment. By designers and developers who
-          love to work together in offices!
+            Monitor profiles, channels, pages, blogs, trends and hashtag simultaneously.Perform visual analytics and generate reports.
+            Support for Twitter, Facebook, Youtube.
         </Typography>
       </div>
     );

@@ -28,7 +28,10 @@ const Invites = asyncComponent(() =>
 // Component styles
 const styles = theme => ({
   root: {
-    padding: theme.spacing.unit * 4
+    padding: theme.spacing.unit * 4,
+    display: 'flex',
+    flexDirection: 'column',
+    minHeight: '100vh',
   },
   item: {
     height: '100%'

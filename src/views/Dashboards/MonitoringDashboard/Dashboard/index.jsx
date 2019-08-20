@@ -20,9 +20,10 @@ import {
 // Custom components
 import {
     TrendsTable,
-    MonitorUsersTable
+    MonitorUsersTable,
+    MonitoringJobsTable,
+    TopProfilesTable
 } from './components';
-import TopProfilesTable from './components/TopProfilesTable';
 
 import {connect} from 'react-redux';
 import {lookupProject} from 'services/project';
@@ -30,7 +31,10 @@ import NoRecords from "../../../NoRecords";
 // Component styles
 const styles = theme => ({
     root: {
-        padding: theme.spacing.unit * 4
+        padding: theme.spacing.unit * 4,
+        display: 'flex',
+        flexDirection: 'column',
+        minHeight: '100vh',
     },
     item: {
         height: '100%'
@@ -54,6 +58,7 @@ class Dashboard extends Component {
 
         const {classes} = this.props;
         const {match: {params}} = this.props;
+        localStorage.setItem('project_id', params.projectId);
         const {project} = lookupProject(params.projectId);
         if (project) {
           return (
@@ -62,43 +67,53 @@ class Dashboard extends Component {
                   title={project.name}
               >
                 <div className={classes.root}>
-                  <Grid
-                      container
-                      spacing={4}
-                  >
                     <Grid
                         item
-                        lg={4}
-                        md={4}
-                        xl={3}
                         xs={12}
                     >
-                      <TrendsTable className={classes.item}/>
+                        <MonitoringJobsTable className={classes.item} />
                     </Grid>
-                    <Grid
-                        item
-                        xl={3}
-                    >
-                      <TopProfilesTable
-                          className={classes.item}
-                          type={'Positive'}
-                      />
-                    </Grid>
-                  </Grid>
-                  <Grid
-                      container
-                      spacing={4}
-                  >
-                    <Grid
-                        item
-                        lg={8}
-                        md={8}
-                        xl={9}
-                        xs={12}
-                    >
-                      <MonitorUsersTable className={classes.item}/>
-                    </Grid>
-                  </Grid>
+                <br/>
+                <br/>
+                  {/*<Grid*/}
+                  {/*    container*/}
+                  {/*    spacing={4}*/}
+                  {/*>*/}
+                  {/*  <Grid*/}
+                  {/*      item*/}
+                  {/*      lg={4}*/}
+                  {/*      md={4}*/}
+                  {/*      xl={3}*/}
+                  {/*      xs={12}*/}
+                  {/*  >*/}
+                  {/*    <TrendsTable className={classes.item}/>*/}
+                  {/*  </Grid>*/}
+                  {/*  <Grid*/}
+                  {/*      item*/}
+                  {/*      xl={3}*/}
+                  {/*  >*/}
+                  {/*    <TopProfilesTable*/}
+                  {/*        className={classes.item}*/}
+                  {/*        type={'Positive'}*/}
+                  {/*    />*/}
+                  {/*  </Grid>*/}
+                  {/*</Grid>*/}
+                  {/*  <br/>*/}
+                  {/*  <br/>*/}
+                  {/*<Grid*/}
+                  {/*    container*/}
+                  {/*    spacing={4}*/}
+                  {/*>*/}
+                  {/*  <Grid*/}
+                  {/*      item*/}
+                  {/*      lg={8}*/}
+                  {/*      md={8}*/}
+                  {/*      xl={9}*/}
+                  {/*      xs={12}*/}
+                  {/*  >*/}
+                  {/*    <MonitorUsersTable className={classes.item}/>*/}
+                  {/*  </Grid>*/}
+                  {/*</Grid>*/}
                 </div>
               </DashboardLayout>
           );

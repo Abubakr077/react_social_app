@@ -151,7 +151,7 @@ class Topbar extends Component {
             {!initUser&& (
                 <IconButton
                 className={classes.signOutButton}
-                onClick={this.handleShowProjects}
+                onClick={this.handleShowNotifications}
             >
               <Typography
                   variant="button"

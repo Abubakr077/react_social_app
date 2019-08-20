@@ -8,5 +8,6 @@
   "getMemberships" : "/users/memberships",
   "getProjectInvites" : "/users/invites",
   "acceptInvite" : "/projects/invites/accept",
-  "rejectInvite" : "/projects/invites/reject"
+  "rejectInvite" : "/projects/invites/reject",
+  "getProjectJobs" : "/monitoring/jobs"
 }

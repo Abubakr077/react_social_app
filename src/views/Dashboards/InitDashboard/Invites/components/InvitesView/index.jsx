@@ -67,7 +67,6 @@ class InvitesView extends Component {
                         invites: res.project_invites
                     });
                 }
-                // this.props.addProjects(res.project_invites);
             });
         } catch (error) {
             toast.error(<Message name={error.data}/>,optionsError);

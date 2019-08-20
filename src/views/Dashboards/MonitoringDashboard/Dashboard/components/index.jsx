@@ -1,3 +1,4 @@
-export { default as TrendsTable } from './TrendsTable';
-export { default as MonitorUsersTable } from './MonitorUsersTable';
-export { default as TopProfilesTable } from './TopProfilesTable';
+export { default as TrendsTable } from './Tables/TrendsTable';
+export { default as MonitorUsersTable } from './Tables/MonitorUsersTable';
+export { default as TopProfilesTable } from './Tables/TopProfilesTable';
+export { default as MonitoringJobsTable } from './Tables/MonitoringJobsTable';
