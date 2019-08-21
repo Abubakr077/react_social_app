@@ -38,7 +38,7 @@ import {Message, optionsError, optionsSuccess} from "../../../../../../../consta
 
 import request from 'helpers/request.js';
 import * as endpoints from 'constants/endpoints.json';
-
+import confirm from 'helpers/confirmation.js';
 class MonitoringJobsTable extends Component {
     signal = false;
 
@@ -122,12 +122,23 @@ class MonitoringJobsTable extends Component {
                             },
                         ]}
                         actions={[
-                            {
+                            rowData => ({
                                 icon: ()=><DeleteIcon />,
                                 onClick: (event, rowData) => {
-                                    // Do save operation
+                                    confirm('Are you sure you want to delete '+rowData.name+' ?').then(
+                                        (result) => {
+                                            // `proceed` callback
+
+                                            console.log(result);
+                                        },
+                                        (result) => {
+                                            // `cancel` callback
+
+                                            console.log(result)
+                                        }
+                                    )
                                 }
-                            },
+                            }),
                             rowData => ({
                                 icon: ()=>{
                                     if (rowData.status === "ACTIVE"){
