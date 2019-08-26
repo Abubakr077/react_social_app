@@ -8,6 +8,8 @@
   "getMemberships" : "/users/memberships",
   "getProjectInvites" : "/users/invites",
   "acceptInvite" : "/projects/invites/accept",
+  "sendInvite" : "/projects/invites?",
+  "sentInviteStatus" : "/projects/sent_invites",
   "rejectInvite" : "/projects/invites/reject",
   "getProjectJobs" : "/monitoring/jobs"
 }

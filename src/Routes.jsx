@@ -4,6 +4,7 @@ import asyncComponent from 'components/AsyncComponent';
 
 import {connect} from 'react-redux';
 import * as localStorageHelper from 'helpers/localStorage'
+
 // Lazy Load Views
 const SignUp = asyncComponent(() =>
     import('./views/SignUp').then(module => module.default)
@@ -21,6 +22,9 @@ const Dashboard2 = asyncComponent(() =>
     import('./views/Dashboards/MonitoringDashboard/Dashboard').then(module => module.default)
 );
 
+const SendInvites = asyncComponent(() =>
+    import('./views/Dashboards/MonitoringDashboard/Dashboard/components/SendInvites').then(module => module.default)
+);
 const Invites = asyncComponent(() =>
     import('./views/Dashboards/InitDashboard/Invites').then(module => module.default)
 );
@@ -79,6 +83,11 @@ class Routes extends Component {
           exact
           path="/invites"
         />
+          <PrivateRoute
+              component={SendInvites}
+              exact
+              path="/send_invites"
+          />
 
         <Route
           component={SignUp}

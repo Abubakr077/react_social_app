@@ -51,70 +51,70 @@ const styles = theme => ({
 
 class Dashboard extends Component {
 
-    state = {
-        project: null
-    };
-    render() {
-
-        const {classes} = this.props;
+    membership = null;
+    componentWillMount() {
         const {match: {params}} = this.props;
         localStorage.setItem('project_id', params.projectId);
-        const {project} = lookupProject(params.projectId);
-        if (project) {
+        this.membership = Object.assign({}, lookupProject(params.projectId));
+    }
+
+    render() {
+        const {classes} = this.props;
+        if (this.membership) {
           return (
               <DashboardLayout
                   initUser={false}
-                  title={project.name}
+                  title={this.membership.project.name}
               >
-                <div className={classes.root}>
-                    <Grid
-                        item
-                        xs={12}
-                    >
-                        <MonitoringJobsTable className={classes.item} />
-                    </Grid>
-                <br/>
-                <br/>
-                  {/*<Grid*/}
-                  {/*    container*/}
-                  {/*    spacing={4}*/}
-                  {/*>*/}
-                  {/*  <Grid*/}
-                  {/*      item*/}
-                  {/*      lg={4}*/}
-                  {/*      md={4}*/}
-                  {/*      xl={3}*/}
-                  {/*      xs={12}*/}
-                  {/*  >*/}
-                  {/*    <TrendsTable className={classes.item}/>*/}
-                  {/*  </Grid>*/}
-                  {/*  <Grid*/}
-                  {/*      item*/}
-                  {/*      xl={3}*/}
-                  {/*  >*/}
-                  {/*    <TopProfilesTable*/}
-                  {/*        className={classes.item}*/}
-                  {/*        type={'Positive'}*/}
-                  {/*    />*/}
-                  {/*  </Grid>*/}
-                  {/*</Grid>*/}
-                  {/*  <br/>*/}
-                  {/*  <br/>*/}
-                  {/*<Grid*/}
-                  {/*    container*/}
-                  {/*    spacing={4}*/}
-                  {/*>*/}
-                  {/*  <Grid*/}
-                  {/*      item*/}
-                  {/*      lg={8}*/}
-                  {/*      md={8}*/}
-                  {/*      xl={9}*/}
-                  {/*      xs={12}*/}
-                  {/*  >*/}
-                  {/*    <MonitorUsersTable className={classes.item}/>*/}
-                  {/*  </Grid>*/}
-                  {/*</Grid>*/}
-                </div>
+                  <div className={classes.root}>
+                      <Grid
+                          item
+                          xs={12}
+                      >
+                          <MonitoringJobsTable className={classes.item} />
+                      </Grid>
+                      <br/>
+                      <br/>
+                      {/*<Grid*/}
+                      {/*    container*/}
+                      {/*    spacing={4}*/}
+                      {/*>*/}
+                      {/*  <Grid*/}
+                      {/*      item*/}
+                      {/*      lg={4}*/}
+                      {/*      md={4}*/}
+                      {/*      xl={3}*/}
+                      {/*      xs={12}*/}
+                      {/*  >*/}
+                      {/*    <TrendsTable className={classes.item}/>*/}
+                      {/*  </Grid>*/}
+                      {/*  <Grid*/}
+                      {/*      item*/}
+                      {/*      xl={3}*/}
+                      {/*  >*/}
+                      {/*    <TopProfilesTable*/}
+                      {/*        className={classes.item}*/}
+                      {/*        type={'Positive'}*/}
+                      {/*    />*/}
+                      {/*  </Grid>*/}
+                      {/*</Grid>*/}
+                      {/*  <br/>*/}
+                      {/*  <br/>*/}
+                      {/*<Grid*/}
+                      {/*    container*/}
+                      {/*    spacing={4}*/}
+                      {/*>*/}
+                      {/*  <Grid*/}
+                      {/*      item*/}
+                      {/*      lg={8}*/}
+                      {/*      md={8}*/}
+                      {/*      xl={9}*/}
+                      {/*      xs={12}*/}
+                      {/*  >*/}
+                      {/*    <MonitorUsersTable className={classes.item}/>*/}
+                      {/*  </Grid>*/}
+                      {/*</Grid>*/}
+                  </div>
               </DashboardLayout>
           );
         }

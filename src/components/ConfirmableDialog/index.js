@@ -31,8 +31,8 @@ const ConfirmAbleDialog = ({show, proceed, dismiss, cancel, confirmation, option
             </DialogContent>
 
             <DialogActions>
-            <Button color={"primary"} onClick={() => cancel('arguments will be passed to the callback')}>CANCEL</Button>
-            <Button color={"primary"} onClick={() => proceed('same as cancel')}>OK</Button>
+            <Button variant="outlined" color={"primary"} onClick={() => cancel('arguments will be passed to the callback')}>CANCEL</Button>
+            <Button variant="outlined" color={"primary"} onClick={() => proceed('same as cancel')}>OK</Button>
             </DialogActions>
         </Dialog>
     );

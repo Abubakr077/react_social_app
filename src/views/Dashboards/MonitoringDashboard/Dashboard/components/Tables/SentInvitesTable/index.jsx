@@ -19,8 +19,6 @@ import {
   TableRow
 } from '@material-ui/core';
 
-// Shared services
-import { getMonitorUsers } from 'services/user';
 
 // Shared components
 import {
@@ -32,37 +30,47 @@ import {
 
 // Component styles
 import styles from './styles';
+import {toast} from "react-toastify";
+import {Message, optionsError, optionsSuccess} from "../../../../../../../constants/constants";
+import request from 'helpers/request.js';
+import * as endpoints from 'constants/endpoints.json';
 
 
-
-class TrendsTable extends Component {
+class SentInvitesTable extends Component {
   signal = false;
 
   state = {
     isLoading: false,
     limit: 10,
-    users: []
+    invites: []
   };
 
   async getMonitorUsers(limit) {
+    this.setState({isLoading: true});
+
+    const user = JSON.parse(localStorage.getItem('user'));
+    const project_id = localStorage.getItem('project_id');
+
     try {
-      this.setState({ isLoading: true });
-
-      const { users } = await getMonitorUsers(limit);
-
-      if (this.signal) {
+      await request({
+        url: endpoints.sentInviteStatus,
+        method: 'GET',
+        headers: {
+          user_id: user.id,
+          x_auth_token: user.x_auth_token.token,
+          project_id: project_id
+        }
+      }).then((res) => {
         this.setState({
           isLoading: false,
-          users
+          invites: res.sent_invites
         });
-      }
+      });
     } catch (error) {
-      if (this.signal) {
-        this.setState({
-          isLoading: false,
-          error
-        });
-      }
+      toast.error(<Message name={error.data}/>,optionsError);
+      this.setState({
+        isLoading: false
+      });
     }
   }
 
@@ -80,16 +88,16 @@ class TrendsTable extends Component {
 
   render() {
     const { classes, className } = this.props;
-    const { isLoading, users } = this.state;
+    const { isLoading, invites } = this.state;
 
     const rootClassName = classNames(classes.root, className);
-    const showUsers = !isLoading && users.length > 0;
+    const showUsers = !isLoading && invites;
 
     return (
       <Portlet className={rootClassName}>
         <PortletHeader noDivider>
           <PortletLabel
-            title="Currently monitoring users"
+            title="Sent Invites Status"
           />
         </PortletHeader>
           <PortletContent
@@ -105,24 +113,28 @@ class TrendsTable extends Component {
               <Table>
                 <TableHead>
                   <TableRow>
-                    <TableCell>User</TableCell>
-                    <TableCell >Start Date</TableCell>
-                    <TableCell>Platform</TableCell>
+                    <TableCell>Invitee Email</TableCell>
+                    <TableCell >Invited On</TableCell>
+                    <TableCell>Role</TableCell>
+                    <TableCell>Status</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {users.map(user => (
+                  {invites.map(invite => (
                     <TableRow
                       className={classes.tableRow}
                       hover
-                      key={user.id}
+                      key={invite.id}
                     >
-                      <TableCell>{user.name}</TableCell>
+                      <TableCell>{invite.invitee_email}</TableCell>
                       <TableCell>
-                        {moment(user.createdAt).format('DD/MM/YYYY')}
+                        {moment(invite.invited_on).format('DD/MM/YYYY')}
                       </TableCell>
                       <TableCell>
-                        {user.platform}
+                        {invite.role}
+                      </TableCell>
+                      <TableCell>
+                        {invite.status}
                       </TableCell>
                     </TableRow>
                   ))}
@@ -135,9 +147,9 @@ class TrendsTable extends Component {
   }
 }
 
-TrendsTable.propTypes = {
+SentInvitesTable.propTypes = {
   className: PropTypes.string,
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(TrendsTable);
+export default withStyles(styles)(SentInvitesTable);

@@ -3,8 +3,7 @@ import {Link, withRouter} from 'react-router-dom';
 // Externals
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import moment from 'moment';
-import PerfectScrollbar from 'react-perfect-scrollbar';
+
 // Material helpers
 import {
     CircularProgress, Dialog, DialogActions, DialogContent, DialogTitle,
@@ -170,7 +169,7 @@ class Projects extends Component {
                 this.props.addProject(res);
             });
         } catch (e) {
-            toast.error(e.data);
+            toast.error(<Message name={e.data}/>,optionsError);
             this.setState({
                 isLoading: false,
                 open: false

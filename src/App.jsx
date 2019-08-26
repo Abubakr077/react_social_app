@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Router } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
-import { ToastContainer } from 'react-toastify';
+import { ToastContainer, Slide, Zoom, Flip, Bounce  } from 'react-toastify';
 
 // Externals
 import { Chart } from 'react-chartjs-2';
@@ -22,6 +22,7 @@ import 'react-toastify/dist/ReactToastify.min.css'
 
 // Routes
 import Routes from './Routes';
+import PerfectScrollbar from "react-perfect-scrollbar";
 
 // Browser history
 const browserHistory = createBrowserHistory();
@@ -36,12 +37,15 @@ export default class App extends Component {
     return (
         <div>
       <ThemeProvider theme={theme}>
-
+        <PerfectScrollbar>
         <Router history={browserHistory}>
           <Routes />
         </Router>
+        </PerfectScrollbar>
       </ThemeProvider>
-            <ToastContainer />
+            <ToastContainer
+                transition={Zoom}
+            />
         </div>
     );
   }

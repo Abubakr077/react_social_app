@@ -208,7 +208,7 @@ class Sidebar extends Component {
                         activeClassName={classes.activeListItem}
                         className={classes.listItem}
                         component={NavLink}
-                        to="/users"
+                        to="/send_invites"
                     >
                         <ListItemIcon className={classes.listItemIcon}>
                             <InvitesIcon/>

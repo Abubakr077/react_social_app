@@ -20,9 +20,11 @@ import {getNotifications} from 'services/notification';
 import {NotificationList} from './components';
 // Component styles
 import styles from './styles';
+import {lookupProject} from 'services/project';
 
 class Topbar extends Component {
   signal = true;
+  project = null;
 
   state = {
     notifications: [],
@@ -74,11 +76,15 @@ class Topbar extends Component {
   handleShowNotifications = event => {
     this.setState({
       notificationsEl: event.currentTarget
+    },()=>{
+      console.log(Boolean(this.state.notificationsEl));
     });
   };
   handleShowProjects = event => {
     this.setState({
       projectsEL: event.currentTarget
+    },()=>{
+      console.log(Boolean(this.state.projectsEl));
     });
   };
 
@@ -119,6 +125,13 @@ class Topbar extends Component {
     const showNotifications = Boolean(notificationsEl);
     const showProjects = Boolean(projectsEl);
 
+    if (!initUser){
+      const id = localStorage.getItem('project_id');
+      if (id){
+        this.project = Object.assign({}, lookupProject(id).project);
+      }
+    }
+
     return (
       <Fragment>
         <div className={rootClassName}>
@@ -151,13 +164,13 @@ class Topbar extends Component {
             {!initUser&& (
                 <IconButton
                 className={classes.signOutButton}
-                onClick={this.handleShowNotifications}
+                onClick={this.handleShowProjects}
             >
               <Typography
                   variant="button"
                   color="primary"
               >
-                {this.getAcronyms(title)}
+                {this.getAcronyms(this.project.name)}
               </Typography>
             </IconButton>
             )}

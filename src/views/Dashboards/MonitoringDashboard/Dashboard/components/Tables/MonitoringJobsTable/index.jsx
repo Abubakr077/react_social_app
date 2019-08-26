@@ -38,12 +38,17 @@ import {Message, optionsError, optionsSuccess} from "../../../../../../../consta
 
 import request from 'helpers/request.js';
 import * as endpoints from 'constants/endpoints.json';
+import * as constants from 'constants/constants.js';
 import confirm from 'helpers/confirmation.js';
+import compose from "recompose/compose";
+import {connect} from "react-redux";
 class MonitoringJobsTable extends Component {
     signal = false;
 
     state = {
         isLoading: false,
+        user: null,
+        project_id: null,
         jobs: []
     };
 
@@ -53,6 +58,10 @@ class MonitoringJobsTable extends Component {
             this.setState({isLoading: true});
             const user = JSON.parse(localStorage.getItem('user'));
             const project_id = localStorage.getItem('project_id');
+            this.setState({
+               user: user,
+               project_id: project_id
+            });
             await request({
                 url: endpoints.getProjectJobs,
                 method: 'GET',
@@ -108,7 +117,7 @@ class MonitoringJobsTable extends Component {
                 {showJobs && (
                     <MaterialTable
                         columns={[
-                            {title: 'Name', field: 'name'},
+                            {title: 'Description', field: 'description'},
                             {title: 'Status', field: 'status'},
                             {
                                 title: 'Job Runs',
@@ -125,15 +134,17 @@ class MonitoringJobsTable extends Component {
                             rowData => ({
                                 icon: ()=><DeleteIcon />,
                                 onClick: (event, rowData) => {
-                                    confirm('Are you sure you want to delete '+rowData.name+' ?').then(
+                                    confirm('Are you sure you want to delete '+rowData.description+' ?').then(
                                         (result) => {
                                             // `proceed` callback
-
+                                            this.setState({
+                                                isLoading: true
+                                            });
+                                            this.handleDelete(rowData.id);
                                             console.log(result);
                                         },
                                         (result) => {
                                             // `cancel` callback
-
                                             console.log(result)
                                         }
                                     )
@@ -146,11 +157,11 @@ class MonitoringJobsTable extends Component {
                                     } return (<PlayIcon />)
                                 } ,
                                 onClick: (event, rowData) => {
-
+                                    this.handleToggleStatus(rowData.id);
                                 }
                             }),
                         ]}
-                        data={jobs}
+                        data={this.state.jobs}
                         title="Monitoring Jobs"
                         options={{
                             search: false,
@@ -333,6 +344,56 @@ class MonitoringJobsTable extends Component {
             </div>
         );
     }
+
+    handleDelete(id) {
+        const {user,project_id,jobs} = this.state;
+        const endpoint = endpoints.getProjectJobs+'/'+id+'?force=1';
+
+        try{
+            request({
+                url:    endpoint,
+                method: 'DELETE',
+                headers: {
+                    user_id: user.id,
+                    x_auth_token: user.x_auth_token.token,
+                    project_id: project_id
+                }
+            }).then(() => {
+                this.setState({
+                    jobs: jobs.filter(job=> job.id !== id),
+                    isLoading: false
+                });
+                toast.success(<Message name={'Job Deleted Successfully'}/>,optionsSuccess);
+                }
+            );
+        }catch (error) {
+            toast.error(<Message name={error.data}/>, optionsError);
+        }
+    }
+    handleToggleStatus(id) {
+        const {user,project_id,jobs} = this.state;
+        try{
+            request({
+                url:    endpoints.getProjectJobs+'/'+id,
+                method: 'PUT',
+                headers: {
+                    user_id: user.id,
+                    x_auth_token: user.x_auth_token.token,
+                    project_id: project_id
+                }
+            }).then((res) => {
+                this.setState({
+                    jobs: jobs.map(el => (el.id === res.id ?
+                        Object.assign({}, el, { status: res.status })
+                        : el))
+                });
+                toast.success(<Message name={'Job Updated Successfully'}/>,optionsSuccess);
+                }
+            );
+        }catch (error) {
+            toast.error(<Message name={error.data}/>, optionsError);
+        }
+    }
 }
 
 MonitoringJobsTable.propTypes = {
@@ -340,4 +401,8 @@ MonitoringJobsTable.propTypes = {
     classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(MonitoringJobsTable);
+export default
+compose(
+    withStyles(styles)
+)
+(MonitoringJobsTable);
