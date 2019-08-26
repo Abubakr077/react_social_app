@@ -29,6 +29,10 @@ const Invites = asyncComponent(() =>
     import('./views/Dashboards/InitDashboard/Invites').then(module => module.default)
 );
 
+const CreateJob = asyncComponent(() =>
+    import('./views/CreateJob').then(module => module.default)
+);
+
 
 let isAuth = false;
 let authToken = null;
@@ -104,6 +108,12 @@ class Routes extends Component {
           component={NotFound}
           exact
           path="/not-found"
+        />
+
+        <Route
+          component={CreateJob}
+          exact
+          path="/createJob"
         />
         <Redirect to="/not-found" />
       </Switch>

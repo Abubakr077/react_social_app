@@ -37,15 +37,17 @@ import {
 // Component styles
 import styles from './styles';
 
+
 class Sidebar extends Component {
     state = {
         open: false
     };
-
+    
     render() {
         const {classes, className, initUser} = this.props;
         const rootClassName = classNames(classes.root, className);
 
+        const project_id = localStorage.getItem('project_id');
         return (
             <nav className={rootClassName}>
                 <div className={classes.logoWrapper}>
@@ -56,7 +58,7 @@ class Sidebar extends Component {
                         <img
                             alt="Brainalytica logo"
                             className={classes.logoImage}
-                            src="/images/logos/brainalytica_logo.svg"
+                            src="/images/logos/logoNCCS.png"
                         />
                     </Link>
                 </div>
@@ -102,7 +104,7 @@ class Sidebar extends Component {
                         activeClassName={classes.activeListItem}
                         className={classes.listItem}
                         component={NavLink}
-                        to="/dashboard"
+                        to={"/dashboard/"+project_id}
                     >
                         <ListItemIcon className={classes.listItemIcon}>
                             <DashboardIcon/>
@@ -149,7 +151,7 @@ class Sidebar extends Component {
                           <ListItem activeClassName={classes.activeListItemNested}
                                     className={classes.listItemNested}
                                     component={NavLink}
-                                    to="/jobs"
+                                    to={"/dashboard/"+project_id}
                           >
                             <ListItemIcon className={classes.listItemIcon}>
                               <ViewJobs/>

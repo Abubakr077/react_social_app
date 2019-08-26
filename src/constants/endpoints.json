@@ -11,5 +11,6 @@
   "sendInvite" : "/projects/invites?",
   "sentInviteStatus" : "/projects/sent_invites",
   "rejectInvite" : "/projects/invites/reject",
-  "getProjectJobs" : "/monitoring/jobs"
+  "getProjectJobs" : "/monitoring/jobs",
+  "createMonitoringJob" : "/monitoring/jobs"
 }
