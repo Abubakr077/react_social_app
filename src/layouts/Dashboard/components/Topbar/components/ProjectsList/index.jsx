@@ -30,6 +30,7 @@ import {
 
 // Component styles
 import styles from './styles';
+import Tooltip from "@material-ui/core/Tooltip";
 
 const icons = {
   order: {
@@ -51,49 +52,37 @@ const icons = {
 };
 
 class ProjectsList extends Component {
-  render() {
-    const { className, classes, notifications, onSelect } = this.props;
 
+  render() {
+    const { className, classes, onSelect } = this.props;
     const rootClassName = classNames(classes.root, className);
+    const projects = JSON.parse(localStorage.getItem('projects'));
 
     return (
       <div className={rootClassName}>
-        {notifications.length > 0 ? (
+        {projects  ? (
           <Fragment>
-            <div className={classes.header}>
-              <Typography variant="h6">User Notifications</Typography>
-              <Typography
-                className={classes.subtitle}
-                variant="body2"
-              >
-                {notifications.length} new notifications
-              </Typography>
-            </div>
             <div className={classes.content}>
               <List component="div">
-                {notifications.map(notification => (
+                {projects.map(membership => (
                   <Link
-                    key={notification.id}
-                    to="#"
+                    key={membership.project.id}
+                    to={`/dashboard/${membership.project.id}`}
+                    target="_blank"
                   >
+                    <Tooltip title="Click to load" placement="left">
                     <ListItem
                       className={classes.listItem}
                       component="div"
                       onClick={onSelect}
                     >
-                      <ListItemIcon
-                        className={classes.listItemIcon}
-                        style={{ color: icons[notification.type].color }}
-                      >
-                        {icons[notification.type].icon}
-                      </ListItemIcon>
                       <ListItemText
                         classes={{ secondary: classes.listItemTextSecondary }}
-                        primary={notification.title}
-                        secondary={notification.when}
+                        primary={membership.project.name}
                       />
                       <ArrowForwardIosIcon className={classes.arrowForward} />
                     </ListItem>
+                    </Tooltip>
                     <Divider />
                   </Link>
                 ))}
@@ -103,10 +92,10 @@ class ProjectsList extends Component {
                   color="primary"
                   component={Link}
                   size="small"
-                  to="#"
+                  to="/dashboard"
                   variant="contained"
                 >
-                  See all
+                  all projects
                 </Button>
               </div>
             </div>
@@ -117,7 +106,7 @@ class ProjectsList extends Component {
               <img
                 alt="Empty list"
                 className={classes.emptyImage}
-                src="/images/empty.png"
+                src='/images/empty.png'
               />
             </div>
             <Typography variant="h4">There's nothing here...</Typography>

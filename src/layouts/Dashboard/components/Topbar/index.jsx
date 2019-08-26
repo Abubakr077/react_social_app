@@ -17,7 +17,7 @@ import {
 // Shared services
 import {getNotifications} from 'services/notification';
 // Custom components
-import {NotificationList} from './components';
+import {NotificationList,ProjectsList} from './components';
 // Component styles
 import styles from './styles';
 import {lookupProject} from 'services/project';
@@ -76,15 +76,11 @@ class Topbar extends Component {
   handleShowNotifications = event => {
     this.setState({
       notificationsEl: event.currentTarget
-    },()=>{
-      console.log(Boolean(this.state.notificationsEl));
     });
   };
   handleShowProjects = event => {
     this.setState({
-      projectsEL: event.currentTarget
-    },()=>{
-      console.log(Boolean(this.state.projectsEl));
+      projectsEl: event.currentTarget
     });
   };
 
@@ -213,9 +209,8 @@ class Topbar extends Component {
               horizontal: 'center'
             }}
         >
-          <div>
-            hello
-          </div>
+            <ProjectsList
+            />
         </Popover>
       </Fragment>
     );

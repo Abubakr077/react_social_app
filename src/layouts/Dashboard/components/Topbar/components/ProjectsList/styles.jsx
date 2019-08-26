@@ -1,19 +1,7 @@
 export default theme => ({
   root: {
-    width: '350px',
+    width: '150px',
     maxWidth: '100%'
-  },
-  header: {
-    backgroundColor: theme.palette.background.default,
-    backgroundImage: 'url("/images/connected_world.svg")',
-    backgroundPositionX: 'right',
-    backgroundPositionY: 'center',
-    backgroundRepeat: 'no-repeat',
-    backgroundSize: 'contain',
-    paddingBottom: '34px',
-    paddingLeft: '20px',
-    paddingRight: '20px',
-    paddingTop: '34px'
   },
   subtitle: {
     color: theme.palette.text.secondary
