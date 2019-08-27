@@ -110,7 +110,7 @@ class Routes extends Component {
           path="/not-found"
         />
 
-        <Route
+        <PrivateRoute
           component={CreateJob}
           exact
           path="/createJob"
