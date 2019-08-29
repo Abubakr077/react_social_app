@@ -1,5 +1,17 @@
 {
-  "host": "http://localhost:5000",
+  "proxy": "https://cors-anywhere.herokuapp.com/",
+  "host": "http://192.168.1.106:5000",
   "login": "/users/login",
-  "signUp": "/users/register"
+  "signUp": "/users/register",
+  "createProject" : "/projects/create",
+  "deleteProject" : "/projects/delete",
+  "getMemberships" : "/users/memberships",
+  "getProjectInvites" : "/users/invites",
+  "acceptInvite" : "/projects/invites/accept",
+  "sendInvite" : "/projects/invites?",
+  "cancelInvite" : "/projects/invites/cancel/",
+  "sentInviteStatus" : "/projects/sent_invites",
+  "rejectInvite" : "/projects/invites/reject",
+  "getProjectJobs" : "/monitoring/jobs",
+  "createMonitoringJob" : "/monitoring/jobs"
 }

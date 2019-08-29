@@ -1,18 +1,41 @@
 import React, { Component } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
-
-// Views
-import SignUp from './views/SignUp';
-import SignIn from './views/SignIn';
-import NotFound from './views/NotFound';
-import Dashboard from './views/Dashboard';
-import Invites from './views/Invites';
+import asyncComponent from 'components/AsyncComponent';
 
 import {connect} from 'react-redux';
 import * as localStorageHelper from 'helpers/localStorage'
 
-let isAuth;
-let authToken;
+// Lazy Load Views
+const SignUp = asyncComponent(() =>
+    import('./views/SignUp').then(module => module.default)
+);
+const SignIn = asyncComponent(() =>
+    import('./views/SignIn').then(module => module.default)
+);
+const NotFound = asyncComponent(() =>
+    import('./views/NotFound').then(module => module.default)
+);
+const Dashboard = asyncComponent(() =>
+    import('./views/Dashboards/InitDashboard/Dashboard').then(module => module.default)
+);
+const Dashboard2 = asyncComponent(() =>
+    import('./views/Dashboards/MonitoringDashboard/Dashboard').then(module => module.default)
+);
+
+const SendInvites = asyncComponent(() =>
+    import('./views/Dashboards/MonitoringDashboard/Dashboard/components/SendInvites').then(module => module.default)
+);
+const Invites = asyncComponent(() =>
+    import('./views/Dashboards/InitDashboard/Invites').then(module => module.default)
+);
+
+const CreateJob = asyncComponent(() =>
+    import('./views/CreateJob').then(module => module.default)
+);
+
+
+let isAuth = false;
+let authToken = null;
 
 
 const PrivateRoute = ({ component: Component, ...rest }) =>
@@ -37,8 +60,10 @@ class Routes extends Component {
 
   render() {
     isAuth = localStorageHelper.tytPreGetBool('isAuthenticated');
-      authToken = localStorage.getItem('authToken');
-      console.log(authToken);
+    const   user   = JSON.parse(localStorage.getItem('user'));
+    if (user){
+        authToken = user.x_auth_token.token;
+    }
 
     return (
       <Switch>
@@ -52,31 +77,22 @@ class Routes extends Component {
           exact
           path="/dashboard"
         />
-        <Route
+        <PrivateRoute
+          component={Dashboard2}
+          exact
+          path="/dashboard/:projectId"
+        />
+        <PrivateRoute
           component={Invites}
           exact
           path="/invites"
         />
-        {/*<Route*/}
-        {/*  component={UserList}*/}
-        {/*  exact*/}
-        {/*  path="/users"*/}
-        {/*/>*/}
-        {/*<Route*/}
-        {/*  component={ProductList}*/}
-        {/*  exact*/}
-        {/*  path="/products"*/}
-        {/*/>*/}
-        {/*<Route*/}
-        {/*  component={Account}*/}
-        {/*  exact*/}
-        {/*  path="/account"*/}
-        {/*/>*/}
-        {/*<Route*/}
-        {/*  component={Settings}*/}
-        {/*  exact*/}
-        {/*  path="/settings"*/}
-        {/*/>*/}
+          <PrivateRoute
+              component={SendInvites}
+              exact
+              path="/send_invites"
+          />
+
         <Route
           component={SignUp}
           exact
@@ -87,15 +103,17 @@ class Routes extends Component {
           exact
           path="/login"
         />
-        {/*<Route*/}
-        {/*  component={UnderDevelopment}*/}
-        {/*  exact*/}
-        {/*  path="/under-development"*/}
-        {/*/>*/}
+
         <Route
           component={NotFound}
           exact
           path="/not-found"
+        />
+
+        <Route
+          component={CreateJob}
+          exact
+          path="/createJob"
         />
         <Redirect to="/not-found" />
       </Switch>

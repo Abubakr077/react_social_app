@@ -1,6 +1,9 @@
+import request from 'helpers/request.js';
+import * as endpoints from 'constants/endpoints.json';
+import {toast} from "react-toastify";
+
+
 // Mock data
-import trends from 'data/trends';
-import users from 'data/users';
 
 
 const projects = [
@@ -126,22 +129,12 @@ const projects = [
   }
 ];
 
-function lookupTrend(trend) {
-  trend.customer = users.find(user => user.id === trend.customer);
 
-  return trend;
+function lookupMemberShips(user) {
+  // user.customer = users.find(user => user.id === trend.customer);
+  // return user.memberships;
 }
-
-export const getProjects = (limit = 6) => {
-
-  return new Promise(resolve => {
-    const projectsLookup = JSON.parse(JSON.stringify(projects));
-
-    setTimeout(() => {
-      resolve({
-        projects: projectsLookup,
-        projectsTotal: projects.length
-      });
-    }, 700);
-  });
-};
+export function lookupProject(projectId) {
+  const projects   = JSON.parse(localStorage.getItem('projects'));
+  return projects.find(item => item.project.id === projectId);
+}

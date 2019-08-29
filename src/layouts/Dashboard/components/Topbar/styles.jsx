@@ -12,7 +12,8 @@ export default theme => ({
     width: '100%'
   },
   title: {
-    marginLeft: theme.spacing.unit
+    marginLeft: theme.spacing.unit,
+    textTransform: 'capitalize'
   },
   menuButton: {
     marginLeft: '-4px'
@@ -22,5 +23,8 @@ export default theme => ({
   },
   signOutButton: {
     marginLeft: theme.spacing.unit
+  },
+  contextButton: {
+    color: "primary"
   }
 });
