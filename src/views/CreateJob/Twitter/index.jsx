@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import {withRouter} from 'react-router-dom';
 // Externals
 import PropTypes from 'prop-types';
 import endpoints from 'constants/endpoints.json';
@@ -26,10 +25,6 @@ import { white } from 'common/colors';
 // Component styles
 import styles from './style';
 import request from 'helpers/request.js';
-import { compose } from 'C:/Users/Usman Tahir/AppData/Local/Microsoft/TypeScript/3.5/node_modules/redux';
-import { toast } from 'react-toastify';
-import {Message, optionsError} from "constants/constants";
-
 
 
 
@@ -57,7 +52,7 @@ class Twitter extends Component {
                 near_place: "",
                 from_date: "",
                 to_date: "",
-                crawl_num_tweets: -1,
+                crawl_num_tweets: 0,
                 target_id: "",
                 platform: "TWITTER",
                 target_type: "",
@@ -68,83 +63,67 @@ class Twitter extends Component {
 
     getUserName = (username) => {
         console.log(username.tags.join(" "));
-        const data = this.state.post;
-        const currentstate = data;
-        currentstate.job_details.username = username.tags.join(" ")
-        console.log(currentstate);
         this.setState({
-            currentstate
-        });
+            post: {
+                job_details: { ...this.state.post.job_details, username: username.tags.join(" ") }
+            }
+        })
     }
     getAllWords = (words) => {
         console.log(words.tags);
-        const data = this.state.post;
-        const currentstate = data;
-        currentstate.job_details.all_words = words.tags.join(" ")
-        console.log(currentstate);
         this.setState({
-            currentstate
-        });
+            post: {
+                job_details: { ...this.state.post.job_details, all_words: words.tags.join(" ") }
+            }
+        })
     }
     getAnyWords = (words) => {
         console.log(words.tags);
-        const data = this.state.post;
-        const currentstate = data;
-        currentstate.job_details.any_words = words.tags.join(" ")
-        console.log(currentstate);
         this.setState({
-            currentstate
-        });
+            post: {
+                job_details: { ...this.state.post.job_details, any_words: words.tags.join(" ") }
+            }
+        })
     }
     getNotWords = (words) => {
         console.log(words.tags);
-        const data = this.state.post;
-        const currentstate = data;
-        currentstate.job_details.not_words = words.tags.join(" ")
-        console.log(currentstate);
         this.setState({
-            currentstate
-        });
+            post: {
+                job_details: { ...this.state.post.job_details, not_words: words.tags.join(" ") }
+            }
+        })
     }
     getHashtags = (hashtags) => {
         console.log(hashtags.tags);
-        const data = this.state.post;
-        const currentstate = data;
-        currentstate.job_details.hashtag = hashtags.tags.join(" ")
-        console.log(currentstate);
         this.setState({
-            currentstate
-        });
+            post: {
+                job_details: { ...this.state.post.job_details, hashtag: hashtags.tags.join(" ") }
+            }
+        })
     }
     getReplyTo = (user) => {
         console.log(user.tags);
-        const data = this.state.post;
-        const currentstate = data;
-        currentstate.job_details.reply_to = user.tags.join(" ")
-        console.log(currentstate);
         this.setState({
-            currentstate
-        });
+            post: {
+                job_details: { ...this.state.post.job_details, reply_to: user.tags.join(" ") }
+            }
+        })
     }
     getMentionedUsers = (user) => {
         console.log(user.tags);
-        const data = this.state.post;
-        const currentstate = data;
-        currentstate.job_details.mentioned_user = user.tags.join(" ")
-        console.log(currentstate);
         this.setState({
-            currentstate
-        });
+            post: {
+                job_details: { ...this.state.post.job_details, mentioned_user: user.tags.join(" ") }
+            }
+        })
     }
     inputExactPhrase = (e) => {
         const val = e.target.value;
         console.log(val)
-        const data = this.state.post;
-        const currentstate = data;
-        currentstate.job_details.exact_phrase = val
-        console.log(currentstate);
         this.setState({
-            currentstate
+            post: {
+                job_details: { ...this.state.post.job_details, exact_phrase: val }
+            }
         });
     }
     inputDescription = (e) => {
@@ -156,107 +135,91 @@ class Twitter extends Component {
     }
     inputUserName = (e) => {
         const val = e.target.value;
-        console.log(val);
-        const data = this.state.post;
-        const currentstate = data;
-        currentstate.job_details.username = val
-        console.log(currentstate);
+        console.log(val)
         this.setState({
-            currentstate
+            post: {
+                job_details: { ...this.state.post.job_details, username: val }
+            }
         });
     }
     getFromDate = (date) => {
         console.log(date);
-        const data = this.state.post;
-        const currentstate = data;
-        currentstate.job_details.from_date = date
-        console.log(currentstate);
         this.setState({
-            currentstate
-        });
+            post: {
+                job_details: { ...this.state.post.job_details, from_date: date }
+            }
+        })
     }
     getToDate = (date) => {
         console.log(date);
-        const data = this.state.post;
-        const currentstate = data;
-        currentstate.job_details.to_date = date
-        console.log(currentstate);
         this.setState({
-            currentstate
-        });
+            post: {
+                job_details: { ...this.state.post.job_details, to_date: date }
+            }
+        })
     }
     getNumTweets = (value) => {
         console.log(value);
-        const data = this.state.post;
-        const currentstate = data;
-        currentstate.job_details.crawl_num_tweets = parseInt(value)
-        console.log(currentstate);
         this.setState({
-            currentstate
-        });
+            post: {
+                job_details: { ...this.state.post.job_details, crawl_num_tweets: parseInt(value) }
+            }
+        })
     }
     getTargetType = (value) => {
         console.log(value);
+        this.setState({
+            post: {
+                job_details: { ...this.state.post.job_details, target_type: value }
+            }
+        });
         if (value != "USER") {
-            const data = this.state;
-            const currentstate = data;
-            currentstate.post.job_details.target_subtype = "POSTS";
-            currentstate.post.job_details.target_type = value;
-            currentstate.isUser = true;
-            currentstate.isInfo = false;
-            currentstate.visible = true;
-            console.log(currentstate);
             this.setState({
-                currentstate
-            });
+                isUser: true,
+                isInfo:false,
+                visible: true,
+                post: {
+                    job_details: { ...this.state.post.job_details, target_subtype: "POSTS" }
+                }
+            })
         } else {
-            const data = this.state;
-            const currentstate = data;
-            currentstate.post.job_details.target_subtype = null;
-            currentstate.post.job_details.target_type = value;
-            currentstate.isUser = false;
-            currentstate.isInfo = false;
-            currentstate.visible = false;
-            console.log(currentstate);
             this.setState({
-                currentstate
-            });
+                isUser: false,
+                isInfo:false,
+                visible: false,
+                post: {
+                    job_details: { ...this.state.post.job_details, target_subtype: null }
+                }
+            })
         }
 
     }
     getTargetSubtype = (value) => {
         console.log(value);
+        this.setState({
+            post: {
+                job_details: { ...this.state.post.job_details, target_subtype: value }
+            }
+        })
         if (value != "INFO") {
-            const data = this.state;
-            const currentstate = data;
-            currentstate.post.job_details.target_subtype = value;
-            currentstate.isInfo = false;
-            currentstate.visible = true;
-            console.log(currentstate);
             this.setState({
-                currentstate
-            });
+                isInfo: false,
+                visible: true
+            })
         } else {
-            const data = this.state;
-            const currentstate = data;
-            currentstate.post.job_details.target_subtype = value;
-            currentstate.isInfo = true;
-            currentstate.visible = false;
-            console.log(currentstate);
             this.setState({
-                currentstate
-            });
+                isInfo: true,
+                visible: false
+            })
         }
     }
     getLang = (value) => {
         console.log(value);
-        const data = this.state.post;
-        const currentstate = data;
-        currentstate.job_details.lang = value
-        console.log(currentstate);
         this.setState({
-            currentstate
-        });
+            post: {
+                job_details: { ...this.state.post.job_details, lang: value }
+            }
+        })
     }
     startJob = async (e) => {
         e.preventDefault();
@@ -265,27 +228,24 @@ class Twitter extends Component {
         console.log(JSON.stringify(this.state.post));
         const projectId = localStorage.getItem('project_id');
         const user = JSON.parse(localStorage.getItem('user'));
-        if (this.state.post.job_details.username == ""){
-            toast.error(<Message name= "Please Enter Username" />,optionsError);
-            return
-        }
         try {
             await request({
                 url: endpoints.createMonitoringJob,
                 method: 'POST',
                 headers: {
                     user_id: user.id,
-                    X_Auth_Token: user.x_auth_token.token,
-                    project_id: projectId,
-                    Content_Type: "application/json"
+                    x_auth_token: user.x_auth_token.token,
+                    project_id: projectId
                 },
-                data: JSON.stringify(this.state.post)
+                data: JSON.stringify(this.state)
             }).then((res) => {
                 history.push("/dashboard/" + projectId);
             });
         } catch (error) {
-            toast.error(<Message name= {error.data} />,optionsError);
-            console.log(error)
+            this.setState({
+
+            });
+            console.log("something wrong")
         }
     };
     render() {
@@ -305,7 +265,7 @@ class Twitter extends Component {
                 code: "TREND"
             }
         ];
-        const targetType = [
+        const target_type = [
             {
                 name: "Profile Info",
                 code: "INFO"
@@ -365,7 +325,7 @@ class Twitter extends Component {
                     <Grid item xs={3}>
                         <Paper className={classes.paper}>
                             <Grid item xs={12}>
-                                <SelectField getValue={this.getTargetSubtype} options={targetType} label={"What is your target ?"} disabled={this.state.isUser} />
+                                <SelectField getValue={this.getTargetSubtype} options={target_type} label={"What is your target ?"} disabled={this.state.isUser} />
                             </Grid>
                         </Paper>
                     </Grid>
@@ -469,7 +429,7 @@ class Twitter extends Component {
                                 size="large"
                                 variant="contained"
                             >
-                                Register Job
+                                Start Job
                     </Button>
                         </Grid>
                     </Grid>
@@ -500,7 +460,7 @@ class Twitter extends Component {
                                     size="large"
                                     variant="contained"
                                 >
-                                    Register Job
+                                    Start Job
                     </Button>
                             </Paper>
                         </Grid>
@@ -515,8 +475,5 @@ Twitter.propTypes = {
     className: PropTypes.string,
 };
 
-export default compose( 
-    withRouter,
-    withStyles(styles)
-    )(Twitter);
+export default withStyles(styles)(Twitter);
 

@@ -29,14 +29,6 @@ const Reducers = (state = [], action) => {
             return Object.assign({}, state, {
                 invites: [...action.invites.filter(inv => inv.id !== action.invite.id)],
             });
-        case constants.UPDATE_INVITE:
-            return {
-                ...state,
-                tempInvite: {
-                    invite: null,
-                    isUpdate: null
-                }
-            };
         default:
             return state;
     }
