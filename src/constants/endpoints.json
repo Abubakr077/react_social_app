@@ -1,6 +1,6 @@
 {
   "proxy": "https://cors-anywhere.herokuapp.com/",
-  "host": "http://192.168.1.106:5000",
+  "host": "http://localhost:5000",
   "login": "/users/login",
   "signUp": "/users/register",
   "createProject" : "/projects/create",
