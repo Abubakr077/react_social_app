@@ -1,64 +1,61 @@
-import React, { Component } from 'react';
-import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
-class MainMap extends Component {
-    constructor(props) {
-      super(props);
-      this.state = {
-        markers: [
-          {
-            title: "Islamabad",
-            name: "Islamabad",
-            position: { lat: 33.6844, lng: 73.0479 }
-          }
-        ]
-      };
-      this.onClick = this.onClick.bind(this);
-    }
-  
-    onClick(t, map, coord) {
-      const { latLng } = coord;
-      const lat = latLng.lat();
-      const lng = latLng.lng();
-  
-      this.setState(previousState => {
-        return {
-          markers: [
-            ...previousState.markers,
-            {
-              title: "",
-              name: "",
-              position: { lat, lng }
-            }
-          ]
-        };
-      });
-    }
-  
-    render() {
-      return (
-        <div style={{height:"300px"}} >
-          <h1 className="text-center">My Maps</h1>
-          <Map
-            google={this.props.google}
-            style={{height:"280px", width: "37%" }}
-            className={"map"}
-            zoom={14}
-            onClick={this.onClick}
-          >
-            {this.state.markers.map((marker, index) => (
-              <Marker
-                key={index}
-                title={marker.title}
-                name={marker.name}
-                position={marker.position}
-              />
-            ))}
-          </Map>
-        </div>
-      );
-    }
+import React, { Component } from "react";
+import { Map, Marker, GoogleApiWrapper } from "google-maps-react";
+import './style.css';
+const MarkersList = props => {
+  const { locations, ...markerProps } = props;
+  return (
+    <span>
+      {locations.map((location, i) => {
+        return (
+          <Marker
+            key={i}
+            {...markerProps}
+            position={{ lat: location.lat(), lng: location.lng() }}
+          />
+        );
+      })}
+    </span>
+  );
+};
+
+class MapContainer extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      locations: []
+    };
+    this.handleMapClick = this.handleMapClick.bind(this);
   }
-  
-  export default GoogleApiWrapper({
-    apiKey: ('AIzaSyCU58dA4Z3sTCYJ2KDo0hBq8mI5_I5Dmjs')
-  })(MainMap);
+
+  handleMapClick = (ref, map, ev) => {
+    const location = ev.latLng;
+    console.log(location.lat());
+    console.log(JSON.stringify(location));
+
+    this.setState(prevState => ({
+      locations: [location]
+    }));
+    map.panTo(location);
+  };
+
+  render() {
+    return (
+      <div className="map">
+        <Map
+          google={this.props.google}
+          className="map"
+          zoom={this.props.zoom}
+          initialCenter={this.props.center}
+          onClick={this.handleMapClick}
+        >
+         <MarkersList locations={this.state.locations} icon="images\logos\pin2.gif" />
+        </Map>
+      </div>
+    );
+  }
+}
+
+export default GoogleApiWrapper({
+  apiKey: "AIzaSyDurZQBXjtSzKeieXwtFeGe-jhZu-HEGQU",
+  libraries: []
+})(MapContainer);

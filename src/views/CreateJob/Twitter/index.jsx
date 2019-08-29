@@ -417,7 +417,7 @@ class Twitter extends Component {
                             <Paper className={classes.paper}>
                                 <Typography>  Select Location:</Typography>
                                 <Grid item xs={12}>
-                                    <GoogleMap />
+                                    <GoogleMap center={{ lat: 28.3753, lng: 73.3451 }} zoom={5} />
                                 </Grid>
                             </Paper>
                         </Grid>
