@@ -97,7 +97,8 @@ class SentInvitesTable extends Component {
 
     componentWillReceiveProps(nextProps, nextContext) {
         if (this.props !== nextProps) {
-            if (nextProps.tempInvite.invite) {
+            if (nextProps.tempInvite){
+                if (nextProps.tempInvite.invite) {
                 const {invites} = this.state;
                 if (nextProps.tempInvite.isUpdate) {
                     this.setState({
@@ -110,6 +111,7 @@ class SentInvitesTable extends Component {
                     this.setState({ invites: [...this.state.invites, nextProps.tempInvite.invite] })
                     this.props.handler();
                 }
+            }
             }
         }
     }
