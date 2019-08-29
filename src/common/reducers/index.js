@@ -1,20 +1,24 @@
 import * as constants from 'constants/constants.js'
+
 const Reducers = (state = [], action) => {
-    switch(action.type) {
+    switch (action.type) {
         case constants.ADD_USER:
-            return {...state,
+            return {
+                ...state,
                 authenticate: true,
                 user: action.user,
                 projects: action.user.memberships,
                 invites: action.user.project_invites
             };
         case constants.ADD_PROJECTS:
-            return {...state,
+            return {
+                ...state,
                 projects: action.projects,
                 user: state.user,
             };
-            case constants.ADD_PROJECT:
-            return {...state,
+        case constants.ADD_PROJECT:
+            return {
+                ...state,
                 projects: state.projects.concat([action.project]),
             };
         case constants.DELETE_PROJECT:
@@ -23,8 +27,16 @@ const Reducers = (state = [], action) => {
             });
         case constants.DELETE_INVITE:
             return Object.assign({}, state, {
-                invites: [...action.invites.filter(inv=> inv.id !== action.invite.id)],
+                invites: [...action.invites.filter(inv => inv.id !== action.invite.id)],
             });
+        case constants.UPDATE_INVITE:
+            return {
+                ...state,
+                tempInvite: {
+                    invite: null,
+                    isUpdate: null
+                }
+            };
         default:
             return state;
     }
