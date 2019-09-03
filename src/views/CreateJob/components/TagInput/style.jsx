@@ -4,8 +4,8 @@ export default theme => ({
       flexWrap: 'wrap',
     },
     textField: {
-      marginLeft: theme.spacing(1),
-      marginRight: theme.spacing(1),
+      marginLeft: theme.spacing(0),
+      marginRight: theme.spacing(0),
       width:'100%'
     },
     input: {
@@ -25,4 +25,5 @@ export default theme => ({
         textAlign: 'left',
         color: theme.palette.text.secondary,
       },
+      
   });

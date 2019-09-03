@@ -9,8 +9,8 @@ export default theme => ({
       
     },
     textField: {
-      marginLeft: theme.spacing(1),
-      marginRight: theme.spacing(1),
+      marginLeft: theme.spacing(0),
+      marginRight: theme.spacing(0),
       width:'100%'
     },
     input: {

@@ -30,8 +30,9 @@ class MapContainer extends React.Component {
   handleMapClick = (ref, map, ev) => {
     const location = ev.latLng;
     console.log(location.lat());
-    console.log(JSON.stringify(location));
-
+    const loca = location.lat()+"%2C"+location.lng();
+    console.log(loca);
+    this.props.getLatLong(loca)
     this.setState(prevState => ({
       locations: [location]
     }));

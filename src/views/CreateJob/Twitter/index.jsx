@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import {withRouter} from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 // Externals
 import PropTypes from 'prop-types';
 import endpoints from 'constants/endpoints.json';
-
+import { target, langs, targetType, target_subtype, scheduleMinuteOptions, scheduleOptions, numTweet } from 'constants/constants.js';
 // Material helpers
 import {
     withStyles,
@@ -16,6 +16,7 @@ import clsx from 'clsx';
 import Typography from '@material-ui/core/Typography';
 import TagInput from '../components/TagInput';
 import SelectField from '../components/SelectField';
+import GeoCode from '../components/GeoCode';
 import DatePickerInline from '../components/DatePicker'
 import GoogleMap from '../components/GoogleMap';
 import Grid from '@material-ui/core/Grid';
@@ -28,7 +29,7 @@ import styles from './style';
 import request from 'helpers/request.js';
 import compose from 'recompose/compose';
 import { toast } from 'react-toastify';
-import {Message, optionsError} from "constants/constants";
+import { Message, optionsError } from "constants/constants";
 
 
 
@@ -36,6 +37,7 @@ import {Message, optionsError} from "constants/constants";
 class Twitter extends Component {
     constructor(props) {
         super(props);
+
     }
 
     state = {
@@ -44,6 +46,8 @@ class Twitter extends Component {
         isInfo: false,
         post: {
             description: "",
+            schedule: "",
+            schedule_units:0,
             job_details: {
                 username: "",
                 all_words: "",
@@ -152,6 +156,31 @@ class Twitter extends Component {
         console.log(val)
         this.setState({
             post: { ...this.state.post, description: val },
+        });
+    }
+    getLatLong = (value) => {
+        const val = value;
+        console.log(val)
+        const data = this.state.post;
+        const currentstate = data;
+        currentstate.job_details.near_place = val
+        console.log(currentstate);
+        this.setState({
+            currentstate
+        });
+    }
+    inputSchedule = (e) => {
+        const val = e;
+        console.log(val)
+        this.setState({
+            post: { ...this.state.post, schedule: val },
+        });
+    }
+    inputScheduleUnit = (e) => {
+        const val = e.target.value;
+        console.log(val)
+        this.setState({
+            post: { ...this.state.post, schedule_units: parseInt(val) },
         });
     }
     inputUserName = (e) => {
@@ -265,8 +294,8 @@ class Twitter extends Component {
         console.log(JSON.stringify(this.state.post));
         const projectId = localStorage.getItem('project_id');
         const user = JSON.parse(localStorage.getItem('user'));
-        if (this.state.post.job_details.username == ""){
-            toast.error(<Message name= "Please Enter Username" />,optionsError);
+        if (this.state.post.job_details.username == "") {
+            toast.error(<Message name="Please Enter Username" />, optionsError);
             return
         }
         try {
@@ -284,59 +313,11 @@ class Twitter extends Component {
                 history.push("/dashboard/" + projectId);
             });
         } catch (error) {
-            toast.error(<Message name= {error.data} />,optionsError);
+            toast.error(<Message name={error.data} />, optionsError);
             console.log(error)
         }
     };
     render() {
-        const langs = [
-            { code: "any", name: "Any language" }, { code: "ar", name: "Arabic" }, { code: "bn", name: "Bangla" }, { code: "eu", name: "Basque" }, { code: "bg", name: "Bulgarian" }, { code: "ca", name: "Catalan" }, { code: "hr", name: "Croatian" }, { code: "cs", name: "Czech" }, { code: "da", name: "Danish" }, { code: "nl", name: "Dutch" }, { code: "en", name: "English" }, { code: "fi", name: "Finnish" }, { code: "fr", name: "French" }, { code: "de", name: "German" }, { code: "el", name: "Greek" }, { code: "gu", name: "Gujarati" }, { code: "he", name: "Hebrew" }, { code: "hi", name: "Hindi" }, { code: "hu", name: "Hungarian" }, { code: "id", name: "Indonesian" }, { code: "it", name: "Italian" }, { code: "ja", name: "Japanese" }, { code: "kn", name: "Kannada" }, { code: "ko", name: "Korean" }, { code: "mr", name: "Marathi" }, { code: "no", name: "Norwegian" }, { code: "fa", name: "Persian" }, { code: "pl", name: "Polish" }, { code: "pt", name: "Portuguese" }, { code: "ro", name: "Romanian" }, { code: "ru", name: "Russian" }, { code: "sr", name: "Serbian" }, { code: "zh-cn", name: "Simplified Chinese" }, { code: "sk", name: "Slovak" }, { code: "es", name: "Spanish" }, { code: "sv", name: "Swedish" }, { code: "ta", name: "Tamil" }, { code: "th", name: "Thai" }, { code: "zh-tw", name: "Traditional Chinese" }, { code: "tr", name: "Turkish" }, { code: "uk", name: "Ukrainian" }, { code: "ur", name: "Urdu" }, { code: "vi", name: "Vietnamese" }];
-        const target = [
-            {
-                name: "User",
-                code: "USER"
-            },
-            {
-                name: "Keyword",
-                code: "KEYWORD"
-            },
-            {
-                name: "Trend",
-                code: "TREND"
-            }
-        ];
-        const targetType = [
-            {
-                name: "Profile Info",
-                code: "INFO"
-            },
-            {
-                name: "Posts",
-                code: "POSTS"
-            }
-        ];
-        const dict = [
-            {
-                name: "All",
-                code: "All"
-            },
-            {
-                name: "1000",
-                code: "1000"
-            },
-            {
-                name: "2000",
-                code: "2000"
-            },
-            {
-                name: "5000",
-                code: "5000"
-            },
-            {
-                name: "10000",
-                code: "10000"
-            }
-        ];
         const { classes, className, ...rest } = this.props;
         return (
             <Grid container >
@@ -358,37 +339,85 @@ class Twitter extends Component {
                     <Grid item xs={3}>
                         <Paper className={classes.paper}>
                             <Grid item xs={12}>
-                                <SelectField getValue={this.getTargetType} options={target} label={"What do you want to search ?"} disabled={false} />
+                                <SelectField getValue={this.getTargetType} options={target} label={"Monitor"} disabled={false} />
                             </Grid>
                         </Paper>
                     </Grid>
                     <Grid item xs={3}>
                         <Paper className={classes.paper}>
                             <Grid item xs={12}>
-                                <SelectField getValue={this.getTargetSubtype} options={targetType} label={"What is your target ?"} disabled={this.state.isUser} />
+                                <SelectField getValue={this.getTargetSubtype} options={targetType} label={"Target"} disabled={this.state.isUser} />
                             </Grid>
                         </Paper>
                     </Grid>
                 </Grid>
                 {this.state.visible === true ?
                     <Grid container className={classes.space} spacing={3}>
-                        <Grid item xs={12}>
-                            <Paper className={classes.paper}>
-                                <Grid item xs={12}>
-                                    <TextField
-                                        onKeyUp={this.inputExactPhrase}
-                                        id="outlined-dense"
-                                        label="Exact Phrase"
-                                        className={clsx(classes.textField, classes.dense)}
-                                        margin="dense"
-                                        variant="outlined"
-                                    />
-                                </Grid>
-                            </Paper>
-                        </Grid>
-                        <Grid item xs={4}>
+                        {this.state.isUser === true ?
                             <Grid item xs={12}>
-                                <TagInput label={"User Name"} getData={this.getUserName} />
+                                <Grid container spacing={3} >
+                                    <Grid item xs={12}>
+                                        <Paper className={classes.paper}>
+                                            <Grid item xs={12}>
+                                                <TextField
+                                                    onKeyUp={this.inputExactPhrase}
+                                                    id="outlined-dense"
+                                                    label="Exact Phrase"
+                                                    className={clsx(classes.textField, classes.dense)}
+                                                    margin="dense"
+                                                    variant="outlined"
+                                                />
+                                            </Grid>
+                                        </Paper>
+                                    </Grid>
+                                    <Grid item xs={12}>
+                                        <Grid item xs={12}>
+                                            <TagInput label={"User Name"} getData={this.getUserName} />
+                                        </Grid>
+                                    </Grid>
+                                </Grid>
+                            </Grid>
+                            :
+                            <Grid item xs={12}>
+                                <Grid container spacing={3} >
+                                    <Grid item xs={6}>
+                                        <Paper className={classes.paper}>
+                                            <Grid item xs={12}>
+                                                <TextField
+                                                    onKeyUp={this.inputUserName}
+                                                    id="outlined-dense"
+                                                    label="User Name"
+                                                    className={clsx(classes.textField, classes.dense)}
+                                                    margin="dense"
+                                                    variant="outlined"
+                                                />
+                                            </Grid>
+                                        </Paper>
+                                    </Grid>
+                                    <Grid item xs={6}>
+                                        <Paper className={classes.paper}>
+                                            <Grid item xs={12}>
+                                                <TextField
+                                                    onKeyUp={this.inputExactPhrase}
+                                                    id="outlined-dense"
+                                                    label="Exact Phrase"
+                                                    className={clsx(classes.textField, classes.dense)}
+                                                    margin="dense"
+                                                    variant="outlined"
+                                                />
+                                            </Grid>
+                                        </Paper>
+                                    </Grid>
+                                </Grid>
+                            </Grid>}
+                        <Grid item xs={this.state.isUser === true ? 6:4}>
+                            <Grid item xs={12}>
+                                <TagInput label={"HashTags"} getData={this.getHashtags} />
+                            </Grid>
+                        </Grid>
+                        <Grid item xs={this.state.isUser === true ? 6:4}>
+                            <Grid item xs={12}>
+                                <TagInput label={"Reply To"} getData={this.getReplyTo} />
                             </Grid>
                         </Grid>
                         <Grid item xs={4}>
@@ -396,24 +425,14 @@ class Twitter extends Component {
                                 <TagInput label={"All Words"} getData={this.getAllWords} />
                             </Grid>
                         </Grid>
-                        <Grid item xs={4}>
+                        <Grid item xs={this.state.isUser === true ? 4:6}>
                             <Grid item xs={12}>
                                 <TagInput label={"Any Words"} getData={this.getAnyWords} />
                             </Grid>
                         </Grid>
-                        <Grid item xs={4}>
+                        <Grid item xs={this.state.isUser === true ? 4:6}>
                             <Grid item xs={12}>
                                 <TagInput label={"Not Words"} getData={this.getNotWords} />
-                            </Grid>
-                        </Grid>
-                        <Grid item xs={4}>
-                            <Grid item xs={12}>
-                                <TagInput label={"HashTags"} getData={this.getHashtags} />
-                            </Grid>
-                        </Grid>
-                        <Grid item xs={4}>
-                            <Grid item xs={12}>
-                                <TagInput label={"Reply To"} getData={this.getReplyTo} />
                             </Grid>
                         </Grid>
                         <Grid item xs={6}>
@@ -440,7 +459,7 @@ class Twitter extends Component {
                                 <Grid item xs={6}>
                                     <Paper className={classes.paper}>
                                         <Grid item xs={12}>
-                                            <SelectField getValue={this.getNumTweets} options={dict} label={"Total Tweets"} />
+                                            <SelectField getValue={this.getNumTweets} options={numTweet} label={"Total Tweets"} />
                                         </Grid>
                                     </Paper>
                                 </Grid>
@@ -451,32 +470,73 @@ class Twitter extends Component {
                                         </Grid>
                                     </Paper>
                                 </Grid>
+                                <Grid item xs={6}>
+                                    <Paper className={classes.paper}>
+                                        <Grid item xs={12}>
+                                            <SelectField getValue={this.inputSchedule} options={scheduleOptions} label={"Schedule"} disabled={false} />
+                                        </Grid>
+                                    </Paper>
+                                </Grid>
+                                <Grid item xs={6}>
+                                    <Paper className={classes.paper}>
+                                        <Grid item xs={12}>
+                                            <TextField
+                                                onKeyUp={this.inputScheduleUnit}
+                                                id="outlined-dense"
+                                                label="Schedule Units"
+                                                className={clsx(classes.textField, classes.dense)}
+                                                margin="dense"
+                                                variant="outlined"
+                                                helperText=""
+                                            />
+                                        </Grid>
+                                    </Paper>
+                                </Grid>
+                                <Grid item xs={12}>
+                                    <Button
+                                        onClick={this.startJob}
+                                        className={classes.signInButton}
+                                        color="primary"
+                                        size="large"
+                                        variant="contained"
+                                    >
+                                        Register Job
+                                    </Button>
+                                </Grid>
                             </Grid>
                         </Grid>
                         <Grid item xs={6}>
-                            <Paper className={classes.paper}>
-                                <Typography>  Select Location:</Typography>
+                            <Grid container spacing={3}>
                                 <Grid item xs={12}>
-                                    <GoogleMap center={{ lat: 28.3753, lng: 73.3451 }} zoom={5} />
+                                    <Paper className={classes.paper}>
+                                        <Grid item xs={12}>
+                                        <TextField
+                                            id="outlined-dense"
+                                            label="Search Location"
+                                            className={clsx(classes.textField, classes.dense)}
+                                            margin="dense"
+                                            variant="outlined"
+                                            value={this.state.post.job_details.near_place}
+                                        />
+                                        </Grid>
+                                    </Paper>
                                 </Grid>
-                            </Paper>
-                        </Grid>
-                        <Grid item xs={6}>
-                            <Button
-                                onClick={this.startJob}
-                                className={classes.signInButton}
-                                color="primary"
-                                size="large"
-                                variant="contained"
-                            >
-                                Register Job
-                    </Button>
+                                <Grid item xs={12}>
+                                    <Paper className={classes.paper}>
+                                        <Typography>  Select Location:</Typography>
+                                        <Grid item xs={12}>
+                                            <GoogleMap getLatLong={this.getLatLong} center={{ lat: 28.3753, lng: 73.3451 }} zoom={5} />
+                                        </Grid>
+                                    </Paper>
+                                </Grid>
+                            </Grid>
                         </Grid>
                     </Grid>
-                    : null}
+                    :
+                    null}
                 {this.state.isInfo === true ?
                     <Grid container spacing={3} >
-                        <Grid item xs={9}>
+                        <Grid item xs={3}>
                             <Paper className={classes.paper}>
                                 <Grid item xs={12}>
                                     <TextField
@@ -486,6 +546,29 @@ class Twitter extends Component {
                                         className={clsx(classes.textField, classes.dense)}
                                         margin="dense"
                                         variant="outlined"
+
+                                        />
+                                </Grid>
+                            </Paper>
+                        </Grid>
+                        <Grid item xs={3}>
+                                    <Paper className={classes.paper}>
+                                        <Grid item xs={12}>
+                                            <SelectField getValue={this.inputSchedule} options={scheduleOptions} label={"Schedule"} disabled={false} />
+                                        </Grid>
+                                    </Paper>
+                                </Grid>
+                        <Grid item xs={3}>
+                            <Paper className={classes.paper}>
+                                <Grid item xs={12}>
+                                    <TextField
+                                        onKeyUp={this.inputScheduleUnit}
+                                        id="outlined-dense"
+                                        label="Schedule Units"
+                                        className={clsx(classes.textField, classes.dense)}
+                                        margin="dense"
+                                        variant="outlined"
+                                        helperText=""
                                     />
                                 </Grid>
                             </Paper>
@@ -505,7 +588,8 @@ class Twitter extends Component {
                             </Paper>
                         </Grid>
                     </Grid>
-                    : null}
+                    :
+                    null}
             </Grid>
         );
     }
@@ -515,8 +599,8 @@ Twitter.propTypes = {
     className: PropTypes.string,
 };
 
-export default compose( 
+export default compose(
     withRouter,
     withStyles(styles)
-    )(Twitter);
+)(Twitter);
 
