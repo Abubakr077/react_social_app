@@ -546,7 +546,6 @@ class Twitter extends Component {
                                         className={clsx(classes.textField, classes.dense)}
                                         margin="dense"
                                         variant="outlined"
-
                                         />
                                 </Grid>
                             </Paper>
