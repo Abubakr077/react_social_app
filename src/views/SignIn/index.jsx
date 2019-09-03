@@ -88,6 +88,7 @@ class SignIn extends Component {
         newState.values[field] = value;
 
         this.setState(newState, this.validateForm);
+        this.nameInput.focus();
     };
 
     handleSignIn = async (e) => {
@@ -297,6 +298,7 @@ class SignIn extends Component {
                                             }}
                                             size="large"
                                             variant="contained"
+                                            ref={(input) => { this.nameInput = input; }}
                                         >
                                             Sign in now
                                         </Button>
