@@ -16,13 +16,11 @@ import clsx from 'clsx';
 import Typography from '@material-ui/core/Typography';
 import TagInput from '../components/TagInput';
 import SelectField from '../components/SelectField';
-import GeoCode from '../components/GeoCode';
 import DatePickerInline from '../components/DatePicker'
 import GoogleMap from '../components/GoogleMap';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
-import { makeStyles } from '@material-ui/core/styles';
-import { white } from 'common/colors';
+
 
 // Component styles
 import styles from './style';
