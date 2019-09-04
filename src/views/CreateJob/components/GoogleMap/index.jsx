@@ -1,6 +1,11 @@
 import React, { Component } from "react";
+import compose from 'recompose/compose';
 import { Map, Marker, GoogleApiWrapper } from "google-maps-react";
-import './style.css';
+import PropTypes from 'prop-types';
+import {
+  withStyles
+} from '@material-ui/core';
+
 const MarkersList = props => {
   const { locations, ...markerProps } = props;
   return (
@@ -17,6 +22,13 @@ const MarkersList = props => {
     </span>
   );
 };
+const styles = theme => ({
+  map: {
+      height:"330px",
+      position: "relative",
+      border:"1px solid green"
+    }  
+});
 
 class MapContainer extends React.Component {
   constructor(props) {
@@ -26,7 +38,7 @@ class MapContainer extends React.Component {
     };
     this.handleMapClick = this.handleMapClick.bind(this);
   }
-
+   
   handleMapClick = (ref, map, ev) => {
     const location = ev.latLng;
     console.log(location.lat());
@@ -40,11 +52,11 @@ class MapContainer extends React.Component {
   };
 
   render() {
+    const { classes, className } = this.props;
     return (
-      <div className="map">
+      <div className={classes.map}>
         <Map
           google={this.props.google}
-          className="map"
           zoom={this.props.zoom}
           initialCenter={this.props.center}
           onClick={this.handleMapClick}
@@ -55,8 +67,15 @@ class MapContainer extends React.Component {
     );
   }
 }
+GoogleApiWrapper.propTypes = {
+  className: PropTypes.string,
+  classes: PropTypes.object.isRequired
+};
 
-export default GoogleApiWrapper({
-  apiKey: "AIzaSyDurZQBXjtSzKeieXwtFeGe-jhZu-HEGQU",
-  libraries: []
-})(MapContainer);
+export default compose(
+  withStyles(styles),
+  GoogleApiWrapper({
+    apiKey: "AIzaSyDurZQBXjtSzKeieXwtFeGe-jhZu-HEGQU",
+    libraries: []
+  })
+)(MapContainer);
