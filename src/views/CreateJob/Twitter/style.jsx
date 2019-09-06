@@ -1,4 +1,8 @@
 export default theme => ({
+    error:{
+      "color":"red",
+      marginTop: theme.spacing(1),
+    },
     root: {
       flexGrow: 1,
     },

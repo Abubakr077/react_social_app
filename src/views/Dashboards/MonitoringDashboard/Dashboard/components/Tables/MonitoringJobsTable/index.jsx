@@ -353,12 +353,12 @@ class MonitoringJobsTable extends Component {
         );
     }
 
-    handleDelete(id) {
+    async handleDelete(id) {
         const {user,project_id,jobs} = this.state;
         const endpoint = endpoints.getProjectJobs+'/'+id+'?force=1';
 
         try{
-            request({
+            await request({
                 url:    endpoint,
                 method: 'DELETE',
                 headers: {
@@ -376,6 +376,9 @@ class MonitoringJobsTable extends Component {
             );
         }catch (error) {
             toast.error(<Message name={error.data}/>, optionsError);
+            this.setState({
+                isLoading: false
+            });
         }
     }
     handleToggleStatus(id) {
@@ -395,7 +398,7 @@ class MonitoringJobsTable extends Component {
                         Object.assign({}, el, { status: res.status })
                         : el))
                 });
-                toast.success(<Message name={'Job Updated Successfully'}/>,optionsSuccess);
+                // toast.success(<Message name={'Job Updated Successfully'}/>,optionsSuccess);
                 }
             );
         }catch (error) {

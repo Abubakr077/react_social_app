@@ -20,6 +20,9 @@ import DatePickerInline from '../components/DatePicker'
 import GoogleMap from '../components/GoogleMap';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
+import validate from "validate.js";
+import schema from "./schema";
+
 
 // Component styles
 import styles from './style';
@@ -41,10 +44,12 @@ class Twitter extends Component {
         visible: false,
         isUser: false,
         isInfo: false,
+        errorText: "",
+        isValid: false,
         post: {
             description: "",
             schedule: "",
-            schedule_units:0,
+            schedule_units: 0,
             job_details: {
                 username: "",
                 all_words: "",
@@ -66,6 +71,7 @@ class Twitter extends Component {
             }
         }
     };
+
 
     getUserName = (username) => {
         console.log(username.tags.join(" "));
@@ -175,10 +181,34 @@ class Twitter extends Component {
     }
     inputScheduleUnit = (e) => {
         const val = e.target.value;
-        console.log(val)
-        this.setState({
-            post: { ...this.state.post, schedule_units: parseInt(val) },
-        });
+        console.log(val);
+        const unit = this.state.post.schedule;
+        console.log(unit);
+        var error = "";
+        if (unit == "EVERY_N_MINUTES") {
+            console.log(unit);
+            error = validate({ Unit: parseInt(val) }, schema.unitMin);
+        }
+
+        if (unit == "EVERY_N_HOURS") {
+            console.log("EVERY_N_HOUR");
+            error = validate({ Unit: parseInt(val) }, schema.unitHour);
+        }
+
+        if (!error) {
+            console.log(error);
+            this.setState({
+                isValid: false,
+                errorText: "",
+                post: { ...this.state.post, schedule_units: parseInt(val) },
+            });
+        } else {
+            this.setState({
+                isValid: true,
+                errorText: "* " + error.Unit,
+            });
+        }
+
     }
     inputUserName = (e) => {
         const val = e.target.value;
@@ -407,12 +437,12 @@ class Twitter extends Component {
                                     </Grid>
                                 </Grid>
                             </Grid>}
-                        <Grid item xs={this.state.isUser === true ? 6:4}>
+                        <Grid item xs={this.state.isUser === true ? 6 : 4}>
                             <Grid item xs={12}>
                                 <TagInput label={"HashTags"} getData={this.getHashtags} />
                             </Grid>
                         </Grid>
-                        <Grid item xs={this.state.isUser === true ? 6:4}>
+                        <Grid item xs={this.state.isUser === true ? 6 : 4}>
                             <Grid item xs={12}>
                                 <TagInput label={"Reply To"} getData={this.getReplyTo} />
                             </Grid>
@@ -422,12 +452,12 @@ class Twitter extends Component {
                                 <TagInput label={"All Words"} getData={this.getAllWords} />
                             </Grid>
                         </Grid>
-                        <Grid item xs={this.state.isUser === true ? 4:6}>
+                        <Grid item xs={this.state.isUser === true ? 4 : 6}>
                             <Grid item xs={12}>
                                 <TagInput label={"Any Words"} getData={this.getAnyWords} />
                             </Grid>
                         </Grid>
-                        <Grid item xs={this.state.isUser === true ? 4:6}>
+                        <Grid item xs={this.state.isUser === true ? 4 : 6}>
                             <Grid item xs={12}>
                                 <TagInput label={"Not Words"} getData={this.getNotWords} />
                             </Grid>
@@ -485,8 +515,10 @@ class Twitter extends Component {
                                                 margin="dense"
                                                 variant="outlined"
                                                 helperText=""
+                                                disabled={this.state.post.schedule == "" ? true : false}
                                             />
                                         </Grid>
+                                        {this.state.isValid ? <p className={classes.error}>{this.state.errorText}</p> : null}
                                     </Paper>
                                 </Grid>
                                 <Grid item xs={12}>
@@ -507,14 +539,14 @@ class Twitter extends Component {
                                 <Grid item xs={12}>
                                     <Paper className={classes.paper}>
                                         <Grid item xs={12}>
-                                        <TextField
-                                            id="outlined-dense"
-                                            label="Search Location"
-                                            className={clsx(classes.textField, classes.dense)}
-                                            margin="dense"
-                                            variant="outlined"
-                                            value={this.state.post.job_details.near_place}
-                                        />
+                                            <TextField
+                                                id="outlined-dense"
+                                                label="Search Location"
+                                                className={clsx(classes.textField, classes.dense)}
+                                                margin="dense"
+                                                variant="outlined"
+                                                value={this.state.post.job_details.near_place}
+                                            />
                                         </Grid>
                                     </Paper>
                                 </Grid>
@@ -543,17 +575,17 @@ class Twitter extends Component {
                                         className={clsx(classes.textField, classes.dense)}
                                         margin="dense"
                                         variant="outlined"
-                                        />
+                                    />
                                 </Grid>
                             </Paper>
                         </Grid>
                         <Grid item xs={3}>
-                                    <Paper className={classes.paper}>
-                                        <Grid item xs={12}>
-                                            <SelectField getValue={this.inputSchedule} options={scheduleOptions} label={"Schedule"} disabled={false} />
-                                        </Grid>
-                                    </Paper>
+                            <Paper className={classes.paper}>
+                                <Grid item xs={12}>
+                                    <SelectField getValue={this.inputSchedule} options={scheduleOptions} label={"Schedule"} disabled={false} />
                                 </Grid>
+                            </Paper>
+                        </Grid>
                         <Grid item xs={3}>
                             <Paper className={classes.paper}>
                                 <Grid item xs={12}>
@@ -564,9 +596,11 @@ class Twitter extends Component {
                                         className={clsx(classes.textField, classes.dense)}
                                         margin="dense"
                                         variant="outlined"
-                                        helperText=""
+                                        disabled={this.state.post.schedule == "" ? true : false}
                                     />
                                 </Grid>
+                                {this.state.isValid ? <p className={classes.error}>{this.state.errorText}</p> : null}
+
                             </Paper>
                         </Grid>
                         <Grid item xs={3}>

@@ -4,7 +4,7 @@ import { createBrowserHistory } from 'history';
 import { ToastContainer, Slide, Zoom, Flip, Bounce  } from 'react-toastify';
 
 // Externals
-import { Chart } from 'react-chartjs-2';
+// import { Chart } from 'react-chartjs-2';
 
 // Material helpers
 import { ThemeProvider } from '@material-ui/styles';
@@ -27,10 +27,10 @@ import PerfectScrollbar from "react-perfect-scrollbar";
 // Browser history
 const browserHistory = createBrowserHistory();
 
-// Configure ChartJS
-Chart.helpers.extend(Chart.elements.Rectangle.prototype, {
-  draw: chartjs.draw
-});
+// // Configure ChartJS
+// Chart.helpers.extend(Chart.elements.Rectangle.prototype, {
+//   draw: chartjs.draw
+// });
 
 export default class App extends Component {
   render() {

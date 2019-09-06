@@ -52,17 +52,11 @@ export default theme => ({
     elevation: 1,
     borderRadius: '8px',
   },
-  root: {
-    display: "block"
-  },
   formControl: {
     margin: theme.spacing(3)
   },
   group: {
     margin: theme.spacing(1, 0)
-  },
-  root: {
-    flexGrow: 1,
   },
   paper: {
     padding: theme.spacing(2),
