@@ -37,19 +37,22 @@ import { Message, optionsError } from "constants/constants";
 class Twitter extends Component {
     constructor(props) {
         super(props);
-
+        this.inputScheduleUnit = this.inputScheduleUnit.bind(this);
+        this.inputUserName = this.inputUserName.bind(this);
     }
 
     state = {
         visible: false,
+        isUserNameError: false,
         isUser: false,
         isInfo: false,
         errorText: "",
         isValid: false,
+        isScheduleUnit: true,
         post: {
             description: "",
             schedule: "",
-            schedule_units: 0,
+            schedule_units: null,
             job_details: {
                 username: "",
                 all_words: "",
@@ -72,6 +75,36 @@ class Twitter extends Component {
         }
     };
 
+    velidator = (val, unit) => {
+        var error = "";
+        console.log("velidation function call");
+        console.log(unit);
+        console.log(val);
+        if (unit == "EVERY_N_MINUTES") {
+            error = validate({ Unit: parseInt(val) }, schema.unitMin);
+        }
+
+        if (unit == "EVERY_N_HOURS") {
+            error = validate({ Unit: parseInt(val) }, schema.unitHours);
+        }
+
+        if (unit == "EVERY_N_HOURS") {
+            error = validate({ Unit: parseInt(val) }, schema.unitHours);
+        }
+
+        if (!error) {
+            this.setState({
+                isValid: false,
+                errorText: "",
+                post: { ...this.state.post, schedule_units: parseInt(val) },
+            });
+        } else {
+            this.setState({
+                isValid: true,
+                errorText: error.Unit,
+            });
+        }
+    };
 
     getUserName = (username) => {
         console.log(username.tags.join(" "));
@@ -174,48 +207,39 @@ class Twitter extends Component {
     }
     inputSchedule = (e) => {
         const val = e;
-        console.log(val)
-        this.setState({
-            post: { ...this.state.post, schedule: val },
-        });
+        if (val == "ONCE_EVERY_HOUR") {
+            console.log("this is hour");
+            this.setState({
+                isScheduleUnit: true,
+                errorText: "",
+                post: { ...this.state.post, schedule_units: 1, schedule: val },
+            });
+        } else {
+            console.log("this is minute and hours");
+            this.setState({
+                isScheduleUnit: false,
+                post: { ...this.state.post, schedule: val, schedule_units: val ===  "EVERY_N_MINUTES" ? 5 : 2 },
+            },()=>this.velidator(this.state.post.schedule_units, val));
+            
+        }
+        
     }
     inputScheduleUnit = (e) => {
         const val = e.target.value;
-        console.log(val);
         const unit = this.state.post.schedule;
-        console.log(unit);
-        var error = "";
-        if (unit == "EVERY_N_MINUTES") {
-            console.log(unit);
-            error = validate({ Unit: parseInt(val) }, schema.unitMin);
-        }
-
-        if (unit == "EVERY_N_HOURS") {
-            console.log("EVERY_N_HOUR");
-            error = validate({ Unit: parseInt(val) }, schema.unitHour);
-        }
-
-        if (!error) {
-            console.log(error);
-            this.setState({
-                isValid: false,
-                errorText: "",
-                post: { ...this.state.post, schedule_units: parseInt(val) },
-            });
-        } else {
-            this.setState({
-                isValid: true,
-                errorText: "* " + error.Unit,
-            });
-        }
-
+        this.setState({
+            isScheduleUnit: false,
+            post: { ...this.state.post, schedule: unit, schedule_units: val },
+        },()=>this.velidator(this.state.post.schedule_units, unit));
     }
     inputUserName = (e) => {
         const val = e.target.value;
         console.log(val);
-        const data = this.state.post;
+        const data = this.state;
         const currentstate = data;
-        currentstate.job_details.username = val
+        currentstate.post.job_details.username = val;
+        currentstate.isUserNameError=false;
+        currentstate.errorText = "";
         console.log(currentstate);
         this.setState({
             currentstate
@@ -322,7 +346,10 @@ class Twitter extends Component {
         const projectId = localStorage.getItem('project_id');
         const user = JSON.parse(localStorage.getItem('user'));
         if (this.state.post.job_details.username == "") {
-            toast.error(<Message name="Please Enter Username" />, optionsError);
+            this.setState({
+                isUserNameError: true,
+                errorText: "Please Enter User Name",
+            });
             return
         }
         try {
@@ -419,6 +446,7 @@ class Twitter extends Component {
                                                     variant="outlined"
                                                 />
                                             </Grid>
+                                            {this.state.isUserNameError ? <Typography className={classes.error}>{this.state.errorText}</Typography> : null}
                                         </Paper>
                                     </Grid>
                                     <Grid item xs={6}>
@@ -508,17 +536,18 @@ class Twitter extends Component {
                                     <Paper className={classes.paper}>
                                         <Grid item xs={12}>
                                             <TextField
-                                                onKeyUp={this.inputScheduleUnit}
+                                                onChange={this.inputScheduleUnit}
                                                 id="outlined-dense"
                                                 label="Schedule Units"
                                                 className={clsx(classes.textField, classes.dense)}
                                                 margin="dense"
                                                 variant="outlined"
                                                 helperText=""
-                                                disabled={this.state.post.schedule == "" ? true : false}
+                                                disabled={this.state.isScheduleUnit}
+                                                value={this.state.post.schedule_units}
                                             />
                                         </Grid>
-                                        {this.state.isValid ? <p className={classes.error}>{this.state.errorText}</p> : null}
+                                        {this.state.isValid ? <Typography className={classes.error}>{this.state.errorText}</Typography> : null}
                                     </Paper>
                                 </Grid>
                                 <Grid item xs={12}>
@@ -528,6 +557,8 @@ class Twitter extends Component {
                                         color="primary"
                                         size="large"
                                         variant="contained"
+                                        margin="dense"
+                                        disabled = {this.state.isValid}
                                     >
                                         Register Job
                                     </Button>
@@ -577,6 +608,7 @@ class Twitter extends Component {
                                         variant="outlined"
                                     />
                                 </Grid>
+                                {this.state.isUserNameError ? <Typography className={classes.error}>{this.state.errorText}</Typography> : null}
                             </Paper>
                         </Grid>
                         <Grid item xs={3}>
@@ -590,23 +622,22 @@ class Twitter extends Component {
                             <Paper className={classes.paper}>
                                 <Grid item xs={12}>
                                     <TextField
-                                        onKeyUp={this.inputScheduleUnit}
+                                        onChange={this.inputScheduleUnit}
                                         id="outlined-dense"
                                         label="Schedule Units"
                                         className={clsx(classes.textField, classes.dense)}
                                         margin="dense"
                                         variant="outlined"
-                                        disabled={this.state.post.schedule == "" ? true : false}
+                                        disabled={this.state.isScheduleUnit}
+                                        value={this.state.post.schedule_units}
                                     />
                                 </Grid>
                                 {this.state.isValid ? <p className={classes.error}>{this.state.errorText}</p> : null}
-
                             </Paper>
                         </Grid>
                         <Grid item xs={3}>
                             <Paper className={classes.paper}>
                                 <Button
-
                                     onClick={this.startJob}
                                     className={classes.signInButton}
                                     color="primary"

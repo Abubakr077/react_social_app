@@ -1,7 +1,8 @@
 export default theme => ({
     error:{
-      "color":"red",
-      marginTop: theme.spacing(1),
+      color: theme.palette.danger.main,
+      marginBottom: theme.spacing.unit * 2,
+      marginTop: theme.spacing.unit
     },
     root: {
       flexGrow: 1,
@@ -29,6 +30,8 @@ export default theme => ({
     },
     signInButton:{
       textAlign:"center",
+      marginTop: theme.spacing(0.6),
+      marginBottom: theme.spacing(0.6),
       width:"100%"
     }
   });
