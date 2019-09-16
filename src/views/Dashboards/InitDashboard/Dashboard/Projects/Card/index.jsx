@@ -30,6 +30,7 @@ import {connect} from "react-redux";
 import compose from "recompose/compose";
 import {Message, optionsSuccess} from "constants/constants";
 import {optionsError} from "../../../../../../constants/constants";
+import confirm from 'helpers/confirmation.js';
 
 
 // Component styles
@@ -89,12 +90,14 @@ const CustomCard = props => {
     className
   );
 
-    function handleDelete() {
+
+
+   async function handleDelete() {
         const   user   = JSON.parse(localStorage.getItem('user'));
         const projects   = JSON.parse(localStorage.getItem('projects'));
         const id = cardProject.project.id;
         try{
-            request({
+            await request({
                 url:    endPoints.deleteProject,
                 method: 'DELETE',
                 headers: {

@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import { Link, withRouter } from 'react-router-dom';
+
 // Externals
 import classNames from 'classnames';
 import moment from 'moment';
@@ -7,7 +9,7 @@ import PropTypes from 'prop-types';
 
 
 // Material helpers
-import {Divider, TableCell, Typography, withStyles} from '@material-ui/core';
+import {Button, Divider, TableCell, Typography, withStyles} from '@material-ui/core';
 
 // Material components
 import {
@@ -30,6 +32,7 @@ import {
     PortletHeader,
     PortletLabel,
     PortletContent,
+    PortletFooter
 } from 'components';
 import MaterialTable from "material-table";
 import TextField from "@material-ui/core/TextField";
@@ -133,26 +136,6 @@ class MonitoringJobsTable extends Component {
                         ]}
                         actions={[
                             rowData => ({
-                                icon: ()=>
-                                    <div className={classes.deleteIcon}>
-                                    <DeleteIcon />
-                                </div>,
-                                onClick: (event, rowData) => {
-                                    confirm('Are you sure you want to delete '+rowData.description+' ?').then(
-                                        (result) => {
-                                            // `proceed` callback
-                                            this.setState({
-                                                isLoading: true
-                                            });
-                                            this.handleDelete(rowData.id);
-                                        },
-                                        (result) => {
-                                            // `cancel` callback
-                                        }
-                                    )
-                                }
-                            }),
-                            rowData => ({
                                 icon: ()=>{
                                     if (rowData.status === "ACTIVE"){
                                         return (
@@ -168,6 +151,27 @@ class MonitoringJobsTable extends Component {
                                     this.handleToggleStatus(rowData.id);
                                 }
                             }),
+                            rowData => ({
+                                icon: ()=>
+                                    <div className={classes.deleteIcon}>
+                                        <DeleteIcon />
+                                    </div>,
+                                onClick: (event, rowData) => {
+                                    confirm('Are you sure you want to delete '+rowData.description+' ?').then(
+                                        (result) => {
+                                            // `proceed` callback
+                                            this.setState({
+                                                isLoading: true
+                                            });
+                                            this.handleDelete(rowData.id);
+                                        },
+                                        (result) => {
+                                            // `cancel` callback
+                                        }
+                                    )
+                                }
+                            }),
+
                         ]}
                         data={this.state.jobs}
                         title="Monitoring Jobs"
@@ -343,6 +347,21 @@ class MonitoringJobsTable extends Component {
                                             </div>
                                         </div>
                                     </PortletContent>
+                                    <div className={classes.portletFooter}>
+                                        {isLoading ? (
+                                            <CircularProgress/>
+                                        ) : (
+                                                <Button
+                                                    color="primary"
+                                                    variant="contained"
+                                                    onClick={()=>{
+                                                        this.goToAnalysis(rowData);
+                                                    }}
+                                                >
+                                                    See Analytics
+                                                </Button>
+                                        )}
+                                    </div>
                                 </Portlet>
                             )
                         }}
@@ -351,6 +370,13 @@ class MonitoringJobsTable extends Component {
                 )}
             </div>
         );
+    }
+
+    goToAnalysis(rowData) {
+        const { history } = this.props;
+        const url = this.props.match.url;
+        localStorage.setItem('job',JSON.stringify(rowData));
+        history.push(url+'/analysis');
     }
 
     async handleDelete(id) {
@@ -409,11 +435,13 @@ class MonitoringJobsTable extends Component {
 
 MonitoringJobsTable.propTypes = {
     className: PropTypes.string,
-    classes: PropTypes.object.isRequired
+    classes: PropTypes.object.isRequired,
+    history: PropTypes.object.isRequired
+
 };
 
-export default
-compose(
+export default compose(
+    withRouter,
     withStyles(styles)
 )
 (MonitoringJobsTable);
