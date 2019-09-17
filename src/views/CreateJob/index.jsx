@@ -1,12 +1,7 @@
 import React, { Component } from 'react';
 import { Radio, RadioGroup, FormControlLabel, FormControl, FormLabel } from '@material-ui/core';
 // Externals
-import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import PerfectScrollbar from 'react-perfect-scrollbar';
-
-import { ExpentionPanelView } from "./components";
-
 // Material helpers
 import {
   withStyles
@@ -14,15 +9,13 @@ import {
 
 import {
   Dashboard as DashboardLayout
-
 } from 'layouts';
 
 // Component styles
 import styles from './styles';
-import { makeStyles } from "@material-ui/core/styles";
 import Twitter from './Twitter'
-import { thisExpression } from '@babel/types';
 import Paper from '@material-ui/core/Paper';
+import Facebook from './Facebook'
 
 class CreateJob extends Component {
   constructor(props) {
@@ -77,7 +70,7 @@ class CreateJob extends Component {
               />
             </RadioGroup>
           </FormControl>
-          {this.state.value === "twitter" ? <Twitter /> : null}
+          {this.state.value === "twitter" ? <Twitter /> : <Facebook />}
         </Paper>
 
       </DashboardLayout>

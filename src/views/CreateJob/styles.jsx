@@ -61,5 +61,8 @@ export default theme => ({
   paper: {
     padding: theme.spacing(2),
     textAlign: 'left',
+    margin: theme.spacing.unit * 4,
+    marginTop: theme.spacing.unit * 12,
+
   },
 });

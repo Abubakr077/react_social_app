@@ -1,7 +1,6 @@
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import clsx from 'clsx';
-// import './style.css'
 import {
   withStyles
 } from '@material-ui/core';
@@ -45,11 +44,11 @@ class InputTag extends React.Component {
       const { classes, className, ...rest } = this.props;
       return (
         <Paper className={classes.paper}>
-          <ul className="input-tag__tags">
+          <ul className={classes.input_tag__tags}>
             { tags.map((tag, i) => (
-              <li key={tag}>
+              <li className={classes.input_tag__tags_li} key={tag}>
                 {tag}
-                <button type="button" onClick={() => { this.removeTag(i); }}>+</button>
+                <button className={classes.input_tag__tags_li_button} type="button" onClick={() => { this.removeTag(i); }}>+</button>
               </li>
             ))}
           </ul>
