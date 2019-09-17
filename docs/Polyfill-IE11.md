@@ -17,9 +17,7 @@ import 'core-js/features/array/includes';
 import 'core-js/features/number/is-nan';
 ```
 
-Import polyfill file in `src/index.js`
-
-```javascript
+Import polyfill file in `src/index.jsript
 import './polyfills';
 ```
 

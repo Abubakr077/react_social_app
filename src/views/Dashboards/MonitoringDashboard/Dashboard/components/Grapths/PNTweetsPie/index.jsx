@@ -21,7 +21,20 @@ import styles from './styles';
 
 // Shared Resources
 import compose from "recompose/compose";
-import {CartesianGrid, Cell, Legend, Line, LineChart, Pie, PieChart, Sector, Tooltip, XAxis, YAxis} from "recharts";
+import {
+    CartesianGrid,
+    Cell,
+    Legend,
+    Line,
+    LineChart,
+    Pie,
+    PieChart,
+    ResponsiveContainer,
+    Sector,
+    Tooltip,
+    XAxis,
+    YAxis
+} from "recharts";
 const renderActiveShape = (props) => {
   const RADIAN = Math.PI / 180;
   const {
@@ -49,6 +62,7 @@ const renderActiveShape = (props) => {
             startAngle={startAngle}
             endAngle={endAngle}
             fill={fill}
+            cursor="pointer"
         />
         <Sector
             cx={cx}
@@ -59,8 +73,8 @@ const renderActiveShape = (props) => {
             outerRadius={outerRadius + 10}
             fill={fill}
         />
-        <path d={`M${sx},${sy}L${mx},${my}L${ex},${ey}`} stroke={fill} fill="none" />
-        <circle cx={ex} cy={ey} r={2} fill={fill} stroke="none" />
+        <path  d={`M${sx},${sy}L${mx},${my}L${ex},${ey}`} stroke={fill} fill="none" />
+        <circle  cx={ex} cy={ey} r={2} fill={fill} stroke="none" />
         <text x={ex + (cos >= 0 ? 1 : -1) * 12} y={ey} textAnchor={textAnchor} fill="#333">{`${payload.name}`}</text>
         {/*<text x={ex + (cos >= 0 ? 1 : -1) * 12} y={ey} dy={18} textAnchor={textAnchor} fill="#999">*/}
         {/*  {`(Rate ${(percent * 100).toFixed(2)}%)`}*/}
@@ -80,13 +94,26 @@ class PNTweetsPie extends Component {
       activeIndex: index,
     });
   };
+    handleClick = (data) => {
+        console.log('here');
+        console.log(data);
+    };
   render() {
     const { classes, className, ...rest } = this.props;
     const rootClassName = classNames(classes.root, className);
-    const data = [
-      { name: 'Positive', value: 15 },
-      { name: 'Negative', value: 10 },
+    let data = [
+        {
+            "name": "positive",
+            "value": "657"
+        },
+        {
+            "name": "negative",
+            "value": "88"
+        }
     ];
+
+    const data1 = data.map((item)=>(Object.assign({}, item, {"value":Number(item.value)})));
+
     const COLORS = [ '#45B880', '#ED4740'];
     const RADIAN = Math.PI / 180;
     const renderCustomizedLabel = ({
@@ -104,26 +131,30 @@ class PNTweetsPie extends Component {
     };
 
     return (
+        <ResponsiveContainer
+            width={430} height={250}
+        >
         <PieChart
             className={rootClassName}
-            width={300} height={250}
         >
           <Pie
               activeIndex={this.state.activeIndex}
               activeShape={renderActiveShape}
-              data={data}
+              data={data1}
               labelLine={false}
               label={renderCustomizedLabel}
+              onClick={this.handleClick}
               outerRadius={80}
               fill="#8884d8"
               dataKey="value"
               onMouseEnter={this.onPieEnter}
           >
             {
-              data.map((entry, index) => <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />)
+              data1.map((entry, index) => <Cell  key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />)
             }
           </Pie>
         </PieChart>
+        </ResponsiveContainer>
 
 
     );

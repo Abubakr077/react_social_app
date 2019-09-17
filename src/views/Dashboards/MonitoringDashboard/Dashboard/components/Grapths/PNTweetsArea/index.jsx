@@ -11,9 +11,8 @@ import {
 } from '@material-ui/core';
 
 import {
-  Dashboard as DashboardLayout
-
-} from 'layouts';
+  AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, LineChart, Line, ResponsiveContainer, Brush,
+} from 'recharts';
 
 
 // Component styles
@@ -21,24 +20,11 @@ import styles from './styles';
 
 // Shared Resources
 import compose from "recompose/compose";
-import {
-  CartesianGrid,
-  Legend,
-  Line,
-  Brush,
-  LineChart,
-  ResponsiveContainer,
-  Tooltip,
-  XAxis,
-  YAxis,
-  AreaChart
-} from "recharts";
 
-class PNTweetsLine extends Component {
+class PNTweetsArea extends Component {
 
-  handleClick = (data) => {
+  handleClick = (data, index) => {
     console.log('here');
-    console.log(data);
   };
 
   render() {
@@ -270,52 +256,56 @@ class PNTweetsLine extends Component {
     ];
 
     return (
-        <ResponsiveContainer             width={800}
-                                         height={300}>
-        <LineChart
+        <ResponsiveContainer
+            width={1200}
+            height={300}
+        >
+        <AreaChart
             className={classes.item}
             data={data}
             margin={{
-              top: 10, bottom: 10,
+              top: 10, right: 30, bottom: 40,
             }}
             cursor="pointer"
         >
+          <defs>
+            <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="5%" stopColor="#45B880" stopOpacity={0.8}/>
+              <stop offset="95%" stopColor="#45B880" stopOpacity={0}/>
+            </linearGradient>
+            <linearGradient id="colorPv" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="5%" stopColor="#ED4740" stopOpacity={0.8}/>
+              <stop offset="95%" stopColor="#ED4740" stopOpacity={0}/>
+            </linearGradient>
+            <linearGradient id="colorTotal" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="5%" stopColor="#0767DB" stopOpacity={0.8}/>
+              <stop offset="95%" stopColor="#0767DB" stopOpacity={0}/>
+            </linearGradient>
+          </defs>
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="date" interval="preserveStartEnd"/>
-          <YAxis label={{ value: 'tweets', angle: -90, position: 'center', textAnchor: 'middle' }}/>
+          <YAxis />
           <Tooltip />
-          <Legend  />
-          <Line type="natural"  dataKey="count_positive" stroke="#45B880"  dot={false}
+          <Area type="monotone" dataKey="count_positive" stackId="1" stroke="#45B880"  fillOpacity={1} fill="url(#colorUv)" dot={false}/>
+          <Area type="monotone" dataKey="count_negative" stackId="2" stroke="#ED4740"  fillOpacity={1} fill="url(#colorPv)" dot={false}/>
+          <Area type="monotone" dataKey="count_date" stackId="3" stroke="#0767DB"  fillOpacity={0.3}  fill="url(#colorTotal)"
                 activeDot={
                   {
+                    r: 8,
                     onClick: this.handleClick
                   }}
           />
-          <Line  type="natural" dataKey="count_negative" stroke="#ED4740" dot={false}
-                 activeDot={
-                   {
-                     onClick: this.handleClick
-                   }}
-          />
-          <Line  type="natural" dataKey="count_date" stroke="#0767DB"
-                 activeDot={
-                   {
-                     r: 8,
-                     onClick: this.handleClick
-                   }}
-                 dot={false}/>
           <Brush
               height={20}
           />
-        </LineChart>
+        </AreaChart>
         </ResponsiveContainer>
-
     );
   }
 }
 
 
-PNTweetsLine.propTypes = {
+PNTweetsArea.propTypes = {
   className: PropTypes.string,
   classes: PropTypes.object.isRequired
 };
@@ -324,5 +314,5 @@ export default
 compose(
     withStyles(styles)
 )
-(PNTweetsLine);
+(PNTweetsArea);
 

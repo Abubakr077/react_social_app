@@ -32,6 +32,8 @@ import compose from "recompose/compose";
 import PNTweetsLine from "../Grapths/PNTweetsLine";
 import PNTweetsPie from "../Grapths/PNTweetsPie";
 import {WordClouds} from "../index";
+import PNTweetsArea from "../Grapths/PNTweetsArea";
+import AccountProfile from "../AccountProfile";
 
 class JobAnalysis extends Component {
 
@@ -54,6 +56,7 @@ class JobAnalysis extends Component {
                          title={title}
                          initUser = {false}>
           <div className={classes.root}>
+            <AccountProfile/>
             <Portlet >
               <PortletHeader noDivider>
                 <PortletLabel
@@ -67,9 +70,8 @@ class JobAnalysis extends Component {
                   <PNTweetsLine/>
                   <PNTweetsPie/>
                 </PortletContent>
+              <PNTweetsArea/>
             </Portlet>
-            <br/>
-            <br/>
             <Grid
                 item
                 xs={12}

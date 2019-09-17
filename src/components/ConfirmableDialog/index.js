@@ -13,7 +13,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
 });
 
-const ConfirmAbleDialog = ({show, proceed, dismiss, cancel, confirmation, options}) => {
+const Index = ({show, proceed, dismiss, cancel, confirmation, options}) => {
     return (
         <Dialog
             onClose={dismiss}
@@ -38,7 +38,7 @@ const ConfirmAbleDialog = ({show, proceed, dismiss, cancel, confirmation, option
     );
 };
 
-ConfirmAbleDialog.propTypes = {
+Index.propTypes = {
     show: PropTypes.bool,
     proceed: PropTypes.func,
     cancel: PropTypes.func,
@@ -48,4 +48,4 @@ ConfirmAbleDialog.propTypes = {
 }
 
 // confirmable HOC pass props `show`, `dismiss`, `cancel` and `proceed` to your component.
-export default confirmable(ConfirmAbleDialog);
+export default confirmable(Index);

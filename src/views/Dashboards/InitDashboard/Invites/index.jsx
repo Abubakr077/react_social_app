@@ -33,7 +33,7 @@ class Invites extends Component {
 
     return (
         <DashboardLayout className={rootClassName}
-                         title="Please Select Project"
+                         title="Accept or Reject Invites"
                          initUser = {true}>
           <div className={classes.root}>
               < InvitesView/>
