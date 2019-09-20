@@ -45,6 +45,7 @@ class Twitter extends Component {
         visible: false,
         isUserNameError: false,
         isUser: false,
+        isTargerSubtype: true,
         isInfo: false,
         errorText: "",
         isValid: false,
@@ -283,6 +284,7 @@ class Twitter extends Component {
             currentstate.post.job_details.target_subtype = "POSTS";
             currentstate.post.job_details.target_type = value;
             currentstate.isUser = true;
+            currentstate.isTargerSubtype = true;
             currentstate.isInfo = false;
             currentstate.visible = true;
             console.log(currentstate);
@@ -295,6 +297,7 @@ class Twitter extends Component {
             currentstate.post.job_details.target_subtype = null;
             currentstate.post.job_details.target_type = value;
             currentstate.isUser = false;
+            currentstate.isTargerSubtype = false;
             currentstate.isInfo = false;
             currentstate.visible = false;
             console.log(currentstate);
@@ -400,7 +403,7 @@ class Twitter extends Component {
                     <Grid item xs={3}>
                         <Paper className={classes.paper}>
                             <Grid item xs={12}>
-                                <SelectField getValue={this.getTargetSubtype} options={targetType} label={"Target"} disabled={this.state.isUser} />
+                                <SelectField getValue={this.getTargetSubtype} options={targetType} label={"Target"} disabled={this.state.isTargerSubtype} />
                             </Grid>
                         </Paper>
                     </Grid>
