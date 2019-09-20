@@ -40,11 +40,11 @@ import styles from './styles';
 
 class Sidebar extends Component {
     state = {
-        open: false
+        open: true
     };
     
     render() {
-        const {classes, className, initUser} = this.props;
+        const {classes, className, initUser,options} = this.props;
         const rootClassName = classNames(classes.root, className);
 
         const project_id = localStorage.getItem('project_id');
@@ -160,6 +160,19 @@ class Sidebar extends Component {
                                 classes={{primary: classes.listItemText}}
                                 primary="View Jobs"/>
                           </ListItem>
+                            {/*{options.isTweetsRoute && (*/}
+                            {/*    <ListItem activeClassName={classes.activeListItemNested}*/}
+                            {/*                                     className={classes.listItemNested}*/}
+                            {/*                                     component={NavLink}*/}
+                            {/*                                     to={"/dashboard/"+project_id+'/tweets'}*/}
+                            {/*>*/}
+                            {/*    <ListItemIcon className={classes.listItemIcon}>*/}
+                            {/*        <ViewJobs/>*/}
+                            {/*    </ListItemIcon>*/}
+                            {/*    <ListItemText*/}
+                            {/*        classes={{primary: classes.listItemText}}*/}
+                            {/*        primary="View Tweets"/>*/}
+                            {/*</ListItem>)}*/}
                         </List>
                     </Collapse>
 

@@ -15,6 +15,9 @@ const styles = () => ({
   root: {
     display: 'flex',
     flexDirection: 'column'
+  },
+  noPadding: {
+    padding: 0
   }
 });
 

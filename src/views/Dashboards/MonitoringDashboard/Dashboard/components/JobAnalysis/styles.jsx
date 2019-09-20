@@ -28,4 +28,9 @@ export default theme => ({
     flexShrink: 0,
     flexGrow: 0
   },
+    progressWrapper: {
+  padding: theme.spacing.unit,
+  display: 'flex',
+  justifyContent: 'center'
+}
 });

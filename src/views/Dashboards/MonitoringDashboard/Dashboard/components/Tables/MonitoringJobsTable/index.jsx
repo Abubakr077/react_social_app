@@ -373,10 +373,11 @@ class MonitoringJobsTable extends Component {
     }
 
     goToAnalysis(rowData) {
+        console.log(rowData);
         const { history } = this.props;
         const url = this.props.match.url;
         localStorage.setItem('job',JSON.stringify(rowData));
-        history.push(url+'/analysis');
+        // history.push(url+'/analysis',{type: 'info'});
     }
 
     async handleDelete(id) {

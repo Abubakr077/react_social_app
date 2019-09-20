@@ -28,6 +28,9 @@ const SendInvites = asyncComponent(() =>
 const JobAnalysis = asyncComponent(() =>
     import('./views/Dashboards/MonitoringDashboard/Dashboard/components/JobAnalysis').then(module => module.default)
 );
+const TweetsList = asyncComponent(() =>
+    import('./views/Dashboards/MonitoringDashboard/Dashboard/components/TweetsList').then(module => module.default)
+);
 const Invites = asyncComponent(() =>
     import('./views/Dashboards/InitDashboard/Invites').then(module => module.default)
 );
@@ -99,6 +102,11 @@ class Routes extends Component {
               component={JobAnalysis}
               exact
               path="/dashboard/:projectId/analysis"
+          />
+          <PrivateRoute
+              component={TweetsList}
+              exact
+              path="/dashboard/:projectId/analysis/tweets"
           />
 
         <Route

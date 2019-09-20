@@ -35,6 +35,7 @@ import {
     XAxis,
     YAxis
 } from "recharts";
+import {withRouter} from "react-router-dom";
 const renderActiveShape = (props) => {
   const RADIAN = Math.PI / 180;
   const {
@@ -95,22 +96,14 @@ class PNTweetsPie extends Component {
     });
   };
     handleClick = (data) => {
-        console.log('here');
-        console.log(data);
+        const { history } = this.props;
+        const url = this.props.match.url;
+        const isHate = (data.name === 'negative');
+        history.push(url+'/tweets', {type: 'info' ,  isHate: isHate});
     };
   render() {
-    const { classes, className, ...rest } = this.props;
+    const { classes, className,data, ...rest } = this.props;
     const rootClassName = classNames(classes.root, className);
-    let data = [
-        {
-            "name": "positive",
-            "value": "657"
-        },
-        {
-            "name": "negative",
-            "value": "88"
-        }
-    ];
 
     const data1 = data.map((item)=>(Object.assign({}, item, {"value":Number(item.value)})));
 
@@ -164,11 +157,12 @@ class PNTweetsPie extends Component {
 
 PNTweetsPie.propTypes = {
   className: PropTypes.string,
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+    history: PropTypes.object.isRequired
 };
 
-export default
-compose(
+export default compose(
+    withRouter,
     withStyles(styles)
 )
 (PNTweetsPie);

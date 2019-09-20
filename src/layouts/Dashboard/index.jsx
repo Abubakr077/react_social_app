@@ -39,7 +39,7 @@ class Dashboard extends Component {
   };
 
   render() {
-    const { classes, width, title, children , initUser } = this.props;
+    const { classes, width, title,options, children , initUser } = this.props;
     const { isOpen } = this.state;
 
     const isMobile = ['xs', 'sm', 'md'].includes(width);
@@ -67,7 +67,9 @@ class Dashboard extends Component {
         >
           <Sidebar
               className={classes.sidebar}
-              initUser={initUser} />
+              initUser={initUser}
+              options={options}
+          />
         </Drawer>
         <main
           className={classNames(classes.content, {

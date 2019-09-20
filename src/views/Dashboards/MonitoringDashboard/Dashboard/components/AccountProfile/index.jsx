@@ -20,9 +20,10 @@ import PermIdentityOutlinedIcon from '@material-ui/icons/PermIdentityOutlined';
 import DescriptionOutlinedIcon from '@material-ui/icons/DescriptionOutlined';
 class AccountProfile extends Component {
   render() {
-    const { classes, className, ...rest } = this.props;
-
+    const { classes, className,data, ...rest } = this.props;
     const rootClassName = classNames(classes.root, className);
+
+    console.log(data);
 
     return (
       <Portlet
@@ -32,13 +33,13 @@ class AccountProfile extends Component {
         <PortletContent>
           <div className={classes.details}>
             <div className={classes.info}>
-              <Typography variant="h2">Mohsin Dawar</Typography>
+              <Typography variant="h2">{data.user_name}</Typography>
               <div className={classes.details}>
                 <PersonPinCircleOutlinedIcon className={classes.icon}/>
               <Typography
                 className={classes.locationText}
                 variant="body1"
-              >North Waziristan/Peshawar
+              >{data.user_location}
               </Typography>
               </div>
               <div className={classes.details}>
@@ -46,7 +47,7 @@ class AccountProfile extends Component {
                 <Typography
                     className={classes.locationText}
                     variant="body1"
-                >mjdawar
+                >{data.user_screen_name}
                 </Typography>
               </div>
             </div>
@@ -56,7 +57,7 @@ class AccountProfile extends Component {
               <Typography variant="h2">Tweets</Typography>
                 <Typography
                   className={classes.username}
-                  variant="body1">28032</Typography>
+                  variant="body1">{data.user_count_tweets}</Typography>
               </div>
             </div>
             <div className={classes.followers}>
@@ -64,7 +65,7 @@ class AccountProfile extends Component {
                 <Typography variant="h2">Followers</Typography>
                 <Typography
                     className={classes.username}
-                    variant="body1">155885</Typography>
+                    variant="body1">{data.user_count_followers}</Typography>
               </div>
             </div>
             <div className={classes.followers}>
@@ -72,12 +73,12 @@ class AccountProfile extends Component {
                 <Typography variant="h2">Following</Typography>
                 <Typography
                     className={classes.username}
-                    variant="body1">545</Typography>
+                    variant="body1">{data.user_count_following}</Typography>
               </div>
             </div>
             <Avatar
               className={classes.avatar}
-              src="https://pbs.twimg.com/profile_images/736651661926621184/xmpX-0B6_400x400.jpg"
+              src={data.user_image}
             />
           </div>
           <div className={classes.details}>
@@ -86,7 +87,7 @@ class AccountProfile extends Component {
                 className={classes.locationText}
                 variant="body1"
             >
-              Member National Assembly NA-48-North Waziristan. Pushtoon-Tahafuz-Movement, Writer, Lawyer_Peshawar-High Court.
+              {data.user_desc}
             </Typography>
           </div>
         </PortletContent>

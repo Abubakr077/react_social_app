@@ -25,8 +25,6 @@ import { InvitesView } from "./components";
 
 class Invites extends Component {
 
-
-
   render() {
     const { classes, className, ...rest } = this.props;
     const rootClassName = classNames(classes.root, className);
