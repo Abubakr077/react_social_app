@@ -24,7 +24,6 @@ import compose from "recompose/compose";
 class PNTweetsArea extends Component {
 
   handleClick = (data, index) => {
-    console.log('here');
   };
 
   render() {
@@ -42,7 +41,6 @@ class PNTweetsArea extends Component {
             margin={{
               top: 10, right: 30, bottom: 40,
             }}
-            cursor="pointer"
         >
           <defs>
             <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">

@@ -40,10 +40,26 @@ import Checkbox from "@material-ui/core/Checkbox";
 
 
 // local json
-import positiveInfoTweets
+import totalPositiveInfoTweets
     from '../JobAnalysis/data/info/100_processed_total_positive_TWITTER_USER_POST_2019-09-19.json';
-import negativeInfoTweets
+import totalNegativeInfoTweets
     from '../JobAnalysis/data/info/100_processed_total_negative_TWITTER_USER_POST_2019-09-19.json';
+import totalTwitterTweets from
+        '../JobAnalysis/data/info/100_processed_date_total_TWITTER_USER_POST_2019-09-19.json';
+import positiveLineTweets from
+        '../JobAnalysis/data/info/100_processed_date_positive_TWITTER_USER_POST_2019-09-19.json';
+import negativeLineTweets from
+        '../JobAnalysis/data/info/100_processed_date_negative_TWITTER_USER_POST_2019-09-19.json';
+import totalPositiveTrendsTweets
+    from '../JobAnalysis/data/trends/100_processed_total_positive_TWITTER_USER_POST_2019-09-19.json';
+import totalNegativeTrendsTweets
+    from '../JobAnalysis/data/trends/100_processed_total_negative_TWITTER_USER_POST_2019-09-19.json';
+import totalTwitterTrendTweets from
+        '../JobAnalysis/data/trends/100_processed_date_total_TWITTER_USER_POST_2019-09-19.json';
+import positiveLineTrendTweets from
+        '../JobAnalysis/data/trends/100_processed_date_positive_TWITTER_USER_POST_2019-09-19.json';
+import negativeLineTrendTweets from
+        '../JobAnalysis/data/trends/100_processed_date_negative_TWITTER_USER_POST_2019-09-19.json';
 
 class TweetsList extends Component {
 
@@ -52,25 +68,57 @@ class TweetsList extends Component {
         const {classes, className, ...rest} = this.props;
         const rootClassName = classNames(classes.root, className);
         const prevState = this.props.location.state;
+
+        let tweetType;
+        if (prevState.tweets === 'total') {
+            tweetType = 'total'
+        } else {
+            tweetType = (prevState.tweets === 'negative') ? 'negative' : 'positive';
+        }
+
         let data;
-        console.log('here');
-        console.log(prevState);
 
         if (prevState) {
-            if (prevState.type === 'info') {
-                if (prevState.isHate)
-                {
-                    data = negativeInfoTweets;
-                } else if (!prevState.isHate)
-                {
-                    data = positiveInfoTweets;
+            if (prevState.type === 'INFO') {
+                if (prevState.visual === 'line') {
+                    if (tweetType === 'total') {
+                        data = totalTwitterTweets;
+                    } else if (tweetType === 'negative') {
+                        data = positiveLineTweets;
+                    } else if (tweetType === 'positive') {
+                        data = negativeLineTweets;
+                    }
+                } else if (prevState.visual === 'pie') {
+                    if (tweetType === 'negative') {
+                        data = totalNegativeInfoTweets;
+                    } else if (tweetType === 'positive') {
+                        data = totalPositiveInfoTweets;
+                    }
+
+                }
+            } else if (prevState.type === 'POSTS') {
+                if (prevState.visual === 'line') {
+                    if (tweetType === 'total') {
+                        data = totalTwitterTrendTweets;
+                    } else if (tweetType === 'positive') {
+                        data = negativeLineTrendTweets;
+                    } else if (tweetType === 'negative') {
+                        data = positiveLineTrendTweets;
+                    }
+                } else if (prevState.visual === 'pie') {
+                    if (tweetType === 'negative') {
+                        data = totalNegativeTrendsTweets;
+                    } else if (tweetType === 'positive') {
+                        data = totalPositiveTrendsTweets;
+                    }
+
                 }
             }
         }
 
         return (
             <DashboardLayout className={rootClassName}
-                             title="User Tweets"
+                             title={prevState.target_type + " TWEETS"}
                              initUser={false}
                              options={{
                                  isTweetsRoute: true
@@ -79,7 +127,7 @@ class TweetsList extends Component {
                 <div className={classes.root}>
                     <Portlet className={classes.listItem}>
                         <PortletHeader noDivider>
-                            <Typography variant="h2">{prevState.isHate? ('Negative'):('Positive')} Tweets</Typography>
+                            <Typography variant="h2">{tweetType} Tweets</Typography>
                         </PortletHeader>
                         <PortletContent
                             noPadding

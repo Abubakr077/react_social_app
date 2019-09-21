@@ -27,6 +27,7 @@ import styles from './styles';
 // Shared Resources
 import compose from "recompose/compose";
 import ReactWordcloud from 'react-wordcloud';
+import {select} from "d3-selection";
 const options = {
     colors: [randomColor({
         hue: 'blue',
@@ -40,7 +41,7 @@ const options = {
         hue: 'red',
         luminosity: 'dark'
     })],
-    enableTooltip: true,
+    enableTooltip: false,
     deterministic: false,
     fontFamily: 'impact',
     fontSizes: [13, 30],
@@ -65,7 +66,7 @@ const options2 = {
         hue: 'red',
         luminosity: 'dark'
     })],
-    enableTooltip: true,
+    enableTooltip: false,
     deterministic: false,
     fontFamily: 'impact',
     fontSizes: [13, 30],
@@ -77,54 +78,85 @@ const options2 = {
     spiral: 'rectangular',
     transitionDuration: 1000,
 };
-class WordClouds extends Component {
 
-  state = {
-  };
+function getCallback(callback) {
+    return function (word, event) {
+        const isActive = callback !== 'onWordMouseOut';
+        const element = event.target;
+        const text = select(element);
+        text
+            .on('click', () => {
+                if (isActive) {
+                    window.open(`https://duckduckgo.com/?q=${word.text}`, '_blank')
+                }
+            })
+            .transition()
+            .attr('background', 'white')
+            .attr('font-size', isActive ? '300%' : '100%')
+            .attr('text-decoration', isActive ? 'underline' : 'none')
+    }
+    };
 
+    class WordClouds extends Component {
 
-  render() {
-    const { classes, className,cloudOptions, ...rest } = this.props;
-    return (
+        state = {};
+        callbacks = {
+            onWordClick: getCallback('onWordClick'),
+            onWordMouseOut: getCallback('onWordMouseOut'),
+            onWordMouseOver: getCallback('onWordMouseOver'),
+        };
 
-        <Portlet >
-            <PortletHeader noDivider>
-                <Typography variant="h2">{cloudOptions.title}</Typography>
-            </PortletHeader>
-            <PortletContent
-                noPadding
-            >
-                {cloudOptions.isWords? (
-                    <div className={classes.app_outer}>
-                    <div style={{height: 600, width: 1200}}>
-                        <ReactWordcloud options={options2} words={cloudOptions.data} />
-                    </div>
-                </div>
-                ): (
-                    <div className={classes.app_outer}>
-                        <div style={{height: 300, width: 1200}}>
-                            <ReactWordcloud options={options} words={cloudOptions.data} />
-                        </div>
-                    </div>
-                )}
-
-            </PortletContent>
-        </Portlet>
-    );
-  }
+        render() {
+            const {classes, className, cloudOptions, ...rest} = this.props;
 
 
-}
+            return (
+
+                <Portlet>
+                    <PortletHeader noDivider>
+                        <Typography variant="h2">{cloudOptions.title}</Typography>
+                    </PortletHeader>
+                    <PortletContent
+                        noPadding
+                    >
+                        {cloudOptions.isWords ? (
+                            <div className={classes.app_outer}>
+                                <div style={{height: 600, width: 1200}}>
+                                    <ReactWordcloud
+                                        options={options2}
+                                        words={cloudOptions.data}
+                                        callbacks={this.callbacks}
+                                    />
+                                </div>
+                            </div>
+                        ) : (
+                            <div className={classes.app_outer}>
+                                <div style={{height: 300, width: 1200}}>
+                                    <ReactWordcloud
+                                        options={options}
+                                        words={cloudOptions.data}
+                                        callbacks={this.callbacks}
+                                    />
+                                </div>
+                            </div>
+                        )}
+
+                    </PortletContent>
+                </Portlet>
+            );
+        }
 
 
-WordClouds.propTypes = {
-  className: PropTypes.string,
-  classes: PropTypes.object.isRequired
-};
+    }
 
-export default
-compose(
-    withStyles(styles)
-)
-(WordClouds);
+
+    WordClouds.propTypes = {
+        className: PropTypes.string,
+        classes: PropTypes.object.isRequired
+    };
+
+    export default compose(
+        withStyles(styles)
+    )
+    (WordClouds);
 

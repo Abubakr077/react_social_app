@@ -89,22 +89,30 @@ class PNTweetsPie extends Component {
   state = {
     activeIndex: 0,
   };
-
+  type = null;
+  target_type = null;
   onPieEnter = (data, index) => {
     this.setState({
       activeIndex: index,
     });
   };
     handleClick = (data) => {
+        console.log(data);
         const { history } = this.props;
         const url = this.props.match.url;
-        const isHate = (data.name === 'negative');
-        history.push(url+'/tweets', {type: 'info' ,  isHate: isHate});
+        history.push(url+'/tweets', {
+            type: this.type ,
+            tweets: data.name ,
+            target_type: this.target_type,
+            payload:data.payload,
+            visual: 'pie'
+        });
     };
   render() {
-    const { classes, className,data, ...rest } = this.props;
+    const { classes, className,data,type,target_type, ...rest } = this.props;
     const rootClassName = classNames(classes.root, className);
-
+    this.type = type;
+    this.target_type = target_type;
     const data1 = data.map((item)=>(Object.assign({}, item, {"value":Number(item.value)})));
 
     const COLORS = [ '#45B880', '#ED4740'];

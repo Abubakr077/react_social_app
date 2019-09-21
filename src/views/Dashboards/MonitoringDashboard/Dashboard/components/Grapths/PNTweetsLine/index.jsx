@@ -33,18 +33,29 @@ import {
   YAxis,
   AreaChart
 } from "recharts";
+import {withRouter} from "react-router-dom";
 
 class PNTweetsLine extends Component {
 
   handleClick = (data) => {
     console.log('here');
     console.log(data);
+    const { history } = this.props;
+    const url = this.props.match.url;
+    history.push(url+'/tweets', {
+        type: this.type ,
+        tweets: data.dataKey,
+        target_type: this.target_type,
+        payload: data.payload,
+        visual: 'line'
+    });
   };
 
   render() {
-    const { classes, className,data, ...rest } = this.props;
+    const { classes, className,data,type,target_type, ...rest } = this.props;
     const rootClassName = classNames(classes.root, className);
-
+      this.type = type;
+      this.target_type = target_type;
     return (
         <ResponsiveContainer             width={800}
                                          height={300}>
@@ -96,8 +107,8 @@ PNTweetsLine.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default
-compose(
+export default compose(
+    withRouter,
     withStyles(styles)
 )
 (PNTweetsLine);

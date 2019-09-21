@@ -377,7 +377,8 @@ class MonitoringJobsTable extends Component {
         const { history } = this.props;
         const url = this.props.match.url;
         localStorage.setItem('job',JSON.stringify(rowData));
-        // history.push(url+'/analysis',{type: 'info'});
+
+        history.push(url+'/analysis',{type: rowData.job_details.target_subtype , target_type: rowData.job_details.target_type});
     }
 
     async handleDelete(id) {
