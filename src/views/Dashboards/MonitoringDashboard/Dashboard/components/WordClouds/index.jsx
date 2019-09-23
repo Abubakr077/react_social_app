@@ -28,6 +28,7 @@ import styles from './styles';
 import compose from "recompose/compose";
 import ReactWordcloud from 'react-wordcloud';
 import {select} from "d3-selection";
+import {withRouter} from "react-router-dom";
 const options = {
     colors: [randomColor({
         hue: 'blue',
@@ -69,7 +70,7 @@ const options2 = {
     enableTooltip: false,
     deterministic: false,
     fontFamily: 'impact',
-    fontSizes: [13, 30],
+    fontSizes: [15, 30],
     fontStyle: 'normal',
     fontWeight: 'normal',
     rotations: 2,
@@ -79,7 +80,7 @@ const options2 = {
     transitionDuration: 1000,
 };
 
-function getCallback(callback) {
+function getCallback(callback,props,cloudOptions) {
     return function (word, event) {
         const isActive = callback !== 'onWordMouseOut';
         const element = event.target;
@@ -87,29 +88,42 @@ function getCallback(callback) {
         text
             .on('click', () => {
                 if (isActive) {
-                    window.open(`https://duckduckgo.com/?q=${word.text}`, '_blank')
+                    // window.open(`https://duckduckgo.com/?q=${word.text}`, '_blank')
+                    const { history } = props;
+                    const url = props.match.url;
+                    history.push(url+'/tweets', {
+                        type: cloudOptions.type ,
+                        tweets: word.text,
+                        target_type: cloudOptions.target_type,
+                        // payload: data.payload,
+                        visual: 'assoc'
+                    });
                 }
             })
             .transition()
             .attr('background', 'white')
-            .attr('font-size', isActive ? '300%' : '100%')
+            .attr('font-size', isActive ? '120%' : '100%')
             .attr('text-decoration', isActive ? 'underline' : 'none')
     }
-    };
+    }
 
     class WordClouds extends Component {
 
         state = {};
-        callbacks = {
-            onWordClick: getCallback('onWordClick'),
-            onWordMouseOut: getCallback('onWordMouseOut'),
-            onWordMouseOver: getCallback('onWordMouseOver'),
-        };
+        type=null;
+        target_type = null;
 
         render() {
             const {classes, className, cloudOptions, ...rest} = this.props;
+            console.log('cloud');
+            console.log(cloudOptions);
 
 
+            this.callbacks = {
+                onWordClick: getCallback('onWordClick',this.props,cloudOptions),
+                onWordMouseOut: getCallback('onWordMouseOut',this.props,cloudOptions),
+                onWordMouseOver: getCallback('onWordMouseOver',this.props,cloudOptions),
+            };
             return (
 
                 <Portlet>
@@ -155,8 +169,9 @@ function getCallback(callback) {
         classes: PropTypes.object.isRequired
     };
 
-    export default compose(
-        withStyles(styles)
-    )
+export default compose(
+    withRouter,
+    withStyles(styles)
+)
     (WordClouds);
 

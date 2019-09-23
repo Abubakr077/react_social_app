@@ -60,6 +60,12 @@ import positiveLineTrendTweets from
         '../JobAnalysis/data/trends/100_processed_date_positive_TWITTER_USER_POST_2019-09-19.json';
 import negativeLineTrendTweets from
         '../JobAnalysis/data/trends/100_processed_date_negative_TWITTER_USER_POST_2019-09-19.json';
+import assocTrendTweets from
+        '../JobAnalysis/data/trends/100_processed_assoc_TWITTER_USER_POST_2019-09-19.json';
+import assocInfoTweets from
+        '../JobAnalysis/data/info/100_processed_assoc_TWITTER_USER_POST_2019-09-19.json';
+
+
 
 class TweetsList extends Component {
 
@@ -69,14 +75,12 @@ class TweetsList extends Component {
         const rootClassName = classNames(classes.root, className);
         const prevState = this.props.location.state;
 
-        let tweetType;
+        let tweetType,data;
         if (prevState.tweets === 'total') {
             tweetType = 'total'
         } else {
             tweetType = (prevState.tweets === 'negative') ? 'negative' : 'positive';
         }
-
-        let data;
 
         if (prevState) {
             if (prevState.type === 'INFO') {
@@ -95,6 +99,9 @@ class TweetsList extends Component {
                         data = totalPositiveInfoTweets;
                     }
 
+                } else if (prevState.visual === 'assoc'){
+                    data = assocInfoTweets;
+                    tweetType = prevState.tweets;
                 }
             } else if (prevState.type === 'POSTS') {
                 if (prevState.visual === 'line') {
@@ -112,6 +119,9 @@ class TweetsList extends Component {
                         data = totalPositiveTrendsTweets;
                     }
 
+                } else if (prevState.visual === 'assoc'){
+                    data = assocTrendTweets;
+                    tweetType = prevState.tweets;
                 }
             }
         }

@@ -53,7 +53,8 @@ class JobAnalysis extends Component {
         const job = JSON.parse(localStorage.getItem('job'));
         const prevState = this.props.location.state;
         let data;
-        if (prevState.type === 'INFO') {
+        if (prevState){
+            if (prevState.type === 'INFO') {
             data = {
                 "info_data": {
                     "job_id": "101",
@@ -751,14 +752,15 @@ class JobAnalysis extends Component {
                 }
             };
         }else if (prevState.type === 'POSTS'){
-          data = trendsData;
+            data = trendsData;
         }
 
-        const isWordFreqEmpty = Boolean(Object.keys(data.results.unique_word_freq).length);
-        const isPolarityFreqEmpty = Boolean(Object.keys(data.results.polarity_freq).length);
-        const isPolarityDistEmpty = Boolean(Object.keys(data.results.polarity_dist).length);
-        const isAssocEmpty = Boolean(Object.keys(data.results.assoc).length);
-        const isAccountEmpty = Boolean(Object.keys(data.info_data).length);
+            const isWordFreqEmpty = Boolean(Object.keys(data.results.unique_word_freq).length);
+            const isPolarityFreqEmpty = Boolean(Object.keys(data.results.polarity_freq).length);
+            const isPolarityDistEmpty = Boolean(Object.keys(data.results.polarity_dist).length);
+            const isAssocEmpty = Boolean(Object.keys(data.results.assoc).length);
+            this.isAccountEmpty = Boolean(Object.keys(data.info_data).length);
+        }
 
 
         const {
@@ -772,7 +774,7 @@ class JobAnalysis extends Component {
                              initUser={false}>
                 {isLoading ? (
                     <div className={classes.root}>
-                        {isAccountEmpty && (
+                        {this.isAccountEmpty && (
                             <AccountProfile data={data.info_data}/>
                         )}
                         <Portlet>
@@ -797,8 +799,12 @@ class JobAnalysis extends Component {
                             <WordClouds cloudOptions={{
                                 isWords: false,
                                 title: 'Associations Cloud',
-                                data: data.results.assoc
-                            }}/>
+                                data: data.results.assoc,
+                                target_type: prevState.target_type,
+                                type: prevState.type
+                            }
+                            }
+                            />
                         </Grid>
                         <Grid
                             item
@@ -807,7 +813,9 @@ class JobAnalysis extends Component {
                             <WordClouds cloudOptions={{
                                 isWords: true,
                                 title: 'Unique Words Frequency',
-                                data: data.results.unique_word_freq
+                                data: data.results.unique_word_freq,
+                                target_type: prevState.target_type,
+                                type: prevState.type
                             }}/>
                         </Grid>
                     </div>
