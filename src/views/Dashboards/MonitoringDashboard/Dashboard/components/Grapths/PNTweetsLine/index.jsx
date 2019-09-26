@@ -85,7 +85,7 @@ class PNTweetsLine extends Component {
                      onClick: this.handleClick
                    }}
           />
-          <Line  type="natural" dataKey="total" stroke="#0767DB"
+          <Line  type="natural" dataKey="total" stroke="#FFB822"
                  activeDot={
                    {
                      r: 8,

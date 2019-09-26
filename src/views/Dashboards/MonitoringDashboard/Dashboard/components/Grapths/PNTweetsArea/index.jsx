@@ -53,8 +53,8 @@ class PNTweetsArea extends Component {
               <stop offset="95%" stopColor="#ED4740" stopOpacity={0}/>
             </linearGradient>
             <linearGradient id="colorTotal" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="5%" stopColor="#0767DB" stopOpacity={0.8}/>
-              <stop offset="95%" stopColor="#0767DB" stopOpacity={0}/>
+              <stop offset="5%" stopColor="#FFB822" stopOpacity={0.8}/>
+              <stop offset="95%" stopColor="#FFB822" stopOpacity={0}/>
             </linearGradient>
           </defs>
           {/*<CartesianGrid strokeDasharray="3 3" />*/}
@@ -63,7 +63,7 @@ class PNTweetsArea extends Component {
           <Tooltip />
           <Area type="monotone" dataKey="positive" stackId="1" stroke="#45B880"  fillOpacity={1} fill="url(#colorUv)" dot={false}/>
           <Area type="monotone" dataKey="negative" stackId="2" stroke="#ED4740"  fillOpacity={1} fill="url(#colorPv)" dot={false}/>
-          <Area type="monotone" dataKey="total" stackId="3" stroke="#0767DB"  fillOpacity={0.3}  fill="url(#colorTotal)"
+          <Area type="monotone" dataKey="total" stackId="3" stroke="#FFB822"  fillOpacity={0.3}  fill="url(#colorTotal)"
                 activeDot={
                   {
                     r: 8,

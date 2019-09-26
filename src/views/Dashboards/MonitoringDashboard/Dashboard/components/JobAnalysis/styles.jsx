@@ -19,7 +19,7 @@ export default theme => ({
     webkitBoxSizing: 'border-box',
     boxSizing: 'border-box',
     height: '300px',
-    width: '30%',
+    width: '32%',
   },
   areaBody: {
     webkitBoxSizing: 'border-box',
