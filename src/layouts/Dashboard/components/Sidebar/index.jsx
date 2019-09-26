@@ -104,7 +104,7 @@ class Sidebar extends Component {
                         activeClassName={classes.activeListItem}
                         className={classes.listItem}
                         component={NavLink}
-                        to={"/dashboard/"+project_id}
+                        to={"/dashboard/project"}
                     >
                         <ListItemIcon className={classes.listItemIcon}>
                             <DashboardIcon/>
@@ -118,7 +118,7 @@ class Sidebar extends Component {
                     <ListItem
                         activeClassName={classes.activeListItem}
                         className={classes.listItem}
-                        component={NavLink}
+                        // component={NavLink}
                         onClick={() => {
                             this.setState(prev => ({
                                 open: !prev.open
@@ -151,7 +151,7 @@ class Sidebar extends Component {
                           <ListItem activeClassName={classes.activeListItemNested}
                                     className={classes.listItemNested}
                                     component={NavLink}
-                                    to={"/dashboard/"+project_id}
+                                    to={"/dashboard/project"}
                           >
                             <ListItemIcon className={classes.listItemIcon}>
                               <ViewJobs/>

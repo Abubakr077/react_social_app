@@ -14,7 +14,9 @@ export default theme => ({
         display: 'flex',
         flexDirection: 'column',
         height: '100%',
-        width: '100px'
+        width: '100px',
+        webkitBoxSizing: 'border-box',
+        boxSizing: 'border-box',
     }
 
 });

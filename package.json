@@ -103,7 +103,8 @@
     "webpack-dev-server": "3.2.1",
     "webpack-manifest-plugin": "2.0.4",
     "workbox-webpack-plugin": "4.2.0",
-    "d3-selection": "latest"
+    "d3-selection": "latest",
+    "react-router": "latest"
   },
   "devDependencies": {
     "eslint-plugin-prettier": "^3.0.1",

@@ -57,9 +57,10 @@ class PNTweetsLine extends Component {
       this.type = type;
       this.target_type = target_type;
     return (
-        <ResponsiveContainer             width={800}
-                                         height={300}>
+        <ResponsiveContainer             width="100%">
         <LineChart
+            width={500}
+            height={300}
             className={classes.item}
             data={data}
             margin={{
@@ -93,6 +94,8 @@ class PNTweetsLine extends Component {
                  dot={false}/>
           <Brush
               height={20}
+              dataKey="date"
+              stroke="#0767DB"
           />
         </LineChart>
         </ResponsiveContainer>

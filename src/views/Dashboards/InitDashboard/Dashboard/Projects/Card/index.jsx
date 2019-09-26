@@ -124,7 +124,9 @@ const CustomCard = props => {
     }
 
     const projectDetails = () => {
-        props.history.push('/dashboard/' + cardProject.project.id);
+       localStorage.setItem('project',JSON.stringify(cardProject));
+       localStorage.setItem('project_id',cardProject.project.id);
+        props.history.push('/dashboard/project');
     };
 
     return (

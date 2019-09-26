@@ -133,10 +133,11 @@ class PNTweetsPie extends Component {
 
     return (
         <ResponsiveContainer
-            width={430} height={250}
+            width="100%"
         >
         <PieChart
             className={rootClassName}
+            width={400} height={250}
         >
           <Pie
               activeIndex={this.state.activeIndex}

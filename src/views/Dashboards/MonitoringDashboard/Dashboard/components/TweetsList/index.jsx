@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import {makeStyles} from '@material-ui/core/styles';
 // Externals
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
@@ -33,9 +32,7 @@ import TurnedInIcon from '@material-ui/icons/TurnedIn';
 import FavoriteBorderOutlinedIcon from '@material-ui/icons/FavoriteBorderOutlined';
 import RepeatOutlinedIcon from '@material-ui/icons/RepeatOutlined';
 import ChatBubbleOutlineOutlinedIcon from '@material-ui/icons/ChatBubbleOutlineOutlined';
-import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Radio from "@material-ui/core/Radio";
 import Checkbox from "@material-ui/core/Checkbox";
 
 

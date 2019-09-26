@@ -7,7 +7,37 @@ export default theme => ({
     width: '100%',
   },
   contentBody: {
-    display: 'flex'
+    display: 'flex',
+  },
+  lineBody: {
+    webkitBoxSizing: 'border-box',
+    boxSizing: 'border-box',
+    height: '300px',
+    width: '70%',
+  },
+  pieBody: {
+    webkitBoxSizing: 'border-box',
+    boxSizing: 'border-box',
+    height: '300px',
+    width: '30%',
+  },
+  areaBody: {
+    webkitBoxSizing: 'border-box',
+    boxSizing: 'border-box',
+    height: '300px',
+    width: '100%',
+  }
+  ,cloudBody:{
+    webkitBoxSizing: 'border-box',
+    boxSizing: 'border-box',
+    height: '300px',
+    width: '100%',
+  },
+  cloudBody2:{
+    webkitBoxSizing: 'border-box',
+    boxSizing: 'border-box',
+    height: '600px',
+    width: '100%',
   },
   details: {
     display: 'flex'
@@ -32,5 +62,7 @@ export default theme => ({
   padding: theme.spacing.unit,
   display: 'flex',
   justifyContent: 'center'
-}
+}, newEntryButton: {
+    marginLeft: theme.spacing.unit
+  }
 });

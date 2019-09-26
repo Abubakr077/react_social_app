@@ -38,7 +38,7 @@ export default class App extends Component {
         <div>
       <ThemeProvider theme={theme}>
         <PerfectScrollbar>
-        <Router history={browserHistory}>
+        <Router history={browserHistory} >
           <Routes />
         </Router>
         </PerfectScrollbar>

@@ -88,7 +88,6 @@ function getCallback(callback,props,cloudOptions) {
         text
             .on('click', () => {
                 if (isActive) {
-                    // window.open(`https://duckduckgo.com/?q=${word.text}`, '_blank')
                     const { history } = props;
                     const url = props.match.url;
                     history.push(url+'/tweets', {
@@ -102,7 +101,7 @@ function getCallback(callback,props,cloudOptions) {
             })
             .transition()
             .attr('background', 'white')
-            .attr('font-size', isActive ? '120%' : '100%')
+            .attr('font-size', isActive ? '150%' : '100%')
             .attr('text-decoration', isActive ? 'underline' : 'none')
     }
     }
@@ -135,7 +134,7 @@ function getCallback(callback,props,cloudOptions) {
                     >
                         {cloudOptions.isWords ? (
                             <div className={classes.app_outer}>
-                                <div style={{height: 600, width: 1200}}>
+                                <div style={{height: 600, width: "100%"}}>
                                     <ReactWordcloud
                                         options={options2}
                                         words={cloudOptions.data}
@@ -145,7 +144,7 @@ function getCallback(callback,props,cloudOptions) {
                             </div>
                         ) : (
                             <div className={classes.app_outer}>
-                                <div style={{height: 300, width: 1200}}>
+                                <div style={{height: 300, width: "100%"}}>
                                     <ReactWordcloud
                                         options={options}
                                         words={cloudOptions.data}

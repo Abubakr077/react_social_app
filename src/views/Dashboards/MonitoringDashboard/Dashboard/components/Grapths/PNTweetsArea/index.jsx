@@ -32,11 +32,12 @@ class PNTweetsArea extends Component {
 
     return (
         <ResponsiveContainer
-            width={1200}
-            height={300}
+            width="100%"
         >
         <AreaChart
             className={classes.item}
+            width={1200}
+            height={300}
             data={data}
             margin={{
               top: 10, right: 30, bottom: 40,
@@ -71,6 +72,8 @@ class PNTweetsArea extends Component {
           />
           <Brush
               height={20}
+              dataKey="date"
+              stroke="#0767DB"
           />
         </AreaChart>
         </ResponsiveContainer>

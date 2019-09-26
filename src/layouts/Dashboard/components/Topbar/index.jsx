@@ -122,9 +122,9 @@ class Topbar extends Component {
     const showProjects = Boolean(projectsEl);
 
     if (!initUser){
-      const id = localStorage.getItem('project_id');
-      if (id){
-        this.project = Object.assign({}, lookupProject(id).project);
+      const project = JSON.parse(localStorage.getItem('project'));
+      if (project){
+        this.project = project.project;
       }
     }
 

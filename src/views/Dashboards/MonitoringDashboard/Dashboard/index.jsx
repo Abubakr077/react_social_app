@@ -53,8 +53,7 @@ class Dashboard extends Component {
 
     componentWillMount() {
         const {match: {params}} = this.props;
-        localStorage.setItem('project_id', params.projectId);
-        this.membership = Object.assign({}, lookupProject(params.projectId));
+        this.membership = JSON.parse(localStorage.getItem('project'));
     }
 
 

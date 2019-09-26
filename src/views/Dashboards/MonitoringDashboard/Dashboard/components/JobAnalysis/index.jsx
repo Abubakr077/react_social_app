@@ -21,7 +21,8 @@ import {
     PortletHeader,
     PortletLabel,
     PortletContent,
-    PortletFooter
+    PortletFooter,
+    PortletToolbar
 } from 'components';
 
 // Component styles
@@ -38,6 +39,8 @@ import AccountProfile from "../AccountProfile";
 
 // local json
 import trendsData from './data/trends/500_analytics_handler_TWITTER_USER_POST_2019-09-19.json'
+import Button from "@material-ui/core/Button";
+import {withRouter} from "react-router-dom";
 
 class JobAnalysis extends Component {
 
@@ -52,6 +55,8 @@ class JobAnalysis extends Component {
         const rootClassName = classNames(classes.root, className);
         const job = JSON.parse(localStorage.getItem('job'));
         const prevState = this.props.location.state;
+        console.log('here');
+        console.log(prevState);
         let data;
         if (prevState){
             if (prevState.type === 'INFO') {
@@ -782,15 +787,37 @@ class JobAnalysis extends Component {
                                 <PortletLabel
                                     title="Twitter Tweets"
                                 />
+                                { prevState.type === 'POSTS' && (<PortletToolbar>
+                                    <Button
+                                        className={classes.newEntryButton}
+                                        color="primary"
+                                        size="small"
+                                        variant="outlined"
+                                        onClick={()=> {
+                                                const { history } = this.props;
+                                                const url = this.props.match.url;
+                                                history.push(url+'/profiles');
+                                        }}
+                                    >
+                                        Hate Pool
+                                    </Button>
+                                </PortletToolbar>)
+                                }
                             </PortletHeader>
                             <PortletContent
                                 className={classes.contentBody}
                                 noPadding
                             >
+                                <div className={classes.lineBody}>
                                 <PNTweetsLine data={data.results.polarity_freq} type={prevState.type} target_type={prevState.target_type}/>
+                                </div>
+                                <div className={classes.pieBody}>
                                 <PNTweetsPie data={data.results.polarity_dist} type={prevState.type} target_type={prevState.target_type}/>
+                                </div>
                             </PortletContent>
-                            <PNTweetsArea data={data.results.polarity_freq}/>
+                            <div className={classes.areaBody}>
+                            <PNTweetsArea  data={data.results.polarity_freq}/>
+                            </div>
                         </Portlet>
                         <Grid
                             item
@@ -836,7 +863,9 @@ JobAnalysis.propTypes = {
     classes: PropTypes.object.isRequired
 };
 
+
 export default compose(
+    withRouter,
     withStyles(styles)
 )
 (JobAnalysis);

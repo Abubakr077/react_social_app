@@ -41,7 +41,6 @@ import {Message, optionsError, optionsSuccess} from "../../../../../../../consta
 
 import request from 'helpers/request.js';
 import * as endpoints from 'constants/endpoints.json';
-import * as constants from 'constants/constants.js';
 import confirm from 'helpers/confirmation.js';
 import compose from "recompose/compose";
 import {connect} from "react-redux";
@@ -377,7 +376,7 @@ class MonitoringJobsTable extends Component {
         const { history } = this.props;
         const url = this.props.match.url;
         localStorage.setItem('job',JSON.stringify(rowData));
-
+        console.log(url+'/analysis');
         history.push(url+'/analysis',{type: rowData.job_details.target_subtype , target_type: rowData.job_details.target_type});
     }
 
