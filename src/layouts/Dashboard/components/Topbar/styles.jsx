@@ -1,3 +1,4 @@
+import randomColor from 'randomcolor';
 export default theme => ({
   root: {
     borderBottom: `1px solid ${theme.palette.border}`,
@@ -26,5 +27,11 @@ export default theme => ({
   },
   contextButton: {
     color: "primary"
-  }
+  },
+  purpleAvatar: {
+    color: '#fff',
+    backgroundColor: theme.palette.info.main,
+    marginLeft: theme.spacing.unit
+
+  },
 });

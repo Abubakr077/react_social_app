@@ -36,5 +36,30 @@ export default theme => ({
     },
     marginLeft: {
         marginLeft: theme.spacing(3),
+    },
+    chips: {
+        display: 'flex',
+        flexWrap: 'wrap',
+    },
+    chip: {
+        margin: 2,
+    },
+    formControl: {
+        margin: theme.spacing(1),
+        minWidth: 220,
+        maxWidth: 320,
+    },
+    bigAvatar: {
+        marginLeft: 10,
+        marginRight:10,
+        width: 100,
+        height: 100,
+    },
+    filterBody: {
+        // display: 'flex',
+        // flexWrap: 'wrap',
+    },
+    header:{
+        textTransform: 'capitalize'
     }
 });

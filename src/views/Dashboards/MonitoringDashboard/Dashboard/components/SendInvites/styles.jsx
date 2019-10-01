@@ -1,6 +1,10 @@
 export default theme => ({
   root: {
-    padding: theme.spacing.unit * 4
+    flexGrow: 1,
+    padding: theme.spacing.unit * 4,
+    display: 'flex',
+    flexDirection: 'column',
+    minHeight: '80vh',
   },
   field: {
     display: 'flex',

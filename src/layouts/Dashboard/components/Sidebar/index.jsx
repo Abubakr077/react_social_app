@@ -177,34 +177,34 @@ class Sidebar extends Component {
                     </Collapse>
 
 
-                    <ListItem
-                        activeClassName={classes.activeListItem}
-                        className={classes.listItem}
-                        component={NavLink}
-                        to="/visualizations"
-                    >
-                        <ListItemIcon className={classes.listItemIcon}>
-                            <VisualsIcon/>
-                        </ListItemIcon>
-                        <ListItemText
-                            classes={{primary: classes.listItemText}}
-                            primary="Visualizations"
-                        />
-                    </ListItem>
-                    <ListItem
-                        activeClassName={classes.activeListItem}
-                        className={classes.listItem}
-                        component={NavLink}
-                        to="/trends"
-                    >
-                        <ListItemIcon className={classes.listItemIcon}>
-                            <TrendingIcon/>
-                        </ListItemIcon>
-                        <ListItemText
-                            classes={{primary: classes.listItemText}}
-                            primary="Trends"
-                        />
-                    </ListItem>
+                    {/*<ListItem*/}
+                    {/*    activeClassName={classes.activeListItem}*/}
+                    {/*    className={classes.listItem}*/}
+                    {/*    component={NavLink}*/}
+                    {/*    to="/visualizations"*/}
+                    {/*>*/}
+                    {/*    <ListItemIcon className={classes.listItemIcon}>*/}
+                    {/*        <VisualsIcon/>*/}
+                    {/*    </ListItemIcon>*/}
+                    {/*    <ListItemText*/}
+                    {/*        classes={{primary: classes.listItemText}}*/}
+                    {/*        primary="Visualizations"*/}
+                    {/*    />*/}
+                    {/*</ListItem>*/}
+                    {/*<ListItem*/}
+                    {/*    activeClassName={classes.activeListItem}*/}
+                    {/*    className={classes.listItem}*/}
+                    {/*    component={NavLink}*/}
+                    {/*    to="/trends"*/}
+                    {/*>*/}
+                    {/*    <ListItemIcon className={classes.listItemIcon}>*/}
+                    {/*        <TrendingIcon/>*/}
+                    {/*    </ListItemIcon>*/}
+                    {/*    <ListItemText*/}
+                    {/*        classes={{primary: classes.listItemText}}*/}
+                    {/*        primary="Trends"*/}
+                    {/*    />*/}
+                    {/*</ListItem>*/}
                   <ListItem
                       activeClassName={classes.activeListItem}
                       className={classes.listItem}

@@ -357,7 +357,7 @@ class MonitoringJobsTable extends Component {
                                                         this.goToAnalysis(rowData);
                                                     }}
                                                 >
-                                                    See Analytics
+                                                    Start Analytics
                                                 </Button>
                                         )}
                                     </div>
@@ -425,7 +425,6 @@ class MonitoringJobsTable extends Component {
                         Object.assign({}, el, { status: res.status })
                         : el))
                 });
-                // toast.success(<Message name={'Job Updated Successfully'}/>,optionsSuccess);
                 }
             );
         }catch (error) {

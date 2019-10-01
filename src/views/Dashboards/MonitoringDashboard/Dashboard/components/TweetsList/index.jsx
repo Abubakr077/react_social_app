@@ -5,9 +5,20 @@ import PropTypes from 'prop-types';
 // Material helpers
 import {
     Grid,
+    FormControlLabel,
     withStyles
 } from '@material-ui/core';
+import Checkbox from '@material-ui/core/Checkbox';
+import {
+    ArrowDropDown as ArrowDropDownIcon,
+    ArrowRight as ArrowRightIcon,
+    TurnedIn as TurnedInIcon,
+    FavoriteBorderOutlined as FavoriteBorderOutlinedIcon,
+    RepeatOutlined as RepeatOutlinedIcon,
+    ChatBubbleOutlineOutlined as ChatBubbleOutlineOutlinedIcon, Input,
+    FilterListOutlined as FilterListOutlinedIcon
 
+} from '@material-ui/icons';
 import {
     Dashboard as DashboardLayout
 
@@ -26,14 +37,9 @@ import {
     Portlet,
     PortletHeader,
     PortletFooter,
+    PortletToolbar,
     PortletContent
 } from 'components';
-import TurnedInIcon from '@material-ui/icons/TurnedIn';
-import FavoriteBorderOutlinedIcon from '@material-ui/icons/FavoriteBorderOutlined';
-import RepeatOutlinedIcon from '@material-ui/icons/RepeatOutlined';
-import ChatBubbleOutlineOutlinedIcon from '@material-ui/icons/ChatBubbleOutlineOutlined';
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Checkbox from "@material-ui/core/Checkbox";
 
 
 // local json
@@ -42,7 +48,7 @@ import totalPositiveInfoTweets
 import totalNegativeInfoTweets
     from '../JobAnalysis/data/info/100_processed_total_negative_TWITTER_USER_POST_2019-09-19.json';
 import totalTwitterTweets from
-        '../JobAnalysis/data/info/100_processed_date_total_TWITTER_USER_POST_2019-09-19.json';
+        '../JobAnalysis/data/info/100_processed_date_total_TWITTER_USER_POST_2019-09-19';
 import positiveLineTweets from
         '../JobAnalysis/data/info/100_processed_date_positive_TWITTER_USER_POST_2019-09-19.json';
 import negativeLineTweets from
@@ -61,67 +67,123 @@ import assocTrendTweets from
         '../JobAnalysis/data/trends/100_processed_assoc_TWITTER_USER_POST_2019-09-19.json';
 import assocInfoTweets from
         '../JobAnalysis/data/info/100_processed_assoc_TWITTER_USER_POST_2019-09-19.json';
-
+import FormControl from "@material-ui/core/FormControl";
+import InputLabel from "@material-ui/core/InputLabel";
+import Select from "@material-ui/core/Select";
+import Chip from "@material-ui/core/Chip";
+import MenuItem from "@material-ui/core/MenuItem";
+import useTheme from "@material-ui/core/styles/useTheme";
+import FormLabel from "@material-ui/core/FormLabel";
+import FormGroup from "@material-ui/core/FormGroup";
+import FormHelperText from "@material-ui/core/FormHelperText";
 
 
 class TweetsList extends Component {
+
+    state = {
+        filters: [{
+            id: 1234,
+            name: 'Most Retweets',
+            checked: false,
+            type: 'nbr_retweet'
+        },
+            {
+                id: 4321,
+                name: 'Most Likes',
+                checked: false,
+                type: 'nbr_favorite'
+            },
+            {
+                id: 1111,
+                name: 'Most Replies',
+                checked: false,
+                type: 'nbr_reply'
+            }],
+        data : []
+    };
+    tweetType = '';
+    tempData = [];
+
+    constructor(props) {
+        super(props);
+        const prevState = this.props.location.state;
+
+        if (prevState.tweets === 'total') {
+            this.tweetType = 'total'
+        } else {
+            this.tweetType = (prevState.tweets === 'negative') ? 'negative' : 'positive'
+        }
+        if (prevState) {
+            if (prevState.type === 'INFO') {
+                if (prevState.visual === 'line') {
+                    if (this.tweetType === 'total') {
+                        this.state.data = totalTwitterTweets;
+                    } else if (this.tweetType === 'negative') {
+                        this.state.data = positiveLineTweets;
+                    } else if (this.tweetType === 'positive') {
+                        this.state.data = negativeLineTweets;
+                    }
+                } else if (prevState.visual === 'pie') {
+                    if (this.tweetType === 'negative') {
+                        this.state.data = totalNegativeInfoTweets;
+                    } else if (this.tweetType === 'positive') {
+                        this.state.data = totalPositiveInfoTweets;
+                    }
+
+                } else if (prevState.visual === 'assoc') {
+                    this.state.data = assocInfoTweets;
+                    this.tweetType = prevState.tweets;
+                }
+            } else if (prevState.type === 'POSTS') {
+                if (prevState.visual === 'line') {
+                    if (this.tweetType === 'total') {
+                        this.state.data = totalTwitterTrendTweets;
+                    } else if (this.tweetType === 'positive') {
+                        this.state.data = negativeLineTrendTweets;
+                    } else if (this.tweetType === 'negative') {
+                        this.state.data = positiveLineTrendTweets;
+                    }
+                } else if (prevState.visual === 'pie') {
+                    if (this.tweetType === 'negative') {
+                        this.state.data = totalNegativeTrendsTweets;
+                    } else if (this.tweetType === 'positive') {
+                        this.state.data = totalPositiveTrendsTweets;
+                    }
+
+                } else if (prevState.visual === 'assoc') {
+                    this.state.data = assocTrendTweets;
+                    this.tweetType = prevState.tweets
+                }
+            }
+            this.tempData = this.state.data;
+        }
+    }
+
+    componentDidMount() {
+        window.scrollTo(0, 0)
+
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (this.state !== prevState){
+            const recursive = () => {
+                console.log('here');
+                setTimeout(() => {
+                    let hasMore = this.state.data.length + 1 < prevState.data.length;
+                    this.setState( (prev, props) => ({
+                        data: prevState.data.slice(0, prevState.data.length + 1)
+                    }));
+                    if (hasMore) recursive();
+                }, 0);
+            }
+        }
+    }
 
     render() {
 
         const {classes, className, ...rest} = this.props;
         const rootClassName = classNames(classes.root, className);
         const prevState = this.props.location.state;
-
-        let tweetType,data;
-        if (prevState.tweets === 'total') {
-            tweetType = 'total'
-        } else {
-            tweetType = (prevState.tweets === 'negative') ? 'negative' : 'positive';
-        }
-
-        if (prevState) {
-            if (prevState.type === 'INFO') {
-                if (prevState.visual === 'line') {
-                    if (tweetType === 'total') {
-                        data = totalTwitterTweets;
-                    } else if (tweetType === 'negative') {
-                        data = positiveLineTweets;
-                    } else if (tweetType === 'positive') {
-                        data = negativeLineTweets;
-                    }
-                } else if (prevState.visual === 'pie') {
-                    if (tweetType === 'negative') {
-                        data = totalNegativeInfoTweets;
-                    } else if (tweetType === 'positive') {
-                        data = totalPositiveInfoTweets;
-                    }
-
-                } else if (prevState.visual === 'assoc'){
-                    data = assocInfoTweets;
-                    tweetType = prevState.tweets;
-                }
-            } else if (prevState.type === 'POSTS') {
-                if (prevState.visual === 'line') {
-                    if (tweetType === 'total') {
-                        data = totalTwitterTrendTweets;
-                    } else if (tweetType === 'positive') {
-                        data = negativeLineTrendTweets;
-                    } else if (tweetType === 'negative') {
-                        data = positiveLineTrendTweets;
-                    }
-                } else if (prevState.visual === 'pie') {
-                    if (tweetType === 'negative') {
-                        data = totalNegativeTrendsTweets;
-                    } else if (tweetType === 'positive') {
-                        data = totalPositiveTrendsTweets;
-                    }
-
-                } else if (prevState.visual === 'assoc'){
-                    data = assocTrendTweets;
-                    tweetType = prevState.tweets;
-                }
-            }
-        }
 
         return (
             <DashboardLayout className={rootClassName}
@@ -133,8 +195,40 @@ class TweetsList extends Component {
             >
                 <div className={classes.root}>
                     <Portlet className={classes.listItem}>
-                        <PortletHeader noDivider>
-                            <Typography variant="h2">{tweetType} Tweets</Typography>
+                        <PortletHeader noDivider className={classes.header}>
+                            <Typography variant="h2">{this.tweetType} Tweets</Typography>
+                            <PortletToolbar className={classes.filterBody}>
+                                <FormControl className={classes.formControl}>
+                                    <InputLabel htmlFor="age-simple">Filter</InputLabel>
+                                    <Select
+                                        inputProps={{
+                                            name: 'filter',
+                                            id: 'age-simple',
+                                        }}
+                                        IconComponent={() => (
+                                            <FilterListOutlinedIcon />
+                                        )}
+                                    >
+                                        <FormControl component="fieldset" className={classes.formControl}>
+                                            <FormLabel component="legend">Filter</FormLabel>
+                                            <FormGroup>
+                                                {
+                                                    this.state.filters.map((filter) =>
+                                                        <FormControlLabel
+                                                            control={<Checkbox
+                                                                onChange={() => this.handleChange(filter)}
+                                                                checked={filter.checked} value={filter.id}/>}
+                                                            label={filter.name}
+                                                        />
+                                                    )
+                                                }
+                                            </FormGroup>
+                                            <FormHelperText>choose any to update list</FormHelperText>
+                                        </FormControl>
+
+                                    </Select>
+                                </FormControl>
+                            </PortletToolbar>
                         </PortletHeader>
                         <PortletContent
                             noPadding
@@ -144,7 +238,7 @@ class TweetsList extends Component {
                                 xs={12}
                             >
                                 {
-                                    data.map(tweet => (
+                                    this.state.data.map(tweet => (
                                         <React.Fragment>
                                             <Portlet>
                                                 <PortletContent
@@ -153,7 +247,8 @@ class TweetsList extends Component {
                                                     <ListItem button alignItems="flex-start" component="a"
                                                               href={'https://twitter.com' + tweet.url}>
                                                         <ListItemAvatar>
-                                                            <Avatar alt="Remy Sharp" src={tweet.user_image}/>
+                                                            <Avatar alt="Remy Sharp" src={tweet.user_image}
+                                                                    className={classes.bigAvatar}/>
                                                         </ListItemAvatar>
                                                         <ListItemText
                                                             primary={tweet.user_name}
@@ -242,9 +337,35 @@ class TweetsList extends Component {
         );
     }
 
-    handleClick() {
 
+    handleChange(filter) {
+        if (!filter.checked) {
+            if (filter.type === 'nbr_reply') {
+                this.state.data = this.state.data.sort((a, b) => {
+                    return b.nbr_reply - a.nbr_reply;
+                });
+
+            }
+            if (filter.type === 'nbr_retweet') {
+                this.state.data = this.state.data.sort((a, b) => {
+                    return b.nbr_retweet - a.nbr_retweet;
+                });
+            }
+            if (filter.type === 'nbr_favorite') {
+                this.state.data = this.state.data.sort((a, b) => {
+                    return b.nbr_favorite - a.nbr_favorite;
+                });
+            }
+        } else {
+            this.state.data = this.tempData;
+        }
+        this.setState({
+            filters: this.state.filters.map(el => (el.id === filter.id ?
+                Object.assign({}, el, {checked: !el.checked})
+                : el))
+        });
     }
+
 }
 
 TweetsList.propTypes = {

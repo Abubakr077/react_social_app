@@ -108,7 +108,9 @@ class ProfilesTable extends Component {
                     <MaterialTable
                         columns={[
                             {title: 'User Name', field: 'user_name',
-                                render: rowData => <Typography variant="h6" className={classes.user_name}> <Avatar  src={rowData.user_avatar}/> <div className={classes.title}>{rowData.user_name}</div></Typography>
+                                render: rowData => <Typography   variant="h6" className={classes.user_name}>
+                                    <Avatar  src={rowData.user_avatar} className={classes.bigAvatar}/> <div className={classes.title}>{rowData.user_name}</div>
+                            </Typography>
                             },
                             {title: 'Screen Name', field: 'user_screen_name'},
                             {

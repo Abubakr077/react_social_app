@@ -40,7 +40,7 @@ const styles = theme => ({
         padding: theme.spacing.unit * 4,
         display: 'flex',
         flexDirection: 'column',
-        minHeight: '100vh',
+        minHeight: '80vh',
     },
     item: {
         height: '100%'

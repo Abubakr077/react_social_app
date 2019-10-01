@@ -70,11 +70,11 @@ const options2 = {
     enableTooltip: false,
     deterministic: false,
     fontFamily: 'impact',
-    fontSizes: [15, 30],
+    fontSizes: [20, 50],
     fontStyle: 'normal',
     fontWeight: 'normal',
     rotations: 2,
-    rotationAngles: [0,90],
+    rotationAngles: [0],
     scale: 'sqrt',
     spiral: 'rectangular',
     transitionDuration: 1000,
@@ -101,7 +101,7 @@ function getCallback(callback,props,cloudOptions) {
             })
             .transition()
             .attr('background', 'white')
-            .attr('font-size', isActive ? '150%' : '100%')
+            .attr('font-size', isActive ? '130%' : '100%')
             .attr('text-decoration', isActive ? 'underline' : 'none')
     }
     }

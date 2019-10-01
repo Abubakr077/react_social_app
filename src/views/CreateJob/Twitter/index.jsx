@@ -367,7 +367,7 @@ class Twitter extends Component {
                 },
                 data: JSON.stringify(this.state.post)
             }).then((res) => {
-                history.push("/dashboard/" + projectId);
+                history.push("/dashboard/project");
             });
         } catch (error) {
             toast.error(<Message name={error.data} />, optionsError);

@@ -6,7 +6,7 @@ import compose from 'recompose/compose';
 import PropTypes from 'prop-types';
 // Material helpers
 // Material components
-import {Badge, IconButton, Popover, Toolbar, Typography, withStyles} from '@material-ui/core';
+import {Avatar, Badge, IconButton, Popover, Toolbar, Typography, withStyles} from '@material-ui/core';
 // Material icons
 import {
   Close as CloseIcon,
@@ -161,6 +161,7 @@ class Topbar extends Component {
                 <IconButton
                 className={classes.signOutButton}
                 onClick={this.handleShowProjects}
+                variant="outlined"
             >
               <Typography
                   variant="button"

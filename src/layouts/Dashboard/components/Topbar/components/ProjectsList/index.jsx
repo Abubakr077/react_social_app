@@ -32,24 +32,7 @@ import {
 import styles from './styles';
 import Tooltip from "@material-ui/core/Tooltip";
 
-const icons = {
-  order: {
-    icon: <PaymentIcon />,
-    color: 'blue'
-  },
-  user: {
-    icon: <PeopleIcon />,
-    color: 'red'
-  },
-  product: {
-    icon: <StoreIcon />,
-    color: 'green'
-  },
-  feature: {
-    icon: <CodeIcon />,
-    color: 'purple'
-  }
-};
+
 
 class ProjectsList extends Component {
 
@@ -67,14 +50,21 @@ class ProjectsList extends Component {
                 {projects.map(membership => (
                   <Link
                     key={membership.project.id}
-                    to={`/dashboard/${membership.project.id}`}
+                    to={
+                    {
+                      pathname: `/dashboard/project`,
+                      state: {
+                      project_id: membership.project.id
+                    }
+                    }
+                    }
                     target="_blank"
                   >
                     <Tooltip title="Click to load" placement="left">
                     <ListItem
                       className={classes.listItem}
                       component="div"
-                      onClick={onSelect}
+                      onClick={()=>this.onSelectItem(membership)}
                     >
                       <ListItemText
                         classes={{ secondary: classes.listItemTextSecondary }}
@@ -115,6 +105,14 @@ class ProjectsList extends Component {
       </div>
     );
   }
+
+  onSelectItem(membership) {
+    console.log('here');
+    console.log(membership);
+    localStorage.setItem('project_id',membership.project.id);
+    localStorage.setItem('project',JSON.stringify(membership));
+    return true;
+  }
 }
 
 ProjectsList.propTypes = {
@@ -126,7 +124,9 @@ ProjectsList.propTypes = {
 
 ProjectsList.defaultProps = {
   notifications: [],
-  onSelect: () => {}
+  onSelect: (membership) => {
+
+  }
 };
 
 export default withStyles(styles)(ProjectsList);

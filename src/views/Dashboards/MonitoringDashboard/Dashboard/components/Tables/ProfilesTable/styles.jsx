@@ -59,5 +59,11 @@ export default theme => ({
   user_name: {
     display: 'flex',
     alignItems: 'center'
-  }
+  },
+  bigAvatar: {
+    marginLeft: 10,
+    marginRight:10,
+    width: 60,
+    height: 60,
+  },
 });

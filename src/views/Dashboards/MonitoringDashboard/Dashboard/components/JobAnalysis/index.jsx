@@ -30,10 +30,10 @@ import styles from './styles';
 
 // Shared Resources
 import compose from "recompose/compose";
-import PNTweetsLine from "../Grapths/PNTweetsLine";
-import PNTweetsPie from "../Grapths/PNTweetsPie";
+import PNTweetsLine from "../Graphs/PNTweetsLine";
+import PNTweetsPie from "../Graphs/PNTweetsPie";
 import {WordClouds} from "../index";
-import PNTweetsArea from "../Grapths/PNTweetsArea";
+import PNTweetsArea from "../Graphs/PNTweetsArea";
 import AccountProfile from "../AccountProfile";
 
 
@@ -50,13 +50,14 @@ class JobAnalysis extends Component {
     };
 
 
+    componentDidMount() {
+        window.scrollTo(0, 0)
+    }
     render() {
         const {classes, className, ...rest} = this.props;
         const rootClassName = classNames(classes.root, className);
         const job = JSON.parse(localStorage.getItem('job'));
         const prevState = this.props.location.state;
-        console.log('here');
-        console.log(prevState);
         let data;
         if (prevState){
             if (prevState.type === 'INFO') {
@@ -700,7 +701,7 @@ class JobAnalysis extends Component {
                             "total": 1,
                             "positive": 0,
                             "negative": 0
-                        }
+                        },
                     ],
                     "polarity_dist": [
                         {

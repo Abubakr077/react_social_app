@@ -22,7 +22,7 @@ import {
     PortletFooter,
     PortletContent
 } from 'components';
-import ProfileBar from "../Grapths/ProfilesBar";
+import ProfileBar from "../Graphs/ProfilesBar";
 import ProfilesTable from "../Tables/ProfilesTable";
 
 
