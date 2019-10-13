@@ -1,7 +1,8 @@
 import * as color from "common/colors";
-import { green } from '@material-ui/core/colors';
 export default theme => ({
-  root: {},
+  root: {
+    padding: theme.spacing(4)
+  },
   portletContent: {
     minWidth: '300px'
   },
@@ -22,7 +23,6 @@ export default theme => ({
   },
   portlet:{
     margin: theme.spacing(3),
-    // backgroundColor: theme.palette.background.default,
   },
   title: {
     marginLeft: theme.spacing(2),
@@ -46,18 +46,10 @@ export default theme => ({
   color: color.red
 },
   blueIcon: {
-    color: theme.palette.info.main
-  },
-  yellowIcon: {
-    color: theme.palette.warning.main
+    color: color.blue
   },
   greenIcon: {
-    color: theme.palette.success.main
-  },
-  viewPrevious: {
-    marginLeft: theme.spacing(2),
-    backgroundColor: theme.palette.warning.main,
-    color: color.white
+    color: color.green
   },
   portletFooter: {
     paddingLeft: theme.spacing.unit * 3,
@@ -65,19 +57,18 @@ export default theme => ({
     paddingTop: theme.spacing.unit * 2,
     paddingBottom: theme.spacing.unit * 2,
     alignSelf: 'center'
-
   },
-  wrapper: {
-    margin: theme.spacing(1),
-    position: 'relative',
+  user_name: {
+    display: 'flex',
+    alignItems: 'center'
   },
-  buttonSuccess: {
-    backgroundColor: green[500],
-    '&:hover': {
-      backgroundColor: green[700],
-    },
+  bigAvatar: {
+    marginLeft: 10,
+    marginRight:10,
+    width: 60,
+    height: 60,
   },
-  buttonProgress: {
-  color: green[500]
-},
+  icon: {
+    display: 'flex'
+  }
 });

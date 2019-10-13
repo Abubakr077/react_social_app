@@ -1,5 +1,7 @@
-import React, {Component} from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import React, {Component, useRef, createRef, useState, useEffect} from 'react';
+import {Link, withRouter} from 'react-router-dom';
+import {getJobStatus,getPreviousMonitorTasks} from 'services/MonitoringJob';
+
 
 // Externals
 import classNames from 'classnames';
@@ -32,7 +34,8 @@ import {
     PortletHeader,
     PortletLabel,
     PortletContent,
-    PortletFooter
+    PortletFooter,
+    PortletToolbar
 } from 'components';
 import MaterialTable from "material-table";
 import TextField from "@material-ui/core/TextField";
@@ -40,58 +43,153 @@ import {toast} from "react-toastify";
 import {Message, optionsError, optionsSuccess} from "../../../../../../../constants/constants";
 
 import request from 'helpers/request.js';
+import Request from 'helpers/polling/Request.js';
 import * as endpoints from 'constants/endpoints.json';
 import confirm from 'helpers/confirmation.js';
 import compose from "recompose/compose";
 import {connect} from "react-redux";
 import IconButton from "@material-ui/core/IconButton";
+import clsx from 'clsx';
+
 class MonitoringJobsTable extends Component {
     signal = false;
 
     state = {
-        isLoading: false,
+        isJobsLoading: false,
+        loading: false,
+        success: false,
+        completed: false,
         user: null,
         project_id: null,
-        jobs: []
+        jobs: [],
+        jobTasks: [],
+        taskId: null,
+        JobTaskStatus: null
     };
 
     async getMonitorJobs() {
         try {
 
-            this.setState({isLoading: true});
-            const user = JSON.parse(localStorage.getItem('user'));
-            const project_id = localStorage.getItem('project_id');
+            this.setState({isJobsLoading: true});
+            this.user = JSON.parse(localStorage.getItem('user'));
+            this.project_id = localStorage.getItem('project_id');
             this.setState({
-               user: user,
-               project_id: project_id
+                user: this.user,
+                project_id: this.project_id
             });
             await request({
                 url: endpoints.getProjectJobs,
                 method: 'GET',
                 headers: {
-                    user_id: user.id,
-                    x_auth_token: user.x_auth_token.token,
-                    project_id: project_id
+                    user_id: this.user.id,
+                    x_auth_token: this.user.x_auth_token.token,
+                    project_id: this.project_id
                 }
             }).then((res) => {
                 localStorage.setItem('jobs', JSON.stringify(res.monitoring_jobs));
                 if (this.signal) {
                     this.setState({
-                        isLoading: false,
+                        isJobsLoading: false,
                         jobs: res.monitoring_jobs
                     });
                 }
             });
         } catch (error) {
-            toast.error(<Message name={error.data}/>,optionsError);
+            toast.error(<Message name={error.data}/>, optionsError);
             if (this.signal) {
                 this.setState({
-                    isLoading: false,
+                    isJobsLoading: false,
                     error
                 });
             }
         }
     }
+
+    async startAnalytics(job) {
+
+        this.setState({
+            loading: true,
+            success: false
+        });
+        const user = JSON.parse(localStorage.getItem('user'));
+        const project_id = localStorage.getItem('project_id');
+        this.setState({
+            user: user,
+            project_id: project_id
+        });
+        ///
+        try {
+
+            await request({
+                url: endpoints.initiateAnalysis + job.id,
+                method: 'POST',
+                headers: {
+                    user_id: this.user.id,
+                    x_auth_token: this.user.x_auth_token.token,
+                    project_id: this.project_id
+                }
+            }).then((response) => {
+                console.log(response);
+                // if (response.data.status === 'QUEUED' || response.data.status === 'STARTED') {
+                console.log('start getting status');
+                const id = response.id;
+
+                try {
+                    getJobStatus(this,id);
+                } catch (error) {
+                    console.log('get status catch');
+                    toast.error(<Message name={error.message}/>, optionsError);
+                    this.setState({
+                        loading: false,
+                        success: false,
+                        error
+                    });
+                }
+
+                // }
+            });
+        } catch (error) {
+            console.log('intialize catch');
+            toast.error(<Message name={error.data}/>, optionsError);
+            this.setState({
+                loading: false,
+                success: false,
+                error
+            });
+
+        }
+        ///
+    }
+
+    async getMonitorData(id) {
+        console.log('stop getting status and get result at the end');
+        try {
+
+            await request({
+                url: endpoints.resultAnalysis + id,
+                method: 'GET',
+                headers: {
+                    user_id: this.user.id,
+                    x_auth_token: this.user.x_auth_token.token,
+                    project_id: this.project_id
+                }
+            }).then((res) => {
+                console.log(res);
+                this.setState({
+                    loading: false,
+                    success: true
+                });
+            });
+        } catch (error) {
+            toast.error(<Message name={error.data}/>, optionsError);
+            this.setState({
+                loading: false,
+                success: false,
+                error
+            });
+        }
+    }
+
 
     componentDidMount() {
         this.signal = true;
@@ -105,14 +203,15 @@ class MonitoringJobsTable extends Component {
 
     render() {
         const {classes, className} = this.props;
-        const {isLoading, jobs} = this.state;
+        const {isJobsLoading, jobs} = this.state;
 
         const rootClassName = classNames(classes.root, className);
-        const showJobs = !isLoading && jobs;
+        const showJobs = !isJobsLoading && jobs;
+
 
         return (
             <div className={rootClassName}>
-                {isLoading && (
+                {isJobsLoading && (
                     <div className={classes.progressWrapper}>
                         <CircularProgress/>
                     </div>
@@ -125,7 +224,7 @@ class MonitoringJobsTable extends Component {
                             {
                                 title: 'Job Runs',
                                 field: 'jobRuns',
-                            render: rowData => <span>{rowData.job_runs.length}</span>
+                                render: rowData => <span>{rowData.job_runs.length}</span>
                             },
                             {
                                 title: 'Created At',
@@ -135,32 +234,33 @@ class MonitoringJobsTable extends Component {
                         ]}
                         actions={[
                             rowData => ({
-                                icon: ()=>{
-                                    if (rowData.status === "ACTIVE"){
+                                icon: () => {
+                                    if (rowData.status === "ACTIVE") {
                                         return (
-                                            <div className={classes.blueIcon}>
-                                            <PauseIcon />
+                                            <div className={classes.yellowIcon}>
+                                                <PauseIcon/>
+                                            </div>)
+                                    }
+                                    return (
+                                        <div className={classes.blueIcon}>
+                                            <PlayIcon/>
                                         </div>)
-                                    } return (
-                                        <div className={classes.greenIcon}>
-                                        <PlayIcon />
-                                    </div>)
-                                } ,
+                                },
                                 onClick: (event, rowData) => {
                                     this.handleToggleStatus(rowData.id);
                                 }
                             }),
                             rowData => ({
-                                icon: ()=>
+                                icon: () =>
                                     <div className={classes.deleteIcon}>
-                                        <DeleteIcon />
+                                        <DeleteIcon/>
                                     </div>,
                                 onClick: (event, rowData) => {
-                                    confirm('Are you sure you want to delete '+rowData.description+' ?').then(
+                                    confirm('Are you sure you want to delete ' + rowData.description + ' ?').then(
                                         (result) => {
                                             // `proceed` callback
                                             this.setState({
-                                                isLoading: true
+                                                isJobsLoading: true
                                             });
                                             this.handleDelete(rowData.id);
                                         },
@@ -186,8 +286,25 @@ class MonitoringJobsTable extends Component {
                                 >
                                     <PortletHeader>
                                         <PortletLabel
-                                            title="Job Details"
+                                            title={"Job Details" + this.state.JobTaskStatus}
                                         />
+                                        <PortletToolbar>
+                                            <Typography
+                                                button
+                                                className={classes.newEntryButton}
+                                                variant="h7"
+                                            >
+                                                {'Next Run At : '}
+                                            </Typography>
+                                            <Typography
+                                                button
+                                                className={classes.newEntryButton}
+                                                color="primary"
+                                                variant="h7"
+                                            >
+                                                {moment(rowData.next_run_scheduled_at).format('LLLL')}
+                                            </Typography>
+                                        </PortletToolbar>
                                     </PortletHeader>
                                     <PortletContent className={classes.content} noPadding>
                                         <div className={classes.fields}>
@@ -347,24 +464,40 @@ class MonitoringJobsTable extends Component {
                                         </div>
                                     </PortletContent>
                                     <div className={classes.portletFooter}>
-                                        {isLoading ? (
-                                            <CircularProgress/>
-                                        ) : (
+                                        <div className={classes.wrapper}>
                                                 <Button
-                                                    color="primary"
                                                     variant="contained"
-                                                    onClick={()=>{
+                                                    color="primary"
+                                                    className={
+                                                        this.state.success ? classes.buttonSuccess : ''
+                                                    }
+                                                    disabled={this.state.loading}
+                                                    onClick={() => {
                                                         this.goToAnalysis(rowData);
                                                     }}
                                                 >
                                                     Start Analytics
                                                 </Button>
-                                        )}
+                                            {this.state.loading && (<CircularProgress size={24} className={classes.buttonProgress}/>) }
+                                            <Button
+                                                className={classes.viewPrevious}
+                                                variant="contained"
+                                                onClick={() => {
+                                                    this.goToPreviousAnalysis(rowData);
+                                                }}
+                                            >
+                                                View Previous
+                                            </Button>
+                                        </div>
                                     </div>
                                 </Portlet>
                             )
                         }}
-                        onRowClick={(event, rowData, togglePanel) => togglePanel()}
+                        onRowClick={(event, rowData, togglePanel) => {
+                            togglePanel()
+                            // this.getPreviousMonitorTasks(rowData.id);
+                            getPreviousMonitorTasks(this,rowData.id);
+                        }}
                     />
                 )}
             </div>
@@ -372,21 +505,35 @@ class MonitoringJobsTable extends Component {
     }
 
     goToAnalysis(rowData) {
-        console.log(rowData);
-        const { history } = this.props;
+        this.setState({
+            loading: true,
+            success: false
+        });
+        const {history} = this.props;
         const url = this.props.match.url;
-        localStorage.setItem('job',JSON.stringify(rowData));
-        console.log(url+'/analysis');
-        history.push(url+'/analysis',{type: rowData.job_details.target_subtype , target_type: rowData.job_details.target_type});
+        localStorage.setItem('job', JSON.stringify(rowData));
+        this.startAnalytics(rowData);
+        // setTimeout(function () { //Start the timer
+        //     this.setState({
+        //         loading: false,
+        //         success: true
+        //     }, () => {
+        //         history.push(url + '/analysis', {
+        //             type: rowData.job_details.target_subtype,
+        //             target_type: rowData.job_details.target_type
+        //         });
+        //     });
+        // }.bind(this), 2000);
+
     }
 
     async handleDelete(id) {
-        const {user,project_id,jobs} = this.state;
-        const endpoint = endpoints.getProjectJobs+'/'+id+'?force=1';
+        const {user, project_id, jobs} = this.state;
+        const endpoint = endpoints.getProjectJobs + '/' + id + '?force=1';
 
-        try{
+        try {
             await request({
-                url:    endpoint,
+                url: endpoint,
                 method: 'DELETE',
                 headers: {
                     user_id: user.id,
@@ -394,25 +541,26 @@ class MonitoringJobsTable extends Component {
                     project_id: project_id
                 }
             }).then(() => {
-                this.setState({
-                    jobs: jobs.filter(job=> job.id !== id),
-                    isLoading: false
-                });
-                toast.success(<Message name={'Job Deleted Successfully'}/>,optionsSuccess);
+                    this.setState({
+                        jobs: jobs.filter(job => job.id !== id),
+                        isJobsLoading: false
+                    });
+                    toast.success(<Message name={'Job Deleted Successfully'}/>, optionsSuccess);
                 }
             );
-        }catch (error) {
+        } catch (error) {
             toast.error(<Message name={error.data}/>, optionsError);
             this.setState({
-                isLoading: false
+                isJobsLoading: false
             });
         }
     }
+
     handleToggleStatus(id) {
-        const {user,project_id,jobs} = this.state;
-        try{
+        const {user, project_id, jobs} = this.state;
+        try {
             request({
-                url:    endpoints.getProjectJobs+'/'+id,
+                url: endpoints.getProjectJobs + '/' + id,
                 method: 'PUT',
                 headers: {
                     user_id: user.id,
@@ -420,16 +568,23 @@ class MonitoringJobsTable extends Component {
                     project_id: project_id
                 }
             }).then((res) => {
-                this.setState({
-                    jobs: jobs.map(el => (el.id === res.id ?
-                        Object.assign({}, el, { status: res.status })
-                        : el))
-                });
+                    this.setState({
+                        jobs: jobs.map(el => (el.id === res.id ?
+                            Object.assign({}, el, {status: res.status})
+                            : el))
+                    });
                 }
             );
-        }catch (error) {
+        } catch (error) {
             toast.error(<Message name={error.data}/>, optionsError);
         }
+    }
+
+    goToPreviousAnalysis(rowData) {
+        const {history} = this.props;
+        localStorage.setItem('job', JSON.stringify(rowData));
+        history.push('/dashboard/project/previous_tasks',{taskId: this.state.taskId,jobName: rowData.description});
+
     }
 }
 
@@ -439,9 +594,17 @@ MonitoringJobsTable.propTypes = {
     history: PropTypes.object.isRequired
 
 };
+const mapStateToProps = (state, ownProps) => {
+    return {
+        JobTaskStatus: state.JobTaskStatus,
+
+    }
+};
 
 export default compose(
+    connect(mapStateToProps),
     withRouter,
     withStyles(styles)
 )
 (MonitoringJobsTable);
+

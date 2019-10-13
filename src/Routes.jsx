@@ -4,7 +4,6 @@ import asyncComponent from 'components/AsyncComponent';
 
 import {connect} from 'react-redux';
 import * as localStorageHelper from 'helpers/localStorage'
-
 // Lazy Load Views
 const SignUp = asyncComponent(() =>
     import('./views/SignUp').then(module => module.default)
@@ -27,6 +26,9 @@ const SendInvites = asyncComponent(() =>
 );
 const JobAnalysis = asyncComponent(() =>
     import('./views/Dashboards/MonitoringDashboard/Dashboard/components/JobAnalysis').then(module => module.default)
+);
+const PreviousAnalysis = asyncComponent(() =>
+    import('./views/Dashboards/MonitoringDashboard/Dashboard/components/PreviousAnalytics').then(module => module.default)
 );
 const TweetsList = asyncComponent(() =>
     import('./views/Dashboards/MonitoringDashboard/Dashboard/components/TweetsList').then(module => module.default)
@@ -105,6 +107,11 @@ class Routes extends Component {
               component={JobAnalysis}
               exact
               path="/dashboard/project/analysis"
+          />
+          <PrivateRoute
+              component={PreviousAnalysis}
+              exact
+              path="/dashboard/project/previous_tasks"
           />
           <PrivateRoute
               component={TweetsList}

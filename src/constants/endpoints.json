@@ -1,6 +1,6 @@
 {
   "proxy": "https://cors-anywhere.herokuapp.com/",
-  "host": "http://192.168.1.107:5000",
+  "host": "http://192.168.1.109:5000",
   "login": "/users/login",
   "signUp": "/users/register",
   "createProject" : "/projects/create",
@@ -13,5 +13,9 @@
   "sentInviteStatus" : "/projects/sent_invites",
   "rejectInvite" : "/projects/invites/reject",
   "getProjectJobs" : "/monitoring/jobs",  
-  "createMonitoringJob" : "/monitoring/jobs"
+  "createMonitoringJob" : "/monitoring/jobs",
+  "initiateAnalysis": "/analytics/initiate_analysis/",
+  "statusAnalysis": "/analytics/status/",
+  "resultAnalysis": "/analytics/result/",
+  "getPreviousAnalysis": "/analytics/previous/"
 }

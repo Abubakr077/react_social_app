@@ -88,7 +88,15 @@ class SignIn extends Component {
         newState.values[field] = value;
 
         this.setState(newState, this.validateForm);
-        this.nameInput.focus();
+        // this.nameInput.focus();
+    };
+    _handleKeyDown = async (e) => {
+        if (e.key === 'Enter' ) {
+            if (this.state.isValid){
+                await this.handleSignIn(e);
+            }
+        }
+
     };
 
     handleSignIn = async (e) => {
@@ -249,6 +257,7 @@ class SignIn extends Component {
                                             type="text"
                                             value={values.email}
                                             variant="outlined"
+                                            onKeyDown={this._handleKeyDown}
                                         />
                                         {showEmailError && (
                                             <Typography
@@ -268,6 +277,7 @@ class SignIn extends Component {
                                             type="password"
                                             value={values.password}
                                             variant="outlined"
+                                            onKeyDown={this._handleKeyDown}
                                         />
                                         {showPasswordError && (
                                             <Typography
@@ -298,7 +308,6 @@ class SignIn extends Component {
                                             }}
                                             size="large"
                                             variant="contained"
-                                            ref={(input) => { this.nameInput = input; }}
                                         >
                                             Sign in now
                                         </Button>

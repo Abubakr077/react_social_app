@@ -192,10 +192,10 @@ class Topbar extends Component {
             horizontal: 'center'
           }}
         >
-          {/*<NotificationList*/}
-          {/*  notifications={notifications}*/}
-          {/*  onSelect={this.handleCloseNotifications}*/}
-          {/*/>*/}
+          <NotificationList
+            notifications={notifications}
+            onSelect={this.handleCloseNotifications}
+          />
         </Popover>
         <Popover
             anchorEl={projectsEl}

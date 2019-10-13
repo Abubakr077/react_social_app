@@ -40,6 +40,7 @@ export const DELETE_PROJECT = 'DELETE_PROJECT';
 export const DELETE_INVITE = 'DELETE_INVITE';
 export const DELETE_JOB = 'DELETE_JOB';
 export const UPDATE_INVITE = 'UPDATE_INVITE';
+export const JOB_TASK_STATUS = 'JOB_TASK_STATUS';
 
 // job creation
 

@@ -21,10 +21,10 @@ export default [
     to: '/products/DEV654476'
   },
   {
-    id: 'DEV604714',
-    title: 'New feature has been added',
+    id: 'DEV6047134',
+    title: 'dsfksdfhskdhf',
     when: '2 day ago',
-    type: 'feature',
+    type: 'analyticalTask',
     to: '/features'
   }
 ];

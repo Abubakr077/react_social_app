@@ -21,6 +21,11 @@ const Reducers = (state = [], action) => {
                 ...state,
                 projects: state.projects.concat([action.project]),
             };
+        case constants.JOB_TASK_STATUS:
+            return {
+                ...state,
+                JobTaskStatus: action.JobTaskStatus,
+            };
         case constants.DELETE_PROJECT:
             return Object.assign({}, state, {
                 projects: [...action.projects.filter(item => item.project.id !== action.id)],

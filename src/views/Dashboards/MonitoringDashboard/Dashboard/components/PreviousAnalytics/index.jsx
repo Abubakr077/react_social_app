@@ -1,0 +1,181 @@
+import React, {Component} from 'react';
+import { Link, withRouter } from 'react-router-dom';
+
+// Externals
+import classNames from 'classnames';
+import moment from 'moment';
+import PerfectScrollbar from 'react-perfect-scrollbar';
+import PropTypes from 'prop-types';
+
+
+// Material helpers
+import {Button, Divider, Grid, LinearProgress, TableCell, Typography, withStyles} from '@material-ui/core';
+import {getJobStatus,getPreviousMonitorTasks} from 'services/MonitoringJob';
+
+// Material components
+import {
+    CircularProgress
+} from '@material-ui/core';
+
+// Component styles
+import styles from './styles';
+import EqualizerOutlinedIcon from '@material-ui/icons/EqualizerOutlined';
+import request from 'helpers/request.js';
+import Request from 'helpers/polling/Request.js';
+import * as endpoints from 'constants/endpoints.json';
+// Shared components
+import {
+    Portlet,
+    PortletHeader,
+    PortletLabel,
+    PortletContent,
+    PortletFooter
+} from 'components';
+import MaterialTable from "material-table";
+import compose from "recompose/compose";
+import Avatar from "@material-ui/core/Avatar";
+import ProfileBar from "../Graphs/ProfilesBar";
+import ProfilesTable from "../Tables/ProfilesTable";
+import {
+    Dashboard as DashboardLayout
+
+} from 'layouts';
+import {toast} from "react-toastify";
+import {Message, optionsError} from "../../../../../../constants/constants";
+
+class PreviousAnalyticsTable extends Component {
+    signal = false;
+
+    state = {
+        isLoading: false,
+        jobTasks: []
+    };
+
+
+    componentDidMount() {
+        this.signal = true;
+        this.user = JSON.parse(localStorage.getItem('user'));
+        this.project_id = localStorage.getItem('project_id');
+        const prevState = this.props.location.state;
+        getPreviousMonitorTasks(this,prevState.taskId);
+    }
+
+    componentWillUnmount() {
+        this.signal = false;
+    }
+
+    render() {
+        const {classes, className} = this.props;
+        const {isLoading, jobTasks} = this.state;
+
+        const rootClassName = classNames(classes.root, className);
+        const showTasks = !isLoading && jobTasks;
+        const prevState = this.props.location.state;
+
+        return (
+            <DashboardLayout className={classes.root}
+                             title={ 'Previous Tasks of '+prevState.jobName}
+                             initUser={false}
+                             options={{
+                                 isTweetsRoute: true
+                             }}
+            >
+                <div className={classes.root}>
+                    <Grid
+                        item
+                        xs={10}
+                        className={classes.barGrapth}
+                    >
+                        {isLoading && (
+                            <div className={classes.progressWrapper}>
+                                <CircularProgress/>
+                            </div>
+                        )}
+                        <MaterialTable
+                                columns={[
+                                    {title: 'Status', field: 'status',
+                                    },
+                                    {title: 'Created At',
+                                        defaultSort: 'desc',
+                                        field: 'created_at'},
+                                ]}
+                                data={this.state.jobTasks}
+                                title="Previous Tasks"
+                                onRowClick={(event, rowData, togglePanel) => this.goToAnalysis()}
+                                options={{
+                                    search: true,
+                                    paging: false,
+                                    actionsColumnIndex: -1,
+                                    exportButton: true,
+                                }}
+                                actions={[
+                                    rowData => ({
+                                        icon: () => {
+                                                return (
+                                                    <div className={classes.icon}>
+                                                            <EqualizerOutlinedIcon/>
+                                                    </div>)
+                                        },
+                                        tooltip: 'View Analytics',
+                                        disabled: rowData.status !== 'FINISHED',
+                                        onClick: (event, rowData) => {
+                                            this.getMonitorData(rowData.id);
+                                        }
+                                    }),
+
+                                ]}
+
+                            />
+                    </Grid>
+                </div>
+            </DashboardLayout>
+        );
+    }
+
+    goToAnalysis() {
+        const { history } = this.props;
+    }
+    async getMonitorData(id) {
+        const { history } = this.props;
+        try {
+
+            await request({
+                url: endpoints.resultAnalysis + id,
+                method: 'GET',
+                headers: {
+                    user_id: this.user.id,
+                    x_auth_token: this.user.x_auth_token.token,
+                    project_id: this.project_id
+                }
+            }).then((res) => {
+                console.log(res);
+                history.push('/dashboard/project/analysis',{type: 'POSTS' , target_type: 'USER' , data: res});
+                this.setState({
+                    loading: false,
+                    success: true
+                });
+            });
+        } catch (error) {
+            toast.error(<Message name={error.data}/>, optionsError);
+            this.setState({
+                loading: false,
+                success: false,
+                error
+            });
+        }
+    }
+
+}
+
+PreviousAnalyticsTable.propTypes = {
+    className: PropTypes.string,
+    classes: PropTypes.object.isRequired,
+    history: PropTypes.object.isRequired
+
+};
+
+export default compose(
+    withRouter,
+    withStyles(styles)
+)
+(PreviousAnalyticsTable);

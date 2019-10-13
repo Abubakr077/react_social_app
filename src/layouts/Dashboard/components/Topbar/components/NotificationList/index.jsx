@@ -27,9 +27,11 @@ import {
   Code as CodeIcon,
   Store as StoreIcon
 } from '@material-ui/icons';
+import { InsertChartOutlined as InsertChartIcon } from '@material-ui/icons';
 
 // Component styles
 import styles from './styles';
+import LinearProgress from "@material-ui/core/LinearProgress";
 
 const icons = {
   order: {
@@ -47,7 +49,11 @@ const icons = {
   feature: {
     icon: <CodeIcon />,
     color: 'purple'
-  }
+  },
+  analyticalTask: {
+    icon: <InsertChartIcon />,
+    color: 'blue'
+  },
 };
 
 class NotificationList extends Component {
@@ -61,7 +67,7 @@ class NotificationList extends Component {
         {notifications.length > 0 ? (
           <Fragment>
             <div className={classes.header}>
-              <Typography variant="h6">User Notifications</Typography>
+              <Typography variant="h6">Notifications</Typography>
               <Typography
                 className={classes.subtitle}
                 variant="body2"
@@ -83,9 +89,9 @@ class NotificationList extends Component {
                     >
                       <ListItemIcon
                         className={classes.listItemIcon}
-                        style={{ color: icons[notification.type].color }}
+                        style={{ color: 'blue' }}
                       >
-                        {icons[notification.type].icon}
+                        <InsertChartIcon/>
                       </ListItemIcon>
                       <ListItemText
                         classes={{ secondary: classes.listItemTextSecondary }}
@@ -94,21 +100,23 @@ class NotificationList extends Component {
                       />
                       <ArrowForwardIosIcon className={classes.arrowForward} />
                     </ListItem>
+                    <LinearProgress
+                    />
                     <Divider />
                   </Link>
                 ))}
               </List>
-              <div className={classes.footer}>
-                <Button
-                  color="primary"
-                  component={Link}
-                  size="small"
-                  to="#"
-                  variant="contained"
-                >
-                  See all
-                </Button>
-              </div>
+              {/*<div className={classes.footer}>*/}
+              {/*  <Button*/}
+              {/*    color="primary"*/}
+              {/*    component={Link}*/}
+              {/*    size="small"*/}
+              {/*    to="#"*/}
+              {/*    variant="contained"*/}
+              {/*  >*/}
+              {/*    See all*/}
+              {/*  </Button>*/}
+              {/*</div>*/}
             </div>
           </Fragment>
         ) : (

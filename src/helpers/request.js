@@ -2,23 +2,14 @@
 import axios     from 'axios'
 import endpoints from 'constants/endpoints.json'
 import { toast } from 'react-toastify';
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {Message, optionsError, optionsSuccess} from "../constants/constants";
 
 
-
-/**
- * Create an Axios Client with defaults
- */
 const client = axios.create({
     baseURL: endpoints.host
 });
 
-
-
-/**
- * Request Wrapper with default success/error actions
- */
 const request = function(options) {
     const onSuccess = function(response) {
         console.debug('Request Successful!', response);
@@ -36,6 +27,9 @@ const request = function(options) {
             console.error('Status:',  error.response.status);
             console.error('Data:',    error.response.data);
 
+            if (error.response.data === 'AUTHENTICATION FAILED!'){
+                localStorage.removeItem('user');
+            }
             if (error.response.status === 500){
                 error.response.data = 'Error Message:' + ' Something went wrong!'
             }
@@ -54,6 +48,7 @@ const request = function(options) {
 
         return Promise.reject(error.response || error.message);
     };
+
 
     return client(options)
         .then(onSuccess)
