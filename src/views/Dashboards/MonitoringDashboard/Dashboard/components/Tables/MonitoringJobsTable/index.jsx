@@ -465,6 +465,7 @@ class MonitoringJobsTable extends Component {
                                     </PortletContent>
                                     <div className={classes.portletFooter}>
                                         <div className={classes.wrapper}>
+                                            <div className={classes.analyticsButton}>
                                                 <Button
                                                     variant="contained"
                                                     color="primary"
@@ -479,6 +480,7 @@ class MonitoringJobsTable extends Component {
                                                     Start Analytics
                                                 </Button>
                                             {this.state.loading && (<CircularProgress size={24} className={classes.buttonProgress}/>) }
+                                            </div>
                                             <Button
                                                 className={classes.viewPrevious}
                                                 variant="contained"

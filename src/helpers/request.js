@@ -27,8 +27,11 @@ const request = function(options) {
             console.error('Status:',  error.response.status);
             console.error('Data:',    error.response.data);
 
-            if (error.response.data === 'AUTHENTICATION FAILED!'){
-                localStorage.removeItem('user');
+            if (localStorage.getItem("user") !== null) {
+                if (error.response.data === 'AUTHENTICATION FAILED!'){
+                    localStorage.removeItem("user");
+                    window.location.reload();
+                }
             }
             if (error.response.status === 500){
                 error.response.data = 'Error Message:' + ' Something went wrong!'

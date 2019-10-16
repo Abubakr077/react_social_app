@@ -54,7 +54,6 @@ const renderActiveShape = (props) => {
 
   return (
       <g>
-        {/*<text x={cx} y={cy} dy={8} textAnchor="middle" fill={fill}>{payload.name}</text>*/}
         <Sector
             cx={cx}
             cy={cy}
@@ -63,7 +62,7 @@ const renderActiveShape = (props) => {
             startAngle={startAngle}
             endAngle={endAngle}
             fill={fill}
-            cursor="pointer"
+            // cursor="pointer"
         />
         <Sector
             cx={cx}
@@ -98,15 +97,15 @@ class PNTweetsPie extends Component {
   };
     handleClick = (data) => {
         console.log(data);
-        const { history } = this.props;
-        const url = this.props.match.url;
-        history.push(url+'/tweets', {
-            type: this.type ,
-            tweets: data.name ,
-            target_type: this.target_type,
-            payload:data.payload,
-            visual: 'pie'
-        });
+        // const { history } = this.props;
+        // const url = this.props.match.url;
+        // history.push(url+'/tweets', {
+        //     type: this.type ,
+        //     tweets: data.name ,
+        //     target_type: this.target_type,
+        //     payload:data.payload,
+        //     visual: 'pie'
+        // });
     };
   render() {
     const { classes, className,data,type,target_type, ...rest } = this.props;

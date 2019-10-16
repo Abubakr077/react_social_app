@@ -61,5 +61,10 @@ export default theme => ({
     },
     header:{
         textTransform: 'capitalize'
+    },
+    progressWrapper: {
+        padding: theme.spacing.unit,
+        display: 'flex',
+        justifyContent: 'center'
     }
 });

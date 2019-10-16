@@ -38,8 +38,6 @@ import {withRouter} from "react-router-dom";
 class PNTweetsLine extends Component {
 
   handleClick = (data) => {
-    console.log('here');
-    console.log(data);
     const { history } = this.props;
     const url = this.props.match.url;
     history.push(url+'/tweets', {
@@ -47,15 +45,16 @@ class PNTweetsLine extends Component {
         tweets: data.dataKey,
         target_type: this.target_type,
         payload: data.payload,
-        visual: 'line'
+        visual: 'line',
+        taskId: this.taskId
     });
   };
 
   render() {
-    const { classes, className,data,type,target_type, ...rest } = this.props;
-    const rootClassName = classNames(classes.root, className);
+    const { classes, className,data,type,target_type,taskId, ...rest } = this.props;
       this.type = type;
       this.target_type = target_type;
+      this.taskId = taskId;
     return (
         <ResponsiveContainer             width="100%">
         <LineChart

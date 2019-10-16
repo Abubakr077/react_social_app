@@ -8,6 +8,9 @@ export const statusColors = {
     delivered: 'success',
     pending: 'info',
     refund: 'danger',
+    QUEUED: 'danger',
+    STARTED: 'info',
+    FINISHED: 'success'
 };
 
 export const Message = ({ name }) => <div>{name}</div>;

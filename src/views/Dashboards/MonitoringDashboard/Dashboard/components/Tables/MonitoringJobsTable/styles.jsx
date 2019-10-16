@@ -69,7 +69,7 @@ export default theme => ({
   },
   wrapper: {
     margin: theme.spacing(1),
-    position: 'relative',
+    display: 'flex'
   },
   buttonSuccess: {
     backgroundColor: green[500],
@@ -78,6 +78,12 @@ export default theme => ({
     },
   },
   buttonProgress: {
-  color: green[500]
+  color: green[500],
+    alignItems: 'center',
+    verticalAlign: 'middle',
+
 },
+  analyticsButton:{
+  alignItems: 'center',
+  }
 });

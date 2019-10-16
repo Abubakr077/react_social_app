@@ -1,15 +1,13 @@
 import React, {Component} from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 // Externals
 import classNames from 'classnames';
-import moment from 'moment';
-import PerfectScrollbar from 'react-perfect-scrollbar';
 import PropTypes from 'prop-types';
 
 
 // Material helpers
-import {Button, Divider, Grid, LinearProgress, TableCell, Typography, withStyles} from '@material-ui/core';
+import {Grid, Typography, withStyles} from '@material-ui/core';
 import {getJobStatus,getPreviousMonitorTasks} from 'services/MonitoringJob';
 
 // Material components
@@ -21,28 +19,20 @@ import {
 import styles from './styles';
 import EqualizerOutlinedIcon from '@material-ui/icons/EqualizerOutlined';
 import request from 'helpers/request.js';
-import Request from 'helpers/polling/Request.js';
 import * as endpoints from 'constants/endpoints.json';
 // Shared components
-import {
-    Portlet,
-    PortletHeader,
-    PortletLabel,
-    PortletContent,
-    PortletFooter
-} from 'components';
+
 import MaterialTable from "material-table";
 import compose from "recompose/compose";
-import Avatar from "@material-ui/core/Avatar";
-import ProfileBar from "../Graphs/ProfilesBar";
-import ProfilesTable from "../Tables/ProfilesTable";
+
 import {
     Dashboard as DashboardLayout
 
 } from 'layouts';
 import {toast} from "react-toastify";
 import {Message, optionsError} from "../../../../../../constants/constants";
-
+import {statusColors} from 'constants/constants.js';
+import {Status} from 'components';
 class PreviousAnalyticsTable extends Component {
     signal = false;
 
@@ -68,7 +58,6 @@ class PreviousAnalyticsTable extends Component {
         const {classes, className} = this.props;
         const {isLoading, jobTasks} = this.state;
 
-        const rootClassName = classNames(classes.root, className);
         const showTasks = !isLoading && jobTasks;
         const prevState = this.props.location.state;
 
@@ -86,14 +75,26 @@ class PreviousAnalyticsTable extends Component {
                         xs={10}
                         className={classes.barGrapth}
                     >
-                        {isLoading && (
+                        {isLoading ? (
                             <div className={classes.progressWrapper}>
                                 <CircularProgress/>
                             </div>
-                        )}
-                        <MaterialTable
+                        ) : (
+                            <MaterialTable
                                 columns={[
                                     {title: 'Status', field: 'status',
+                                        render: rowData =>
+                                            <Typography
+                                            >
+                                                <div className={classes.statusWrapper}>
+                                                    <Status
+                                                        className={classes.status}
+                                                        color={statusColors[rowData.status]}
+                                                        size="sm"
+                                                    />
+                                                    {rowData.status}
+                                                </div>
+                                            </Typography>
                                     },
                                     {title: 'Created At',
                                         defaultSort: 'desc',
@@ -111,10 +112,10 @@ class PreviousAnalyticsTable extends Component {
                                 actions={[
                                     rowData => ({
                                         icon: () => {
-                                                return (
-                                                    <div className={classes.icon}>
-                                                            <EqualizerOutlinedIcon/>
-                                                    </div>)
+                                            return (
+                                                <div className={classes.icon}>
+                                                    <EqualizerOutlinedIcon/>
+                                                </div>)
                                         },
                                         tooltip: 'View Analytics',
                                         disabled: rowData.status !== 'FINISHED',
@@ -126,6 +127,7 @@ class PreviousAnalyticsTable extends Component {
                                 ]}
 
                             />
+                        )}
                     </Grid>
                 </div>
             </DashboardLayout>
@@ -149,7 +151,7 @@ class PreviousAnalyticsTable extends Component {
                 }
             }).then((res) => {
                 console.log(res);
-                history.push('/dashboard/project/analysis',{type: 'POSTS' , target_type: 'USER' , data: res});
+                history.push('/dashboard/project/analysis',{type: 'POSTS' , target_type: 'USER' , data: res, taskId: id});
                 this.setState({
                     loading: false,
                     success: true

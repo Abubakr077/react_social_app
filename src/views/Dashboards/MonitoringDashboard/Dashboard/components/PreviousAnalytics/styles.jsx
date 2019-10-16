@@ -70,5 +70,12 @@ export default theme => ({
   },
   icon: {
     display: 'flex'
-  }
+  },
+  statusWrapper: {
+    display: 'flex',
+    alignItems: 'center'
+  },
+  status: {
+    marginRight: theme.spacing.unit
+  },
 });

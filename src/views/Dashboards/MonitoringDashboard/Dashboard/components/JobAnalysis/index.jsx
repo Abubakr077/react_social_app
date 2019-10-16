@@ -763,10 +763,10 @@ class JobAnalysis extends Component {
                 };
             }
             if (data && data.results){
-                const isWordFreqEmpty = Boolean(Object.keys(data.results.unique_word_freq).length);
-                const isPolarityFreqEmpty = Boolean(Object.keys(data.results.polarity_freq).length);
-                const isPolarityDistEmpty = Boolean(Object.keys(data.results.polarity_dist).length);
-                const isAssocEmpty = Boolean(Object.keys(data.results.assoc).length);
+                this.isWordFreqEmpty = Boolean(Object.keys(data.results.unique_word_freq).length);
+                this.isPolarityFreqEmpty = Boolean(Object.keys(data.results.polarity_freq).length);
+                this.isPolarityDistEmpty = Boolean(Object.keys(data.results.polarity_dist).length);
+                this.isAssocEmpty = Boolean(Object.keys(data.results.assoc).length);
                 this.isAccountEmpty = Boolean(Object.keys(data.info_data).length);
             }
         }
@@ -814,17 +814,25 @@ class JobAnalysis extends Component {
                                     className={classes.contentBody}
                                     noPadding
                                 >
-                                    <div className={classes.lineBody}>
-                                        <PNTweetsLine data={data.results.polarity_freq} type={prevState.type} target_type={prevState.target_type}/>
-                                    </div>
-                                    <div className={classes.pieBody}>
+                                    {this.isPolarityFreqEmpty && <div className={classes.lineBody}>
+                                        <PNTweetsLine data={data.results.polarity_freq}
+                                                      type={prevState.type}
+                                                      target_type={prevState.target_type}
+                                                      taskId= {prevState.taskId}
+                                        />
+                                    </div>}
+
+                                    {this.isPolarityDistEmpty &&
+                                        <div className={classes.pieBody}>
                                         <PNTweetsPie data={data.results.polarity_dist} type={prevState.type} target_type={prevState.target_type}/>
-                                    </div>
+                                    </div>}
                                 </PortletContent>
-                                <div className={classes.areaBody}>
+
+                                { this.isPolarityFreqEmpty && <div className={classes.areaBody}>
                                     <PNTweetsArea  data={data.results.polarity_freq}/>
-                                </div>
+                                </div>}
                             </Portlet>
+                                {this.isAssocEmpty && (
                             <Grid
                                 item
                                 xs={12}
@@ -834,12 +842,14 @@ class JobAnalysis extends Component {
                                     title: 'Associations Cloud',
                                     data: data.results.assoc,
                                     target_type: prevState.target_type,
-                                    type: prevState.type
+                                    type: prevState.type,
+                                    taskId: prevState.taskId
                                 }
                                 }
                                 />
                             </Grid>
-                            <Grid
+                                )}
+                            {this.isWordFreqEmpty && <Grid
                                 item
                                 xs={12}
                             >
@@ -850,7 +860,7 @@ class JobAnalysis extends Component {
                                     target_type: prevState.target_type,
                                     type: prevState.type
                                 }}/>
-                            </Grid>
+                            </Grid>}
                         </div>
                         ) :
                             (

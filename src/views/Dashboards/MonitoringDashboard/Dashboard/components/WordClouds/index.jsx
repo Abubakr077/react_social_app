@@ -94,15 +94,13 @@ function getCallback(callback,props,cloudOptions) {
                         type: cloudOptions.type ,
                         tweets: word.text,
                         target_type: cloudOptions.target_type,
-                        // payload: data.payload,
-                        visual: 'assoc'
+                        visual: 'assoc',
+                        taskId: cloudOptions.taskId
                     });
                 }
             })
             .transition()
-            .attr('background', 'white')
             .attr('font-size', isActive ? '130%' : '100%')
-            .attr('text-decoration', isActive ? 'underline' : 'none')
     }
     }
 

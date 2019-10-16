@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import {
     Grid,
     FormControlLabel,
-    withStyles
+    withStyles, CircularProgress
 } from '@material-ui/core';
 import Checkbox from '@material-ui/core/Checkbox';
 import {
@@ -40,7 +40,8 @@ import {
     PortletToolbar,
     PortletContent
 } from 'components';
-
+import request from 'helpers/request.js';
+import * as endpoints from 'constants/endpoints.json';
 
 // local json
 import totalPositiveInfoTweets
@@ -76,11 +77,15 @@ import useTheme from "@material-ui/core/styles/useTheme";
 import FormLabel from "@material-ui/core/FormLabel";
 import FormGroup from "@material-ui/core/FormGroup";
 import FormHelperText from "@material-ui/core/FormHelperText";
+import {toast} from "react-toastify";
+import {Message, optionsError} from "../../../../../../constants/constants";
+import NoRecords from "../../../../../NoRecords";
 
 
 class TweetsList extends Component {
 
     state = {
+        isLoading: false,
         filters: [{
             id: 1234,
             name: 'Most Retweets',
@@ -99,78 +104,99 @@ class TweetsList extends Component {
                 checked: false,
                 type: 'nbr_reply'
             }],
-        data : []
+        data: []
     };
     tweetType = '';
     tempData = [];
 
     constructor(props) {
         super(props);
-        const prevState = this.props.location.state;
-
-        if (prevState.tweets === 'total') {
+        this.prevState = this.props.location.state;
+        this.user = JSON.parse(localStorage.getItem('user'));
+        this.project_id = localStorage.getItem('project_id');
+        if (this.prevState.tweets === 'total') {
             this.tweetType = 'total'
         } else {
-            this.tweetType = (prevState.tweets === 'negative') ? 'negative' : 'positive'
+            this.tweetType = (this.prevState.tweets === 'negative') ? 'negative' : 'positive'
         }
-        if (prevState) {
-            if (prevState.type === 'INFO') {
-                if (prevState.visual === 'line') {
-                    if (this.tweetType === 'total') {
-                        this.state.data = totalTwitterTweets;
-                    } else if (this.tweetType === 'negative') {
-                        this.state.data = positiveLineTweets;
-                    } else if (this.tweetType === 'positive') {
-                        this.state.data = negativeLineTweets;
+        if (this.prevState) {
+            // if (this.prevState.type === 'INFO') {
+                if (this.prevState.visual === 'line') {
+                    this.endPoint = endpoints.getLineTweets + this.prevState.taskId;
+                    this.params =     {
+                        type: this.tweetType.toUpperCase(),
+                            datetime: this.prevState.payload.date
                     }
-                } else if (prevState.visual === 'pie') {
-                    if (this.tweetType === 'negative') {
-                        this.state.data = totalNegativeInfoTweets;
-                    } else if (this.tweetType === 'positive') {
-                        this.state.data = totalPositiveInfoTweets;
+                } else if (this.prevState.visual === 'assoc') {
+                    this.endPoint = endpoints.getAssocTweets + this.prevState.taskId;
+                    this.tweetType = this.prevState.tweets;
+                    this.params =     {
+                        assoc_str: this.tweetType
                     }
-
-                } else if (prevState.visual === 'assoc') {
-                    this.state.data = assocInfoTweets;
-                    this.tweetType = prevState.tweets;
                 }
-            } else if (prevState.type === 'POSTS') {
-                if (prevState.visual === 'line') {
-                    if (this.tweetType === 'total') {
-                        this.state.data = totalTwitterTrendTweets;
-                    } else if (this.tweetType === 'positive') {
-                        this.state.data = negativeLineTrendTweets;
-                    } else if (this.tweetType === 'negative') {
-                        this.state.data = positiveLineTrendTweets;
-                    }
-                } else if (prevState.visual === 'pie') {
-                    if (this.tweetType === 'negative') {
-                        this.state.data = totalNegativeTrendsTweets;
-                    } else if (this.tweetType === 'positive') {
-                        this.state.data = totalPositiveTrendsTweets;
-                    }
-
-                } else if (prevState.visual === 'assoc') {
-                    this.state.data = assocTrendTweets;
-                    this.tweetType = prevState.tweets
-                }
-            }
+            // } else if (this.prevState.type === 'POSTS') {
+            //     if (this.prevState.visual === 'line') {
+            //
+            //     } else if (this.prevState.visual === 'assoc') {
+            //         this.state.data = assocTrendTweets;
+            //         this.tweetType = this.prevState.tweets
+            //     }
+            // }
             this.tempData = this.state.data;
         }
     }
 
-    componentDidMount() {
-        window.scrollTo(0, 0)
+    async getTweets() {
 
+        try {
+
+            this.setState({isLoading: true});
+
+            await request({
+                url: this.endPoint,
+                method: 'GET',
+                headers: {
+                    user_id: this.user.id,
+                    x_auth_token: this.user.x_auth_token.token,
+                    project_id: this.project_id
+                },
+                params: this.params
+            }).then((res) => {
+                // localStorage.setItem('invites', JSON.stringify(res.project_invites));
+                if (this.signal) {
+                    this.setState({
+                        isLoading: false,
+                        data: res
+                    });
+                }
+            });
+        } catch (error) {
+            toast.error(<Message name={error.data}/>, optionsError);
+            if (this.signal) {
+                this.setState({
+                    isLoading: false,
+                    error
+                });
+            }
+        }
+    };
+
+    componentDidMount() {
+        this.signal = true;
+        window.scrollTo(0, 0);
+        this.getTweets();
+    }
+
+    componentWillUnmount() {
+        this.signal = false;
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        if (this.state !== prevState){
+        if (this.state !== prevState) {
             const recursive = () => {
-                console.log('here');
                 setTimeout(() => {
                     let hasMore = this.state.data.length + 1 < prevState.data.length;
-                    this.setState( (prev, props) => ({
+                    this.setState((prev, props) => ({
                         data: prevState.data.slice(0, prevState.data.length + 1)
                     }));
                     if (hasMore) recursive();
@@ -183,11 +209,14 @@ class TweetsList extends Component {
 
         const {classes, className, ...rest} = this.props;
         const rootClassName = classNames(classes.root, className);
-        const prevState = this.props.location.state;
+        this.prevState = this.props.location.state;
+        const {isLoading, data} = this.state;
+        const showTweets = !isLoading && data;
+
 
         return (
             <DashboardLayout className={rootClassName}
-                             title={prevState.target_type + " TWEETS"}
+                             title={this.prevState.target_type + " TWEETS"}
                              initUser={false}
                              options={{
                                  isTweetsRoute: true
@@ -206,7 +235,7 @@ class TweetsList extends Component {
                                             id: 'age-simple',
                                         }}
                                         IconComponent={() => (
-                                            <FilterListOutlinedIcon />
+                                            <FilterListOutlinedIcon/>
                                         )}
                                     >
                                         <FormControl component="fieldset" className={classes.formControl}>
@@ -233,12 +262,21 @@ class TweetsList extends Component {
                         <PortletContent
                             noPadding
                         >
-                            <Grid
+                            {!showTweets ? (
+                                <div>
+                                    {isLoading ? (<div className={classes.progressWrapper}>
+                                        <CircularProgress/>
+                                    </div>) : (< NoRecords title={'No Tweets Found for this task'}
+                                        // subTitle={'Invites will show, if some owner send you one'}
+                                    />)
+                                    }
+                                </div>
+                            ) : (<Grid
                                 item
                                 xs={12}
                             >
                                 {
-                                    this.state.data.map(tweet => (
+                                    data.map(tweet => (
                                         <React.Fragment>
                                             <Portlet>
                                                 <PortletContent
@@ -328,7 +366,7 @@ class TweetsList extends Component {
                                     ))
                                 }
 
-                            </Grid>
+                            </Grid>)}
                         </PortletContent>
                     </Portlet>
 

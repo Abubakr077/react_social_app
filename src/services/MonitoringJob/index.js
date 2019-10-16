@@ -57,7 +57,7 @@ export function getJobStatus(thisObj,id) {
     if ((isCompleted && isCompleted === 'yes') && response.data.status === 'FINISHED') {
       toast.success(<Message name={'Task Analytics Completed'}/>, optionsSuccess);
       localStorage.removeItem('runningJobId-' + response.data.id);
-      this.getMonitorData( id);
+      getMonitorData(thisObj,id);
       return false;
     }
     if (response.data.status === 'QUEUED' || response.data.status === 'STARTED') {

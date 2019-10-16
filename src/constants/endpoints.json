@@ -17,5 +17,7 @@
   "initiateAnalysis": "/analytics/initiate_analysis/",
   "statusAnalysis": "/analytics/status/",
   "resultAnalysis": "/analytics/result/",
-  "getPreviousAnalysis": "/analytics/previous/"
+  "getPreviousAnalysis": "/analytics/previous/",
+  "getLineTweets": "/analytics/dashboard/tweets/",
+  "getAssocTweets": "/analytics/dashboard/associations/data/"
 }
