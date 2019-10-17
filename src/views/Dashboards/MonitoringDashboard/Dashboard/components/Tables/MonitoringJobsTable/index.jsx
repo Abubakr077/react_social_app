@@ -1,6 +1,7 @@
 import React, {Component, useRef, createRef, useState, useEffect} from 'react';
 import {Link, withRouter} from 'react-router-dom';
 import {getJobStatus,getPreviousMonitorTasks} from 'services/MonitoringJob';
+import * as constants from "constants/constants";
 
 
 // Externals
@@ -48,8 +49,8 @@ import * as endpoints from 'constants/endpoints.json';
 import confirm from 'helpers/confirmation.js';
 import compose from "recompose/compose";
 import {connect} from "react-redux";
-import IconButton from "@material-ui/core/IconButton";
-import clsx from 'clsx';
+import {local} from "d3-selection";
+
 
 class MonitoringJobsTable extends Component {
     signal = false;
@@ -64,7 +65,7 @@ class MonitoringJobsTable extends Component {
         jobs: [],
         jobTasks: [],
         taskId: null,
-        JobTaskStatus: null
+        JobTaskId: null
     };
 
     async getMonitorJobs() {
@@ -117,7 +118,6 @@ class MonitoringJobsTable extends Component {
             user: user,
             project_id: project_id
         });
-        ///
         try {
 
             await request({
@@ -145,11 +145,8 @@ class MonitoringJobsTable extends Component {
                         error
                     });
                 }
-
-                // }
             });
         } catch (error) {
-            console.log('intialize catch');
             toast.error(<Message name={error.data}/>, optionsError);
             this.setState({
                 loading: false,
@@ -159,35 +156,6 @@ class MonitoringJobsTable extends Component {
 
         }
         ///
-    }
-
-    async getMonitorData(id) {
-        console.log('stop getting status and get result at the end');
-        try {
-
-            await request({
-                url: endpoints.resultAnalysis + id,
-                method: 'GET',
-                headers: {
-                    user_id: this.user.id,
-                    x_auth_token: this.user.x_auth_token.token,
-                    project_id: this.project_id
-                }
-            }).then((res) => {
-                console.log(res);
-                this.setState({
-                    loading: false,
-                    success: true
-                });
-            });
-        } catch (error) {
-            toast.error(<Message name={error.data}/>, optionsError);
-            this.setState({
-                loading: false,
-                success: false,
-                error
-            });
-        }
     }
 
 
@@ -286,7 +254,7 @@ class MonitoringJobsTable extends Component {
                                 >
                                     <PortletHeader>
                                         <PortletLabel
-                                            title={"Job Details" + this.state.JobTaskStatus}
+                                            title={"Job Details"}
                                         />
                                         <PortletToolbar>
                                             <Typography
@@ -498,6 +466,11 @@ class MonitoringJobsTable extends Component {
                         onRowClick={(event, rowData, togglePanel) => {
                             togglePanel()
                             // this.getPreviousMonitorTasks(rowData.id);
+                            localStorage.setItem('jobTaskId',rowData.id);
+                            this.props.dispatch({
+                                type: constants.JOB_TASK_STATUS,
+                                id: rowData.id
+                            });
                             getPreviousMonitorTasks(this,rowData.id);
                         }}
                     />
@@ -598,7 +571,7 @@ MonitoringJobsTable.propTypes = {
 };
 const mapStateToProps = (state, ownProps) => {
     return {
-        JobTaskStatus: state.JobTaskStatus,
+        JobTaskId: state.JobTaskId,
 
     }
 };

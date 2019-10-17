@@ -807,6 +807,19 @@ class JobAnalysis extends Component {
                                         >
                                             Hate Pool
                                         </Button>
+                                        <Button
+                                            className={classes.newEntryButton}
+                                            color="primary"
+                                            size="small"
+                                            variant="outlined"
+                                            onClick={()=> {
+                                                const { history } = this.props;
+                                                const url = this.props.match.url;
+                                                history.push(url+'/profiles');
+                                            }}
+                                        >
+                                            Trend Contributors
+                                        </Button>
                                     </PortletToolbar>)
                                     }
                                 </PortletHeader>

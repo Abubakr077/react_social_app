@@ -28,11 +28,13 @@ import {
   Store as StoreIcon
 } from '@material-ui/icons';
 import { InsertChartOutlined as InsertChartIcon } from '@material-ui/icons';
+import {getPreviousMonitorTasks} from 'services/MonitoringJob';
 
 // Component styles
 import styles from './styles';
 import LinearProgress from "@material-ui/core/LinearProgress";
-
+import compose from "recompose/compose";
+import {connect} from "react-redux";
 const icons = {
   order: {
     icon: <PaymentIcon />,
@@ -57,14 +59,31 @@ const icons = {
 };
 
 class NotificationList extends Component {
+  state = {
+    JobTaskId: null,
+    jobTasks: []
+  };
+
+  componentDidMount() {
+    this.user = JSON.parse(localStorage.getItem('user'));
+    this.project_id = localStorage.getItem('project_id');
+
+    if (this.props.JobTaskId){
+      getPreviousMonitorTasks(this,this.props.JobTaskId);
+      console.log('here');
+      console.log(this.props.JobTaskId);
+      console.log(this.state.jobTasks)
+    }
+  }
   render() {
     const { className, classes, notifications, onSelect } = this.props;
 
     const rootClassName = classNames(classes.root, className);
+    const {jobTasks} = this.state;
 
     return (
       <div className={rootClassName}>
-        {notifications.length > 0 ? (
+        {jobTasks.length > 0 ? (
           <Fragment>
             <div className={classes.header}>
               <Typography variant="h6">Notifications</Typography>
@@ -72,7 +91,7 @@ class NotificationList extends Component {
                 className={classes.subtitle}
                 variant="body2"
               >
-                {notifications.length} new notifications
+                {jobTasks.length} new notifications
               </Typography>
             </div>
             <div className={classes.content}>
@@ -96,7 +115,7 @@ class NotificationList extends Component {
                       <ListItemText
                         classes={{ secondary: classes.listItemTextSecondary }}
                         primary={notification.title}
-                        secondary={notification.when}
+                        secondary={notification.when + this.state.JobTaskStatus}
                       />
                       <ArrowForwardIosIcon className={classes.arrowForward} />
                     </ListItem>
@@ -148,4 +167,13 @@ NotificationList.defaultProps = {
   onSelect: () => {}
 };
 
-export default withStyles(styles)(NotificationList);
+const mapStateToProps = (state, ownProps) => {
+  return {
+    JobTaskId: state.JobTaskId,
+
+  }
+};
+export default compose(
+    connect(mapStateToProps),
+    withStyles(styles)
+)(NotificationList);

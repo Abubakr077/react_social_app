@@ -24,7 +24,7 @@ const Reducers = (state = [], action) => {
         case constants.JOB_TASK_STATUS:
             return {
                 ...state,
-                JobTaskStatus: action.JobTaskStatus,
+                JobTaskId: action.id,
             };
         case constants.DELETE_PROJECT:
             return Object.assign({}, state, {

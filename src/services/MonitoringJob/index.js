@@ -4,7 +4,6 @@ import {toast} from "react-toastify";
 import {Message, optionsError, optionsSuccess} from "../../constants/constants";
 import React from "react";
 import Request from 'helpers/polling/Request.js';
-import * as constants from "constants/constants";
 
 function lookupJob(id) {
   this.jobs = localStorage.getItem('jobs');
@@ -31,8 +30,10 @@ export async function getPreviousMonitorTasks(thisObj,id) {
         jobTasks: res,
         isLoading: false
       })
+      return res;
     });
   } catch (error) {
+    console.log(error);
     toast.error(<Message name={error.data}/>, optionsError);
     if (thisObj.signal) {
       thisObj.setState({
@@ -62,10 +63,6 @@ export function getJobStatus(thisObj,id) {
     }
     if (response.data.status === 'QUEUED' || response.data.status === 'STARTED') {
       localStorage.setItem('runningJobId-' + response.data.id, 'yes');
-      thisObj.props.dispatch({
-        type: constants.JOB_TASK_STATUS,
-        JobTaskStatus: response.data.status
-      });
     }
   });
 }
