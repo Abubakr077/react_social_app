@@ -1,6 +1,6 @@
 import React, {Component, useRef, createRef, useState, useEffect} from 'react';
 import {Link, withRouter} from 'react-router-dom';
-import {getJobStatus,getPreviousMonitorTasks} from 'services/MonitoringJob';
+import {getJobStatus,getPreviousMonitorTasks} from 'services/monitoringJob';
 
 
 // Externals
@@ -38,18 +38,14 @@ import {
     PortletToolbar
 } from 'components';
 import MaterialTable from "material-table";
-import TextField from "@material-ui/core/TextField";
 import {toast} from "react-toastify";
 import {Message, optionsError, optionsSuccess} from "../../../../../../../constants/constants";
 
 import request from 'helpers/request.js';
-import Request from 'helpers/polling/Request.js';
 import * as endpoints from 'constants/endpoints.json';
 import confirm from 'helpers/confirmation.js';
 import compose from "recompose/compose";
 import {connect} from "react-redux";
-import IconButton from "@material-ui/core/IconButton";
-import clsx from 'clsx';
 
 class MonitoringJobsTable extends Component {
     signal = false;
@@ -286,7 +282,7 @@ class MonitoringJobsTable extends Component {
                                 >
                                     <PortletHeader>
                                         <PortletLabel
-                                            title={"Job Details" + this.state.JobTaskStatus}
+                                            title={"Job Details"}
                                         />
                                         <PortletToolbar>
                                             <Typography

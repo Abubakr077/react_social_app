@@ -19,5 +19,6 @@
   "resultAnalysis": "/analytics/result/",
   "getPreviousAnalysis": "/analytics/previous/",
   "getLineTweets": "/analytics/dashboard/tweets/",
-  "getAssocTweets": "/analytics/dashboard/associations/data/"
+  "getAssocTweets": "/analytics/dashboard/associations/data/",
+  "compareTrendWNews": "/analytics/dashboard/test_endpoint"
 }

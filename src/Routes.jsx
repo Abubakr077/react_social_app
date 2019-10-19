@@ -36,6 +36,9 @@ const TweetsList = asyncComponent(() =>
 const ProfilesList = asyncComponent(() =>
     import('./views/Dashboards/MonitoringDashboard/Dashboard/components/ProfilesList').then(module => module.default)
 );
+const CompareWNews = asyncComponent(() =>
+    import('./views/Dashboards/MonitoringDashboard/Dashboard/components/CompareWNews').then(module => module.default)
+);
 const Invites = asyncComponent(() =>
     import('./views/Dashboards/InitDashboard/Invites').then(module => module.default)
 );
@@ -122,6 +125,11 @@ class Routes extends Component {
               component={ProfilesList}
               exact
               path="/dashboard/project/analysis/profiles"
+          />
+          <PrivateRoute
+              component={CompareWNews}
+              exact
+              path="/dashboard/project/analysis/compare"
           />
 
         <Route
