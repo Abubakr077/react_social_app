@@ -22,7 +22,9 @@ const Projects = asyncComponent(() =>
 const Invites = asyncComponent(() =>
     import('../Invites').then(module => module.default)
 );
-
+const Dashboard2 = asyncComponent(() =>
+    import('../../MonitoringDashboard/Dashboard').then(module => module.default)
+);
 
 
 // Component styles
@@ -55,9 +57,7 @@ class Dashboard extends Component {
     render() {
 
       const {classes} = this.props;
-      const url = this.props.match.url;
-      // console.log(this.props.match.path);
-      // console.log(url+'/invites');
+
         return (
           <DashboardLayout
             initUser
@@ -65,15 +65,6 @@ class Dashboard extends Component {
           >
             <div className={classes.root}>
               <Projects/>
-              {/*<Link to={`${this.props.match.url}/invites`}>Invites</Link>*/}
-              {/*<Route path={url} component={Projects} />*/}
-              {/*/!*<Route path={`${this.props.match.path}/invites`} component={Invites} />*!/*/}
-              {/*<Route*/}
-              {/*    path={`${this.props.match.path}/invites`}*/}
-              {/*    render={*/}
-              {/*        (<Invites/>)*/}
-              {/*    }*/}
-              {/*/>*/}
             </div>
           </DashboardLayout>
         );
