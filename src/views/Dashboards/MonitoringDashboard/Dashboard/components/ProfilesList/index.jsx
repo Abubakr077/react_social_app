@@ -24,6 +24,7 @@ import {
 } from 'components';
 import ProfileBar from "../Graphs/ProfilesBar";
 import ProfilesTable from "../Tables/ProfilesTable";
+import ProfilesNetwork from "../Graphs/ProfilesNetwork";
 
 
 
@@ -69,6 +70,12 @@ class ProfilesList extends Component {
                         className={classes.marginTable}
                     >
                         <ProfilesTable/>
+                    </Grid>
+                    <Grid
+                    item
+                    xs={12}
+                    className={classes.marginTable}>
+                        <ProfilesNetwork/>
                     </Grid>
                 </div>
             </DashboardLayout>

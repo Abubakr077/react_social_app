@@ -30,26 +30,9 @@ import {
 import hatePoolTwitterProfiles
     from '../../JobAnalysis/data/500_hate_pool_TWITTER_USER_POST_2019-09-21.json';
 
-// Shared components
-import {
-    Portlet,
-    PortletHeader,
-    PortletLabel,
-    PortletContent,
-    PortletFooter
-} from 'components';
 import MaterialTable from "material-table";
-import TextField from "@material-ui/core/TextField";
-import {toast} from "react-toastify";
-import {Message, optionsError, optionsSuccess} from "../../../../../../../constants/constants";
 
-import request from 'helpers/request.js';
-import * as endpoints from 'constants/endpoints.json';
-import * as constants from 'constants/constants.js';
-import confirm from 'helpers/confirmation.js';
 import compose from "recompose/compose";
-import {connect} from "react-redux";
-import IconButton from "@material-ui/core/IconButton";
 import Avatar from "@material-ui/core/Avatar";
 import {lighten} from "@material-ui/core/styles";
 import theme from "../../../../../../../theme";

@@ -19,9 +19,6 @@ import asyncComponent from "components/AsyncComponent";
 const Projects = asyncComponent(() =>
     import('./Projects').then(module => module.default)
 );
-const Invites = asyncComponent(() =>
-    import('../Invites').then(module => module.default)
-);
 
 
 
