@@ -571,7 +571,6 @@ class MonitoringJobsTable extends Component {
                 }
             }).then((res) => {
                     this.setState({
-
                         jobs: jobs.map(el => (el.id === res.id ?
                             Object.assign({}, el, {status: res.status , next_run_scheduled_at: res.next_run_scheduled_at})
                             : el))
