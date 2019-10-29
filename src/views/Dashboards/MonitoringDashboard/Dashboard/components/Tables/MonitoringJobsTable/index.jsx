@@ -7,12 +7,21 @@ import * as constants from "constants/constants";
 // Externals
 import classNames from 'classnames';
 import moment from 'moment';
-import PerfectScrollbar from 'react-perfect-scrollbar';
 import PropTypes from 'prop-types';
 
 
 // Material helpers
-import {Button, Divider, TableCell, Typography, withStyles} from '@material-ui/core';
+import {
+    Button,
+    Divider,
+    Table,
+    TableBody,
+    TableCell,
+    TableHead,
+    TableRow,
+    Typography,
+    withStyles
+} from '@material-ui/core';
 
 // Material components
 import {
@@ -39,17 +48,14 @@ import {
     PortletToolbar
 } from 'components';
 import MaterialTable from "material-table";
-import TextField from "@material-ui/core/TextField";
 import {toast} from "react-toastify";
 import {Message, optionsError, optionsSuccess} from "../../../../../../../constants/constants";
 
 import request from 'helpers/request.js';
-import Request from 'helpers/polling/Request.js';
 import * as endpoints from 'constants/endpoints.json';
 import confirm from 'helpers/confirmation.js';
 import compose from "recompose/compose";
 import {connect} from "react-redux";
-import {local} from "d3-selection";
 
 
 class MonitoringJobsTable extends Component {
@@ -57,16 +63,16 @@ class MonitoringJobsTable extends Component {
 
     state = {
         isJobsLoading: false,
-        loading: false,
-        success: false,
-        completed: false,
+        jobsStatus: [],
         user: null,
         project_id: null,
         jobs: [],
         jobTasks: [],
         taskId: null,
-        JobTaskId: null
+        JobTaskId: null,
+        JobTaskStatus: null,
     };
+
 
     async getMonitorJobs() {
         try {
@@ -91,11 +97,20 @@ class MonitoringJobsTable extends Component {
                 if (this.signal) {
                     this.setState({
                         isJobsLoading: false,
-                        jobs: res.monitoring_jobs
+                        jobs: res.monitoring_jobs,
+                    });
+                    res.monitoring_jobs.map((job) => {
+                        this.state.jobsStatus.push({
+                            id: job.id,
+                            loading: false,
+                            success: false,
+                            status: 'Start Analytics'
+                        })
                     });
                 }
             });
         } catch (error) {
+            console.error(error);
             toast.error(<Message name={error.data}/>, optionsError);
             if (this.signal) {
                 this.setState({
@@ -108,16 +123,22 @@ class MonitoringJobsTable extends Component {
 
     async startAnalytics(job) {
 
-        this.setState({
-            loading: true,
-            success: false
-        });
         const user = JSON.parse(localStorage.getItem('user'));
         const project_id = localStorage.getItem('project_id');
         this.setState({
             user: user,
             project_id: project_id
         });
+        const {jobsStatus} = this.state;
+        this.setState({
+            jobsStatus: jobsStatus.map(el => (el.id === job.id ?
+                Object.assign({}, el, {
+                    loading: true,
+                    success: false
+                })
+                : el))
+        });
+        ///
         try {
 
             await request({
@@ -129,29 +150,34 @@ class MonitoringJobsTable extends Component {
                     project_id: this.project_id
                 }
             }).then((response) => {
-                console.log(response);
-                // if (response.data.status === 'QUEUED' || response.data.status === 'STARTED') {
-                console.log('start getting status');
-                const id = response.id;
-
+                console.log('start getting status')
+                this.setState({
+                    status: response.status
+                });
                 try {
-                    getJobStatus(this,id);
+                    getJobStatus(this, job, response.id);
                 } catch (error) {
                     console.log('get status catch');
                     toast.error(<Message name={error.message}/>, optionsError);
                     this.setState({
-                        loading: false,
-                        success: false,
-                        error
+                        jobsStatus: jobsStatus.map(el => (el.id === job.id ?
+                            Object.assign({}, el, {
+                                loading: false,
+                                success: false,
+                            })
+                            : el))
                     });
                 }
             });
         } catch (error) {
             toast.error(<Message name={error.data}/>, optionsError);
             this.setState({
-                loading: false,
-                success: false,
-                error
+                jobsStatus: jobsStatus.map(el => (el.id === job.id ?
+                    Object.assign({}, el, {
+                        loading: false,
+                        success: false,
+                    })
+                    : el))
             });
 
         }
@@ -176,7 +202,12 @@ class MonitoringJobsTable extends Component {
         const rootClassName = classNames(classes.root, className);
         const showJobs = !isJobsLoading && jobs;
 
-
+        console.log(this.state.jobsStatus);
+        console.log((this.state.jobsStatus.filter(function (e) {
+            if (e.id === '576603b0f77944f6939f3c55bee96f13') {
+                return e.status
+            }
+        })));
         return (
             <div className={rootClassName}>
                 {isJobsLoading && (
@@ -275,161 +306,45 @@ class MonitoringJobsTable extends Component {
                                         </PortletToolbar>
                                     </PortletHeader>
                                     <PortletContent className={classes.content} noPadding>
-                                        <div className={classes.fields}>
-                                            <div className={classes.textField}>
-                                                <Typography variant="subtitle1"
-                                                            className={classes.title}>
-                                                    platform :
-                                                </Typography>
 
-                                                <Typography className={classes.caption}
-                                                            variant="caption">
-                                                    {rowData.job_details.platform}
-                                                </Typography>
+                                        {/*<Table>*/}
+                                        {/*    <TableBody>*/}
+                                        {/*        { Object.entries(rowData.job_details).map((t,i) =>{*/}
+                                        {/*            if (t[i] !== ""){*/}
+                                        {/*                    <TableRow*/}
+                                        {/*                        className={classes.tableRow}*/}
+                                        {/*                        hover*/}
+                                        {/*                        key= {t[0] }*/}
+                                        {/*                    >*/}
+                                        {/*                        <TableCell> {t[0] }</TableCell>*/}
+                                        {/*                        <TableCell> {t[1] }</TableCell>*/}
+                                        {/*                    </TableRow>*/}
+                                        {/*            }*/}
+                                        {/*            }*/}
+                                        {/*        )}*/}
+                                        {/*    </TableBody>*/}
+                                        {/*</Table>*/}
+
+                                        { Object.entries(rowData.job_details).map((t,i) =>
+
+                                            <div className={classes.fields}>
+                                                {t[1]!== "" && (<div className={classes.textField}>
+                                                    <Typography variant="subtitle1"
+                                                                className={classes.title}>
+                                                        {t[0] }
+                                                    </Typography>
+
+                                                    <Typography className={classes.caption}
+                                                                color="primary"
+                                                                variant="caption">
+                                                        {t[1]}
+                                                    </Typography>
+                                                </div>) }
+
                                             </div>
-                                            <div className={classes.textField}>
-                                                <Typography variant="subtitle1"
-                                                            className={classes.title}>
-                                                    All Words :
-                                                </Typography>
-                                                <Typography className={classes.caption}
-                                                            variant="caption">
-                                                    {rowData.job_details.all_words}
-                                                </Typography>
-                                            </div>
-                                        </div>
-                                        <div className={classes.fields}>
-                                            <div className={classes.textField}>
-                                                <Typography variant="subtitle1"
-                                                            className={classes.title}>
-                                                    number of tweets :
-                                                </Typography>
-                                                <Typography className={classes.caption}
-                                                            variant="caption">
-                                                    {rowData.job_details.crawl_num_tweets}
-                                                </Typography>
-                                            </div>
-                                            <div className={classes.textField}>
-                                                <Typography variant="subtitle1"
-                                                            className={classes.title}>
-                                                    Exact phrase :
-                                                </Typography>
-                                                <Typography className={classes.caption}
-                                                            variant="caption">
-                                                    {rowData.job_details.exact_phrase}
-                                                </Typography>
-                                            </div>
-                                        </div>
-                                        <div className={classes.fields}>
-                                            <div className={classes.textField}>
-                                                <Typography variant="subtitle1"
-                                                            className={classes.title}>
-                                                    from :
-                                                </Typography>
-                                                <Typography className={classes.caption}
-                                                            variant="caption">
-                                                    {rowData.job_details.from_date}
-                                                </Typography>
-                                            </div>
-                                            <div className={classes.textField}>
-                                                <Typography variant="subtitle1"
-                                                            className={classes.title}>
-                                                    to :
-                                                </Typography>
-                                                <Typography className={classes.caption}
-                                                            variant="caption">
-                                                    {rowData.job_details.to_date}
-                                                </Typography>
-                                            </div>
-                                        </div>
-                                        <div className={classes.fields}>
-                                            <div className={classes.textField}>
-                                                <Typography variant="subtitle1"
-                                                            className={classes.title}>
-                                                    hashtag :
-                                                </Typography>
-                                                <Typography className={classes.caption}
-                                                            variant="caption">
-                                                    {rowData.job_details.hashtag}
-                                                </Typography>
-                                            </div>
-                                            <div className={classes.textField}>
-                                                <Typography variant="subtitle1"
-                                                            className={classes.title}>
-                                                    lang :
-                                                </Typography>
-                                                <Typography className={classes.caption}
-                                                            variant="caption">
-                                                    {rowData.job_details.lang}
-                                                </Typography>
-                                            </div>
-                                        </div>
-                                        <div className={classes.fields}>
-                                            <div className={classes.textField}>
-                                                <Typography variant="subtitle1"
-                                                            className={classes.title}>
-                                                    nearby place :
-                                                </Typography>
-                                                <Typography className={classes.caption}
-                                                            variant="caption">
-                                                    {rowData.job_details.near_place}
-                                                </Typography>
-                                            </div>
-                                            <div className={classes.textField}>
-                                                <Typography variant="subtitle1"
-                                                            className={classes.title}>
-                                                    not words :
-                                                </Typography>
-                                                <Typography className={classes.caption}
-                                                            variant="caption">
-                                                    {rowData.job_details.not_words}
-                                                </Typography>
-                                            </div>
-                                        </div>
-                                        <div className={classes.fields}>
-                                            <div className={classes.textField}>
-                                                <Typography variant="subtitle1"
-                                                            className={classes.title}>
-                                                    reply to :
-                                                </Typography>
-                                                <Typography className={classes.caption}
-                                                            variant="caption">
-                                                    {rowData.job_details.reply_to}
-                                                </Typography>
-                                            </div>
-                                            <div className={classes.textField}>
-                                                <Typography variant="subtitle1"
-                                                            className={classes.title}>
-                                                    target :
-                                                </Typography>
-                                                <Typography className={classes.caption}
-                                                            variant="caption">
-                                                    {rowData.job_details.target}
-                                                </Typography>
-                                            </div>
-                                        </div>
-                                        <div className={classes.fields}>
-                                            <div className={classes.textField}>
-                                                <Typography variant="subtitle1"
-                                                            className={classes.title}>
-                                                    target type :
-                                                </Typography>
-                                                <Typography className={classes.caption}
-                                                            variant="caption">
-                                                    {rowData.job_details.target_type}
-                                                </Typography>
-                                            </div>
-                                            <div className={classes.textField}>
-                                                <Typography variant="subtitle1"
-                                                            className={classes.title}>
-                                                    target subtype :
-                                                </Typography>
-                                                <Typography className={classes.caption}
-                                                            variant="caption">
-                                                    {rowData.job_details.target_subtype}
-                                                </Typography>
-                                            </div>
-                                        </div>
+                                            )
+
+                                        }
                                     </PortletContent>
                                     <div className={classes.portletFooter}>
                                         <div className={classes.wrapper}>
@@ -438,16 +353,36 @@ class MonitoringJobsTable extends Component {
                                                     variant="contained"
                                                     color="primary"
                                                     className={
-                                                        this.state.success ? classes.buttonSuccess : ''
+                                                        this.state.jobsStatus.filter(function (e) {
+                                                            return e.id === rowData.id && e.success;
+                                                        }).length > 0
+                                                            ? classes.buttonSuccess : ''
                                                     }
-                                                    disabled={this.state.loading}
+                                                    disabled={
+                                                        this.state.jobsStatus.filter(function (e) {
+                                                            return e.id === rowData.id && e.loading;
+                                                        }).length > 0
+                                                    }
                                                     onClick={() => {
                                                         this.goToAnalysis(rowData);
                                                     }}
                                                 >
-                                                    Start Analytics
+                                                    {
+                                                        (this.state.jobsStatus.map((item) =>
+                                                    {
+                                                        if(item.id === rowData.id){
+                                                            return item.status
+                                                        }
+                                                    }))
+
+                                                    }
                                                 </Button>
-                                            {this.state.loading && (<CircularProgress size={24} className={classes.buttonProgress}/>) }
+                                                {
+                                                    (this.state.jobsStatus.filter(function (e) {
+                                                        return (e.id === rowData.id && e.loading)
+                                                    }).length > 0)
+                                                    && (<CircularProgress size={24}
+                                                                          className={classes.buttonProgress}/>)}
                                             </div>
                                             <Button
                                                 className={classes.viewPrevious}
@@ -465,6 +400,8 @@ class MonitoringJobsTable extends Component {
                         }}
                         onRowClick={(event, rowData, togglePanel) => {
                             togglePanel()
+                            console.log(rowData);
+
                             // this.getPreviousMonitorTasks(rowData.id);
                             localStorage.setItem('jobTaskId',rowData.id);
                             this.props.dispatch({
@@ -479,26 +416,19 @@ class MonitoringJobsTable extends Component {
         );
     }
 
+
     goToAnalysis(rowData) {
+        const {jobsStatus} = this.state;
         this.setState({
-            loading: true,
-            success: false
+            jobsStatus: jobsStatus.map(el => (el.id === rowData.id ?
+                Object.assign({}, el, {
+                    loading: true,
+                    success: false
+                })
+                : el))
         });
-        const {history} = this.props;
-        const url = this.props.match.url;
         localStorage.setItem('job', JSON.stringify(rowData));
         this.startAnalytics(rowData);
-        // setTimeout(function () { //Start the timer
-        //     this.setState({
-        //         loading: false,
-        //         success: true
-        //     }, () => {
-        //         history.push(url + '/analysis', {
-        //             type: rowData.job_details.target_subtype,
-        //             target_type: rowData.job_details.target_type
-        //         });
-        //     });
-        // }.bind(this), 2000);
 
     }
 
@@ -545,7 +475,7 @@ class MonitoringJobsTable extends Component {
             }).then((res) => {
                     this.setState({
                         jobs: jobs.map(el => (el.id === res.id ?
-                            Object.assign({}, el, {status: res.status , next_run_scheduled_at: res.next_run_scheduled_at})
+                            Object.assign({}, el, {status: res.status, next_run_scheduled_at: res.next_run_scheduled_at})
                             : el))
                     });
                 }
@@ -558,7 +488,7 @@ class MonitoringJobsTable extends Component {
     goToPreviousAnalysis(rowData) {
         const {history} = this.props;
         localStorage.setItem('job', JSON.stringify(rowData));
-        history.push('/dashboard/project/previous_tasks',{taskId: this.state.taskId,jobName: rowData.description});
+        history.push('/dashboard/project/previous_tasks', {taskId: rowData.id, jobName: rowData.description});
 
     }
 }

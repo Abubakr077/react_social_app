@@ -281,7 +281,7 @@ class Twitter extends Component {
         if (value != "USER") {
             const data = this.state;
             const currentstate = data;
-            currentstate.post.job_details.target_subtype = "POSTS";
+            currentstate.post.job_details.target_subtype = "POST";
             currentstate.post.job_details.target_type = value;
             currentstate.isUser = true;
             currentstate.isTargerSubtype = true;
@@ -353,7 +353,6 @@ class Twitter extends Component {
                 isUserNameError: true,
                 errorText: "Please Enter User Name",
             });
-            return
         }
         try {
             await request({

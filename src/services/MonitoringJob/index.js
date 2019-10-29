@@ -26,11 +26,10 @@ export async function getPreviousMonitorTasks(thisObj,id) {
         project_id: thisObj.project_id
       }
     }).then((res) => {
-      thisObj.setState({
-        jobTasks: res,
-        isLoading: false
-      })
-      return res;
+        thisObj.setState({
+          jobTasks: res,
+          isLoading: false
+        })
     });
   } catch (error) {
     console.log(error);
@@ -44,8 +43,8 @@ export async function getPreviousMonitorTasks(thisObj,id) {
   }
 }
 
-export function getJobStatus(thisObj,id) {
-  new Request(endpoints.statusAnalysis + id, {
+export async function getJobStatus(thisObj,job,id) {
+  await new Request(endpoints.statusAnalysis + id, {
     headers: {
       user_id: thisObj.user.id,
       x_auth_token: thisObj.user.x_auth_token.token,
@@ -54,46 +53,34 @@ export function getJobStatus(thisObj,id) {
   }).poll(20000).get((response) => {
     console.log(response.data);
     // you can cancel polling by returning false
+    const {jobsStatus} = thisObj.state;
+    thisObj.setState({
+      jobsStatus: jobsStatus.map(el => (el.id === job.id ?
+          Object.assign({}, el, {
+            status: response.data.status
+          })
+          : el)),
+    });
     const isCompleted = localStorage.getItem('runningJobId-' + response.data.id);
     if ((isCompleted && isCompleted === 'yes') && response.data.status === 'FINISHED') {
+      thisObj.setState({
+        jobsStatus: jobsStatus.map(el => (el.id === job.id ?
+            Object.assign({}, el, {
+              loading: false,
+              success: true,
+              status: response.data.status
+            })
+            : el)),
+      });
       toast.success(<Message name={'Task Analytics Completed'}/>, optionsSuccess);
       localStorage.removeItem('runningJobId-' + response.data.id);
-      getMonitorData(thisObj,id);
+      // getMonitorData(thisObj,id);
       return false;
     }
     if (response.data.status === 'QUEUED' || response.data.status === 'STARTED') {
       localStorage.setItem('runningJobId-' + response.data.id, 'yes');
     }
   });
-}
-
-export async function  getMonitorData(thisObj,id) {
-  console.log('stop getting status and get result at the end');
-  try {
-
-    await request({
-      url: endpoints.resultAnalysis + id,
-      method: 'GET',
-      headers: {
-        user_id: thisObj.user.id,
-        x_auth_token: thisObj.user.x_auth_token.token,
-        project_id: thisObj.project_id
-      }
-    }).then((res) => {
-      console.log(res);
-      thisObj.setState({
-        loading: false,
-        success: true
-      });
-    });
-  } catch (error) {
-    toast.error(<Message name={error.data}/>, optionsError);
-    thisObj.setState({
-      loading: false,
-      success: false,
-      error
-    });
-  }
 }
 
 

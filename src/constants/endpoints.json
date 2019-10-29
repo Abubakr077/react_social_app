@@ -1,6 +1,6 @@
 {
   "proxy": "https://cors-anywhere.herokuapp.com/",
-  "host": "http://192.168.8.120:5000",
+  "host": "http://192.168.1.109:5000",
   "login": "/users/login",
   "signUp": "/users/register",
   "createProject" : "/projects/create",
@@ -19,5 +19,6 @@
   "resultAnalysis": "/analytics/result/",
   "getPreviousAnalysis": "/analytics/previous/",
   "getLineTweets": "/analytics/dashboard/tweets/",
-  "getAssocTweets": "/analytics/dashboard/associations/data/"
+  "getAssocTweets": "/analytics/dashboard/associations/data/",
+  "getHatePool": "/analytics/dashboard/hate_pool/"
 }

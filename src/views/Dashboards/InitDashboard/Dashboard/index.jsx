@@ -20,7 +20,7 @@ const Projects = asyncComponent(() =>
     import('./Projects').then(module => module.default)
 );
 const Invites = asyncComponent(() =>
-    import('../Invites').then(module => module.default)
+    import('./Invites').then(module => module.default)
 );
 const Dashboard2 = asyncComponent(() =>
     import('../../MonitoringDashboard/Dashboard').then(module => module.default)
@@ -30,7 +30,7 @@ const Dashboard2 = asyncComponent(() =>
 // Component styles
 const styles = theme => ({
   root: {
-    padding: theme.spacing.unit * 4,
+    padding: theme.spacing(3),
     display: 'flex',
     flexDirection: 'column',
     minHeight: '100vh',

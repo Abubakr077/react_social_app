@@ -50,6 +50,9 @@ class ProjectsList extends Component {
                 {projects.map(membership => (
                   <Link
                     key={membership.project.id}
+                    onClick={()=>{
+                      window.location.reload()
+                    }}
                     to={
                     {
                       pathname: `/dashboard/project`,
@@ -58,7 +61,7 @@ class ProjectsList extends Component {
                     }
                     }
                     }
-                    target="_blank"
+                    // target="_blank"
                   >
                     <Tooltip title="Click to load" placement="left">
                     <ListItem

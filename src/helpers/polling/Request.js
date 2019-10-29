@@ -75,8 +75,10 @@ class Request {
         if (this.options.errorHandler) {
             this.options.errorHandler(error, method);
         } else {
-            if (error.response.status === 500){
-                error.message = 'Error Message:' + ' Something went wrong!'
+            if (error.response){
+                if (error.response.status === 500){
+                    error.message = 'Error Message:' + ' Something went wrong!'
+                }
             }
             throw error;
         }

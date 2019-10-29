@@ -1,15 +1,13 @@
 import React, {Component} from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import {  withRouter } from 'react-router-dom';
 
 // Externals
 import classNames from 'classnames';
-import moment from 'moment';
-import PerfectScrollbar from 'react-perfect-scrollbar';
 import PropTypes from 'prop-types';
 
 
 // Material helpers
-import {Button, Divider, LinearProgress, TableCell, Typography, withStyles} from '@material-ui/core';
+import {LinearProgress,  Typography, withStyles} from '@material-ui/core';
 
 // Material components
 import {
@@ -19,37 +17,11 @@ import {
 // Component styles
 import styles from './styles';
 
-import {
-    Delete as DeleteIcon,
-    PauseOutlined as PauseIcon,
-    PlayArrowOutlined as PlayIcon
-
-} from '@material-ui/icons';
-
-// local json
-import hatePoolTwitterProfiles
-    from '../../JobAnalysis/data/500_hate_pool_TWITTER_USER_POST_2019-09-21.json';
 
 // Shared components
-import {
-    Portlet,
-    PortletHeader,
-    PortletLabel,
-    PortletContent,
-    PortletFooter
-} from 'components';
-import MaterialTable from "material-table";
-import TextField from "@material-ui/core/TextField";
-import {toast} from "react-toastify";
-import {Message, optionsError, optionsSuccess} from "../../../../../../../constants/constants";
 
-import request from 'helpers/request.js';
-import * as endpoints from 'constants/endpoints.json';
-import * as constants from 'constants/constants.js';
-import confirm from 'helpers/confirmation.js';
+import MaterialTable from "material-table";
 import compose from "recompose/compose";
-import {connect} from "react-redux";
-import IconButton from "@material-ui/core/IconButton";
 import Avatar from "@material-ui/core/Avatar";
 import {lighten} from "@material-ui/core/styles";
 import theme from "../../../../../../../theme";
@@ -74,8 +46,10 @@ class ProfilesTable extends Component {
     };
 
     async getMonitorJobs() {
+
+        const {data} = this.props;
         this.setState({
-            profiles: hatePoolTwitterProfiles
+            profiles: data
         })
     }
 
@@ -133,7 +107,8 @@ class ProfilesTable extends Component {
                             search: true,
                             paging: true,
                             actionsColumnIndex: -1,
-                            exportButton: true
+                            exportButton: true,
+                            exportAllData: true
                         }}
 
                     />

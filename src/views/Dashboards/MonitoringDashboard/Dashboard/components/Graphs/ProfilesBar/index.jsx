@@ -1,19 +1,17 @@
-import React, { PureComponent } from 'react';
+import React, {Component, PureComponent} from 'react';
 import {
     BarChart, Bar, Brush, ReferenceLine, XAxis, YAxis, CartesianGrid, Tooltip, Legend, LineChart,
 } from 'recharts';
 
-// local json
-import hatePoolTwitterProfiles
-    from '../../JobAnalysis/data/500_hate_pool_TWITTER_USER_POST_2019-09-21.json';
 import ResponsiveContainer from "recharts/lib/component/ResponsiveContainer";
 
-let data = hatePoolTwitterProfiles;
-data = data.slice(0, 50);
 
-export default class ProfileBar extends PureComponent {
+
+export default class ProfileBar extends Component {
 
     render() {
+        let {data} = this.props;
+        data = data.slice(0, 50);
         return (
             <ResponsiveContainer width="100%">
             <BarChart

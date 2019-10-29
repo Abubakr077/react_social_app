@@ -45,5 +45,10 @@ export default theme => ({
     },
     marginTable: {
         marginTop: theme.spacing.unit
+    },
+    progressWrapper: {
+        padding: theme.spacing.unit,
+        display: 'flex',
+        justifyContent: 'center'
     }
 });
