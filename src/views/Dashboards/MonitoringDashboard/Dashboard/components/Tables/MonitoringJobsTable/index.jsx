@@ -1,7 +1,7 @@
 import React, {Component, useRef, createRef, useState, useEffect} from 'react';
 import {Link, withRouter} from 'react-router-dom';
-import {getJobStatus,getPreviousMonitorTasks} from 'services/MonitoringJob';
 import * as constants from "constants/constants";
+import {getJobStatus, getPreviousMonitorTasks} from 'services/MonitoringJob';
 
 
 // Externals

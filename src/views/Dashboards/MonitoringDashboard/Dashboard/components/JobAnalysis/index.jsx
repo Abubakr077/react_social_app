@@ -191,7 +191,6 @@ class JobAnalysis extends Component {
                                                   target_type={this.prevState.target_type}
                                                   taskId= {this.prevState.taskId}
                                     />
-
                                 </div>}
 
                                 {this.state.isPolarityDistEmpty &&
