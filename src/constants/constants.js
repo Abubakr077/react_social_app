@@ -71,7 +71,7 @@ export const targetType = [
     },
     {
         name: "Posts",
-        code: "POSTS"
+        code: "POST"
     }
 ];
 export const scheduleOptions = [

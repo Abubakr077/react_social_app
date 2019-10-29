@@ -33,11 +33,11 @@ const PreviousAnalysis = asyncComponent(() =>
 const TweetsList = asyncComponent(() =>
     import('./views/Dashboards/MonitoringDashboard/Dashboard/components/TweetsList').then(module => module.default)
 );
-const ProfilesList = asyncComponent(() =>
-    import('./views/Dashboards/MonitoringDashboard/Dashboard/components/ProfilesList').then(module => module.default)
+const TrendHatePool = asyncComponent(() =>
+    import('./views/Dashboards/MonitoringDashboard/Dashboard/components/TrendHatePool').then(module => module.default)
 );
 const Invites = asyncComponent(() =>
-    import('./views/Dashboards/InitDashboard/Invites').then(module => module.default)
+    import('./views/Dashboards/InitDashboard/Dashboard/Invites').then(module => module.default)
 );
 
 const CreateJob = asyncComponent(() =>
@@ -119,9 +119,9 @@ class Routes extends Component {
               path="/dashboard/project/analysis/tweets"
           />
           <PrivateRoute
-              component={ProfilesList}
+              component={TrendHatePool}
               exact
-              path="/dashboard/project/analysis/profiles"
+              path="/dashboard/project/analysis/hate_pool"
           />
 
         <Route

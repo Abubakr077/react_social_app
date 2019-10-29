@@ -55,6 +55,9 @@ class PNTweetsLine extends Component {
       this.type = type;
       this.target_type = target_type;
       this.taskId = taskId;
+
+      console.log('Line graph');
+      console.log(data);
     return (
         <ResponsiveContainer             width="100%">
         <LineChart
@@ -72,19 +75,19 @@ class PNTweetsLine extends Component {
           <YAxis label={{ value: 'tweets', angle: -90, position: 'center', textAnchor: 'middle' }}/>
           <Tooltip />
           <Legend  />
-          <Line type="natural"  dataKey="positive" stroke="#45B880"  dot={false}
+          <Line type="temperature"  dataKey="positive" stroke="#45B880"  dot={false}
                 activeDot={
                   {
                     onClick: this.handleClick
                   }}
           />
-          <Line  type="natural" dataKey="negative" stroke="#ED4740" dot={false}
+          <Line  type="temperature" dataKey="negative" stroke="#ED4740" dot={false}
                  activeDot={
                    {
                      onClick: this.handleClick
                    }}
           />
-          <Line  type="natural" dataKey="total" stroke="#FFB822"
+          <Line  type="temperature" dataKey="total" stroke="#FFB822"
                  activeDot={
                    {
                      r: 8,

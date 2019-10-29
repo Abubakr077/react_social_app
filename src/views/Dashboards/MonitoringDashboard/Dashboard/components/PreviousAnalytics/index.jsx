@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import { withRouter } from 'react-router-dom';
 
 // Externals
-import classNames from 'classnames';
 import PropTypes from 'prop-types';
 
 
@@ -108,6 +107,7 @@ class PreviousAnalyticsTable extends Component {
                                     paging: false,
                                     actionsColumnIndex: -1,
                                     exportButton: true,
+                                    exportAllData: true
                                 }}
                                 actions={[
                                     rowData => ({
@@ -139,32 +139,7 @@ class PreviousAnalyticsTable extends Component {
     }
     async getMonitorData(id) {
         const { history } = this.props;
-        try {
-
-            await request({
-                url: endpoints.resultAnalysis + id,
-                method: 'GET',
-                headers: {
-                    user_id: this.user.id,
-                    x_auth_token: this.user.x_auth_token.token,
-                    project_id: this.project_id
-                }
-            }).then((res) => {
-                console.log(res);
-                history.push('/dashboard/project/analysis',{type: 'POSTS' , target_type: 'USER' , data: res, taskId: id});
-                this.setState({
-                    loading: false,
-                    success: true
-                });
-            });
-        } catch (error) {
-            toast.error(<Message name={error.data}/>, optionsError);
-            this.setState({
-                loading: false,
-                success: false,
-                error
-            });
-        }
+        history.push('/dashboard/project/analysis',{type: 'POSTS' , target_type: 'USER' , taskId: id});
     }
 
 }

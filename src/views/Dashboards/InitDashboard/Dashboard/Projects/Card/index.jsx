@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react';
+import React, {Component, Fragment} from 'react';
 
 // Externals
 import PropTypes from 'prop-types';
@@ -9,23 +9,22 @@ import {CardActions, withStyles} from '@material-ui/core';
 
 // Material components
 import {
-  Card ,
-  IconButton,
-  Button
-}from "@material-ui/core";
+    Card,
+    IconButton,
+    Button
+} from "@material-ui/core";
 
 import {
-  Delete as DeleteIcon,
-  // FirstPageOutlined as RemoveIcon,
-  ExitToAppOutlined as RemoveIcon,
+    Delete as DeleteIcon,
+    // FirstPageOutlined as RemoveIcon,
+    ExitToAppOutlined as RemoveIcon,
 } from '@material-ui/icons';
 
 
-import * as color from "common/colors";
 import * as endPoints from 'constants/endpoints.json';
 import * as constants from 'constants/constants.js';
 import request from 'helpers/request.js';
-import { toast } from 'react-toastify';
+import {toast} from 'react-toastify';
 import {connect} from "react-redux";
 import compose from "recompose/compose";
 import {Message, optionsSuccess} from "constants/constants";
@@ -34,71 +33,99 @@ import confirm from 'helpers/confirmation.js';
 
 
 // Component styles
-const styles = theme => {
-  return {
-    root: {
-      cursor: 'pointer',
-      borderRadius: '8px',
-      minHeight: 140
+import styles from './styles';
+
+class CustomCard extends Component {
+    render() {
+        const {
+            classes,
+            className,
+            outlined,
+            squared,
+            children,
+            newCard,
+            cardProject,
+            ...rest
+        } = this.props;
+        const rootClassName = classNames(
+            {
+                [classes.root]: true,
+                [classes.squared]: squared,
+                [classes.outlined]: outlined
+            },
+            className
+        );
+
+
+        const projectDetails = () => {
+            localStorage.setItem('project', JSON.stringify(cardProject));
+            localStorage.setItem('project_id', cardProject.project.id);
+            this.props.history.push('/dashboard/project');
+        };
+
+        return (
+            <Card
+                {...rest}
+                className={rootClassName}
+            >
+                <Button fullWidth={true}
+                        className={newCard ? classes.newCardButton : classes.button}
+                        onClick={!newCard ? projectDetails : null}
+                >
+                    {children}
+                </Button>
+
+                {!newCard && (
+                    <div className={classes.actionDiv}>
+                        < CardActions className={classes.cardActions}>
+                            {cardProject.role !== 'OWNER' && (
+                                <IconButton onClick={()=>{
+                                    console.log(cardProject);
+                                    confirm('Are you sure you want to remove project ' + cardProject.project.name + ' ?').then(
+                                        (result) => {
+                                            // `proceed` callback
+                                            this.handleDelete(cardProject);
+                                        },
+                                        (result) => {
+                                            // `cancel` callback
+                                        }
+                                    )
+                                }}>
+                                    <RemoveIcon/>
+                                </IconButton>
+                            )}
+                            {cardProject.role === 'OWNER' && (
+                                <IconButton onClick={()=>{
+                                    confirm('Are you sure you want to delete project ' + cardProject.project.name + ' ?').then(
+                                        (result) => {
+                                            // `proceed` callback
+                                            this.handleDelete(cardProject);
+                                        },
+                                        (result) => {
+                                            // `cancel` callback
+                                        }
+                                    )
+                                }}>
+                                    <DeleteIcon className={classes.deleteIcon}/>
+                                </IconButton>
+                            )}
+                        </CardActions>
+                    </div>
+                )}
+
+            </Card>
+        );
+
+
     }
-    ,
-    squared: {
-      borderRadius: '10px'
-    },
-    outlined: {
-      border: `1px  ${theme.palette.border}`
-    },
-    button: {
-      minHeight: 140
-    },
-    newCardButton: {
-      minHeight: 200
-    },
-    customIcon: {
-      color: color.white,
-      hover: false
-    },
-    cardActions: {
-      right: 'auto',
-      float: 'right'
-    },
-    actionDiv: {
-      width: '100%'
-    },
-    deleteIcon: {
-      color: color.red
-    }
-  };
-};
 
-const CustomCard = props => {
-  const {
-      classes,
-      className,
-      outlined,
-      squared,
-      children,
-      newCard,
-      cardProject,
-      ...rest } = props;
-  const rootClassName = classNames(
-    {
-      [classes.root]: true,
-      [classes.squared]: squared,
-      [classes.outlined]: outlined
-    },
-    className
-  );
-
-
-
-   async function handleDelete() {
-        const   user   = JSON.parse(localStorage.getItem('user'));
-        const projects   = JSON.parse(localStorage.getItem('projects'));
+    async handleDelete(cardProject) {
+        const user = JSON.parse(localStorage.getItem('user'));
+        const projects = JSON.parse(localStorage.getItem('projects'));
         const id = cardProject.project.id;
-        try{
+        try {
             await request({
-                url:    endPoints.deleteProject,
+                url: endPoints.deleteProject,
                 method: 'DELETE',
                 headers: {
                     user_id: user.id,
@@ -106,85 +133,44 @@ const CustomCard = props => {
                     project_id: id
                 }
             }).then(() => {
-                    props.dispatch({
+                    this.props.dispatch({
                         type: constants.DELETE_PROJECT,
                         projects,
                         id
                     });
-                    if (cardProject.role === 'OWNER'){
-                        toast.success(<Message name={'Project Deleted Successfully'}/>,optionsSuccess);
-                    }else {
-                        toast.success(<Message name={'Project Removed Successfully'}/>,optionsSuccess);
+                    if (cardProject.role === 'OWNER') {
+                        toast.success(<Message name={'Project Deleted Successfully'}/>, optionsSuccess);
+                    } else {
+                        toast.success(<Message name={'Project Removed Successfully'}/>, optionsSuccess);
                     }
                 }
             );
-        }catch (error) {
+        } catch (error) {
             toast.error(<Message name={error.data}/>, optionsError);
         }
     }
-
-    const projectDetails = () => {
-       localStorage.setItem('project',JSON.stringify(cardProject));
-       localStorage.setItem('project_id',cardProject.project.id);
-        props.history.push('/dashboard/project');
-    };
-
-    return (
-      <Card
-      {...rest}
-      className={rootClassName}
-    >
-        <Button fullWidth={true}
-                className={newCard? classes.newCardButton : classes.button}
-                onClick={!newCard ? projectDetails : null}
-        >
-        {children}
-        </Button>
-
-        {!newCard && (
-            <div className={classes.actionDiv}>
-            < CardActions className={classes.cardActions}>
-              {cardProject.role !== 'OWNER' && (
-                  <IconButton onClick={handleDelete}>
-                <RemoveIcon  />
-              </IconButton >
-              )}
-              {cardProject.role === 'OWNER' && (
-                <IconButton onClick={handleDelete}>
-                  <DeleteIcon className={classes.deleteIcon} />
-                </IconButton>
-              )}
-            </CardActions>
-            </div>
-        )}
-
-    </Card>
-  );
-
-
-};
+}
 
 CustomCard.propTypes = {
-  children: PropTypes.node,
-  className: PropTypes.string,
-  classes: PropTypes.object.isRequired,
-  elevation: PropTypes.number,
-  outlined: PropTypes.bool,
-  squared: PropTypes.bool
+    children: PropTypes.node,
+    className: PropTypes.string,
+    classes: PropTypes.object.isRequired,
+    elevation: PropTypes.number,
+    outlined: PropTypes.bool,
+    squared: PropTypes.bool
 };
 
 CustomCard.defaultProps = {
-  squared: false,
-  outlined: true,
-  elevation: 1
+    squared: false,
+    outlined: true,
+    elevation: 1
 };
 const mapStateToProps = (state, ownProps) => {
     return {
         projects: state.projects
     }
 };
-export default
-compose(
+export default compose(
     connect(mapStateToProps),
     withStyles(styles)
 )

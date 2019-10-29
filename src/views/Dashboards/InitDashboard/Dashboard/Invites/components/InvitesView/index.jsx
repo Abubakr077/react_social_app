@@ -27,13 +27,13 @@ import {Card} from '../index';
 
 // Component styles
 import styles from './styles';
-import NoRecords from "../../../../../NoRecords"
+import NoRecords from "../../../../../../NoRecords"
 import {statusColors} from 'constants/constants.js';
 import {Status} from 'components';
 import compose from "recompose/compose";
 import {connect} from "react-redux";
 import {toast} from "react-toastify";
-import {Message, optionsError, optionsSuccess} from "../../../../../../constants/constants";
+import {Message, optionsError, optionsSuccess} from "../../../../../../../constants/constants";
 
 import request from 'helpers/request.js';
 import * as endpoints from 'constants/endpoints.json';

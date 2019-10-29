@@ -1,6 +1,6 @@
 export default theme => ({
   root: {
-    padding: theme.spacing.unit * 3,
+    padding: theme.spacing(3),
   },
   content: {
     alignItems: 'center',
