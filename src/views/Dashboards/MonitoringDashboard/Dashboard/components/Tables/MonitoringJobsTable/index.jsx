@@ -461,10 +461,10 @@ class MonitoringJobsTable extends Component {
         }
     }
 
-    handleToggleStatus(id) {
+    async handleToggleStatus(id) {
         const {user, project_id, jobs} = this.state;
         try {
-            request({
+            await request({
                 url: endpoints.getProjectJobs + '/' + id,
                 method: 'PUT',
                 headers: {

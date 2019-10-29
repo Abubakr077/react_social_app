@@ -136,7 +136,7 @@ function getCallback(callback,props,cloudOptions) {
                                     <ReactWordcloud
                                         options={options2}
                                         words={cloudOptions.data}
-                                        callbacks={this.callbacks}
+                                        // callbacks={this.callbacks}
                                     />
                                 </div>
                             </div>
