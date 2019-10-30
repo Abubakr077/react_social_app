@@ -6,6 +6,15 @@ export default theme => ({
     alignItems: 'center',
     display: 'flex'
   },
+  platformTwitter:{
+    width: '20%'
+  },
+  platformFacebook:{
+    width: '20%'
+  },
+  platformInsta:{
+    width: '20%'
+  },
   title: {
     color: theme.palette.text.secondary,
     fontWeight: 700
@@ -53,10 +62,12 @@ export default theme => ({
     borderRadius: '8px',
   },
   formControl: {
-    margin: theme.spacing(3)
+    margin: theme.spacing(3),
+    width: '100%'
   },
   group: {
-    margin: theme.spacing(1, 0)
+    margin: theme.spacing(1, 0),
+    width: '100%'
   },
   paper: {
     padding: theme.spacing(2),

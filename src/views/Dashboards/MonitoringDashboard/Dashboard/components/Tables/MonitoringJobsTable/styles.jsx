@@ -16,7 +16,7 @@ export default theme => ({
   textField: {
     display: 'flex',
     justifyContent: 'center',
-    width: '320px',
+    width: '620px',
     maxWidth: '100%',
     marginRight: theme.spacing(4),
   },
@@ -26,12 +26,14 @@ export default theme => ({
   },
   title: {
     marginLeft: theme.spacing(2),
-    textTransform: 'capitalize'
+    textTransform: 'capitalize',
+    width: '50%'
   },
   caption: {
     alignItems: 'center',
     marginLeft: 'auto',
-    alignSelf: 'center'
+    alignSelf: 'center',
+    width: '50%'
   },
   fields: {
     display: 'flex',
@@ -64,12 +66,15 @@ export default theme => ({
     paddingRight: theme.spacing.unit * 3,
     paddingTop: theme.spacing.unit * 2,
     paddingBottom: theme.spacing.unit * 2,
-    alignSelf: 'center'
+    alignSelf: 'center',
+    width: '620px',
+    maxWidth: '100%',
 
   },
   wrapper: {
     margin: theme.spacing(1),
-    display: 'flex'
+    display: 'flex',
+    placeContent: 'center'
   },
   buttonSuccess: {
     backgroundColor: green[500],

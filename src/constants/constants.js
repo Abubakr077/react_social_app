@@ -55,10 +55,10 @@ export const target = [
         name: "User",
         code: "USER"
     },
-    {
-        name: "Keyword",
-        code: "KEYWORD"
-    },
+    // {
+    //     name: "Keyword",
+    //     code: "KEYWORD"
+    // },
     {
         name: "Trend",
         code: "TREND"

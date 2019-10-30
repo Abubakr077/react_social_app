@@ -23,7 +23,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 
-export default function OutlinedTextFields({getValue,options,label,disabled}) {
+export default function OutlinedTextFields({getValue,options,label,disabled,value}) {
   const classes = useStyles();
   const [values, setValues] = React.useState({
 
@@ -44,7 +44,8 @@ export default function OutlinedTextFields({getValue,options,label,disabled}) {
         disabled = {(disabled)? "disabled" : ""}
         label={label}
         className={classes.textField}
-        value={(disabled)?"Posts":values.currency}
+        // value={(disabled)?"Posts":values.currency}
+        value={value}
         onChange={handleChange("currency")}
         SelectProps={{
           MenuProps: {

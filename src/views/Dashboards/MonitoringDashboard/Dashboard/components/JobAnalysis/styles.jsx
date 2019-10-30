@@ -13,13 +13,13 @@ export default theme => ({
     webkitBoxSizing: 'border-box',
     boxSizing: 'border-box',
     height: '300px',
-    width: '70%',
+    width: '65%',
   },
   pieBody: {
     webkitBoxSizing: 'border-box',
     boxSizing: 'border-box',
     height: '300px',
-    width: '30%',
+    width: '35%',
   },
   areaBody: {
     webkitBoxSizing: 'border-box',
