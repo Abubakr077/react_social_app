@@ -29,8 +29,11 @@ import {withRouter} from "react-router-dom";
 
 //network graph
 import {ForceGraph3D,ForceGraph2D} from 'react-force-graph';
-import data from './data/miserables.json';
+// import data from './data/miserables.json';
+import data from './data/WITTER_TREND_HATEPOOL_NETWORK_2019-10-30';
 import SpriteText from 'three-spritetext';
+
+import * as THREE from 'three';
 
 class ProfilesNetwork extends Component {
 
@@ -72,17 +75,23 @@ class ProfilesNetwork extends Component {
                             linkDirectionalArrowLength={3.5}
                             linkDirectionalArrowRelPos={1}
                             nodeCanvasObject={(node, ctx, globalScale) => {
-                                const label = node.id;
-                                const fontSize = 12/globalScale;
-                                ctx.font = `${fontSize}px Sans-Serif`;
-                                const textWidth = ctx.measureText(label).width;
-                                const bckgDimensions = [textWidth, fontSize].map(n => n + fontSize * 0.2); // some padding
-                                ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
-                                ctx.fillRect(node.x - bckgDimensions[0] / 2, node.y - bckgDimensions[1] / 2, ...bckgDimensions);
-                                ctx.textAlign = 'center';
-                                ctx.textBaseline = 'middle';
-                                ctx.fillStyle = node.color;
-                                ctx.fillText(label, node.x, node.y);
+                                // const label = node.id;
+                                // const fontSize = 12/globalScale;
+                                // // ctx.font = `${fontSize}px Sans-Serif`;
+                                // const textWidth = ctx.measureText(label).width;
+                                // const bckgDimensions = [textWidth, fontSize].map(n => n + fontSize * 0.2); // some padding
+                                // ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+                                // ctx.fillRect(node.x - bckgDimensions[0] / 2, node.y - bckgDimensions[1] / 2, ...bckgDimensions);
+                                // ctx.textAlign = 'center';
+                                // ctx.textBaseline = 'middle';
+                                // ctx.fillStyle = node.color;
+                                // ctx.img(new THREE.TextureLoader().load(`${node.img}`));
+                                // ctx.fillText(label, node.x, node.y);
+                                const imgTexture = new THREE.TextureLoader().load(node.img);
+                                const material = new THREE.SpriteMaterial({ map: imgTexture });
+                                const sprite = new THREE.Sprite(material);
+                                sprite.scale.set(12, 12);
+                                return sprite;
                             }}
                         />
                     </PortletContent>
