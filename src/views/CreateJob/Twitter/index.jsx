@@ -54,7 +54,7 @@ class Twitter extends Component {
                 any_words: "",
                 not_words: "",
                 hashtag: "",
-                lang: "",
+                lang: "en",
                 reply_to: "",
                 mentioned_user: "",
                 near_place: "",
@@ -489,6 +489,20 @@ class Twitter extends Component {
                         {/*</Grid>*/}
                         <Grid item xs={6}>
                             <Grid container spacing={3} >
+                                <Grid item xs={12}>
+                                    <Paper className={classes.paper}>
+                                        <Grid item xs={12}>
+                                            <TextField
+                                                id="outlined-dense"
+                                                label="Search Location"
+                                                className={clsx(classes.textField, classes.dense)}
+                                                margin="dense"
+                                                variant="outlined"
+                                                value={this.state.post.job_details.near_place}
+                                            />
+                                        </Grid>
+                                    </Paper>
+                                </Grid>
                                 <Grid item xs={6}>
                                     <Paper className={classes.paper}>
                                         <Grid item xs={12}>
@@ -512,7 +526,10 @@ class Twitter extends Component {
                                 <Grid item xs={6}>
                                     <Paper className={classes.paper}>
                                         <Grid item xs={12}>
-                                            <SelectField getValue={this.getNumTweets} options={numTweet} label={"Total Tweets"} />
+                                            <SelectField getValue={this.getNumTweets}
+                                                         value={this.state.post.job_details.crawl_num_tweets}
+
+                                                         options={numTweet} label={"Total Tweets"} />
                                         </Grid>
                                     </Paper>
                                 </Grid>
@@ -531,6 +548,7 @@ class Twitter extends Component {
                                         <Grid item xs={12}>
                                             <SelectField getValue={this.inputSchedule}
                                                          options={scheduleOptions} label={"Schedule"}
+                                                         value={this.state.post.schedule}
                                                          disabled={false} />
                                         </Grid>
                                     </Paper>
@@ -546,7 +564,6 @@ class Twitter extends Component {
                                                 margin="dense"
                                                 variant="outlined"
                                                 helperText=""
-                                                //TODO fix value here
                                                 disabled={this.state.isScheduleUnit}
                                                 value={this.state.post.schedule_units}
                                             />
@@ -570,26 +587,12 @@ class Twitter extends Component {
                             </Grid>
                         </Grid>
                         <Grid item xs={6}>
-                            <Grid container spacing={3}>
-                                <Grid item xs={12}>
-                                    <Paper className={classes.paper}>
-                                        <Grid item xs={12}>
-                                            <TextField
-                                                id="outlined-dense"
-                                                label="Search Location"
-                                                className={clsx(classes.textField, classes.dense)}
-                                                margin="dense"
-                                                variant="outlined"
-                                                value={this.state.post.job_details.near_place}
-                                            />
-                                        </Grid>
-                                    </Paper>
-                                </Grid>
+                            <Grid container spacing={3}  className={classes.mapHeight}>
                                 <Grid item xs={12}>
                                     <Paper className={classes.paper}>
                                         <Typography>  Select Location:</Typography>
                                         <Grid item xs={12} >
-                                            <GoogleMap className={classes.mapHeight}
+                                            <GoogleMap
                                                        getLatLong={this.getLatLong} center={{ lat: 28.3753, lng: 73.3451 }} zoom={5} />
                                         </Grid>
                                     </Paper>
@@ -619,8 +622,10 @@ class Twitter extends Component {
                         <Grid item xs={3}>
                             <Paper className={classes.paper}>
                                 <Grid item xs={12}>
-                                    //TODO fix value here
-                                    <SelectField getValue={this.inputSchedule} options={scheduleOptions} label={"Schedule"} disabled={false} />
+                                    <SelectField getValue={this.inputSchedule} options={scheduleOptions} label={"Schedule"}
+                                                 value={this.state.post.schedule}
+
+                                                 disabled={false} />
                                 </Grid>
                             </Paper>
                         </Grid>

@@ -94,6 +94,10 @@ export const numTweet = [
         code: "All"
     },
     {
+        name: "Not Set",
+        code: "-1"
+    },
+    {
         name: "1000",
         code: "1000"
     },
