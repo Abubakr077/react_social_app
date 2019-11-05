@@ -414,7 +414,8 @@ class Twitter extends Component {
                                 <Grid container spacing={3} >
                                     {(!isTrendPosts) && (
                                         <div>
-                                            (<Grid item xs={12}>
+                                            (
+                                            {/*<Grid item xs={12}>*/}
                                             {/*<Paper className={classes.paper}>*/}
                                             {/*    <Grid item xs={12}>*/}
                                             {/*        <TextField*/}
@@ -427,7 +428,7 @@ class Twitter extends Component {
                                             {/*        />*/}
                                             {/*    </Grid>*/}
                                             {/*</Paper>*/}
-                                        </Grid>
+                                        {/*</Grid>*/}
                                             <Grid item xs={12}>
                                                 <Grid item xs={12}>
                                                     <TagInput label={"User Name"} getData={this.getUserName} />
@@ -438,11 +439,11 @@ class Twitter extends Component {
                                 </Grid>
                             </Grid>
                             :
-                            <Grid item xs={12}>
-                                <Grid container spacing={3} >
-                                    <Grid item xs={6}>
-                                        <Paper className={classes.paper}>
-                                            <Grid item xs={12}>
+
+
+                            <Grid item xs={12} >
+                                        <Paper className={classes.paper2} >
+                                            <Grid item xs={6}>
                                                 <TextField
                                                     onKeyUp={this.inputUserName}
                                                     id="outlined-dense"
@@ -454,45 +455,33 @@ class Twitter extends Component {
                                             </Grid>
                                             {this.state.isUserNameError ? <Typography className={classes.error}>{this.state.errorText}</Typography> : null}
                                         </Paper>
+                                        <Grid item xs={6} className={classes.half}>
+                                            <TagInput label={"Any Words"} getData={this.getAnyWords} />
+                                        </Grid>
                                     </Grid>
-                                    {/*<Grid item xs={6}>*/}
-                                    {/*    <Paper className={classes.paper}>*/}
-                                    {/*        <Grid item xs={12}>*/}
-                                    {/*            <TextField*/}
-                                    {/*                onKeyUp={this.inputExactPhrase}*/}
-                                    {/*                id="outlined-dense"*/}
-                                    {/*                label="Exact Phrase"*/}
-                                    {/*                className={clsx(classes.textField, classes.dense)}*/}
-                                    {/*                margin="dense"*/}
-                                    {/*                variant="outlined"*/}
-                                    {/*            />*/}
-                                    {/*        </Grid>*/}
-                                    {/*    </Paper>*/}
-                                    {/*</Grid>*/}
-                                </Grid>
-                            </Grid>}
-                        <Grid item xs={this.state.isUser === true ? 6 : 4}>
-                           {isTrendPosts && ( <Grid item xs={12}>
-                                <TagInput label={"HashTags"} getData={this.getHashtags} />
-                            </Grid>)}
-                        </Grid>
-                        <Grid item xs={this.state.isUser === true ? 6 : 4}>
-                            {((!isTrendPosts) || isUserPosts) && (<Grid item xs={12}>
-                                <TagInput label={"Reply To"} getData={this.getReplyTo} />
-                            </Grid>)
 
                             }
-                        </Grid>
+                        {isTrendPosts && (<Grid item xs={12} className={classes.flexGrid}>
+                            <Grid item xs={6} className={classes.spaceRight}>
+                                <TagInput label={"HashTags"} getData={this.getHashtags} />
+                            </Grid>
+                            <Grid item xs={6}>
+                                <TagInput label={"Any Words"} getData={this.getAnyWords} />
+                            </Grid>
+
+                        </Grid>)}
+                        {/*<Grid item xs={this.state.isUser === true ? 6 : 4}>*/}
+                        {/*    {((!isTrendPosts) || isUserPosts) && (<Grid item xs={12}>*/}
+                        {/*        <TagInput label={"Reply To"} getData={this.getReplyTo} />*/}
+                        {/*    </Grid>)*/}
+
+                        {/*    }*/}
+                        {/*</Grid>*/}
                         {/*{((!isTrendPosts) || isUserPosts) && (<Grid item xs={4}>*/}
                         {/*    <Grid item xs={12}>*/}
                         {/*        <TagInput label={"All Words"} getData={this.getAllWords} />*/}
                         {/*    </Grid>*/}
                         {/*</Grid>)}*/}
-                        <Grid item xs={this.state.isUser === true ? 4 : 6}>
-                            <Grid item xs={12}>
-                                <TagInput label={"Any Words"} getData={this.getAnyWords} />
-                            </Grid>
-                        </Grid>
                         {/*<Grid item xs={this.state.isUser === true ? 4 : 6}>*/}
                         {/*    {((!isTrendPosts) || isUserPosts) && ( <Grid item xs={12}>*/}
                         {/*        <TagInput label={"Not Words"} getData={this.getNotWords} />*/}
@@ -514,11 +503,12 @@ class Twitter extends Component {
                                         </Grid>
                                     </Paper>
                                 </Grid>
-                                {((!isTrendPosts) || isUserPosts) && (<Grid item xs={12}>
-                                    <Grid item xs={12}>
-                                        <TagInput label={"Mentioned Users"} getData={this.getMentionedUsers} />
-                                    </Grid>
-                                </Grid>)}
+                                {/*{((!isTrendPosts) || isUserPosts) && (*/}
+                                {/*    <Grid item xs={12}>*/}
+                                {/*    <Grid item xs={12}>*/}
+                                {/*        <TagInput label={"Mentioned Users"} getData={this.getMentionedUsers} />*/}
+                                {/*    </Grid>*/}
+                                {/*</Grid>)}*/}
                                 <Grid item xs={6}>
                                     <Paper className={classes.paper}>
                                         <Grid item xs={12}>
@@ -539,7 +529,9 @@ class Twitter extends Component {
                                 <Grid item xs={6}>
                                     <Paper className={classes.paper}>
                                         <Grid item xs={12}>
-                                            <SelectField getValue={this.inputSchedule} options={scheduleOptions} label={"Schedule"} disabled={false} />
+                                            <SelectField getValue={this.inputSchedule}
+                                                         options={scheduleOptions} label={"Schedule"}
+                                                         disabled={false} />
                                         </Grid>
                                     </Paper>
                                 </Grid>
@@ -554,6 +546,7 @@ class Twitter extends Component {
                                                 margin="dense"
                                                 variant="outlined"
                                                 helperText=""
+                                                //TODO fix value here
                                                 disabled={this.state.isScheduleUnit}
                                                 value={this.state.post.schedule_units}
                                             />
@@ -595,8 +588,9 @@ class Twitter extends Component {
                                 <Grid item xs={12}>
                                     <Paper className={classes.paper}>
                                         <Typography>  Select Location:</Typography>
-                                        <Grid item xs={12}>
-                                            <GoogleMap getLatLong={this.getLatLong} center={{ lat: 28.3753, lng: 73.3451 }} zoom={5} />
+                                        <Grid item xs={12} >
+                                            <GoogleMap className={classes.mapHeight}
+                                                       getLatLong={this.getLatLong} center={{ lat: 28.3753, lng: 73.3451 }} zoom={5} />
                                         </Grid>
                                     </Paper>
                                 </Grid>
@@ -625,6 +619,7 @@ class Twitter extends Component {
                         <Grid item xs={3}>
                             <Paper className={classes.paper}>
                                 <Grid item xs={12}>
+                                    //TODO fix value here
                                     <SelectField getValue={this.inputSchedule} options={scheduleOptions} label={"Schedule"} disabled={false} />
                                 </Grid>
                             </Paper>

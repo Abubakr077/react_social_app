@@ -11,8 +11,21 @@ export default theme => ({
       padding: theme.spacing(2),
       textAlign: 'left',
       color: theme.palette.text.secondary,
-      
     },
+
+    paper2: {
+        padding: theme.spacing(2),
+        textAlign: 'left',
+        color: theme.palette.text.secondary,
+    },
+    mapHeight: {
+        height: '50%',
+        padding: theme.spacing(4)
+    },
+    half: {
+        width: '50%',
+        marginLeft: theme.spacing(3),
+},
     textField: {
       marginLeft: theme.spacing(0),
       marginRight: theme.spacing(0),
@@ -27,11 +40,20 @@ export default theme => ({
 
     space:{
       marginBottom: theme.spacing(3),
+        marginRight: theme.spacing(3),
+    },
+
+    spaceRight:{
+        marginRight: theme.spacing(3),
     },
     signInButton:{
       textAlign:"center",
       marginTop: theme.spacing(0.6),
       marginBottom: theme.spacing(0.6),
       width:"100%"
+    },
+    flexGrid: {
+        display: 'flex',
+        width:'100%'
     }
   });
