@@ -44,7 +44,7 @@ class MapContainer extends React.Component {
     console.log(location.lat());
     const loca = location.lat()+"%2C"+location.lng();
     console.log(loca);
-    this.props.getLatLong(loca)
+    this.props.getLatLong(loca);
     this.setState(prevState => ({
       locations: [location]
     }));
@@ -76,6 +76,10 @@ export default compose(
   withStyles(styles),
   GoogleApiWrapper({
     apiKey: "AIzaSyDurZQBXjtSzKeieXwtFeGe-jhZu-HEGQU",
+    // apiKey: "AIzaSyBNBrWGhiL26l5t76_vdLlTf-Y1ReGC3Oo",
+    // apiKey: "AIzaSyAEnVkzBPbqjkjC3Cpjj_wT0T_RAgyd61w",
+    // apiKey: "AIzaSyDA1GLJp4PZVXqFgRgpQQQI3ZdSMb116Fw",
+    // apiKey: "AIzaSyCoEGO5VKwaxykazt0z9kfrqrfXpwLJP6A",
     libraries: []
   })
 )(MapContainer);
