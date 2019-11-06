@@ -24,9 +24,9 @@ const MarkersList = props => {
 };
 const styles = theme => ({
   map: {
-      height:"330px",
+      height:"400px",
       position: "relative",
-      border:"1px solid green"
+      // border:"1px solid blue"
     }  
 });
 

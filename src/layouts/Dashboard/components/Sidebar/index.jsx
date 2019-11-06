@@ -46,8 +46,6 @@ class Sidebar extends Component {
     render() {
         const {classes, className, initUser,options} = this.props;
         const rootClassName = classNames(classes.root, className);
-
-        const project_id = localStorage.getItem('project_id');
         return (
             <nav className={rootClassName}>
                 <div className={classes.logoWrapper}>
@@ -56,9 +54,9 @@ class Sidebar extends Component {
                         to="/"
                     >
                         <img
-                            alt="Brainalytica logo"
+                            alt="Logo"
                             className={classes.logoImage}
-                            src="/images/logos/logoNCCS.png"
+                            src='/images/logos/logoNCCS.png'
                         />
                     </Link>
                 </div>

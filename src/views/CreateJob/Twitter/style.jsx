@@ -11,20 +11,23 @@ export default theme => ({
       padding: theme.spacing(2),
       textAlign: 'left',
       color: theme.palette.text.secondary,
-    },
 
+    },
+    CreateJobButtonBody: {
+      marginTop: theme.spacing(0.5)
+    },
     paper2: {
         padding: theme.spacing(2),
-        textAlign: 'left',
         color: theme.palette.text.secondary,
+        width: '50%',
+        marginRight: theme.spacing(3)
     },
-    mapHeight: {
-        height: '50%',
-        padding: theme.spacing(4)
+    mapTitle: {
+        marginBottom: theme.spacing(4)
     },
     half: {
         width: '50%',
-        marginLeft: theme.spacing(3),
+        // marginLeft: theme.spacing(3),
 },
     textField: {
       marginLeft: theme.spacing(0),
@@ -41,6 +44,7 @@ export default theme => ({
     space:{
       marginBottom: theme.spacing(3),
         marginRight: theme.spacing(3),
+
     },
 
     spaceRight:{
@@ -53,7 +57,7 @@ export default theme => ({
       width:"100%"
     },
     flexGrid: {
-        display: 'flex',
-        width:'100%'
+        width:'100%',
+        display: 'flex'
     }
   });

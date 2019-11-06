@@ -74,15 +74,15 @@ class Twitter extends Component {
         console.log("velidation function call");
         console.log(unit);
         console.log(val);
-        if (unit == "EVERY_N_MINUTES") {
+        if (unit === "EVERY_N_MINUTES") {
             error = validate({ Unit: parseInt(val) }, schema.unitMin);
         }
 
-        if (unit == "EVERY_N_HOURS") {
+        if (unit === "EVERY_N_HOURS") {
             error = validate({ Unit: parseInt(val) }, schema.unitHours);
         }
 
-        if (unit == "EVERY_N_HOURS") {
+        if (unit === "EVERY_N_HOURS") {
             error = validate({ Unit: parseInt(val) }, schema.unitHours);
         }
 
@@ -142,8 +142,7 @@ class Twitter extends Component {
     }
     getHashtags = (hashtags) => {
         console.log(hashtags.tags);
-        const data = this.state.post;
-        const currentstate = data;
+        const currentstate = this.state.post;
         currentstate.job_details.hashtag = hashtags.tags.join(" ")
         console.log(currentstate);
         this.setState({
@@ -152,8 +151,7 @@ class Twitter extends Component {
     }
     getReplyTo = (user) => {
         console.log(user.tags);
-        const data = this.state.post;
-        const currentstate = data;
+        const currentstate = this.state.post;
         currentstate.job_details.reply_to = user.tags.join(" ")
         console.log(currentstate);
         this.setState({
@@ -162,8 +160,7 @@ class Twitter extends Component {
     }
     getMentionedUsers = (user) => {
         console.log(user.tags);
-        const data = this.state.post;
-        const currentstate = data;
+        const currentstate = this.state.post;
         currentstate.job_details.mentioned_user = user.tags.join(" ")
         console.log(currentstate);
         this.setState({
@@ -173,8 +170,7 @@ class Twitter extends Component {
     inputExactPhrase = (e) => {
         const val = e.target.value;
         console.log(val)
-        const data = this.state.post;
-        const currentstate = data;
+        const currentstate = this.state.post;
         currentstate.job_details.exact_phrase = val
         console.log(currentstate);
         this.setState({
@@ -191,8 +187,7 @@ class Twitter extends Component {
     getLatLong = (value) => {
         const val = value;
         console.log(val)
-        const data = this.state.post;
-        const currentstate = data;
+        const currentstate = this.state.post;
         currentstate.job_details.near_place = val
         console.log(currentstate);
         this.setState({
@@ -201,7 +196,7 @@ class Twitter extends Component {
     }
     inputSchedule = (e) => {
         const val = e;
-        if (val == "ONCE_EVERY_HOUR") {
+        if (val === "ONCE_EVERY_HOUR") {
             console.log("this is hour");
             this.setState({
                 isScheduleUnit: true,
@@ -229,8 +224,7 @@ class Twitter extends Component {
     inputUserName = (e) => {
         const val = e.target.value;
         console.log(val);
-        const data = this.state;
-        const currentstate = data;
+        const currentstate = this.state;
         currentstate.post.job_details.username = val;
         currentstate.isUserNameError=false;
         currentstate.errorText = "";
@@ -241,8 +235,7 @@ class Twitter extends Component {
     }
     getFromDate = (date) => {
         console.log(date);
-        const data = this.state.post;
-        const currentstate = data;
+        const currentstate = this.state.post;
         currentstate.job_details.from_date = date
         console.log(currentstate);
         this.setState({
@@ -251,8 +244,7 @@ class Twitter extends Component {
     }
     getToDate = (date) => {
         console.log(date);
-        const data = this.state.post;
-        const currentstate = data;
+        const currentstate = this.state.post;
         currentstate.job_details.to_date = date
         console.log(currentstate);
         this.setState({
@@ -261,8 +253,7 @@ class Twitter extends Component {
     }
     getNumTweets = (value) => {
         console.log(value);
-        const data = this.state.post;
-        const currentstate = data;
+        const currentstate = this.state.post;
         currentstate.job_details.crawl_num_tweets = parseInt(value)
         console.log(currentstate);
         this.setState({
@@ -271,9 +262,8 @@ class Twitter extends Component {
     }
     getTargetType = (value) => {
         console.log(value);
-        if (value != "USER") {
-            const data = this.state;
-            const currentstate = data;
+        if (value !== "USER") {
+            const currentstate = this.state;
             currentstate.post.job_details.target_subtype = "POST";
             currentstate.post.job_details.target_type = value;
             currentstate.isUser = true;
@@ -285,8 +275,7 @@ class Twitter extends Component {
                 currentstate
             });
         } else {
-            const data = this.state;
-            const currentstate = data;
+            const currentstate = this.state;
             currentstate.post.job_details.target_subtype = null;
             currentstate.post.job_details.target_type = value;
             currentstate.isUser = false;
@@ -312,7 +301,6 @@ class Twitter extends Component {
                 currentstate
             });
         } else {
-            // TODO set state of target = posts here
             currentstate.isInfo = true;
             currentstate.visible = false;
             console.log(currentstate);
@@ -323,8 +311,7 @@ class Twitter extends Component {
     };
     getLang = (value) => {
         console.log(value);
-        const data = this.state.post;
-        const currentstate = data;
+        const currentstate = this.state.post;
         currentstate.job_details.lang = value
         console.log(currentstate);
         this.setState({
@@ -381,6 +368,7 @@ class Twitter extends Component {
                                     label="Job Description"
                                     className={clsx(classes.textField, classes.dense)}
                                     margin="dense"
+                                    autoFocus
                                     variant="outlined"
                                 />
                             </Grid>
@@ -409,57 +397,25 @@ class Twitter extends Component {
                 </Grid>
                 {this.state.visible === true ?
                     <Grid container className={classes.space} spacing={3}>
-                        {this.state.isUser === true ?
-                            <Grid item xs={12}>
-                                <Grid container spacing={3} >
-                                    {(!isTrendPosts) && (
-                                        <div>
-                                            (
-                                            {/*<Grid item xs={12}>*/}
-                                            {/*<Paper className={classes.paper}>*/}
-                                            {/*    <Grid item xs={12}>*/}
-                                            {/*        <TextField*/}
-                                            {/*            onKeyUp={this.inputExactPhrase}*/}
-                                            {/*            id="outlined-dense"*/}
-                                            {/*            label="Exact Phrase"*/}
-                                            {/*            className={clsx(classes.textField, classes.dense)}*/}
-                                            {/*            margin="dense"*/}
-                                            {/*            variant="outlined"*/}
-                                            {/*        />*/}
-                                            {/*    </Grid>*/}
-                                            {/*</Paper>*/}
-                                        {/*</Grid>*/}
-                                            <Grid item xs={12}>
-                                                <Grid item xs={12}>
-                                                    <TagInput label={"User Name"} getData={this.getUserName} />
-                                                </Grid>
-                                            </Grid>
-                                        </div>
-                                    )}
+                        {(!this.state.isUser)  && (
+                            <Grid item xs={12} className={classes.flexGrid}>
+                            <Paper className={classes.paper2} >
+                                <Grid item xs={12}>
+                                    <TextField
+                                        onKeyUp={this.inputUserName}
+                                        id="outlined-dense"
+                                        label="User Name"
+                                        className={clsx(classes.textField, classes.dense)}
+                                        margin="dense"
+                                        variant="outlined"
+                                    />
                                 </Grid>
-                            </Grid>
-                            :
-
-
-                            <Grid item xs={12} >
-                                        <Paper className={classes.paper2} >
-                                            <Grid item xs={6}>
-                                                <TextField
-                                                    onKeyUp={this.inputUserName}
-                                                    id="outlined-dense"
-                                                    label="User Name"
-                                                    className={clsx(classes.textField, classes.dense)}
-                                                    margin="dense"
-                                                    variant="outlined"
-                                                />
-                                            </Grid>
-                                            {this.state.isUserNameError ? <Typography className={classes.error}>{this.state.errorText}</Typography> : null}
-                                        </Paper>
-                                        <Grid item xs={6} className={classes.half}>
-                                            <TagInput label={"Any Words"} getData={this.getAnyWords} />
-                                        </Grid>
-                                    </Grid>
-
+                                {this.state.isUserNameError && <Typography className={classes.error}>{this.state.errorText}</Typography> }
+                            </Paper>
+                                <Grid item xs={6} className={classes.half}>
+                                    <TagInput  label={"Any Words"} getData={this.getAnyWords} />
+                                </Grid>
+                        </Grid>)
                             }
                         {isTrendPosts && (<Grid item xs={12} className={classes.flexGrid}>
                             <Grid item xs={6} className={classes.spaceRight}>
@@ -571,7 +527,7 @@ class Twitter extends Component {
                                         {this.state.isValid ? <Typography className={classes.error}>{this.state.errorText}</Typography> : null}
                                     </Paper>
                                 </Grid>
-                                <Grid item xs={12}>
+                                <Grid item xs={12} className={classes.CreateJobButtonBody}>
                                     <Button
                                         onClick={this.startJob}
                                         className={classes.signInButton}
@@ -587,10 +543,10 @@ class Twitter extends Component {
                             </Grid>
                         </Grid>
                         <Grid item xs={6}>
-                            <Grid container spacing={3}  className={classes.mapHeight}>
+                            <Grid container spacing={3}  >
                                 <Grid item xs={12}>
                                     <Paper className={classes.paper}>
-                                        <Typography>  Select Location:</Typography>
+                                        <Typography variant="h6" className={classes.mapTitle}>  SELECT LOCATION:</Typography>
                                         <Grid item xs={12} >
                                             <GoogleMap
                                                        getLatLong={this.getLatLong} center={{ lat: 28.3753, lng: 73.3451 }} zoom={5} />
@@ -602,8 +558,8 @@ class Twitter extends Component {
                     </Grid>
                     :
                     null}
-                {this.state.isInfo === true ?
-                    <Grid container spacing={3} >
+                {this.state.isInfo &&
+                    <Grid container spacing={3} className={classes.space}>
                         <Grid item xs={3}>
                             <Paper className={classes.paper}>
                                 <Grid item xs={12}>
@@ -646,7 +602,7 @@ class Twitter extends Component {
                                 {this.state.isValid ? <p className={classes.error}>{this.state.errorText}</p> : null}
                             </Paper>
                         </Grid>
-                        <Grid item xs={3}>
+                        <Grid item xs={3} >
                             <Paper className={classes.paper}>
                                 <Button
                                     onClick={this.startJob}
@@ -654,14 +610,14 @@ class Twitter extends Component {
                                     color="primary"
                                     size="large"
                                     variant="contained"
+                                    margin="dense"
+                                    disabled = {this.state.isValid}
                                 >
                                     Register Job
-                    </Button>
+                                </Button>
                             </Paper>
                         </Grid>
-                    </Grid>
-                    :
-                    null}
+                    </Grid>}
             </Grid>
         );
     }
