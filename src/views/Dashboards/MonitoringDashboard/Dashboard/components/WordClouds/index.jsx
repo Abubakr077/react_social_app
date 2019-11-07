@@ -17,8 +17,7 @@ import {
 import {
   Portlet,
   PortletHeader,
-  PortletLabel,
-    PortletContent
+  PortletContent
 } from 'components';
 
 // Component styles

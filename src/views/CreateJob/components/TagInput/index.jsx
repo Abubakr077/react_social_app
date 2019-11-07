@@ -9,9 +9,8 @@ import Paper from '@material-ui/core/Paper';
 import styles from './style';
 
 class InputTag extends React.Component {
-    constructor() {
-        super();
-
+    constructor(props) {
+        super(props);
         this.state = {
             tags: []
         };

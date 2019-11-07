@@ -75,19 +75,19 @@ class PNTweetsLine extends Component {
           <YAxis label={{ value: 'tweets', angle: -90, position: 'center', textAnchor: 'middle' }}/>
           <Tooltip />
           <Legend  />
-          <Line type="temperature"  dataKey="positive" stroke="#45B880"  dot={false}
+          <Line type="monotone"  dataKey="positive" stroke="#45B880"  dot={false}
                 activeDot={
                   {
                     onClick: this.handleClick
                   }}
           />
-          <Line  type="temperature" dataKey="negative" stroke="#ED4740" dot={false}
+          <Line  type="monotone" dataKey="negative" stroke="#ED4740" dot={false}
                  activeDot={
                    {
                      onClick: this.handleClick
                    }}
           />
-          <Line  type="temperature" dataKey="total" stroke="#FFB822"
+          <Line  type="monotone" dataKey="total" stroke="#FFB822"
                  activeDot={
                    {
                      r: 8,
