@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component, useCallback, useState} from 'react';
 import randomColor from 'randomcolor';
 // Externals
 import PropTypes from 'prop-types';
@@ -31,19 +31,20 @@ import {withRouter} from "react-router-dom";
 import {ForceGraph3D,ForceGraph2D} from 'react-force-graph';
 // import data from './data/miserables.json';
 import data from './data/WITTER_TREND_HATEPOOL_NETWORK_2019-10-30';
-import SpriteText from 'three-spritetext';
 
-import * as THREE from 'three';
+
 
 class ProfilesNetwork extends Component {
 
         state = {};
 
+
+
         render() {
             const {classes, className, cloudOptions, ...rest} = this.props;
-
             return (
 
+                <div>
                 <Portlet>
                     <PortletHeader noDivider>
                         <Typography variant="h2">Network Of Hate Profiles</Typography>
@@ -69,12 +70,21 @@ class ProfilesNetwork extends Component {
                         {/*    }}*/}
                         {/*/>*/}
                         <ForceGraph2D
+
                             className={classes.body}
                             graphData={data}
                             nodeAutoColorBy="group"
                             linkDirectionalArrowLength={3.5}
                             linkDirectionalArrowRelPos={1}
+                            linkDirectionalParticles="value"
+                            linkDirectionalParticleColor={() => 'blue'}
+                            linkDirectionalParticleSpeed={d => d.value * 0.001}
+                            onNodeDragEnd={node => {
+                                node.fx = node.x;
+                                node.fy = node.y;
+                            }}
                             nodeCanvasObject={(node, ctx, globalScale) => {
+                                const size = 12;
                                 const label = node.id;
                                 const fontSize = 12/globalScale;
                                 // ctx.font = `${fontSize}px Sans-Serif`;
@@ -86,11 +96,16 @@ class ProfilesNetwork extends Component {
                                 ctx.textBaseline = 'middle';
                                 ctx.fillStyle = node.color;
                                 // ctx.img(new THREE.TextureLoader().load(`${node.img}`));
+                                // ctx.drawImage(node.img, node.x - size / 2, node.y - size / 2, size, size);
                                 ctx.fillText(label, node.x, node.y);
                             }}
                         />
                     </PortletContent>
+
+
                 </Portlet>
+                </div>
+
             );
         }
 
