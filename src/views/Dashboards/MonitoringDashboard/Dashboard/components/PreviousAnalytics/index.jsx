@@ -57,7 +57,6 @@ class PreviousAnalyticsTable extends Component {
         const {classes, className} = this.props;
         const {isLoading, jobTasks} = this.state;
 
-        const showTasks = !isLoading && jobTasks;
         const prevState = this.props.location.state;
 
         return (

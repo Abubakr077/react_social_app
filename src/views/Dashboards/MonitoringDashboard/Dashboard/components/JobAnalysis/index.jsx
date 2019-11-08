@@ -151,7 +151,7 @@ class JobAnalysis extends Component {
                                 <PortletLabel
                                     title="Twitter Tweets"
                                 />
-                                { this.prevState.type === 'POST' && (<PortletToolbar>
+                                { this.prevState.target_type === 'TREND' && (<PortletToolbar>
                                     <Button
                                         className={classes.newEntryButton}
                                         color="primary"
@@ -173,7 +173,7 @@ class JobAnalysis extends Component {
                                         onClick={()=> {
                                             const { history } = this.props;
                                             const url = this.props.match.url;
-                                            history.push(url+'/profiles');
+                                            history.push(url+'/hate_pool');
                                         }}
                                     >
                                         Trend Contributors
@@ -192,13 +192,11 @@ class JobAnalysis extends Component {
                                                   taskId= {this.prevState.taskId}
                                     />
                                 </div>}
-
                                 {this.state.isPolarityDistEmpty &&
                                 <div className={classes.pieBody}>
                                     <PNTweetsPie data={this.state.data.results.polarity_dist} type={this.prevState.type} target_type={this.prevState.target_type}/>
                                 </div>}
                             </PortletContent>
-
                             { this.state.isPolarityFreqEmpty && <div className={classes.areaBody}>
                                 <PNTweetsArea  data={this.state.data.results.polarity_freq}/>
                             </div>}

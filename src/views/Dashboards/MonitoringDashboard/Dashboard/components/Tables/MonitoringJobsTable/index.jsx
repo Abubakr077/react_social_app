@@ -488,6 +488,7 @@ class MonitoringJobsTable extends Component {
     goToPreviousAnalysis(rowData) {
         const {history} = this.props;
         localStorage.setItem('job', JSON.stringify(rowData));
+        // history.push('/dashboard/project/previous_tasks', {job: {rowData}});
         history.push('/dashboard/project/previous_tasks', {taskId: rowData.id, jobName: rowData.description});
 
     }

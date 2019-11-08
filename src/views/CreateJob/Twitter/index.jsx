@@ -25,6 +25,7 @@ import request from 'helpers/request.js';
 import compose from 'recompose/compose';
 import {toast} from 'react-toastify';
 import {Message, optionsError} from "constants/constants";
+import moment from "moment";
 
 
 class Twitter extends Component {
@@ -58,8 +59,8 @@ class Twitter extends Component {
                 reply_to: "",
                 mentioned_user: "",
                 near_place: "",
-                from_date: "",
-                to_date: "",
+                from_date: moment(new Date()).format('YYYY-MM-DD'),
+                to_date: moment(new Date()).format('YYYY-MM-DD'),
                 crawl_num_tweets: -1,
                 target_id: "",
                 platform: "TWITTER",
@@ -102,98 +103,94 @@ class Twitter extends Component {
 
     getUserName = (username) => {
         console.log(username.tags.join(" "));
-        const data = this.state.post;
-        const currentstate = data;
-        currentstate.job_details.username = username.tags.join(" ")
+        const currentstate = this.state.post;
+        currentstate.job_details.username = username.tags.join(" ");
         console.log(currentstate);
         this.setState({
             currentstate
         });
-    }
+    };
     getAllWords = (words) => {
         console.log(words.tags);
-        const data = this.state.post;
-        const currentstate = data;
-        currentstate.job_details.all_words = words.tags.join(" ")
+        const currentstate = this.state.post;
+        currentstate.job_details.all_words = words.tags.join(" ");
         console.log(currentstate);
         this.setState({
             currentstate
         });
-    }
+    };
     getAnyWords = (words) => {
         console.log(words.tags);
-        const data = this.state.post;
-        const currentstate = data;
-        currentstate.job_details.any_words = words.tags.join(" ")
+        const currentstate = this.state.post;
+        currentstate.job_details.any_words = words.tags.join(" ");
         console.log(currentstate);
         this.setState({
             currentstate
         });
-    }
+    };
     getNotWords = (words) => {
         console.log(words.tags);
-        const data = this.state.post;
-        const currentstate = data;
-        currentstate.job_details.not_words = words.tags.join(" ")
+        const currentstate = this.state.post;
+        currentstate.job_details.not_words = words.tags.join(" ");
         console.log(currentstate);
         this.setState({
             currentstate
         });
-    }
+    };
     getHashtags = (hashtags) => {
         console.log(hashtags.tags);
         const currentstate = this.state.post;
-        currentstate.job_details.hashtag = hashtags.tags.join(" ")
+        currentstate.job_details.hashtag = hashtags.tags.join(" ");
         console.log(currentstate);
         this.setState({
             currentstate
         });
-    }
+    };
     getReplyTo = (user) => {
         console.log(user.tags);
         const currentstate = this.state.post;
-        currentstate.job_details.reply_to = user.tags.join(" ")
+        currentstate.job_details.reply_to = user.tags.join(" ");
         console.log(currentstate);
         this.setState({
             currentstate
         });
-    }
+    };
     getMentionedUsers = (user) => {
         console.log(user.tags);
         const currentstate = this.state.post;
-        currentstate.job_details.mentioned_user = user.tags.join(" ")
+        currentstate.job_details.mentioned_user = user.tags.join(" ");
         console.log(currentstate);
         this.setState({
             currentstate
         });
-    }
+    };
     inputExactPhrase = (e) => {
         const val = e.target.value;
         console.log(val)
         const currentstate = this.state.post;
-        currentstate.job_details.exact_phrase = val
+        currentstate.job_details.exact_phrase = val;
         console.log(currentstate);
         this.setState({
             currentstate
         });
-    }
+    };
     inputDescription = (e) => {
         const val = e.target.value;
-        console.log(val)
+        console.log(val);
         this.setState({
             post: { ...this.state.post, description: val },
         });
-    }
+    };
     getLatLong = (value) => {
         const val = value;
-        console.log(val)
+        console.log(val);
         const currentstate = this.state.post;
-        currentstate.job_details.near_place = val
+        currentstate.job_details.near_place = val;
         console.log(currentstate);
         this.setState({
             currentstate
         });
-    }
+    };
     inputSchedule = (e) => {
         const val = e;
         if (val === "ONCE_EVERY_HOUR") {
@@ -212,7 +209,7 @@ class Twitter extends Component {
             
         }
         
-    }
+    };
     inputScheduleUnit = (e) => {
         const val = e.target.value;
         const unit = this.state.post.schedule;
@@ -220,7 +217,7 @@ class Twitter extends Component {
             isScheduleUnit: false,
             post: { ...this.state.post, schedule: unit, schedule_units: val },
         },()=>this.velidator(this.state.post.schedule_units, unit));
-    }
+    };
     inputUserName = (e) => {
         const val = e.target.value;
         console.log(val);
@@ -232,34 +229,34 @@ class Twitter extends Component {
         this.setState({
             currentstate
         });
-    }
+    };
     getFromDate = (date) => {
         console.log(date);
         const currentstate = this.state.post;
-        currentstate.job_details.from_date = date
+        currentstate.job_details.from_date = date;
         console.log(currentstate);
         this.setState({
             currentstate
         });
-    }
+    };
     getToDate = (date) => {
         console.log(date);
         const currentstate = this.state.post;
-        currentstate.job_details.to_date = date
+        currentstate.job_details.to_date = date;
         console.log(currentstate);
         this.setState({
             currentstate
         });
-    }
+    };
     getNumTweets = (value) => {
         console.log(value);
         const currentstate = this.state.post;
-        currentstate.job_details.crawl_num_tweets = parseInt(value)
+        currentstate.job_details.crawl_num_tweets = parseInt(value);
         console.log(currentstate);
         this.setState({
             currentstate
         });
-    }
+    };
     getTargetType = (value) => {
         console.log(value);
         if (value !== "USER") {
@@ -312,12 +309,12 @@ class Twitter extends Component {
     getLang = (value) => {
         console.log(value);
         const currentstate = this.state.post;
-        currentstate.job_details.lang = value
+        currentstate.job_details.lang = value;
         console.log(currentstate);
         this.setState({
             currentstate
         });
-    }
+    };
     startJob = async (e) => {
         e.preventDefault();
         const { history } = this.props;
