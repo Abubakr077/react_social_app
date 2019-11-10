@@ -44,7 +44,6 @@ import {
     PortletHeader,
     PortletLabel,
     PortletContent,
-    PortletFooter,
     PortletToolbar
 } from 'components';
 import MaterialTable from "material-table";

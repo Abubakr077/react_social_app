@@ -1,0 +1,208 @@
+{
+  "nodes": [
+    {
+      "id": "BrianneBIT88",
+      "group": "BrianneBIT88",
+      "img": "https://pbs.twimg.com/profile_images/1162079738581721089/LabFf1cC_200x200.jpg"
+    },
+    {
+      "id": "PulpNews",
+      "group": "PulpNews",
+      "img": "https://pbs.twimg.com/profile_images/1162079738581721089/LabFf1cC_200x200.jpg"
+    },
+    {
+      "id": "EyeOnAfgh",
+      "group": "EyeOnAfgh",
+      "img": "https://pbs.twimg.com/profile_images/1162079738581721089/LabFf1cC_200x200.jpg"
+    },
+    {
+      "id": "WigardKyra",
+      "group": "WigardKyra",
+      "img": "https://pbs.twimg.com/profile_images/1162079738581721089/LabFf1cC_200x200.jpg"
+    },
+    {
+      "id": "Ahaswerus",
+      "group": "qari_noorullah",
+      "img": "https://pbs.twimg.com/profile_images/1162079738581721089/LabFf1cC_200x200.jpg"
+    },
+    {
+      "id": "KhoshTaib",
+      "group": "KhoshTaib",
+      "img": "https://pbs.twimg.com/profile_images/1162079738581721089/LabFf1cC_200x200.jpg"
+    },
+    {
+      "id": "EsiscTeam",
+      "group": "EsiscTeam"
+    },
+    {
+      "id": "asiannewsindia",
+      "group": "asiannewsindia"
+    },
+    {
+      "id": "DaudKhattak1",
+      "group": "DaudKhattak1"
+    },
+    {
+      "id": "JBCBreaking",
+      "group": "JBCBreaking"
+    },
+    {
+      "id": "APDiploWriter",
+      "group": "APDiploWriter"
+    },
+    {
+      "id": "ghawsiqais",
+      "group": "ghawsiqais"
+    },
+    {
+      "id": "thomas_wiegold",
+      "group": "thomas_wiegold"
+    },
+    {
+      "id": "RafiRasheedi",
+      "group": "KhoshTaib"
+    },
+    {
+      "id": "Warforchange",
+      "group": "Warforchange"
+    },
+    {
+      "id": "Sirgardan",
+      "group": "ZarminaTajik"
+    },
+    {
+      "id": "sadat_hasina",
+      "group": "ZarminaTajik"
+    },
+    {
+      "id": "khalidw54690961",
+      "group": "sadat_hasina"
+    },
+    {
+      "id": "qari_noorullah",
+      "group": "khalidw54690961"
+    },
+    {
+      "id": "Shekofa222",
+      "group": "Shekofa222"
+    },
+    {
+      "id": "ziai_zia",
+      "group": "sadat_hasina"
+    },
+    {
+      "id": "bakbarkhel_",
+      "group": "sadat_hasina"
+    },
+    {
+      "id": "KnowledgeVox",
+      "group": "sadat_hasina"
+    },
+    {
+      "id": "ZarminaTajik",
+      "group": "sadat_hasina"
+    }
+  ],
+  "links": [
+    {
+      "source": "Ahaswerus",
+      "target": "qari_noorullah",
+      "value": 1
+    },
+    {
+      "source": "Ahaswerus",
+      "target": "EyeOnAfgh",
+      "value": 1
+    },
+    {
+      "source": "RafiRasheedi",
+      "target": "KhoshTaib",
+      "value": 1
+    },
+    {
+      "source": "Sirgardan",
+      "target": "qari_noorullah",
+      "value": 1
+    },
+    {
+      "source": "Sirgardan",
+      "target": "ZarminaTajik",
+      "value": 1
+    },
+    {
+      "source": "Sirgardan",
+      "target": "EyeOnAfgh",
+      "value": 1
+    },
+    {
+      "source": "sadat_hasina",
+      "target": "ZarminaTajik",
+      "value": 1
+    },
+    {
+      "source": "sadat_hasina",
+      "target": "qari_noorullah",
+      "value": 1
+    },
+    {
+      "source": "sadat_hasina",
+      "target": "khalidw54690961",
+      "value": 1
+    },
+    {
+      "source": "sadat_hasina",
+      "target": "EyeOnAfgh",
+      "value": 1
+    },
+    {
+      "source": "sadat_hasina",
+      "target": "ziai_zia",
+      "value": 1
+    },
+    {
+      "source": "khalidw54690961",
+      "target": "sadat_hasina",
+      "value": 1
+    },
+    {
+      "source": "khalidw54690961",
+      "target": "KhoshTaib",
+      "value": 1
+    },
+    {
+      "source": "qari_noorullah",
+      "target": "Ahaswerus",
+      "value": 1
+    },
+    {
+      "source": "qari_noorullah",
+      "target": "khalidw54690961",
+      "value": 1
+    },
+    {
+      "source": "qari_noorullah",
+      "target": "sadat_hasina",
+      "value": 1
+    },
+    {
+      "source": "ziai_zia",
+      "target": "sadat_hasina",
+      "value": 1
+    },
+    {
+      "source": "bakbarkhel_",
+      "target": "sadat_hasina",
+      "value": 1
+    },
+    {
+      "source": "KnowledgeVox",
+      "target": "sadat_hasina",
+      "value": 1
+    },
+    {
+      "source": "ZarminaTajik",
+      "target": "sadat_hasina",
+      "value": 1
+    }
+  ]
+}

@@ -36,6 +36,9 @@ const TweetsList = asyncComponent(() =>
 const TrendHatePool = asyncComponent(() =>
     import('./views/Dashboards/MonitoringDashboard/Dashboard/components/TrendHatePool').then(module => module.default)
 );
+const CompareWNews = asyncComponent(() =>
+    import('./views/Dashboards/MonitoringDashboard/Dashboard/components/CompareWNews').then(module => module.default)
+);
 const Invites = asyncComponent(() =>
     import('./views/Dashboards/InitDashboard/Dashboard/Invites').then(module => module.default)
 );
@@ -122,6 +125,11 @@ class Routes extends Component {
               component={TrendHatePool}
               exact
               path="/dashboard/project/analysis/hate_pool"
+          />
+          <PrivateRoute
+              component={CompareWNews}
+              exact
+              path="/dashboard/project/analysis/compare"
           />
 
         <Route

@@ -20,5 +20,6 @@
   "getPreviousAnalysis": "/analytics/previous/",
   "getLineTweets": "/analytics/dashboard/tweets/",
   "getAssocTweets": "/analytics/dashboard/associations/data/",
-  "getHatePool": "/analytics/dashboard/hate_pool/"
+  "getHatePool": "/analytics/dashboard/hate_pool/",
+  "compareTrendWNews": "/analytics/dashboard/test_endpoint"
 }

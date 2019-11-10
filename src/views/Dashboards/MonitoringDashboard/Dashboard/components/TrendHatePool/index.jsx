@@ -32,6 +32,7 @@ import * as endpoints from 'constants/endpoints.json';
 import NoRecords from "../../../../../NoRecords";
 import hatePoolTwitterProfiles
     from '../JobAnalysis/data/500_hate_pool_TWITTER_USER_POST_2019-09-21.json';
+import ProfilesNetwork from "../Graphs/ProfilesNetwork";
 
 
 
@@ -131,6 +132,12 @@ class TrendHatePool extends Component {
                     >
                         <ProfilesTable data={data}/>
                     </Grid>
+                        <Grid
+                            item
+                            xs={12}
+                            className={classes.marginTable}>
+                            <ProfilesNetwork/>
+                        </Grid>
                 </div>) : (
                     <div>
                         {isLoading && (

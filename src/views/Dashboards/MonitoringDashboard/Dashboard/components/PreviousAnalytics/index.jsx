@@ -7,7 +7,8 @@ import PropTypes from 'prop-types';
 
 // Material helpers
 import {Grid, Typography, withStyles} from '@material-ui/core';
-import {getJobStatus,getPreviousMonitorTasks} from 'services/MonitoringJob';
+import { getPreviousMonitorTasks} from 'services/MonitoringJob';
+
 
 // Material components
 import {

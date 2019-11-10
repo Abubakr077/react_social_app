@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {handleFieldChange} from 'services/form';
 
 // Externals
 import classNames from 'classnames';
@@ -74,27 +75,6 @@ class SendInvites extends Component {
     }
   };
 
-  validateForm = _.debounce(() => {
-    const {values} = this.state;
-
-    const newState = {...this.state};
-    const errors = validate(values, schema);
-
-    newState.errors = errors || {};
-    newState.isValid = !errors;
-
-    this.setState(newState);
-  }, 300);
-
-  handleFieldChange = (field, value) => {
-    const newState = {...this.state};
-
-    newState.submitError = null;
-    newState.touched[field] = true;
-    newState.values[field] = value;
-
-    this.setState(newState, this.validateForm);
-  };
   componentWillReceiveProps(nextProps, nextContext) {
     if (this.props !== nextProps) {
       this.setState({
@@ -154,7 +134,7 @@ class SendInvites extends Component {
                         margin="dense"
                         name="email"
                         onChange={event =>
-                            this.handleFieldChange('email', event.target.value)
+                            handleFieldChange(this,'email', event.target.value,schema)
                         }
                         type="text"
                         value={values.email}
@@ -176,7 +156,7 @@ class SendInvites extends Component {
                             autoWidth={false}
                             value={values.role}
                             onChange={event =>
-                                this.handleFieldChange('role', event.target.value)
+                                handleFieldChange(this,'role', event.target.value,schema)
                             }
                             inputProps={{
                               name: 'role',

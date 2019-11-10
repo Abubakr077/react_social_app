@@ -121,19 +121,19 @@ class TweetsList extends Component {
         }
         if (this.prevState) {
             // if (this.prevState.type === 'INFO') {
-                if (this.prevState.visual === 'line') {
-                    this.endPoint = endpoints.getLineTweets + this.prevState.taskId;
-                    this.params =     {
-                        type: this.tweetType.toUpperCase(),
-                            datetime: this.prevState.payload.date
-                    }
-                } else if (this.prevState.visual === 'assoc') {
-                    this.endPoint = endpoints.getAssocTweets + this.prevState.taskId;
-                    this.tweetType = this.prevState.tweets;
-                    this.params =     {
-                        assoc_str: this.tweetType
-                    }
+            if (this.prevState.visual === 'line') {
+                this.endPoint = endpoints.getLineTweets + this.prevState.taskId;
+                this.params = {
+                    type: this.tweetType.toUpperCase(),
+                    datetime: this.prevState.payload.date
                 }
+            } else if (this.prevState.visual === 'assoc') {
+                this.endPoint = endpoints.getAssocTweets + this.prevState.taskId;
+                this.tweetType = this.prevState.tweets;
+                this.params = {
+                    assoc_str: this.tweetType
+                }
+            }
             // } else if (this.prevState.type === 'POSTS') {
             //     if (this.prevState.visual === 'line') {
             //
@@ -142,7 +142,6 @@ class TweetsList extends Component {
             //         this.tweetType = this.prevState.tweets
             //     }
             // }
-            this.tempData = this.state.data;
         }
     }
 
@@ -167,6 +166,8 @@ class TweetsList extends Component {
                     this.setState({
                         isLoading: false,
                         data: res
+                    },()=>{
+                        this.tempData = [...this.state.data];
                     });
                 }
             });
@@ -395,7 +396,12 @@ class TweetsList extends Component {
                 });
             }
         } else {
-            this.state.data = this.tempData;
+            // this.setState({
+            //     data: this.tempData
+            // },()=>{
+            //     console.log(this.state.data);
+            // })
+            this.state.data = [...this.tempData];
         }
         this.setState({
             filters: this.state.filters.map(el => (el.id === filter.id ?

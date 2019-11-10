@@ -19,8 +19,8 @@ import styles from './styles';
 
 
 // Shared components
-
 import MaterialTable from "material-table";
+
 import compose from "recompose/compose";
 import Avatar from "@material-ui/core/Avatar";
 import {lighten} from "@material-ui/core/styles";
