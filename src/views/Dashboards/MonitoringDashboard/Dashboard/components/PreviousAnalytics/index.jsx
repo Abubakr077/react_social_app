@@ -45,8 +45,8 @@ class PreviousAnalyticsTable extends Component {
         this.signal = true;
         this.user = JSON.parse(localStorage.getItem('user'));
         this.project_id = localStorage.getItem('project_id');
-        const prevState = this.props.location.state;
-        getPreviousMonitorTasks(this,prevState.taskId);
+        this.prevState = this.props.location.state;
+        getPreviousMonitorTasks(this,this.prevState.taskId);
     }
 
     componentWillUnmount() {
@@ -57,11 +57,11 @@ class PreviousAnalyticsTable extends Component {
         const {classes, className} = this.props;
         const {isLoading, jobTasks} = this.state;
 
-        const prevState = this.props.location.state;
+        this.prevState = this.props.location.state;
 
         return (
             <DashboardLayout className={classes.root}
-                             title={ 'Previous Tasks of '+prevState.jobName}
+                             title={ 'Previous Tasks of '+this.prevState.jobName}
                              initUser={false}
                              options={{
                                  isTweetsRoute: true
@@ -138,7 +138,7 @@ class PreviousAnalyticsTable extends Component {
     }
     async getMonitorData(id) {
         const { history } = this.props;
-        history.push('/dashboard/project/analysis',{type: 'POSTS' , target_type: 'USER' , taskId: id});
+        history.push('/dashboard/project/analysis',{type: this.prevState.target_subtype , target_type: this.prevState.target_type , taskId: id});
     }
 
 }

@@ -489,7 +489,12 @@ class MonitoringJobsTable extends Component {
         const {history} = this.props;
         localStorage.setItem('job', JSON.stringify(rowData));
         // history.push('/dashboard/project/previous_tasks', {job: {rowData}});
-        history.push('/dashboard/project/previous_tasks', {taskId: rowData.id, jobName: rowData.description});
+        history.push('/dashboard/project/previous_tasks', {
+            taskId: rowData.id,
+            jobName: rowData.description,
+            target_subtype: rowData.job_details.target_subtype,
+            target_type: rowData.job_details.target_type
+        });
 
     }
 }
