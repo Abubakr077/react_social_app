@@ -114,3 +114,17 @@ export const numTweet = [
         code: "10000"
     }
 ];
+export const youtubeTypes = [
+    {
+        name: "Key Word",
+        code: "keyword"
+    },
+    {
+        name: "Video URL",
+        code: "video"
+    },
+    {
+        name: "Channel URL",
+        code: "channel"
+    }
+];

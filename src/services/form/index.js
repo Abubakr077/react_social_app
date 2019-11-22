@@ -5,6 +5,7 @@ export const validateForm = _.debounce((thisObj,schema) => {
     const {values} = thisObj.state;
 
     const newState = {...thisObj.state};
+    console.log(thisObj.state.values);
     const errors = validate(values, schema);
 
     newState.errors = errors || {};

@@ -59,5 +59,10 @@ export default theme => ({
     flexGrid: {
         width:'100%',
         display: 'flex'
-    }
+    },
+    fieldError: {
+        color: theme.palette.danger.main,
+        marginBottom: theme.spacing.unit * 2,
+        marginTop: theme.spacing.unit
+    },
   });

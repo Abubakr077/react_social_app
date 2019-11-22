@@ -16,6 +16,7 @@ import styles from './styles';
 import Twitter from './Twitter'
 import Paper from '@material-ui/core/Paper';
 import Facebook from './Facebook'
+import Youtube from "./Youtube";
 
 class CreateJob extends Component {
     constructor(props) {
@@ -27,7 +28,7 @@ class CreateJob extends Component {
 
     signal = false;
     state = {
-        value: 'twitter',
+        value: 'youtube',
     };
 
     handleChange(event) {
@@ -40,7 +41,7 @@ class CreateJob extends Component {
     render() {
         const {classes, className, ...rest} = this.props;
         return (
-            <DashboardLayout title="Initialize User" initUser={false}>
+            <DashboardLayout title={"Create " + this.state.value +" Job"} initUser={false}>
                 <Paper className={classes.paper}>
                     <FormControl component="fieldset" className={classes.formControl}>
                         <FormLabel component="legend">Please Select Platform</FormLabel>
@@ -60,6 +61,12 @@ class CreateJob extends Component {
                                 label="Twitter"
                             />
                             <FormControlLabel
+                                className={classes.platformInsta}
+                                value="youtube"
+                                control={<Radio color="primary"/>}
+                                label="Youtube"
+                            />
+                            <FormControlLabel
                                 className={classes.platformFacebook}
                                 value="facebook"
                                 control={<Radio color="primary"/>}
@@ -73,7 +80,11 @@ class CreateJob extends Component {
                             />
                         </RadioGroup>
                     </FormControl>
-                    {this.state.value === "twitter" ? <Twitter/> : <Facebook/>}
+                    {this.state.value === "twitter" ? <Twitter/>:
+                        this.state.value === "youtube" ? (
+                                <Youtube/>
+                            )
+                            : <Facebook/>}
                 </Paper>
 
             </DashboardLayout>

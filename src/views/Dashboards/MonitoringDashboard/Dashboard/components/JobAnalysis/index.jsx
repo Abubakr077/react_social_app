@@ -86,10 +86,6 @@ class JobAnalysis extends Component {
                         data: res
                     });
                 }
-                // this.setState({
-                //   isLoading: false,
-                //   data: res
-                // });
             });
         } catch (error) {
             if (this.signal) {

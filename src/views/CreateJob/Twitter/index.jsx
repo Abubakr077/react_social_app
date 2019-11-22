@@ -18,7 +18,6 @@ import GoogleMap from '../components/GoogleMap';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import validate from "validate.js";
-import schema from "./schema";
 // Component styles
 import styles from './style';
 import request from 'helpers/request.js';
@@ -27,6 +26,7 @@ import {toast} from 'react-toastify';
 import {Message, optionsError} from "constants/constants";
 import moment from "moment";
 
+import {handleFieldChange} from 'services/form';
 
 class Twitter extends Component {
     constructor(props) {
@@ -67,7 +67,26 @@ class Twitter extends Component {
                 target_type: "",
                 target_subtype: ""
             }
+        },
+        values: {
+            description: '',
+            crawl_num_tweets: '',
+            username: '',
+            hashtag: '',
+        },
+        touched: {
+            description: false,
+            crawl_num_tweets: false,
+            username: false,
+            hashtag: false
+        },
+        errors: {
+            description: null,
+            crawl_num_tweets: null,
+            username: null,
+            hashtag: null
         }
+
     };
 
     velidator = (val, unit) => {
@@ -76,15 +95,43 @@ class Twitter extends Component {
         console.log(unit);
         console.log(val);
         if (unit === "EVERY_N_MINUTES") {
-            error = validate({ Unit: parseInt(val) }, schema.unitMin);
+            error = validate({ Unit: parseInt(val) }, {
+                Unit: {
+                    numericality: {
+                        onlyInteger: true,
+                        greaterThan: 4,
+                        lessThanOrEqualTo: 59,
+                        divisibleBy:5,
+                        message:"Only multiples of 5 upto 55"
+                    }
+                }
+            });
         }
 
         if (unit === "EVERY_N_HOURS") {
-            error = validate({ Unit: parseInt(val) }, schema.unitHours);
+            error = validate({ Unit: parseInt(val) }, {
+                isNumber:true,
+                Unit: {
+                    numericality: {
+                        onlyInteger: true,
+                        greaterThan: 1,
+                        lessThanOrEqualTo: 24,
+                        message:"Only Integer between 2 to 23"
+                    }
+                }
+            });
         }
 
         if (unit === "EVERY_N_HOURS") {
-            error = validate({ Unit: parseInt(val) }, schema.unitHours);
+            error = validate({ Unit: parseInt(val) }, {
+                isNumber:true,
+                Unit: {
+                    numericality: {
+                        onlyInteger: true,
+                        equalTo: 1,
+                    }
+                }
+            });
         }
 
         if (!error) {
@@ -141,6 +188,12 @@ class Twitter extends Component {
         console.log(hashtags.tags);
         const currentstate = this.state.post;
         currentstate.job_details.hashtag = hashtags.tags.join(" ");
+        handleFieldChange(this,"hashtag",currentstate.job_details.hashtag,{
+            hashtag:{
+                presence: { allowEmpty: false, message: 'is required' },
+                // match: '[\\^$.|?*+()',
+            }
+        });
         console.log(currentstate);
         this.setState({
             currentstate
@@ -166,7 +219,7 @@ class Twitter extends Component {
     };
     inputExactPhrase = (e) => {
         const val = e.target.value;
-        console.log(val)
+        console.log(val);
         const currentstate = this.state.post;
         currentstate.job_details.exact_phrase = val;
         console.log(currentstate);
@@ -176,7 +229,11 @@ class Twitter extends Component {
     };
     inputDescription = (e) => {
         const val = e.target.value;
-        console.log(val);
+        handleFieldChange(this,'description', e.target.value,{
+            description:{
+                presence: { allowEmpty: false, message: 'is required' }
+            }
+        });
         this.setState({
             post: { ...this.state.post, description: val },
         });
@@ -225,6 +282,11 @@ class Twitter extends Component {
         currentstate.post.job_details.username = val;
         currentstate.isUserNameError=false;
         currentstate.errorText = "";
+        handleFieldChange(this,"username",val,{
+            username:{
+                presence: { allowEmpty: false, message: 'is required' }
+            }
+        });
         console.log(currentstate);
         this.setState({
             currentstate
@@ -252,6 +314,11 @@ class Twitter extends Component {
         console.log(value);
         const currentstate = this.state.post;
         currentstate.job_details.crawl_num_tweets = parseInt(value);
+        handleFieldChange(this,"crawl_num_tweets",value,{
+            crawl_num_tweets: {
+                presence: { allowEmpty: false, message: 'is required' }
+            }
+        });
         console.log(currentstate);
         this.setState({
             currentstate
@@ -350,9 +417,19 @@ class Twitter extends Component {
     render() {
         const { classes, className, ...rest } = this.props;
         const isUserPosts = (this.state.post.job_details.target_subtype === 'POST' && this.state.post.job_details.target_type==='USER');
-        const isTrendPosts = (this.state.post.job_details.target_subtype === 'POST' && this.state.post.job_details.target_type==='TREND');
-        console.log('isUserPosts');
-        console.log(isUserPosts);
+        this.isTrendPosts = (this.state.post.job_details.target_subtype === 'POST' && this.state.post.job_details.target_type==='TREND');
+
+        const {
+            isLoading,
+            touched,
+            errors,
+            isValid,
+            values
+        } = this.state;
+        const showDescriptionError = touched.description && errors.description;
+        const showUserNameError = touched.username && errors.username;
+        const showHashTagError = touched.hashtag && errors.hashtag;
+
         return (
             <Grid container >
                 <Grid container className={classes.space} spacing={3}>
@@ -368,6 +445,14 @@ class Twitter extends Component {
                                     autoFocus
                                     variant="outlined"
                                 />
+                                {showDescriptionError && (
+                                    <Typography
+                                        className={classes.fieldError}
+                                        variant="body2"
+                                    >
+                                        {errors.description[0]}
+                                    </Typography>
+                                )}
                             </Grid>
                         </Paper>
                     </Grid>
@@ -406,17 +491,33 @@ class Twitter extends Component {
                                         margin="dense"
                                         variant="outlined"
                                     />
+                                    {showUserNameError && (
+                                        <Typography
+                                            className={classes.fieldError}
+                                            variant="body2"
+                                        >
+                                            {errors.username[0]}
+                                        </Typography>
+                                    )}
                                 </Grid>
-                                {this.state.isUserNameError && <Typography className={classes.error}>{this.state.errorText}</Typography> }
                             </Paper>
                                 <Grid item xs={6} className={classes.half}>
                                     <TagInput  label={"Any Words"} getData={this.getAnyWords} />
                                 </Grid>
                         </Grid>)
                             }
-                        {isTrendPosts && (<Grid item xs={12} className={classes.flexGrid}>
+                        {this.isTrendPosts && (
+                            <Grid item xs={12} className={classes.flexGrid}>
                             <Grid item xs={6} className={classes.spaceRight}>
                                 <TagInput label={"HashTags"} getData={this.getHashtags} />
+                                {showHashTagError && (
+                                    <Typography
+                                        className={classes.fieldError}
+                                        variant="body2"
+                                    >
+                                        {errors.hashtag[0]}
+                                    </Typography>
+                                )}
                             </Grid>
                             <Grid item xs={6}>
                                 <TagInput label={"Any Words"} getData={this.getAnyWords} />
@@ -424,19 +525,19 @@ class Twitter extends Component {
 
                         </Grid>)}
                         {/*<Grid item xs={this.state.isUser === true ? 6 : 4}>*/}
-                        {/*    {((!isTrendPosts) || isUserPosts) && (<Grid item xs={12}>*/}
+                        {/*    {((!this.isTrendPosts) || isUserPosts) && (<Grid item xs={12}>*/}
                         {/*        <TagInput label={"Reply To"} getData={this.getReplyTo} />*/}
                         {/*    </Grid>)*/}
 
                         {/*    }*/}
                         {/*</Grid>*/}
-                        {/*{((!isTrendPosts) || isUserPosts) && (<Grid item xs={4}>*/}
+                        {/*{((!this.isTrendPosts) || isUserPosts) && (<Grid item xs={4}>*/}
                         {/*    <Grid item xs={12}>*/}
                         {/*        <TagInput label={"All Words"} getData={this.getAllWords} />*/}
                         {/*    </Grid>*/}
                         {/*</Grid>)}*/}
                         {/*<Grid item xs={this.state.isUser === true ? 4 : 6}>*/}
-                        {/*    {((!isTrendPosts) || isUserPosts) && ( <Grid item xs={12}>*/}
+                        {/*    {((!this.isTrendPosts) || isUserPosts) && ( <Grid item xs={12}>*/}
                         {/*        <TagInput label={"Not Words"} getData={this.getNotWords} />*/}
                         {/*    </Grid>)}*/}
                         {/*</Grid>*/}
@@ -470,32 +571,12 @@ class Twitter extends Component {
                                         </Grid>
                                     </Paper>
                                 </Grid>
-                                {/*{((!isTrendPosts) || isUserPosts) && (*/}
+                                {/*{((!this.isTrendPosts) || isUserPosts) && (*/}
                                 {/*    <Grid item xs={12}>*/}
                                 {/*    <Grid item xs={12}>*/}
                                 {/*        <TagInput label={"Mentioned Users"} getData={this.getMentionedUsers} />*/}
                                 {/*    </Grid>*/}
                                 {/*</Grid>)}*/}
-                                <Grid item xs={6}>
-                                    <Paper className={classes.paper}>
-                                        <Grid item xs={12}>
-                                            <SelectField getValue={this.getNumTweets}
-                                                         value={this.state.post.job_details.crawl_num_tweets}
-
-                                                         options={numTweet} label={"Total Tweets"} />
-                                        </Grid>
-                                    </Paper>
-                                </Grid>
-                                <Grid item xs={6}>
-                                    <Paper className={classes.paper}>
-                                        <Grid item xs={12}>
-                                            <SelectField getValue={this.getLang}
-                                                         value={this.state.post.job_details.lang}
-                                                         options={langs}
-                                                         label={"Language"} />
-                                        </Grid>
-                                    </Paper>
-                                </Grid>
                                 <Grid item xs={6}>
                                     <Paper className={classes.paper}>
                                         <Grid item xs={12}>
@@ -524,6 +605,25 @@ class Twitter extends Component {
                                         {this.state.isValid ? <Typography className={classes.error}>{this.state.errorText}</Typography> : null}
                                     </Paper>
                                 </Grid>
+                                <Grid item xs={6}>
+                                    <Paper className={classes.paper}>
+                                        <Grid item xs={12}>
+                                            <SelectField getValue={this.getNumTweets}
+                                                         value={this.state.post.job_details.crawl_num_tweets}
+                                                         options={numTweet} label={"Total Tweets"} />
+                                        </Grid>
+                                    </Paper>
+                                </Grid>
+                                <Grid item xs={6}>
+                                    <Paper className={classes.paper}>
+                                        <Grid item xs={12}>
+                                            <SelectField getValue={this.getLang}
+                                                         value={this.state.post.job_details.lang}
+                                                         options={langs}
+                                                         label={"Language"} />
+                                        </Grid>
+                                    </Paper>
+                                </Grid>
                                 <Grid item xs={12} className={classes.CreateJobButtonBody}>
                                     <Button
                                         onClick={this.startJob}
@@ -532,7 +632,7 @@ class Twitter extends Component {
                                         size="large"
                                         variant="contained"
                                         margin="dense"
-                                        disabled = {this.state.isValid}
+                                        disabled={!isValid}
                                     >
                                         Register Job
                                     </Button>
@@ -568,6 +668,14 @@ class Twitter extends Component {
                                         margin="dense"
                                         variant="outlined"
                                     />
+                                    {showUserNameError && (
+                                        <Typography
+                                            className={classes.fieldError}
+                                            variant="body2"
+                                        >
+                                            {errors.username[0]}
+                                        </Typography>
+                                    )}
                                 </Grid>
                                 {this.state.isUserNameError ? <Typography className={classes.error}>{this.state.errorText}</Typography> : null}
                             </Paper>
@@ -608,7 +716,7 @@ class Twitter extends Component {
                                     size="large"
                                     variant="contained"
                                     margin="dense"
-                                    disabled = {this.state.isValid}
+                                    disabled={!isValid}
                                 >
                                     Register Job
                                 </Button>

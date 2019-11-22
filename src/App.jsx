@@ -3,14 +3,10 @@ import { Router } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 import { ToastContainer, Slide, Zoom, Flip, Bounce  } from 'react-toastify';
 
-// Externals
-// import { Chart } from 'react-chartjs-2';
 
 // Material helpers
 import { ThemeProvider } from '@material-ui/styles';
 
-// ChartJS helpers
-import { chartjs } from './helpers';
 
 // Theme
 import theme from './theme';

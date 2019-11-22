@@ -19,14 +19,13 @@ import {connect} from "react-redux";
 import compose from "recompose/compose";
 import AddIcon from '@material-ui/icons/Add';
 import {CustomCard as Card} from 'components';
-import _ from "underscore";
-import validate from "validate.js";
 import schema from "./schema";
 import {toast} from "react-toastify";
 import * as endPoints from 'constants/endpoints.json';
 import * as constants from 'constants/constants.js';
 import request from 'helpers/request.js';
 import * as endpoints from 'constants/endpoints.json';
+import {handleFieldChange} from 'services/form';
 import {Message, optionsError, optionsSuccess} from "../../../../../constants/constants";
 
 class Projects extends Component {
@@ -114,27 +113,7 @@ class Projects extends Component {
         }));
     }
 
-    validateForm = _.debounce(() => {
-        const {values} = this.state;
 
-        const newState = {...this.state};
-        const errors = validate(values, schema);
-
-        newState.errors = errors || {};
-        newState.isValid = !errors;
-
-        this.setState(newState);
-    }, 300);
-
-    handleFieldChange = (field, value) => {
-        const newState = {...this.state};
-
-        newState.submitError = null;
-        newState.touched[field] = true;
-        newState.values[field] = value;
-
-        this.setState(newState, this.validateForm);
-    };
 
     handleClose() {
         this.setState(() => ({
@@ -290,7 +269,7 @@ class Projects extends Component {
                                             name="name"
                                             id="name"
                                             onChange={event =>
-                                                this.handleFieldChange('name', event.target.value)
+                                                handleFieldChange(this,'name', event.target.value,schema)
                                             }
                                             type="text"
                                             value={values.title}

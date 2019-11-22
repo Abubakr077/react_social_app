@@ -26,32 +26,46 @@ import styles from './styles';
 // Shared Resources
 import compose from "recompose/compose";
 import {withRouter} from "react-router-dom";
+import {select} from "d3-selection";
 
 //network graph
 import {ForceGraph3D,ForceGraph2D} from 'react-force-graph';
 // import data from './data/miserables.json';
 import data from './data/WITTER_TREND_HATEPOOL_NETWORK_2019-10-30';
-
+const IMAGE_SIZE = 24;
+const FORCE_LINK_DISTANCE = IMAGE_SIZE * 4;
 
 
 class ProfilesNetwork extends Component {
 
         state = {};
+    _paintNode = (node, ctx) => {
+        const {classes} = this.props;
+        let image = new Image();
+        image.src = node.img;
+        image.className= classes.imageBody;
+        ctx.drawImage(image,
+            node.x - IMAGE_SIZE / 2,
+            node.y - IMAGE_SIZE / 2,
+            IMAGE_SIZE,
+            IMAGE_SIZE);
+    };
 
 
+    componentDidMount() {
+        this.fg.d3Force('charge').strength(-150);
+        this.fg.zoom(2);
+    }
 
         render() {
             const {classes, className, cloudOptions, ...rest} = this.props;
             return (
 
                 <div>
-                <Portlet>
                     <PortletHeader noDivider>
                         <Typography variant="h2">Network Of Hate Profiles</Typography>
                     </PortletHeader>
-                    <PortletContent
-                        noPadding
-                    >
+
                         {/*<ForceGraph3D*/}
                         {/*    backgroundColor={"rgba(0,0,0,0)"}*/}
                         {/*    width='80%'*/}
@@ -69,41 +83,43 @@ class ProfilesNetwork extends Component {
                         {/*        return sprite;*/}
                         {/*    }}*/}
                         {/*/>*/}
-                        <ForceGraph2D
 
-                            className={classes.body}
+                        <ForceGraph2D
+                            ref={el => this.fg = el}
                             graphData={data}
                             nodeAutoColorBy="group"
+                            nodeVal={IMAGE_SIZE}
                             linkDirectionalArrowLength={3.5}
                             linkDirectionalArrowRelPos={1}
                             linkDirectionalParticles="value"
-                            linkDirectionalParticleColor={() => 'blue'}
-                            linkDirectionalParticleSpeed={d => d.value * 0.001}
+                            // linkDirectionalParticleColor={() => 'blue'}
+                            linkAutoColorBy="group"
+                            linkDirectionalParticleSpeed={d => d.value * 0.002}
+                            nodeLabel="id"
                             onNodeDragEnd={node => {
                                 node.fx = node.x;
                                 node.fy = node.y;
                             }}
+                            onNodeClick={(node,event) => {
+                                console.log(node);
+                                const { history } = this.props;
+                                history.push('/dashboard/project/analysis',{type: 'INFO' , target_type: 'USER'});
+                            }}
                             nodeCanvasObject={(node, ctx, globalScale) => {
-                                const size = 12;
-                                const label = node.id;
                                 const fontSize = 12/globalScale;
                                 // ctx.font = `${fontSize}px Sans-Serif`;
-                                const textWidth = ctx.measureText(label).width;
-                                const bckgDimensions = [textWidth, fontSize].map(n => n + fontSize * 0.2); // some padding
-                                ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+
+                                const imageWidth = ctx.measureText(node.img/12).width;
+                                const bckgDimensions = [imageWidth, fontSize].map(n => n + fontSize*3); // some padding
+                                ctx.fillStyle = node.color;
                                 ctx.fillRect(node.x - bckgDimensions[0] / 2, node.y - bckgDimensions[1] / 2, ...bckgDimensions);
                                 ctx.textAlign = 'center';
                                 ctx.textBaseline = 'middle';
                                 ctx.fillStyle = node.color;
-                                // ctx.img(new THREE.TextureLoader().load(`${node.img}`));
-                                // ctx.drawImage(node.img, node.x - size / 2, node.y - size / 2, size, size);
-                                ctx.fillText(label, node.x, node.y);
+                                // ctx.fillText(label, node.x, node.y);
+                                this._paintNode(node,ctx);
                             }}
                         />
-                    </PortletContent>
-
-
-                </Portlet>
                 </div>
 
             );
@@ -122,5 +138,5 @@ export default compose(
     withRouter,
     withStyles(styles)
 )
-    (ProfilesNetwork);
+(ProfilesNetwork);
 
