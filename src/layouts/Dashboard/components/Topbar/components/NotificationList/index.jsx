@@ -28,7 +28,7 @@ import {
   Store as StoreIcon
 } from '@material-ui/icons';
 import { InsertChartOutlined as InsertChartIcon } from '@material-ui/icons';
-import {getPreviousMonitorTasks} from 'services/MonitoringJob';
+import {getPreviousMonitorTasks} from 'services/monitoringJob';
 
 // Component styles
 import styles from './styles';

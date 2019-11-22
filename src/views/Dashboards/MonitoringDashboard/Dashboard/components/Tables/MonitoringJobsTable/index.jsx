@@ -1,7 +1,7 @@
-import React, {Component, useRef, createRef, useState, useEffect} from 'react';
-import {Link, withRouter} from 'react-router-dom';
+import React, {Component} from 'react';
+import { withRouter} from 'react-router-dom';
 import * as constants from "constants/constants";
-import {getJobStatus, getPreviousMonitorTasks} from 'services/MonitoringJob';
+import {getJobStatus, getPreviousMonitorTasks} from 'services/monitoringJob';
 
 
 // Externals
@@ -13,12 +13,6 @@ import PropTypes from 'prop-types';
 // Material helpers
 import {
     Button,
-    Divider,
-    Table,
-    TableBody,
-    TableCell,
-    TableHead,
-    TableRow,
     Typography,
     withStyles
 } from '@material-ui/core';

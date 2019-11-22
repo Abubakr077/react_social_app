@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 
 // Material helpers
 import {Grid, Typography, withStyles} from '@material-ui/core';
-import { getPreviousMonitorTasks} from 'services/MonitoringJob';
+import { getPreviousMonitorTasks} from 'services/monitoringJob';
 
 
 // Material components
@@ -18,8 +18,6 @@ import {
 // Component styles
 import styles from './styles';
 import EqualizerOutlinedIcon from '@material-ui/icons/EqualizerOutlined';
-import request from 'helpers/request.js';
-import * as endpoints from 'constants/endpoints.json';
 // Shared components
 
 import MaterialTable from "material-table";
@@ -29,8 +27,6 @@ import {
     Dashboard as DashboardLayout
 
 } from 'layouts';
-import {toast} from "react-toastify";
-import {Message, optionsError} from "../../../../../../constants/constants";
 import {statusColors} from 'constants/constants.js';
 import {Status} from 'components';
 class PreviousAnalyticsTable extends Component {
