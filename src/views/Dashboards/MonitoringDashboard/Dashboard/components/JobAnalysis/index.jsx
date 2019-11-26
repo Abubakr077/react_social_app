@@ -124,7 +124,6 @@ class JobAnalysis extends Component {
             showAnalytics = this.state.data.info_data && this.state.data.results;
         }
         const title = "Analysis of " + job.description;
-        console.log(this.state.data);
         return (
             <DashboardLayout className={rootClassName}
                              title={title}

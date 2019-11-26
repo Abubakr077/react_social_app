@@ -71,12 +71,14 @@ class CreateJob extends Component {
                                 value="facebook"
                                 control={<Radio color="primary"/>}
                                 label="Facebook"
+                                disabled={true}
                             />
                             <FormControlLabel
                                 className={classes.platformInsta}
                                 value="instagram"
                                 control={<Radio color="primary"/>}
                                 label="Instagram"
+                                disabled={true}
                             />
                         </RadioGroup>
                     </FormControl>
