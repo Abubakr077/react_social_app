@@ -28,7 +28,7 @@ class CreateJob extends Component {
 
     signal = false;
     state = {
-        value: 'youtube',
+        value: 'twitter',
     };
 
     handleChange(event) {

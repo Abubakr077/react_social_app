@@ -295,7 +295,7 @@ class Projects extends Component {
                                             color="primary"
                                             disabled={!isValid}
                                         >
-                                            Save
+                                            Create
                                         </Button>
                                     </DialogActions>
                                 </div>

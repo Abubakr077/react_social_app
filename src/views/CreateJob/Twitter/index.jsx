@@ -25,8 +25,9 @@ import compose from 'recompose/compose';
 import {toast} from 'react-toastify';
 import {Message, optionsError} from "constants/constants";
 import moment from "moment";
-
+import schemaUser from "./schemaUser";
 import {handleFieldChange} from 'services/form';
+import schemaTrend from "./schemaTrend";
 
 class Twitter extends Component {
     constructor(props) {
@@ -73,81 +74,24 @@ class Twitter extends Component {
             crawl_num_tweets: '',
             username: '',
             hashtag: '',
+            unit: ''
         },
         touched: {
             description: false,
             crawl_num_tweets: false,
             username: false,
-            hashtag: false
+            hashtag: true,
+            unit: false
         },
         errors: {
             description: null,
             crawl_num_tweets: null,
             username: null,
-            hashtag: null
+            hashtag: null,
+            unit: null
         }
 
     };
-
-    velidator = (val, unit) => {
-        var error = "";
-        console.log("velidation function call");
-        console.log(unit);
-        console.log(val);
-        if (unit === "EVERY_N_MINUTES") {
-            error = validate({ Unit: parseInt(val) }, {
-                Unit: {
-                    numericality: {
-                        onlyInteger: true,
-                        greaterThan: 4,
-                        lessThanOrEqualTo: 59,
-                        divisibleBy:5,
-                        message:"Only multiples of 5 upto 55"
-                    }
-                }
-            });
-        }
-
-        if (unit === "EVERY_N_HOURS") {
-            error = validate({ Unit: parseInt(val) }, {
-                isNumber:true,
-                Unit: {
-                    numericality: {
-                        onlyInteger: true,
-                        greaterThan: 1,
-                        lessThanOrEqualTo: 24,
-                        message:"Only Integer between 2 to 23"
-                    }
-                }
-            });
-        }
-
-        if (unit === "EVERY_N_HOURS") {
-            error = validate({ Unit: parseInt(val) }, {
-                isNumber:true,
-                Unit: {
-                    numericality: {
-                        onlyInteger: true,
-                        equalTo: 1,
-                    }
-                }
-            });
-        }
-
-        if (!error) {
-            this.setState({
-                isValid: false,
-                errorText: "",
-                post: { ...this.state.post, schedule_units: parseInt(val) },
-            });
-        } else {
-            this.setState({
-                isValid: true,
-                errorText: error.Unit,
-            });
-        }
-    };
-
     getUserName = (username) => {
         console.log(username.tags.join(" "));
         const currentstate = this.state.post;
@@ -188,12 +132,7 @@ class Twitter extends Component {
         console.log(hashtags.tags);
         const currentstate = this.state.post;
         currentstate.job_details.hashtag = hashtags.tags.join(" ");
-        handleFieldChange(this,"hashtag",currentstate.job_details.hashtag,{
-            hashtag:{
-                presence: { allowEmpty: false, message: 'is required' },
-                // match: '[\\^$.|?*+()',
-            }
-        });
+        handleFieldChange(this,"hashtag",currentstate.job_details.hashtag,this.isTrendPosts?  schemaTrend : schemaUser);
         console.log(currentstate);
         this.setState({
             currentstate
@@ -229,11 +168,7 @@ class Twitter extends Component {
     };
     inputDescription = (e) => {
         const val = e.target.value;
-        handleFieldChange(this,'description', e.target.value,{
-            description:{
-                presence: { allowEmpty: false, message: 'is required' }
-            }
-        });
+        handleFieldChange(this,'description', e.target.value,this.isTrendPosts?  schemaTrend : schemaUser);
         this.setState({
             post: { ...this.state.post, description: val },
         });
@@ -248,32 +183,68 @@ class Twitter extends Component {
             currentstate
         });
     };
-    inputSchedule = (e) => {
-        const val = e;
+    inputSchedule = (val) => {
+        this.showUnitError = false;
+        const schema = this.isTrendPosts?  schemaTrend : schemaUser;
+        schema.Schedule = {
+            presence: { allowEmpty: false, message: 'is required' }
+        };
+        if (val === 'EVERY_N_MINUTES'){
+            schema.unit = {
+                presence: { allowEmpty: false, message: 'is required' },
+                numericality: {
+                    // onlyInteger: true,
+                    greaterThan: 4,
+                    lessThanOrEqualTo: 59,
+                    divisibleBy:5,
+                    message:"only multiples of 5 upto 55"
+                }
+            };
+        } else if (val === 'EVERY_N_HOURS') {
+            schema.unit = {
+                presence: { allowEmpty: false, message: 'is required' },
+                numericality: {
+                    onlyInteger: true,
+                    greaterThan: 1,
+                    lessThanOrEqualTo: 24,
+                    message:"Only Integer between 2 to 23"
+                }
+            };
+        } else {
+            schema.unit = {
+                presence: { allowEmpty: false, message: 'is required' },
+                numericality: {
+                    onlyInteger: true,
+                    equalTo: 1,
+                }
+            }
+        }
+        handleFieldChange(this,'Schedule', val,schema);
+
         if (val === "ONCE_EVERY_HOUR") {
-            console.log("this is hour");
             this.setState({
                 isScheduleUnit: true,
-                errorText: "",
                 post: { ...this.state.post, schedule_units: 1, schedule: val },
-            });
+            },()=>handleFieldChange(this,'unit', this.state.post.schedule_units,schema));
         } else {
-            console.log("this is minute and hours");
             this.setState({
                 isScheduleUnit: false,
-                post: { ...this.state.post, schedule: val, schedule_units: val ===  "EVERY_N_MINUTES" ? 5 : 2 },
-            },()=>this.velidator(this.state.post.schedule_units, val));
-            
+                post: { ...this.state.post, schedule: val,
+                    schedule_units: val ===  "EVERY_N_MINUTES" ? 5 : 2
+                },
+            },()=>handleFieldChange(this,'unit', this.state.post.schedule_units,schema));
         }
-        
     };
     inputScheduleUnit = (e) => {
         const val = e.target.value;
         const unit = this.state.post.schedule;
+        const schema = this.isTrendPosts?  schemaTrend : schemaUser;
+        handleFieldChange(this,'unit', val,schema);
+
         this.setState({
             isScheduleUnit: false,
             post: { ...this.state.post, schedule: unit, schedule_units: val },
-        },()=>this.velidator(this.state.post.schedule_units, unit));
+        });
     };
     inputUserName = (e) => {
         const val = e.target.value;
@@ -282,11 +253,7 @@ class Twitter extends Component {
         currentstate.post.job_details.username = val;
         currentstate.isUserNameError=false;
         currentstate.errorText = "";
-        handleFieldChange(this,"username",val,{
-            username:{
-                presence: { allowEmpty: false, message: 'is required' }
-            }
-        });
+        handleFieldChange(this,"username",val,this.isTrendPosts?  schemaTrend : schemaUser);
         console.log(currentstate);
         this.setState({
             currentstate
@@ -314,18 +281,13 @@ class Twitter extends Component {
         console.log(value);
         const currentstate = this.state.post;
         currentstate.job_details.crawl_num_tweets = parseInt(value);
-        handleFieldChange(this,"crawl_num_tweets",value,{
-            crawl_num_tweets: {
-                presence: { allowEmpty: false, message: 'is required' }
-            }
-        });
+        handleFieldChange(this,"crawl_num_tweets",value,this.isTrendPosts?  schemaTrend : schemaUser);
         console.log(currentstate);
         this.setState({
             currentstate
         });
     };
     getTargetType = (value) => {
-        console.log(value);
         if (value !== "USER") {
             const currentstate = this.state;
             currentstate.post.job_details.target_subtype = "POST";
@@ -351,7 +313,11 @@ class Twitter extends Component {
                 currentstate
             });
         }
-
+        if (value === "TREND"){
+            handleFieldChange(this,"target",value,schemaTrend);
+        } else {
+            handleFieldChange(this,"target",value, schemaUser );
+        }
     };
     getTargetSubtype = (value) => {
         console.log(value);
@@ -372,6 +338,7 @@ class Twitter extends Component {
                 currentstate
             });
         }
+            handleFieldChange(this,"target_subType",value,schemaUser);
     };
     getLang = (value) => {
         console.log(value);
@@ -416,7 +383,8 @@ class Twitter extends Component {
     };
     render() {
         const { classes, className, ...rest } = this.props;
-        const isUserPosts = (this.state.post.job_details.target_subtype === 'POST' && this.state.post.job_details.target_type==='USER');
+        this.isUserInfo = (this.state.post.job_details.target_subtype === 'INFO' && this.state.post.job_details.target_type==='USER');
+        this.isUserPosts = (this.state.post.job_details.target_subtype === 'POST' && this.state.post.job_details.target_type==='USER');
         this.isTrendPosts = (this.state.post.job_details.target_subtype === 'POST' && this.state.post.job_details.target_type==='TREND');
 
         const {
@@ -429,7 +397,7 @@ class Twitter extends Component {
         const showDescriptionError = touched.description && errors.description;
         const showUserNameError = touched.username && errors.username;
         const showHashTagError = touched.hashtag && errors.hashtag;
-
+        this.showUnitError = touched.unit && errors.unit;
         return (
             <Grid container >
                 <Grid container className={classes.space} spacing={3}>
@@ -444,6 +412,7 @@ class Twitter extends Component {
                                     margin="dense"
                                     autoFocus
                                     variant="outlined"
+                                    name="description"
                                 />
                                 {showDescriptionError && (
                                     <Typography
@@ -490,6 +459,7 @@ class Twitter extends Component {
                                         className={clsx(classes.textField, classes.dense)}
                                         margin="dense"
                                         variant="outlined"
+                                        name="username"
                                     />
                                     {showUserNameError && (
                                         <Typography
@@ -594,17 +564,26 @@ class Twitter extends Component {
                                                 onChange={this.inputScheduleUnit}
                                                 id="outlined-dense"
                                                 label="Schedule Units"
+                                                name="unit"
                                                 className={clsx(classes.textField, classes.dense)}
                                                 margin="dense"
                                                 variant="outlined"
                                                 helperText=""
                                                 disabled={this.state.isScheduleUnit}
-                                                value={this.state.post.schedule_units}
+                                                value={this.state.post.schedule_units || ''}
                                             />
                                         </Grid>
-                                        {this.state.isValid ? <Typography className={classes.error}>{this.state.errorText}</Typography> : null}
+                                        {this.showUnitError && (
+                                            <Typography
+                                                className={classes.fieldError}
+                                                variant="body2"
+                                            >
+                                                {errors.unit[0]}
+                                            </Typography>
+                                        )}
                                     </Paper>
                                 </Grid>
+
                                 <Grid item xs={6}>
                                     <Paper className={classes.paper}>
                                         <Grid item xs={12}>
@@ -700,11 +679,19 @@ class Twitter extends Component {
                                         className={clsx(classes.textField, classes.dense)}
                                         margin="dense"
                                         variant="outlined"
+                                        name="unit"
                                         disabled={this.state.isScheduleUnit}
-                                        value={this.state.post.schedule_units}
+                                        value={this.state.post.schedule_units || ''}
                                     />
                                 </Grid>
-                                {this.state.isValid ? <p className={classes.error}>{this.state.errorText}</p> : null}
+                                {this.showUnitError && (
+                                    <Typography
+                                        className={classes.fieldError}
+                                        variant="body2"
+                                    >
+                                        {errors.unit[0]}
+                                    </Typography>
+                                )}
                             </Paper>
                         </Grid>
                         <Grid item xs={3} >

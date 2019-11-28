@@ -65,15 +65,12 @@ class NotificationList extends Component {
   };
 
   componentDidMount() {
-    this.user = JSON.parse(localStorage.getItem('user'));
-    this.project_id = localStorage.getItem('project_id');
-
-    if (this.props.JobTaskId){
-      getPreviousMonitorTasks(this,this.props.JobTaskId);
-      console.log('here');
-      console.log(this.props.JobTaskId);
-      console.log(this.state.jobTasks)
-    }
+    // this.user = JSON.parse(localStorage.getItem('user'));
+    // this.project_id = localStorage.getItem('project_id');
+    //
+    // if (this.props.JobTaskId){
+    //   getPreviousMonitorTasks(this,this.props.JobTaskId);
+    // }
   }
   render() {
     const { className, classes, notifications, onSelect } = this.props;
@@ -140,14 +137,14 @@ class NotificationList extends Component {
           </Fragment>
         ) : (
           <div className={classes.empty}>
-            <div className={classes.emptyImageWrapper}>
-              <img
-                alt="Empty list"
-                className={classes.emptyImage}
-                src="/images/empty.png"
-              />
-            </div>
-            <Typography variant="h4">There's nothing here...</Typography>
+            {/*<div className={classes.emptyImageWrapper}>*/}
+            {/*  <img*/}
+            {/*    alt="Empty list"*/}
+            {/*    className={classes.emptyImage}*/}
+            {/*    src="/images/empty.png"*/}
+            {/*  />*/}
+            {/*</div>*/}
+            <Typography variant="h4">Work in progress...</Typography>
           </div>
         )}
       </div>

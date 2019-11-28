@@ -259,7 +259,7 @@ class SignIn extends Component {
                                                 this.handleFieldChange('email', event.target.value)
                                             }
                                             type="text"
-                                            value={values.email}
+                                            value={values.email || ''}
                                             variant="outlined"
                                             onKeyDown={this._handleKeyDown}
                                         />
@@ -279,7 +279,7 @@ class SignIn extends Component {
                                                 this.handleFieldChange('password', event.target.value)
                                             }
                                             type="password"
-                                            value={values.password}
+                                            value={values.password || ''}
                                             variant="outlined"
                                             onKeyDown={this._handleKeyDown}
                                         />

@@ -94,7 +94,7 @@ export const numTweet = [
         code: "All"
     },
     {
-        name: "Not Set",
+        name: "Unlimited",
         code: "-1"
     },
     {
