@@ -31,7 +31,7 @@ import compose from "recompose/compose";
 import SelectField from "../components/SelectField";
 
 import {youtubeTypes} from 'constants/constants.js';
-import PortletFooter from "../../../components/PortletFooter";
+import PortletFooter from "../../../../../../../components/PortletFooter";
 
 
 

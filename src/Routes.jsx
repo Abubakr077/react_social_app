@@ -44,7 +44,7 @@ const Invites = asyncComponent(() =>
 );
 
 const CreateJob = asyncComponent(() =>
-    import('./views/CreateJob').then(module => module.default)
+    import('./views/Dashboards/MonitoringDashboard/Dashboard/components/CreateJob').then(module => module.default)
 );
 
 
