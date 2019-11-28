@@ -14,7 +14,7 @@ export default theme => ({
 
     },
     CreateJobButtonBody: {
-        marginTop: theme.spacing(0.5)
+        marginTop: theme.spacing(1.5)
     },
     paper2: {
         padding: theme.spacing(2),
@@ -62,7 +62,16 @@ export default theme => ({
     },
     fieldError: {
         color: theme.palette.danger.main,
-        marginBottom: theme.spacing.unit * 2,
+        marginBottom: theme.spacing.unit ,
         marginTop: theme.spacing.unit
+    },
+    fieldErrorHash: {
+        color: theme.palette.danger.main,
+        paddingBottom: theme.spacing.unit,
+        paddingLeft: theme.spacing.unit * 2,
+    }
+    ,
+    locationField: {
+        height: '100%'
     }
 });

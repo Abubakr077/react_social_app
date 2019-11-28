@@ -150,7 +150,7 @@ class SendInvites extends Component {
                       )}
                     </div>
                     <div className={classes.fieldDiv}>
-                      <FormControl variant="outlined" className={classes.selectField} >
+                      <FormControl  className={classes.selectField} >
                         <InputLabel htmlFor="age-simple">Role</InputLabel>
                         <Select
                             autoWidth={false}

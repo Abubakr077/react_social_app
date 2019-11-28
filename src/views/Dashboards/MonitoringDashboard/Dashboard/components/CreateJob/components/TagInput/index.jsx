@@ -1,6 +1,7 @@
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import clsx from 'clsx';
+import {Paper as Paper1} from 'components';
 import {
     withStyles
 } from '@material-ui/core';
@@ -43,7 +44,7 @@ class InputTag extends React.Component {
         const {tags} = this.state;
         const {classes, className, ...rest} = this.props;
         return (
-            <Paper className={classes.paper}>
+            <Paper1 outlined={false} className={classes.paper}>
                 <ul className={classes.input_tag__tags}>
                     {tags.map((tag, i) => (
                         <li className={classes.input_tag__tags_li} key={tag}>
@@ -65,7 +66,7 @@ class InputTag extends React.Component {
                     variant="outlined"
                     FormHelperTextProps={'press enter to add tag of '+this.props.label}
                 />
-            </Paper>
+            </Paper1>
         );
     }
 }

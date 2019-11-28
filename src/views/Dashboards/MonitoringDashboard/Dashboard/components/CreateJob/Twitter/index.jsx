@@ -17,7 +17,8 @@ import DatePickerInline from '../components/DatePicker'
 import GoogleMap from '../components/GoogleMap';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
-import validate from "validate.js";
+import {Paper as Paper1} from 'components';
+
 // Component styles
 import styles from './style';
 import request from 'helpers/request.js';
@@ -471,27 +472,53 @@ class Twitter extends Component {
                                     )}
                                 </Grid>
                             </Paper>
-                                <Grid item xs={6} className={classes.half}>
-                                    <TagInput  label={"Any Words"} getData={this.getAnyWords} />
+                                {/*<Grid item xs={6} className={classes.half}>*/}
+                                {/*    <TagInput  label={"Any Words"} getData={this.getAnyWords} />*/}
+                                {/*</Grid>*/}
+                                <Grid item xs={6}>
+                                    <Paper className={classes.paper}>
+                                            <TextField
+                                                id="outlined-dense"
+                                                label="Click Map for Location"
+                                                className={clsx(classes.textField, classes.dense)}
+                                                margin="dense"
+                                                variant="outlined"
+                                                value={this.state.post.job_details.near_place}
+                                            />
+                                    </Paper>
                                 </Grid>
                         </Grid>)
                             }
                         {this.isTrendPosts && (
                             <Grid item xs={12} className={classes.flexGrid}>
                             <Grid item xs={6} className={classes.spaceRight}>
+                                <Paper>
                                 <TagInput label={"HashTags"} getData={this.getHashtags} />
-                                {showHashTagError && (
-                                    <Typography
-                                        className={classes.fieldError}
-                                        variant="body2"
-                                    >
-                                        {errors.hashtag[0]}
-                                    </Typography>
-                                )}
+                                    {showHashTagError && (
+                                        <Typography
+                                            className={[classes.fieldErrorHash]}
+                                            variant="body2"
+                                        >
+                                            {errors.hashtag[0]}
+                                        </Typography>
+                                    )}
+                                </Paper>
                             </Grid>
-                            <Grid item xs={6}>
-                                <TagInput label={"Any Words"} getData={this.getAnyWords} />
-                            </Grid>
+                            {/*<Grid item xs={6}>*/}
+                            {/*    <TagInput label={"Any Words"} getData={this.getAnyWords} />*/}
+                            {/*</Grid>*/}
+                                <Grid item xs={6} >
+                                    <Paper className={[classes.paper,classes.locationField]}>
+                                        <TextField
+                                            id="outlined-dense"
+                                            label="Click Map for Location"
+                                            className={clsx(classes.textField, classes.dense)}
+                                            margin="dense"
+                                            variant="outlined"
+                                            value={this.state.post.job_details.near_place}
+                                        />
+                                    </Paper>
+                                </Grid>
 
                         </Grid>)}
                         {/*<Grid item xs={this.state.isUser === true ? 6 : 4}>*/}
@@ -513,20 +540,6 @@ class Twitter extends Component {
                         {/*</Grid>*/}
                         <Grid item xs={6}>
                             <Grid container spacing={3} >
-                                <Grid item xs={12}>
-                                    <Paper className={classes.paper}>
-                                        <Grid item xs={12}>
-                                            <TextField
-                                                id="outlined-dense"
-                                                label="Search Location"
-                                                className={clsx(classes.textField, classes.dense)}
-                                                margin="dense"
-                                                variant="outlined"
-                                                value={this.state.post.job_details.near_place}
-                                            />
-                                        </Grid>
-                                    </Paper>
-                                </Grid>
                                 <Grid item xs={6}>
                                     <Paper className={classes.paper}>
                                         <Grid item xs={12}>

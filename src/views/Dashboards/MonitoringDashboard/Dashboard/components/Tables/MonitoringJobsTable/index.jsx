@@ -294,7 +294,9 @@ class MonitoringJobsTable extends Component {
                                                 color="primary"
                                                 variant="h7"
                                             >
-                                                {moment(rowData.next_run_scheduled_at).format('LLLL')}
+                                                {rowData.next_run_scheduled_at === "Paused" ?
+                                                    rowData.next_run_scheduled_at :
+                                                    moment(rowData.next_run_scheduled_at).format('LLLL')}
                                             </Typography>
                                         </PortletToolbar>
                                     </PortletHeader>
