@@ -15,36 +15,36 @@ const NotFound = asyncComponent(() =>
     import('./views/NotFound').then(module => module.default)
 );
 const Dashboard = asyncComponent(() =>
-    import('./views/Dashboards/InitDashboard/Dashboard').then(module => module.default)
+    import('./views/Dashboards/InitDashboard').then(module => module.default)
 );
 const Dashboard2 = asyncComponent(() =>
-    import('./views/Dashboards/MonitoringDashboard/Dashboard').then(module => module.default)
+    import('./views/Dashboards/MonitoringDashboard').then(module => module.default)
 );
 
 const SendInvites = asyncComponent(() =>
-    import('./views/Dashboards/MonitoringDashboard/Dashboard/components/SendInvites').then(module => module.default)
+    import('./views/Dashboards/MonitoringDashboard/components/SendInvites').then(module => module.default)
 );
 const JobAnalysis = asyncComponent(() =>
-    import('./views/Dashboards/MonitoringDashboard/Dashboard/components/JobAnalysis').then(module => module.default)
+    import('./views/Dashboards/MonitoringDashboard/components/JobAnalysis').then(module => module.default)
 );
 const PreviousAnalysis = asyncComponent(() =>
-    import('./views/Dashboards/MonitoringDashboard/Dashboard/components/PreviousAnalytics').then(module => module.default)
+    import('./views/Dashboards/MonitoringDashboard/components/PreviousAnalytics').then(module => module.default)
 );
 const TweetsList = asyncComponent(() =>
-    import('./views/Dashboards/MonitoringDashboard/Dashboard/components/TweetsList').then(module => module.default)
+    import('./views/Dashboards/MonitoringDashboard/components/TweetsList').then(module => module.default)
 );
 const TrendHatePool = asyncComponent(() =>
-    import('./views/Dashboards/MonitoringDashboard/Dashboard/components/TrendHatePool').then(module => module.default)
+    import('./views/Dashboards/MonitoringDashboard/components/TrendHatePool').then(module => module.default)
 );
 const CompareWNews = asyncComponent(() =>
-    import('./views/Dashboards/MonitoringDashboard/Dashboard/components/CompareWNews').then(module => module.default)
+    import('./views/Dashboards/MonitoringDashboard/components/CompareWNews').then(module => module.default)
 );
 const Invites = asyncComponent(() =>
-    import('./views/Dashboards/InitDashboard/Dashboard/Invites').then(module => module.default)
+    import('./views/Dashboards/InitDashboard/Invites').then(module => module.default)
 );
 
 const CreateJob = asyncComponent(() =>
-    import('./views/Dashboards/MonitoringDashboard/Dashboard/components/CreateJob').then(module => module.default)
+    import('./views/Dashboards/MonitoringDashboard/components/CreateJob').then(module => module.default)
 );
 
 

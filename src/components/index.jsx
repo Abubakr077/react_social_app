@@ -1,6 +1,6 @@
 export { default as DisplayMode } from './DisplayMode';
 export { default as Paper } from './Paper';
-export { default as CustomCard } from '../views/Dashboards/InitDashboard/Dashboard/Projects/Card';
+export { default as CustomCard } from '../views/Dashboards/InitDashboard/Projects/Card';
 export { default as Portlet } from './Portlet';
 export { default as PortletContent } from './PortletContent';
 export { default as PortletFooter } from './PortletFooter';
