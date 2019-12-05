@@ -311,7 +311,9 @@ class Youtube extends Component {
                                         if (value === 'keyword') {
                                             this.schema.keyword = {
                                                     presence: { allowEmpty: false, message: 'is required' }
-                                            }
+                                            };
+                                            this.schema.video = {};
+                                            this.schema.channel = {}
                                         }else if (value === 'video') {
                                             this.schema.video = {
                                                     presence: { allowEmpty: false, message: 'is required' },
@@ -319,6 +321,8 @@ class Youtube extends Component {
                                                         url:true,
                                                         message: 'is not valid'},
                                                 }
+                                            this.schema.keyword = {};
+                                            this.schema.keyword = {}
                                         } else {
                                             this.schema.channel = {
                                                     presence: { allowEmpty: false, message: 'is required' },
@@ -326,6 +330,8 @@ class Youtube extends Component {
                                                         url:true,
                                                         message: 'is not valid'},
                                                 }
+                                            this.schema.keyword = {};
+                                            this.schema.video = {}
                                         }
                                         handleFieldChange(this, 'target_type', value, this.schema)
 
