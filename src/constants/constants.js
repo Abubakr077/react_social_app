@@ -117,7 +117,8 @@ export const numTweet = [
 export const youtubeTypes = [
     {
         name: "Key Word",
-        code: "keyword"
+        code: "keyword",
+        disabled: true
     },
     {
         name: "Video URL",
@@ -125,6 +126,7 @@ export const youtubeTypes = [
     },
     {
         name: "Channel URL",
-        code: "channel"
+        code: "channel",
+        disabled: true
     }
 ];

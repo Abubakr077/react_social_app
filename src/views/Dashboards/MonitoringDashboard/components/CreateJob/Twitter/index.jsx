@@ -353,16 +353,8 @@ class Twitter extends Component {
     startJob = async (e) => {
         e.preventDefault();
         const { history } = this.props;
-        console.log(this.state.post);
-        console.log(JSON.stringify(this.state.post));
         const projectId = localStorage.getItem('project_id');
         const user = JSON.parse(localStorage.getItem('user'));
-        if (this.state.post.job_details.username === "") {
-            this.setState({
-                isUserNameError: true,
-                errorText: "Please Enter User Name",
-            });
-        }
         try {
             await request({
                 url: endpoints.createMonitoringJob,

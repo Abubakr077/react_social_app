@@ -221,7 +221,13 @@ class MonitoringJobsTable extends Component {
                             {
                                 title: 'Created At',
                                 field: 'createdAt',
+                                defaultSort: 'desc',
                                 render: rowData => <span>{moment(rowData).format('DD/MM/YYYY')}</span>
+                            },
+                            {
+                                title: 'Platform',
+                                field: 'platform',
+                                render: rowData => <span>{rowData.job_details.platform}</span>
                             },
                         ]}
                         actions={[

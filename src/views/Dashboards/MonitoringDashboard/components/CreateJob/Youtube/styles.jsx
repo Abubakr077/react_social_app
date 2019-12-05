@@ -31,13 +31,15 @@ export default theme => ({
         marginTop: theme.spacing.unit
     },
     fieldDiv: {
-        width: '70%'
+        width: '35%',
+        marginRight: theme.spacing.unit * 3
     },
-    pieBody: {
-        webkitBoxSizing: 'border-box',
-        boxSizing: 'border-box',
-        height: '300px',
-        width: '502%',
+    descriptionBody: {
+        width: '35%',
+        // marginRight: theme.spacing.unit * 3
+    },
+    schedule: {
+        marginRight: theme.spacing.unit * 3
     },
     contentBody: {
         display: 'flex',
