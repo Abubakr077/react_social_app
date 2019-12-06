@@ -322,7 +322,7 @@ class Youtube extends Component {
                                                         message: 'is not valid'},
                                                 }
                                             this.schema.keyword = {};
-                                            this.schema.keyword = {}
+                                            this.schema.channel = {}
                                         } else {
                                             this.schema.channel = {
                                                     presence: { allowEmpty: false, message: 'is required' },

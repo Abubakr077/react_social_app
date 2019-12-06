@@ -212,7 +212,11 @@ class MonitoringJobsTable extends Component {
                     <MaterialTable
                         columns={[
                             {title: 'Description', field: 'description'},
-                            {title: 'Status', field: 'status'},
+                            {
+                                title: 'Platform',
+                                field: 'platform',
+                                render: rowData => <span>{rowData.job_details.platform}</span>
+                            },
                             {
                                 title: 'Job Runs',
                                 field: 'jobRuns',
@@ -224,11 +228,7 @@ class MonitoringJobsTable extends Component {
                                 defaultSort: 'desc',
                                 render: rowData => <span>{moment(rowData).format('DD/MM/YYYY')}</span>
                             },
-                            {
-                                title: 'Platform',
-                                field: 'platform',
-                                render: rowData => <span>{rowData.job_details.platform}</span>
-                            },
+                            {title: 'Status', field: 'status'},
                         ]}
                         actions={[
                             rowData => ({

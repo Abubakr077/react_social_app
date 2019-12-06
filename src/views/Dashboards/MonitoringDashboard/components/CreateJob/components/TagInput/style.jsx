@@ -43,16 +43,8 @@ input_tag__tags: {
 },
 input_tag__tags_li: {
     "alignItems": "center",
-    // "background": "rgba(0, 162, 255, 0.938)",
-    "background": theme.palette.primary.main,
-    "borderRadius": "2px",
-    "color": "white",
-    "display": "flex",
-    "fontWeight": "300",
-    "listStyle": "none",
     "marginBottom": "5px",
     "marginRight": "5px",
-    "padding": "5px 5px"
 },
 input_tag__tags_li_button: {
     "alignItems": "center",

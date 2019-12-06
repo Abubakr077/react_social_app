@@ -177,6 +177,7 @@ class JobAnalysis extends Component {
                                         color="primary"
                                         size="small"
                                         variant="outlined"
+                                        disabled={true}
                                         onClick={()=> {
                                             const { history } = this.props;
                                             const url = this.props.match.url;

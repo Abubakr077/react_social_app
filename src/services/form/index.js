@@ -4,7 +4,7 @@ import validate from "validate.js";
 export const validateForm = _.debounce((thisObj,schema) => {
     const {values} = thisObj.state;
 
-    console.log(schema);
+    // console.log(schema);
     const newState = {...thisObj.state};
     const errors = validate(values, schema);
     newState.errors = errors || {};

@@ -6,6 +6,7 @@ import {
     withStyles
 } from '@material-ui/core';
 import Paper from '@material-ui/core/Paper';
+import Chip from '@material-ui/core/Chip';
 
 import styles from './style';
 
@@ -18,6 +19,7 @@ class InputTag extends React.Component {
     }
 
     removeTag = (i) => {
+        console.log('in remove tag');
         const newTags = [...this.state.tags];
         newTags.splice(i, 1);
         this.setState({tags: newTags}, () => this.props.getData(this.state));
@@ -42,20 +44,19 @@ class InputTag extends React.Component {
 
     render() {
         const {tags} = this.state;
+        console.log('tags');
+        console.log(tags);
         const {classes, className, ...rest} = this.props;
         return (
             <Paper1 outlined={false} className={classes.paper}>
-                <ul className={classes.input_tag__tags}>
+                <div className={classes.input_tag__tags}>
                     {tags.map((tag, i) => (
-                        <li className={classes.input_tag__tags_li} key={tag}>
-                            {tag}
-                            <button className={classes.input_tag__tags_li_button} type="button" onClick={() => {
-                                this.removeTag(i);
-                            }}>+
-                            </button>
-                        </li>
+                        <Chip className={classes.input_tag__tags_li}
+                              key={tag} label={tag}
+                              onDelete={()=>this.removeTag(i)}
+                              color="primary" size="small"/>
                     ))}
-                </ul>
+                </div>
                 <TextField
                     onKeyDown={this.inputKeyDown}
 
