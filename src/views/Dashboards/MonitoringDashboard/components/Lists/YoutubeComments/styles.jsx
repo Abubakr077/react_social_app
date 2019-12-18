@@ -25,6 +25,10 @@ export default theme => ({
         display: 'flex',
         marginTop: theme.spacing(2)
     },
+    publishDate:{
+        color: theme.palette.primary,
+        alignSelf: 'center'
+    },
     text: {
         marginLeft: theme.spacing.unit
     },

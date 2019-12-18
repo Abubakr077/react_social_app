@@ -13,9 +13,9 @@ import {
     ArrowDropDown as ArrowDropDownIcon,
     ArrowRight as ArrowRightIcon,
     TurnedIn as TurnedInIcon,
-    FavoriteBorderOutlined as FavoriteBorderOutlinedIcon,
+    ThumbUp as FavoriteBorderOutlinedIcon,
     RepeatOutlined as RepeatOutlinedIcon,
-    ChatBubbleOutlineOutlined as ChatBubbleOutlineOutlinedIcon, Input,
+    Reply as ChatBubbleOutlineOutlinedIcon, Input,
     FilterListOutlined as FilterListOutlinedIcon
 
 } from '@material-ui/icons';
@@ -227,38 +227,38 @@ class YoutubeComments extends Component {
                     <Portlet className={classes.listItem}>
                         <PortletHeader noDivider className={classes.header}>
                             <Typography variant="h2">{this.tweetType} Comments</Typography>
-                            <PortletToolbar className={classes.filterBody}>
-                                <FormControl className={classes.formControl}>
-                                    <InputLabel htmlFor="age-simple">Filter</InputLabel>
-                                    <Select
-                                        inputProps={{
-                                            name: 'filter',
-                                            id: 'age-simple',
-                                        }}
-                                        IconComponent={() => (
-                                            <FilterListOutlinedIcon/>
-                                        )}
-                                    >
-                                        <FormControl component="fieldset" className={classes.formControl}>
-                                            <FormLabel component="legend">Filter</FormLabel>
-                                            <FormGroup>
-                                                {
-                                                    this.state.filters.map((filter) =>
-                                                        <FormControlLabel
-                                                            control={<Checkbox
-                                                                onChange={() => this.handleChange(filter)}
-                                                                checked={filter.checked} value={filter.id}/>}
-                                                            label={filter.name}
-                                                        />
-                                                    )
-                                                }
-                                            </FormGroup>
-                                            <FormHelperText>choose any to update list</FormHelperText>
-                                        </FormControl>
+                            {/*<PortletToolbar className={classes.filterBody}>*/}
+                            {/*    <FormControl className={classes.formControl}>*/}
+                            {/*        <InputLabel htmlFor="age-simple">Filter</InputLabel>*/}
+                            {/*        <Select*/}
+                            {/*            inputProps={{*/}
+                            {/*                name: 'filter',*/}
+                            {/*                id: 'age-simple',*/}
+                            {/*            }}*/}
+                            {/*            IconComponent={() => (*/}
+                            {/*                <FilterListOutlinedIcon/>*/}
+                            {/*            )}*/}
+                            {/*        >*/}
+                            {/*            <FormControl component="fieldset" className={classes.formControl}>*/}
+                            {/*                <FormLabel component="legend">Filter</FormLabel>*/}
+                            {/*                <FormGroup>*/}
+                            {/*                    {*/}
+                            {/*                        this.state.filters.map((filter) =>*/}
+                            {/*                            <FormControlLabel*/}
+                            {/*                                control={<Checkbox*/}
+                            {/*                                    onChange={() => this.handleChange(filter)}*/}
+                            {/*                                    checked={filter.checked} value={filter.id}/>}*/}
+                            {/*                                label={filter.name}*/}
+                            {/*                            />*/}
+                            {/*                        )*/}
+                            {/*                    }*/}
+                            {/*                </FormGroup>*/}
+                            {/*                <FormHelperText>choose any to update comments</FormHelperText>*/}
+                            {/*            </FormControl>*/}
 
-                                    </Select>
-                                </FormControl>
-                            </PortletToolbar>
+                            {/*        </Select>*/}
+                            {/*    </FormControl>*/}
+                            {/*</PortletToolbar>*/}
                         </PortletHeader>
                         <PortletContent
                             noPadding
@@ -319,6 +319,26 @@ class YoutubeComments extends Component {
                                                                                     {tweet.likes}
                                                                                 </Typography>
                                                                             </div>
+                                                                            <FormControlLabel
+                                                                                className={classes.marginLeft}
+                                                                                control={
+                                                                                    <Checkbox
+                                                                                        checked={tweet.reply_to}
+                                                                                        value="checkedB"
+                                                                                        color="primary"
+                                                                                    />
+                                                                                }
+                                                                                label="is Replay"
+                                                                                labelPlacement="end"
+                                                                            />
+                                                                            <Typography
+                                                                                component="span"
+                                                                                variant="h6"
+                                                                                className={[classes.marginLeft, classes.publishDate]}
+                                                                                color="textPrimary"
+                                                                            >
+                                                                                {tweet.published_time_display}
+                                                                            </Typography>
                                                                         </div>
                                                                     </div>
                                                                 </React.Fragment>

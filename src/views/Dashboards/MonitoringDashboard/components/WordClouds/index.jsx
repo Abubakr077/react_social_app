@@ -89,13 +89,24 @@ function getCallback(callback,props,cloudOptions) {
                 if (isActive) {
                     const { history } = props;
                     const url = props.match.url;
-                    history.push(url+'/tweets', {
-                        type: cloudOptions.type ,
-                        tweets: word.text,
-                        target_type: cloudOptions.target_type,
-                        visual: 'assoc',
-                        taskId: cloudOptions.taskId
-                    });
+                    const job = JSON.parse(localStorage.getItem('job'));
+                    if (job.job_details.platform === 'TWITTER'){
+                        history.push(url+'/tweets', {
+                            type: cloudOptions.type ,
+                            tweets: word.text,
+                            target_type: cloudOptions.target_type,
+                            visual: 'assoc',
+                            taskId: cloudOptions.taskId
+                        });
+                    } else {
+                        history.push(url+'/comments', {
+                            type: cloudOptions.type ,
+                            tweets: word.text,
+                            target_type: cloudOptions.target_type,
+                            visual: 'assoc',
+                            taskId: cloudOptions.taskId
+                        });
+                    }
                 }
             })
             .transition()
