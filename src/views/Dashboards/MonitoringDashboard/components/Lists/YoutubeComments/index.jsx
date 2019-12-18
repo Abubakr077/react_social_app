@@ -45,29 +45,29 @@ import * as endpoints from 'constants/endpoints.json';
 
 // local json
 import totalPositiveInfoTweets
-    from '../JobAnalysis/data/info/100_processed_total_positive_TWITTER_USER_POST_2019-09-19.json';
+    from '../../JobAnalysis/data/info/100_processed_total_positive_TWITTER_USER_POST_2019-09-19.json';
 import totalNegativeInfoTweets
-    from '../JobAnalysis/data/info/100_processed_total_negative_TWITTER_USER_POST_2019-09-19.json';
+    from '../../JobAnalysis/data/info/100_processed_total_negative_TWITTER_USER_POST_2019-09-19.json';
 import totalTwitterTweets from
-        '../JobAnalysis/data/info/100_processed_date_total_TWITTER_USER_POST_2019-09-19';
+        '../../JobAnalysis/data/info/100_processed_date_total_TWITTER_USER_POST_2019-09-19';
 import positiveLineTweets from
-        '../JobAnalysis/data/info/100_processed_date_positive_TWITTER_USER_POST_2019-09-19.json';
+        '../../JobAnalysis/data/info/100_processed_date_positive_TWITTER_USER_POST_2019-09-19.json';
 import negativeLineTweets from
-        '../JobAnalysis/data/info/100_processed_date_negative_TWITTER_USER_POST_2019-09-19.json';
+        '../../JobAnalysis/data/info/100_processed_date_negative_TWITTER_USER_POST_2019-09-19.json';
 import totalPositiveTrendsTweets
-    from '../JobAnalysis/data/trends/100_processed_total_positive_TWITTER_USER_POST_2019-09-19.json';
+    from '../../JobAnalysis/data/trends/100_processed_total_positive_TWITTER_USER_POST_2019-09-19.json';
 import totalNegativeTrendsTweets
-    from '../JobAnalysis/data/trends/100_processed_total_negative_TWITTER_USER_POST_2019-09-19.json';
+    from '../../JobAnalysis/data/trends/100_processed_total_negative_TWITTER_USER_POST_2019-09-19.json';
 import totalTwitterTrendTweets from
-        '../JobAnalysis/data/trends/100_processed_date_total_TWITTER_USER_POST_2019-09-19.json';
+        '../../JobAnalysis/data/trends/100_processed_date_total_TWITTER_USER_POST_2019-09-19.json';
 import positiveLineTrendTweets from
-        '../JobAnalysis/data/trends/100_processed_date_positive_TWITTER_USER_POST_2019-09-19.json';
+        '../../JobAnalysis/data/trends/100_processed_date_positive_TWITTER_USER_POST_2019-09-19.json';
 import negativeLineTrendTweets from
-        '../JobAnalysis/data/trends/100_processed_date_negative_TWITTER_USER_POST_2019-09-19.json';
+        '../../JobAnalysis/data/trends/100_processed_date_negative_TWITTER_USER_POST_2019-09-19.json';
 import assocTrendTweets from
-        '../JobAnalysis/data/trends/100_processed_assoc_TWITTER_USER_POST_2019-09-19.json';
+        '../../JobAnalysis/data/trends/100_processed_assoc_TWITTER_USER_POST_2019-09-19.json';
 import assocInfoTweets from
-        '../JobAnalysis/data/info/100_processed_assoc_TWITTER_USER_POST_2019-09-19.json';
+        '../../JobAnalysis/data/info/100_processed_assoc_TWITTER_USER_POST_2019-09-19.json';
 import FormControl from "@material-ui/core/FormControl";
 import InputLabel from "@material-ui/core/InputLabel";
 import Select from "@material-ui/core/Select";
@@ -78,11 +78,11 @@ import FormLabel from "@material-ui/core/FormLabel";
 import FormGroup from "@material-ui/core/FormGroup";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import {toast} from "react-toastify";
-import {Message, optionsError} from "../../../../../constants/constants";
-import NoRecords from "../../../../NoRecords";
+import {Message, optionsError} from "../../../../../../constants/constants";
+import NoRecords from "../../../../../NoRecords";
 
 
-class TweetsList extends Component {
+class YoutubeComments extends Component {
 
     state = {
         isLoading: false,
@@ -217,7 +217,7 @@ class TweetsList extends Component {
 
         return (
             <DashboardLayout className={rootClassName}
-                             title={this.prevState.target_type + " TWEETS"}
+                             title={this.prevState.target_type + " Comments"}
                              initUser={false}
                              options={{
                                  isTweetsRoute: true
@@ -226,7 +226,7 @@ class TweetsList extends Component {
                 <div className={classes.root}>
                     <Portlet className={classes.listItem}>
                         <PortletHeader noDivider className={classes.header}>
-                            <Typography variant="h2">{this.tweetType} Tweets</Typography>
+                            <Typography variant="h2">{this.tweetType} Comments</Typography>
                             <PortletToolbar className={classes.filterBody}>
                                 <FormControl className={classes.formControl}>
                                     <InputLabel htmlFor="age-simple">Filter</InputLabel>
@@ -267,7 +267,7 @@ class TweetsList extends Component {
                                 <div>
                                     {isLoading ? (<div className={classes.progressWrapper}>
                                         <CircularProgress/>
-                                    </div>) : (< NoRecords title={'No Tweets Found for this task'}
+                                    </div>) : (< NoRecords title={'No comments Found for this task'}
                                         // subTitle={'Invites will show, if some owner send you one'}
                                     />)
                                     }
@@ -284,9 +284,9 @@ class TweetsList extends Component {
                                                     noPadding
                                                 >
                                                     <ListItem button alignItems="flex-start" component="a"
-                                                              href={'https://twitter.com' + tweet.url}>
+                                                              href={ tweet.comment_user_image}>
                                                         <ListItemAvatar>
-                                                            <Avatar alt="Remy Sharp" src={tweet.user_image}
+                                                            <Avatar alt="Remy Sharp" src={tweet.comment_user_image}
                                                                     className={classes.bigAvatar}/>
                                                         </ListItemAvatar>
                                                         <ListItemText
@@ -308,15 +308,7 @@ class TweetsList extends Component {
                                                                                 <ChatBubbleOutlineOutlinedIcon/>
                                                                                 <Typography className={classes.text}
                                                                                             variant="caption2">
-                                                                                    {tweet.nbr_reply}
-                                                                                </Typography>
-                                                                            </div>
-                                                                            <div className={classes.inlineText}>
-                                                                                <RepeatOutlinedIcon
-                                                                                    className={classes.marginLeft}/>
-                                                                                <Typography className={classes.text}
-                                                                                            variant="caption2">
-                                                                                    {tweet.nbr_retweet}
+                                                                                    {tweet.replies}
                                                                                 </Typography>
                                                                             </div>
                                                                             <div className={classes.inlineText}>
@@ -324,33 +316,9 @@ class TweetsList extends Component {
                                                                                     className={classes.marginLeft}/>
                                                                                 <Typography className={classes.text}
                                                                                             variant="caption2">
-                                                                                    {tweet.nbr_favorite}
+                                                                                    {tweet.likes}
                                                                                 </Typography>
                                                                             </div>
-                                                                            <FormControlLabel
-                                                                                className={classes.marginLeft}
-                                                                                control={
-                                                                                    <Checkbox
-                                                                                        checked={tweet.is_reply}
-                                                                                        value="checkedB"
-                                                                                        color="primary"
-                                                                                    />
-                                                                                }
-                                                                                label="is Replay"
-                                                                                labelPlacement="end"
-                                                                            />
-                                                                            <FormControlLabel
-                                                                                className={classes.marginLeft}
-                                                                                control={
-                                                                                    <Checkbox
-                                                                                        checked={tweet.is_retweet}
-                                                                                        value="checkedB"
-                                                                                        color="primary"
-                                                                                    />
-                                                                                }
-                                                                                label="retweet"
-                                                                                labelPlacement="end"
-                                                                            />
                                                                         </div>
                                                                     </div>
                                                                 </React.Fragment>
@@ -412,9 +380,9 @@ class TweetsList extends Component {
 
 }
 
-TweetsList.propTypes = {
+YoutubeComments.propTypes = {
     className: PropTypes.string,
     classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(TweetsList);
+export default withStyles(styles)(YoutubeComments);

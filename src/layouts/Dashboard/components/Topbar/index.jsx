@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 import {Avatar, Badge, IconButton, Popover, Toolbar, Typography, withStyles} from '@material-ui/core';
 // Material icons
 import {
-  Close as CloseIcon,
+  ChevronLeft as CloseIcon,
   Input as InputIcon,
   Menu as MenuIcon,
   NotificationsOutlined as NotificationsIcon
@@ -21,7 +21,9 @@ import {NotificationList,ProjectsList} from './components';
 // Component styles
 import styles from './styles';
 import {lookupProject} from 'services/project';
-
+import CssBaseline from '@material-ui/core/CssBaseline';
+import clsx from 'clsx';
+import AppBar from '@material-ui/core/AppBar';
 class Topbar extends Component {
   signal = true;
   project = null;
@@ -131,6 +133,13 @@ class Topbar extends Component {
     return (
       <Fragment>
         <div className={rootClassName}>
+          <CssBaseline />
+          <AppBar
+              position="fixed"
+              className={clsx(classes.appBar, {
+                [classes.appBarShift]: isSidebarOpen,
+              })}
+          >
           <Toolbar className={classes.toolbar}>
             <IconButton
               className={classes.menuButton}
@@ -142,6 +151,7 @@ class Topbar extends Component {
             <Typography
               className={classes.title}
               variant="h4"
+              noWrap
             >
               {title}
             </Typography>
@@ -165,7 +175,7 @@ class Topbar extends Component {
             >
               <Typography
                   variant="button"
-                  color="primary"
+                  className={classes.projectName}
               >
                 {this.getAcronyms(this.project.name)}
               </Typography>
@@ -178,6 +188,7 @@ class Topbar extends Component {
               <InputIcon />
             </IconButton>
           </Toolbar>
+          </AppBar>
         </div>
         <Popover
           anchorEl={notificationsEl}

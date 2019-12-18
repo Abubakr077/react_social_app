@@ -18,7 +18,7 @@ import styles from './styles';
 import PersonPinCircleOutlinedIcon from '@material-ui/icons/PersonPinCircleOutlined';
 import PermIdentityOutlinedIcon from '@material-ui/icons/PermIdentityOutlined';
 import DescriptionOutlinedIcon from '@material-ui/icons/DescriptionOutlined';
-class AccountProfile extends Component {
+class MetadataTwitterProfile extends Component {
   render() {
     const { classes, className,data, ...rest } = this.props;
     const rootClassName = classNames(classes.root, className);
@@ -96,9 +96,9 @@ class AccountProfile extends Component {
   }
 }
 
-AccountProfile.propTypes = {
+MetadataTwitterProfile.propTypes = {
   className: PropTypes.string,
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(AccountProfile);
+export default withStyles(styles)(MetadataTwitterProfile);

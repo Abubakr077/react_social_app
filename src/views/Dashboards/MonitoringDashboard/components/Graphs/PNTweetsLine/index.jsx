@@ -40,14 +40,26 @@ class PNTweetsLine extends Component {
   handleClick = (data) => {
     const { history } = this.props;
     const url = this.props.match.url;
-    history.push(url+'/tweets', {
-        type: this.type ,
-        tweets: data.dataKey,
-        target_type: this.target_type,
-        payload: data.payload,
-        visual: 'line',
-        taskId: this.taskId
-    });
+      const job = JSON.parse(localStorage.getItem('job'));
+      if (job.job_details.platform === 'TWITTER'){
+          history.push(url+'/tweets', {
+              type: this.type ,
+              tweets: data.dataKey,
+              target_type: this.target_type,
+              payload: data.payload,
+              visual: 'line',
+              taskId: this.taskId
+          });
+      } else if (job.job_details.platform === 'YOUTUBE'){
+          history.push(url+'/comments', {
+              type: this.type ,
+              tweets: data.dataKey,
+              target_type: this.target_type,
+              payload: data.payload,
+              visual: 'line',
+              taskId: this.taskId
+          });
+      }
   };
 
   render() {
@@ -55,9 +67,6 @@ class PNTweetsLine extends Component {
       this.type = type;
       this.target_type = target_type;
       this.taskId = taskId;
-
-      console.log('Line graph');
-      console.log(data);
     return (
         <ResponsiveContainer             width="100%">
         <LineChart

@@ -33,7 +33,7 @@ import PNTweetsLine from "../Graphs/PNTweetsLine";
 import PNTweetsPie from "../Graphs/PNTweetsPie";
 import {WordClouds} from "../index";
 import PNTweetsArea from "../Graphs/PNTweetsArea";
-import AccountProfile from "../AccountProfile";
+import MetadataTwitterProfile from "../Metadata/MetadataTwitterProfile";
 import Button from "@material-ui/core/Button";
 import {withRouter} from "react-router-dom";
 import NoRecords from "../../../../NoRecords";
@@ -41,6 +41,7 @@ import {toast} from "react-toastify";
 import {Message, optionsError} from "../../../../../constants/constants";
 import * as endpoints from 'constants/endpoints.json';
 import request from 'helpers/request.js';
+import YoutubeVideo from "../Metadata/YoutubeVideo";
 
 class JobAnalysis extends Component {
 
@@ -76,9 +77,9 @@ class JobAnalysis extends Component {
                         isAssocEmpty : Boolean(Object.keys(res.results.assoc).length)
                         });
                     }
-                    if (res.info_data){
+                    if (res.metadata){
                         this.setState({
-                            isAccountEmpty: Boolean(Object.keys(res.info_data).length)
+                            isAccountEmpty: Boolean(Object.keys(res.metadata).length)
                         });
                     }
                     this.setState({
@@ -121,7 +122,7 @@ class JobAnalysis extends Component {
         const job = JSON.parse(localStorage.getItem('job'));
         let showAnalytics = !this.state.isLoading && this.state.data;
         if (showAnalytics){
-            showAnalytics = this.state.data.info_data && this.state.data.results;
+            showAnalytics = this.state.data.metadata && this.state.data.results;
         }
         const title = "Analysis of " + job.description;
         return (
@@ -136,16 +137,22 @@ class JobAnalysis extends Component {
                    showAnalytics ?
                     (<div className={classes.root}>
                 {this.state.isAccountEmpty && (
-                    <AccountProfile data={this.state.data.info_data}/>
+                    job.job_details.platform === 'TWITTER' ? (<MetadataTwitterProfile data={this.state.data.metadata}/>) :
+                        job.job_details.platform === 'YOUTUBE' ? (<YoutubeVideo data={this.state.data.metadata}/>)
+                            : (<div/>)
                     )}
                 {this.state.data.results && (
                     <div>
                         {this.state.isPolarityFreqEmpty && (<Portlet>
                             <PortletHeader noDivider>
                                 <PortletLabel
-                                    title="Twitter Tweets"
+                                    title={
+                                        job.job_details.platform === 'TWITTER' ? ("Twitter Tweets") :
+                                        job.job_details.platform === 'YOUTUBE' ? ("Youtube Comments")
+                                            : (<div/>)
+                                    }
                                 />
-                                { this.prevState.target_type === 'TREND' && (<PortletToolbar>
+                                { (this.prevState.target_type === 'TREND' || job.job_details.platform !== 'TWITTER') && (<PortletToolbar>
                                     <Button
                                         className={classes.newEntryButton}
                                         color="primary"

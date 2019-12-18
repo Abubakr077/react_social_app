@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-
 // Externals
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
@@ -37,6 +36,7 @@ import {Message, optionsError, optionsSuccess} from "../../../../../../constants
 
 import request from 'helpers/request.js';
 import * as endpoints from 'constants/endpoints.json';
+import CardActionArea from "@material-ui/core/CardActionArea";
 class InvitesView extends Component {
     signal = false;
     showInvites = false;

@@ -8,6 +8,9 @@ import * as localStorageHelper from 'helpers/localStorage'
 const SignUp = asyncComponent(() =>
     import('./views/SignUp').then(module => module.default)
 );
+const YoutubeComments = asyncComponent(() =>
+    import('./views/Dashboards/MonitoringDashboard/components/Lists/YoutubeComments').then(module => module.default)
+);
 const SignIn = asyncComponent(() =>
     import('./views/SignIn').then(module => module.default)
 );
@@ -31,7 +34,7 @@ const PreviousAnalysis = asyncComponent(() =>
     import('./views/Dashboards/MonitoringDashboard/components/PreviousAnalytics').then(module => module.default)
 );
 const TweetsList = asyncComponent(() =>
-    import('./views/Dashboards/MonitoringDashboard/components/TweetsList').then(module => module.default)
+    import('./views/Dashboards/MonitoringDashboard/components/Lists/TweetsList').then(module => module.default)
 );
 const TrendHatePool = asyncComponent(() =>
     import('./views/Dashboards/MonitoringDashboard/components/TrendHatePool').then(module => module.default)
@@ -120,6 +123,11 @@ class Routes extends Component {
               component={TweetsList}
               exact
               path="/dashboard/project/analysis/tweets"
+          />
+          <PrivateRoute
+              component={YoutubeComments}
+              exact
+              path="/dashboard/project/analysis/comments"
           />
           <PrivateRoute
               component={TrendHatePool}

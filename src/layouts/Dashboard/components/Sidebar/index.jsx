@@ -36,6 +36,7 @@ import {
 
 // Component styles
 import styles from './styles';
+import theme from "../../../../theme";
 
 
 class Sidebar extends Component {
@@ -53,11 +54,27 @@ class Sidebar extends Component {
                         className={classes.logoLink}
                         to="/"
                     >
-                        <img
-                            alt="Logo"
-                            className={classes.logoImage}
-                            src='/images/logos/logoNCCS.png'
-                        />
+                        {/*<img*/}
+                        {/*    alt="Logo"*/}
+                        {/*    className={classes.logoImage}*/}
+                        {/*    src='/images/logos/logoNCCS.png'*/}
+                        {/*/>*/}
+                        <Typography
+                            color={"primary"}
+                            variant="h1" component="h2"
+                            style={{display: 'flex',alignSelf: 'flex-end' }}
+                        >
+                            <div>
+                                <span  style={{marginRight: theme.spacing.unit}}>A</span>
+                                <span  style={{marginRight: theme.spacing.unit}}>I</span>
+                                <span   style={{marginRight: theme.spacing.unit}}>R</span>
+                                <span   style={{marginRight: theme.spacing.unit}}>W</span>
+                                <span   style={{marginRight: theme.spacing.unit}}>A</span>
+                                <span   style={{marginRight: theme.spacing.unit}}>T</span>
+                                <span   style={{marginRight: theme.spacing.unit}}>C</span>
+                                <span className="city">H</span>
+                            </div>
+                        </Typography>
                     </Link>
                 </div>
                 <Divider className={classes.logoDivider}/>

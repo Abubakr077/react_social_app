@@ -76,7 +76,7 @@ class TrendHatePool extends Component {
                 this.setState({
                     isLoading: false,
                     error,
-                    data: hatePoolTwitterProfiles
+                    // data: hatePoolTwitterProfiles
                 });
             }
         }
