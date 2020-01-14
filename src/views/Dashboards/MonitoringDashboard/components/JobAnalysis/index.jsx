@@ -1,32 +1,15 @@
 import React, {Component} from 'react';
-
 // Externals
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-
 // Material helpers
-import {
-    CircularProgress, Grid,
-    withStyles
-} from '@material-ui/core';
+import {CircularProgress, Grid, withStyles} from '@material-ui/core';
 
-import {
-    Dashboard as DashboardLayout
-
-} from 'layouts';
-
+import {Dashboard as DashboardLayout} from 'layouts';
 // Shared components
-import {
-    Portlet,
-    PortletHeader,
-    PortletLabel,
-    PortletContent,
-    PortletToolbar
-} from 'components';
-
+import {Portlet, PortletContent, PortletHeader, PortletLabel, PortletToolbar} from 'components';
 // Component styles
 import styles from './styles';
-
 // Shared Resources
 import compose from "recompose/compose";
 import PNTweetsLine from "../Graphs/PNTweetsLine";

@@ -1,4 +1,4 @@
-import { createConfirmation } from 'react-confirm';
+import {createConfirmation} from 'react-confirm';
 import ConfirmAbleDialog from '../components/ConfirmableDialog';
 
 // create confirm function

@@ -1,21 +1,15 @@
-import React, { Component } from 'react';
-import { Router } from 'react-router-dom';
-import { createBrowserHistory } from 'history';
-import { ToastContainer, Slide, Zoom, Flip, Bounce  } from 'react-toastify';
-
-
+import React, {Component} from 'react';
+import {Router} from 'react-router-dom';
+import {createBrowserHistory} from 'history';
+import {ToastContainer, Zoom} from 'react-toastify';
 // Material helpers
-import { ThemeProvider } from '@material-ui/styles';
-
-
+import {ThemeProvider} from '@material-ui/styles';
 // Theme
 import theme from './theme';
-
 // Styles
 import 'react-perfect-scrollbar/dist/css/styles.css';
 import './assets/scss/index.scss';
 import 'react-toastify/dist/ReactToastify.min.css'
-
 // Routes
 import Routes from './Routes';
 import PerfectScrollbar from "react-perfect-scrollbar";

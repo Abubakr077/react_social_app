@@ -1,39 +1,24 @@
 import React, {Component} from 'react';
 import {Link, NavLink} from 'react-router-dom';
-
 // Externals
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-
 // Material helpers
-import {Collapse, withStyles} from '@material-ui/core';
-
 // Material components
-import {
-    Avatar,
-    Divider,
-    List,
-    ListItem,
-    ListItemIcon,
-    ListItemText,
-    ListSubheader,
-    Typography
-} from '@material-ui/core';
-
+import {Collapse, Divider, List, ListItem, ListItemIcon, ListItemText, Typography, withStyles} from '@material-ui/core';
 // Material icons
 import {
-    DashboardOutlined as DashboardIcon,
-    PeopleOutlined as PeopleIcon,
-    SettingsOutlined as SettingsIcon,
-    TrendingUpOutlined as TrendingIcon,
-    PhotoSizeSelectActualOutlined as VisualsIcon,
     CreateNewFolderOutlined as CreateProjectIcon,
-    HowToVoteOutlined as InvitesIcon, ExpandLess, ExpandMore,
-    VisibilityOutlined as MonitorIcon,
-  PlaylistAddOutlined as CreateIcon,
-  ViewListOutlined as ViewJobs
+    DashboardOutlined as DashboardIcon,
+    ExpandLess,
+    ExpandMore,
+    HowToVoteOutlined as InvitesIcon,
+    PeopleOutlined as PeopleIcon,
+    PlaylistAddOutlined as CreateIcon,
+    SettingsOutlined as SettingsIcon,
+    ViewListOutlined as ViewJobs,
+    VisibilityOutlined as MonitorIcon
 } from '@material-ui/icons';
-
 // Component styles
 import styles from './styles';
 import theme from "../../../../theme";

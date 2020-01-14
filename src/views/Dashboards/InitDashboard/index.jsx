@@ -1,21 +1,14 @@
 import React, {Component} from 'react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 // Externals
 import PropTypes from 'prop-types';
-
 // Material helpers
 import {withStyles} from '@material-ui/core';
-
-
 // Shared layouts
-import {
-  Dashboard as DashboardLayout
-
-} from 'layouts';
+import {Dashboard as DashboardLayout} from 'layouts';
 import {connect} from 'react-redux';
-
 // Custom components
 import asyncComponent from "components/AsyncComponent";
+
 const Projects = asyncComponent(() =>
     import('./Projects').then(module => module.default)
 );

@@ -1,14 +1,10 @@
 import React from 'react';
-
 // Externals
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-
 // Material helpers
-import { withStyles } from '@material-ui/core';
-
 // Material components
-import { Typography } from '@material-ui/core';
+import {Typography, withStyles} from '@material-ui/core';
 
 const styles = theme => ({
   root: {

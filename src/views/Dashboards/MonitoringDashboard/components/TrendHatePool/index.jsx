@@ -3,26 +3,14 @@ import React, {Component} from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 // Material helpers
-import {
-    CircularProgress,
-    Grid,
-    withStyles
-} from '@material-ui/core';
+import {CircularProgress, Grid, withStyles} from '@material-ui/core';
 
-import {
-    Dashboard as DashboardLayout
-
-} from 'layouts';
+import {Dashboard as DashboardLayout} from 'layouts';
 // Component styles
 import styles from './styles';
 import Typography from '@material-ui/core/Typography';
 // Shared components
-import {
-    Portlet,
-    PortletHeader,
-    PortletFooter,
-    PortletContent
-} from 'components';
+import {Portlet, PortletContent, PortletHeader} from 'components';
 import ProfileBar from "../Graphs/ProfilesBar";
 import ProfilesTable from "../Tables/ProfilesTable";
 import {toast} from "react-toastify";
@@ -30,10 +18,7 @@ import {Message, optionsError} from "../../../../../constants/constants";
 import request from 'helpers/request.js';
 import * as endpoints from 'constants/endpoints.json';
 import NoRecords from "../../../../NoRecords";
-import hatePoolTwitterProfiles
-    from '../JobAnalysis/data/500_hate_pool_TWITTER_USER_POST_2019-09-21.json';
 import ProfilesNetwork from "../Graphs/ProfilesNetwork";
-
 
 
 class TrendHatePool extends Component {
@@ -95,7 +80,6 @@ class TrendHatePool extends Component {
 
         const {classes, className, ...rest} = this.props;
         const rootClassName = classNames(classes.root, className);
-        const prevState = this.props.location.state;
         const {isLoading, data} = this.state;
         const show = !isLoading && data.length;
         return (

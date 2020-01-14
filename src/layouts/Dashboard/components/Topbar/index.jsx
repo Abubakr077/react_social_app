@@ -6,7 +6,7 @@ import compose from 'recompose/compose';
 import PropTypes from 'prop-types';
 // Material helpers
 // Material components
-import {Avatar, Badge, IconButton, Popover, Toolbar, Typography, withStyles} from '@material-ui/core';
+import {Badge, IconButton, Popover, Toolbar, Typography, withStyles} from '@material-ui/core';
 // Material icons
 import {
   ChevronLeft as CloseIcon,
@@ -17,13 +17,13 @@ import {
 // Shared services
 import {getNotifications} from 'services/notification';
 // Custom components
-import {NotificationList,ProjectsList} from './components';
+import {NotificationList, ProjectsList} from './components';
 // Component styles
 import styles from './styles';
-import {lookupProject} from 'services/project';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import clsx from 'clsx';
 import AppBar from '@material-ui/core/AppBar';
+
 class Topbar extends Component {
   signal = true;
   project = null;

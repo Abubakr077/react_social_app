@@ -1,16 +1,10 @@
 import React, {Component} from 'react';
-import {Radio, RadioGroup, FormControlLabel, FormControl, FormLabel} from '@material-ui/core';
+// Material helpers
+import {FormControl, FormControlLabel, FormLabel, Radio, RadioGroup, withStyles} from '@material-ui/core';
 // Externals
 import PropTypes from 'prop-types';
-// Material helpers
-import {
-    withStyles
-} from '@material-ui/core';
 
-import {
-    Dashboard as DashboardLayout
-} from 'layouts';
-
+import {Dashboard as DashboardLayout} from 'layouts';
 // Component styles
 import styles from './styles';
 import Twitter from './Twitter'

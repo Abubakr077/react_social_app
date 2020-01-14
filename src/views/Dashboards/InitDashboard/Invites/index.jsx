@@ -1,27 +1,14 @@
-import React, { Component } from 'react';
-
+import React, {Component} from 'react';
 // Externals
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import PerfectScrollbar from 'react-perfect-scrollbar';
-
 // Material helpers
-import {
-  withStyles
-} from '@material-ui/core';
+import {withStyles} from '@material-ui/core';
 
-import {
-  Dashboard as DashboardLayout
-
-} from 'layouts';
-
+import {Dashboard as DashboardLayout} from 'layouts';
 // Component styles
 import styles from './styles';
-import { InvitesView } from "./components";
-
-
-
-
+import {InvitesView} from "./components";
 
 
 class Invites extends Component {

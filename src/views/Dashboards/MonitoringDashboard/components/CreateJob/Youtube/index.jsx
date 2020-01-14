@@ -1,30 +1,20 @@
-import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
+import React, {Component} from 'react';
+import {withRouter} from 'react-router-dom';
 // Externals
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 // Material helpers
-import {
-    Button,
-    CircularProgress,
-    Grid, TextField,
-    withStyles
-} from '@material-ui/core';
-
+import {Button, CircularProgress, Grid, TextField, withStyles} from '@material-ui/core';
 // Component styles
 import styles from './styles';
 import Typography from '@material-ui/core/Typography';
 // Shared components
-import {
-
-    PortletLabel,
-    PortletContent
-} from 'components';
+import {PortletContent, PortletLabel} from 'components';
 import {handleFieldChange} from 'services/form';
 import compose from "recompose/compose";
 import SelectField from "../components/SelectField";
 
-import {youtubeTypes,scheduleOptions} from 'constants/constants.js';
+import {scheduleOptions, youtubeTypes} from 'constants/constants.js';
 import PortletFooter from "../../../../../../components/PortletFooter";
 import clsx from "clsx";
 import schema from "./schema";
@@ -32,8 +22,6 @@ import request from 'helpers/request.js';
 import {toast} from "react-toastify";
 import {Message, optionsError} from "constants/constants";
 import endpoints from 'constants/endpoints.json';
-
-
 
 
 class Youtube extends Component {

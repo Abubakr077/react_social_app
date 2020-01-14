@@ -1,38 +1,13 @@
-import React, { Component } from 'react';
-
+import React, {Component} from 'react';
 // Externals
-import classNames from 'classnames';
 import PropTypes from 'prop-types';
-
 // Material helpers
-import {
-  CircularProgress, Dialog, DialogContent, Grid, Table, TableBody, TableCell, TableHead, TableRow, Typography,
-  withStyles
-} from '@material-ui/core';
-
-import {
-  Dashboard as DashboardLayout
-
-} from 'layouts';
-
-
+import {withStyles} from '@material-ui/core';
 // Component styles
 import styles from './styles';
-
 // Shared Resources
 import compose from "recompose/compose";
-import {
-  CartesianGrid,
-  Legend,
-  Line,
-  Brush,
-  LineChart,
-  ResponsiveContainer,
-  Tooltip,
-  XAxis,
-  YAxis,
-  AreaChart
-} from "recharts";
+import {Brush, Legend, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis,} from "recharts";
 import {withRouter} from "react-router-dom";
 
 class PNTweetsLine extends Component {

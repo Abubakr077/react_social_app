@@ -1,37 +1,16 @@
-import React, { Component, Fragment } from 'react';
-import { Link } from 'react-router-dom';
-
+import React, {Component, Fragment} from 'react';
+import {Link} from 'react-router-dom';
 // Externals
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-
 // Material helpers
-import { withStyles } from '@material-ui/core';
-
 // Material components
-import {
-  Button,
-  Divider,
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
-  Typography
-} from '@material-ui/core';
-
+import {Button, Divider, List, ListItem, ListItemText, Typography, withStyles} from '@material-ui/core';
 // Material icons
-import {
-  ArrowForwardIos as ArrowForwardIosIcon,
-  Payment as PaymentIcon,
-  PeopleOutlined as PeopleIcon,
-  Code as CodeIcon,
-  Store as StoreIcon
-} from '@material-ui/icons';
-
+import {ArrowForwardIos as ArrowForwardIosIcon} from '@material-ui/icons';
 // Component styles
 import styles from './styles';
 import Tooltip from "@material-ui/core/Tooltip";
-
 
 
 class ProjectsList extends Component {

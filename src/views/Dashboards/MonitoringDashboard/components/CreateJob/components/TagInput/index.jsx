@@ -2,10 +2,7 @@ import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import clsx from 'clsx';
 import {Paper as Paper1} from 'components';
-import {
-    withStyles
-} from '@material-ui/core';
-import Paper from '@material-ui/core/Paper';
+import {withStyles} from '@material-ui/core';
 import Chip from '@material-ui/core/Chip';
 
 import styles from './style';

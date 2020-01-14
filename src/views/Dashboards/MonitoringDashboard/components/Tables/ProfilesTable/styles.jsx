@@ -1,4 +1,5 @@
 import * as color from "common/colors";
+
 export default theme => ({
   root: {},
   portletContent: {

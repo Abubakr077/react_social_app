@@ -2,28 +2,11 @@ import React, {Component} from 'react';
 // Externals
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import PerfectScrollbar from 'react-perfect-scrollbar';
-
 // Material helpers
-import {
-    CardActions,
-    CircularProgress,
-    Grid,
-    Table,
-    TableBody,
-    TableCell,
-    TableHead,
-    TableRow,
-    withStyles
-} from '@material-ui/core';
-
 // Material components
-import {Typography} from '@material-ui/core';
-
-
+import {CircularProgress, Grid, Typography, withStyles} from '@material-ui/core';
 // Shared components
 import {Card} from '../index';
-
 // Component styles
 import styles from './styles';
 import NoRecords from "../../../../../NoRecords"
@@ -32,11 +15,11 @@ import {Status} from 'components';
 import compose from "recompose/compose";
 import {connect} from "react-redux";
 import {toast} from "react-toastify";
-import {Message, optionsError, optionsSuccess} from "../../../../../../constants/constants";
+import {Message, optionsError} from "../../../../../../constants/constants";
 
 import request from 'helpers/request.js';
 import * as endpoints from 'constants/endpoints.json';
-import CardActionArea from "@material-ui/core/CardActionArea";
+
 class InvitesView extends Component {
     signal = false;
     showInvites = false;

@@ -1,23 +1,12 @@
-import React, { Component } from 'react';
-
+import React, {Component} from 'react';
 // Externals
-import classNames from 'classnames';
 import PropTypes from 'prop-types';
-
 // Material helpers
-import {
-  CircularProgress, Dialog, DialogContent, Grid, Table, TableBody, TableCell, TableHead, TableRow, Typography,
-  withStyles
-} from '@material-ui/core';
+import {withStyles} from '@material-ui/core';
 
-import {
-  AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, LineChart, Line, ResponsiveContainer, Brush,
-} from 'recharts';
-
-
+import {Area, AreaChart, Brush, ResponsiveContainer, Tooltip, XAxis, YAxis,} from 'recharts';
 // Component styles
 import styles from './styles';
-
 // Shared Resources
 import compose from "recompose/compose";
 
@@ -28,7 +17,6 @@ class PNTweetsArea extends Component {
 
   render() {
     const { classes, className,data, ...rest } = this.props;
-    const rootClassName = classNames(classes.root, className);
 
     return (
         <ResponsiveContainer

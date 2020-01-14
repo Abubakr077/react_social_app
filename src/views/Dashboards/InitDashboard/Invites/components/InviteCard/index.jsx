@@ -1,35 +1,20 @@
 import React, {Component} from 'react';
-
 // Externals
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-
 // Material helpers
-import {CardActions, withStyles} from '@material-ui/core';
-
 // Material components
-import {
-    Card,
-    CardContent,
-    IconButton,
-    Button
-} from "@material-ui/core";
+import {Card, CardActions, IconButton, withStyles} from '@material-ui/core';
 
-import {
-    CloseOutlined as CancelIcon,
-    Check as CheckIcon
-} from '@material-ui/icons';
-
-import * as color from 'common/colors';
+import {Check as CheckIcon, CloseOutlined as CancelIcon} from '@material-ui/icons';
 import * as endPoints from 'constants/endpoints.json';
 import request from 'helpers/request.js';
 import {toast} from 'react-toastify';
 import * as constants from "constants/constants";
+import {Message, optionsSuccess} from "constants/constants";
 import {connect} from "react-redux";
 import compose from "recompose/compose";
-import {Message, optionsSuccess} from "constants/constants";
 import {optionsError} from "../../../../../../constants/constants";
-
 // Component styles
 import styles from './styles';
 

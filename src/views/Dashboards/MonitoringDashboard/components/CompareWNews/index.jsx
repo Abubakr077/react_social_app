@@ -3,35 +3,21 @@ import React, {Component} from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 // Material helpers
-import {
-    Button,
-    CircularProgress,
-    Grid, TextField,
-    withStyles
-} from '@material-ui/core';
+import {Button, CircularProgress, TextField, withStyles} from '@material-ui/core';
 
-import {
-    Dashboard as DashboardLayout
-
-} from 'layouts';
+import {Dashboard as DashboardLayout} from 'layouts';
 // Component styles
 import styles from './styles';
 import Typography from '@material-ui/core/Typography';
 // Shared components
-import {
-    Portlet,
-    PortletHeader,
-    PortletLabel,
-    PortletContent
-} from 'components';
+import {Portlet, PortletContent, PortletHeader, PortletLabel} from 'components';
 import PNTweetsPie from "../Graphs/PNTweetsPie";
 import {handleFieldChange} from 'services/form';
 import schema from "./schema";
 import {toast} from "react-toastify";
-import {Message, optionsError, optionsSuccess} from "../../../../../constants/constants";
+import {Message, optionsError} from "../../../../../constants/constants";
 import * as endpoints from 'constants/endpoints.json';
 import request from 'helpers/request.js';
-
 
 
 class CompareWNews extends Component {
@@ -64,8 +50,6 @@ class CompareWNews extends Component {
             touched,
             errors,
             isValid,
-            submitError,
-            serviceError
         } = this.state;
         const showLinkError = touched.link && errors.link;
 

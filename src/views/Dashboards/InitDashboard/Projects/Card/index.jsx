@@ -1,24 +1,12 @@
-import React, {Component, Fragment} from 'react';
-
+import React, {Component} from 'react';
 // Externals
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-
 // Material helpers
-import {CardActions, withStyles} from '@material-ui/core';
-
 // Material components
-import {
-    Card,
-    IconButton,
-    Button
-} from "@material-ui/core";
+import {Button, Card, CardActions, IconButton, withStyles} from '@material-ui/core';
 
-import {
-    Delete as DeleteIcon,
-    // FirstPageOutlined as RemoveIcon,
-    ExitToAppOutlined as RemoveIcon,
-} from '@material-ui/icons';
+import {Delete as DeleteIcon, ExitToAppOutlined as RemoveIcon,} from '@material-ui/icons';
 
 
 import * as endPoints from 'constants/endpoints.json';
@@ -30,8 +18,6 @@ import compose from "recompose/compose";
 import {Message, optionsSuccess} from "constants/constants";
 import {optionsError} from "../../../../../constants/constants";
 import confirm from 'helpers/confirmation.js';
-
-
 // Component styles
 import styles from './styles';
 

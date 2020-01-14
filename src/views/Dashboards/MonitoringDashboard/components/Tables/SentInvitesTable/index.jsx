@@ -1,33 +1,13 @@
 import React, {Component} from 'react';
-
 // Externals
 import classNames from 'classnames';
 import moment from 'moment';
 import PropTypes from 'prop-types';
-
-
 // Material helpers
-import {withStyles} from '@material-ui/core';
-
 // Material components
-import {
-    CircularProgress,
-    Table,
-    TableBody,
-    TableCell,
-    TableHead,
-    TableRow
-} from '@material-ui/core';
-
-
+import {CircularProgress, Table, TableBody, TableCell, TableHead, TableRow, withStyles} from '@material-ui/core';
 // Shared components
-import {
-    Portlet,
-    PortletHeader,
-    PortletLabel,
-    PortletContent,
-} from 'components';
-
+import {Portlet, PortletContent, PortletHeader, PortletLabel,} from 'components';
 // Component styles
 import styles from './styles';
 import {toast} from "react-toastify";
@@ -38,10 +18,6 @@ import {Delete as DeleteIcon} from "@material-ui/icons";
 import IconButton from "@material-ui/core/IconButton";
 import confirm from 'helpers/confirmation.js';
 import compose from "recompose/compose";
-import {connect} from "react-redux";
-import * as constants from "constants/constants";
-import {local} from "d3-selection";
-
 
 
 class SentInvitesTable extends Component {

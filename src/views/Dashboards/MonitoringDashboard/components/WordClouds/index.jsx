@@ -1,33 +1,19 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import randomColor from 'randomcolor';
 // Externals
-import classNames from 'classnames';
 import PropTypes from 'prop-types';
-
-
-
 // Material helpers
-import {
-    Typography,
-    withStyles
-} from '@material-ui/core';
-
-
+import {Typography, withStyles} from '@material-ui/core';
 // Shared components
-import {
-  Portlet,
-  PortletHeader,
-  PortletContent
-} from 'components';
-
+import {Portlet, PortletContent, PortletHeader} from 'components';
 // Component styles
 import styles from './styles';
-
 // Shared Resources
 import compose from "recompose/compose";
 import ReactWordcloud from 'react-wordcloud';
 import {select} from "d3-selection";
 import {withRouter} from "react-router-dom";
+
 const options = {
     colors: [randomColor({
         hue: 'blue',

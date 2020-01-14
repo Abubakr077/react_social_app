@@ -1,15 +1,11 @@
 import React from 'react';
-
 // Externals
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-
 // Material helpers
-import { withStyles } from '@material-ui/core';
-
+import {withStyles} from '@material-ui/core';
 // Material components
-import { List as ListIcon, Apps as AppsIcon } from '@material-ui/icons';
-
+import {Apps as AppsIcon, List as ListIcon} from '@material-ui/icons';
 // Component styles
 import styles from './styles';
 

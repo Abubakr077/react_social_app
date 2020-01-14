@@ -1,23 +1,18 @@
-import React, { Component } from 'react';
-
+import React, {Component} from 'react';
 // Externals
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-
 // Material helpers
-import { withStyles } from '@material-ui/core';
-
 // Material components
-import { Avatar, Typography, Button, LinearProgress } from '@material-ui/core';
-
+import {Avatar, Typography, withStyles} from '@material-ui/core';
 // Shared components
-import { Portlet, PortletContent, PortletFooter } from 'components';
-
+import {Portlet, PortletContent} from 'components';
 // Component styles
 import styles from './styles';
 import PersonPinCircleOutlinedIcon from '@material-ui/icons/PersonPinCircleOutlined';
 import PermIdentityOutlinedIcon from '@material-ui/icons/PermIdentityOutlined';
 import DescriptionOutlinedIcon from '@material-ui/icons/DescriptionOutlined';
+
 class MetadataTwitterProfile extends Component {
   render() {
     const { classes, className,data, ...rest } = this.props;

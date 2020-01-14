@@ -1,17 +1,20 @@
 import React, {Component} from 'react';
-import {Link, withRouter} from 'react-router-dom';
+import {withRouter} from 'react-router-dom';
 // Externals
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-
 // Material helpers
 import {
-    CircularProgress, Dialog, DialogActions, DialogContent, DialogTitle,
+    CircularProgress,
+    Dialog,
+    DialogActions,
+    DialogContent,
+    DialogTitle,
     Grid,
-    TextField, Typography,
+    TextField,
+    Typography,
     withStyles
 } from '@material-ui/core';
-
 // Component styles
 import styles from './styles';
 import Button from "@material-ui/core/Button";
@@ -22,11 +25,11 @@ import {CustomCard as Card} from 'components';
 import schema from "./schema";
 import {toast} from "react-toastify";
 import * as endPoints from 'constants/endpoints.json';
+import * as endpoints from 'constants/endpoints.json';
 import * as constants from 'constants/constants.js';
 import request from 'helpers/request.js';
-import * as endpoints from 'constants/endpoints.json';
 import {handleFieldChange} from 'services/form';
-import {Message, optionsError, optionsSuccess} from "../../../../constants/constants";
+import {Message, optionsError} from "../../../../constants/constants";
 
 class Projects extends Component {
 

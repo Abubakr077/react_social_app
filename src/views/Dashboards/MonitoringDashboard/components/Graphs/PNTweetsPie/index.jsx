@@ -1,46 +1,21 @@
-import React, { Component } from 'react';
-
+import React, {Component} from 'react';
 // Externals
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-
 // Material helpers
-import {
-  CircularProgress, Dialog, DialogContent, Grid, Table, TableBody, TableCell, TableHead, TableRow, Typography,
-  withStyles
-} from '@material-ui/core';
-
-import {
-  Dashboard as DashboardLayout
-
-} from 'layouts';
-
-
+import {withStyles} from '@material-ui/core';
 // Component styles
 import styles from './styles';
-
 // Shared Resources
 import compose from "recompose/compose";
-import {
-    CartesianGrid,
-    Cell,
-    Legend,
-    Line,
-    LineChart,
-    Pie,
-    PieChart,
-    ResponsiveContainer,
-    Sector,
-    Tooltip,
-    XAxis,
-    YAxis
-} from "recharts";
+import {Cell, Pie, PieChart, ResponsiveContainer, Sector} from "recharts";
 import {withRouter} from "react-router-dom";
+
 const renderActiveShape = (props) => {
   const RADIAN = Math.PI / 180;
   const {
     cx, cy, midAngle, innerRadius, outerRadius, startAngle, endAngle,
-    fill, payload, percent, value,
+    fill, payload
   } = props;
   const sin = Math.sin(-RADIAN * midAngle);
   const cos = Math.cos(-RADIAN * midAngle);
@@ -117,7 +92,7 @@ class PNTweetsPie extends Component {
     const COLORS = [ '#45B880', '#ED4740'];
     const RADIAN = Math.PI / 180;
     const renderCustomizedLabel = ({
-                                     cx, cy, midAngle, innerRadius, outerRadius, percent, index,
+                                     cx, cy, midAngle, innerRadius, outerRadius, percent
                                    }) => {
       const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
       const x = cx + radius * Math.cos(-midAngle * RADIAN);
@@ -161,17 +136,12 @@ class PNTweetsPie extends Component {
     );
   }
 }
-
-
 PNTweetsPie.propTypes = {
   className: PropTypes.string,
   classes: PropTypes.object.isRequired,
     history: PropTypes.object.isRequired
 };
-
 export default compose(
     withRouter,
     withStyles(styles)
-)
-(PNTweetsPie);
-
+)(PNTweetsPie);

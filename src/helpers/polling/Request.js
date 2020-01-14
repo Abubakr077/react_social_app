@@ -77,18 +77,18 @@ class Request {
         } else {
             if (error.response){
                 if (error.response.status === 500){
-                    error.message = 'Error Message:' + ' Something went wrong!'
+                    error.message = 'Error Message:'+' Something went wrong!'
                 }
             }
             throw error;
         }
-    }
+    };
     poll = time => ({
         get: (cl, options) => this.pollingRequest(cl, options, time, 'get'),
         post: (cl, options) => this.pollingRequest(cl, options, time, 'post'),
-    })
-    get = options => this.sendRequest('get', options)
-    post = options => this.sendRequest('post', options)
+    });
+    get = options => this.sendRequest('get', options);
+    post = options => this.sendRequest('post', options);
     pollingRequest = (cl, options, time, method, updating) =>
         this.sendRequest(method, options, updating).then((response) => {
             this.pollingInProgress[method] = true;

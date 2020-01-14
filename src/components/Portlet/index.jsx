@@ -1,12 +1,9 @@
 import React from 'react';
-
 // Externals
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-
 // Material helpers
-import { withStyles } from '@material-ui/core';
-
+import {withStyles} from '@material-ui/core';
 // Shared components
 import Paper from '../Paper';
 

@@ -1,45 +1,20 @@
 import React, {Component} from 'react';
-import { withRouter} from 'react-router-dom';
+import {withRouter} from 'react-router-dom';
 import * as constants from "constants/constants";
 import {getJobStatus, getPreviousMonitorTasks} from 'services/monitoringJob';
-
-
 // Externals
 import classNames from 'classnames';
 import moment from 'moment';
 import PropTypes from 'prop-types';
-
-
 // Material helpers
-import {
-    Button,
-    Typography,
-    withStyles
-} from '@material-ui/core';
-
 // Material components
-import {
-    CircularProgress
-} from '@material-ui/core';
-
+import {Button, CircularProgress, Typography, withStyles} from '@material-ui/core';
 // Component styles
 import styles from './styles';
 
-import {
-    Delete as DeleteIcon,
-    PauseOutlined as PauseIcon,
-    PlayArrowOutlined as PlayIcon
-
-} from '@material-ui/icons';
-
+import {Delete as DeleteIcon, PauseOutlined as PauseIcon, PlayArrowOutlined as PlayIcon} from '@material-ui/icons';
 // Shared components
-import {
-    Portlet,
-    PortletHeader,
-    PortletLabel,
-    PortletContent,
-    PortletToolbar
-} from 'components';
+import {Portlet, PortletContent, PortletHeader, PortletLabel, PortletToolbar} from 'components';
 import MaterialTable from "material-table";
 import {toast} from "react-toastify";
 import {Message, optionsError, optionsSuccess} from "../../../../../../constants/constants";
@@ -195,12 +170,6 @@ class MonitoringJobsTable extends Component {
         const rootClassName = classNames(classes.root, className);
         const showJobs = !isJobsLoading && jobs;
 
-        console.log(this.state.jobsStatus);
-        console.log((this.state.jobsStatus.filter(function (e) {
-            if (e.id === '576603b0f77944f6939f3c55bee96f13') {
-                return e.status
-            }
-        })));
         return (
             <div className={rootClassName}>
                 {isJobsLoading && (
@@ -518,6 +487,5 @@ export default compose(
     connect(mapStateToProps),
     withRouter,
     withStyles(styles)
-)
-(MonitoringJobsTable);
+)(MonitoringJobsTable);
 

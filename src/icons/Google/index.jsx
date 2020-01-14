@@ -1,7 +1,6 @@
 import React from 'react';
-
 // Material components
-import { SvgIcon } from '@material-ui/core';
+import {SvgIcon} from '@material-ui/core';
 
 export default function Google(props) {
   return (

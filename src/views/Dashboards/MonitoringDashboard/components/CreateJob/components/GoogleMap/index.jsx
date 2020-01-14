@@ -1,10 +1,8 @@
-import React, { Component } from "react";
+import React from "react";
 import compose from 'recompose/compose';
-import { Map, Marker, GoogleApiWrapper } from "google-maps-react";
+import {GoogleApiWrapper, Map, Marker} from "google-maps-react";
 import PropTypes from 'prop-types';
-import {
-  withStyles
-} from '@material-ui/core';
+import {withStyles} from '@material-ui/core';
 
 const MarkersList = props => {
   const { locations, ...markerProps } = props;
@@ -52,7 +50,7 @@ class MapContainer extends React.Component {
   };
 
   render() {
-    const { classes, className } = this.props;
+    const { classes } = this.props;
     return (
       <div className={classes.map}>
         <Map

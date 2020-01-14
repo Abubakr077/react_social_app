@@ -1,15 +1,11 @@
-import React, { Component } from 'react';
-import { Link, withRouter } from 'react-router-dom';
-
+import React, {Component} from 'react';
+import {Link, withRouter} from 'react-router-dom';
 // Externals
 import PropTypes from 'prop-types';
 import compose from 'recompose/compose';
 import validate from 'validate.js';
 import _ from 'underscore';
-
 // Material helpers
-import { withStyles } from '@material-ui/core';
-
 // Material components
 import {
   Button,
@@ -18,37 +14,23 @@ import {
   Grid,
   IconButton,
   TextField,
-  Typography
+  Typography,
+  withStyles
 } from '@material-ui/core';
-
 // Material icons
-import { ArrowBack as ArrowBackIcon, Search, Dvr, Public } from '@material-ui/icons';
-
-
-
+import {ArrowBack as ArrowBackIcon, Dvr, Public, Search} from '@material-ui/icons';
 // Shared utilities
 import validators from 'common/validators';
-
 // Component styles
 import styles from './styles';
-
 // Form validation schema
 import schema from './schema';
 import request from "helpers/request";
 import endpoints from "constants/endpoints";
 import {Message, optionsSuccess} from "../../constants/constants";
-import { toast } from 'react-toastify';
+import {toast} from 'react-toastify';
 
 validate.validators.checked = validators.checked;
-
-// Service methods
-const signUp = () => {
-  return new Promise(resolve => {
-    setTimeout(() => {
-      resolve(true);
-    }, 1500);
-  });
-};
 
 class SignUp extends Component {
   state = {

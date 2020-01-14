@@ -1,34 +1,22 @@
 import React, {Component} from 'react';
-import { withRouter } from 'react-router-dom';
-
+import {withRouter} from 'react-router-dom';
 // Externals
 import PropTypes from 'prop-types';
-
-
 // Material helpers
-import {Grid, Typography, withStyles} from '@material-ui/core';
-import { getPreviousMonitorTasks} from 'services/monitoringJob';
-
-
 // Material components
-import {
-    CircularProgress
-} from '@material-ui/core';
-
+import {CircularProgress, Grid, Typography, withStyles} from '@material-ui/core';
+import {getPreviousMonitorTasks} from 'services/monitoringJob';
 // Component styles
 import styles from './styles';
 import EqualizerOutlinedIcon from '@material-ui/icons/EqualizerOutlined';
-// Shared components
-
 import MaterialTable from "material-table";
 import compose from "recompose/compose";
 
-import {
-    Dashboard as DashboardLayout
-
-} from 'layouts';
+import {Dashboard as DashboardLayout} from 'layouts';
 import {statusColors} from 'constants/constants.js';
 import {Status} from 'components';
+
+// Shared components
 class PreviousAnalyticsTable extends Component {
     signal = false;
 
@@ -46,13 +34,9 @@ class PreviousAnalyticsTable extends Component {
         getPreviousMonitorTasks(this,this.prevState.taskId);
     }
 
-    componentWillUnmount() {
-        this.signal = false;
-    }
-
     render() {
-        const {classes, className} = this.props;
-        const {isLoading, jobTasks} = this.state;
+        const {classes} = this.props;
+        const {isLoading} = this.state;
 
         this.prevState = this.props.location.state;
 
@@ -97,7 +81,8 @@ class PreviousAnalyticsTable extends Component {
                                 ]}
                                 data={this.state.jobTasks}
                                 title="Previous Tasks"
-                                onRowClick={(event, rowData, togglePanel) => this.goToAnalysis()}
+                                // onRowClick={(event, rowData, togglePanel) =>
+                                //     this.goToAnalysis()}
                                 options={{
                                     search: true,
                                     paging: false,
@@ -129,10 +114,6 @@ class PreviousAnalyticsTable extends Component {
             </DashboardLayout>
         );
     }
-
-    goToAnalysis() {
-        const { history } = this.props;
-    }
     async getMonitorData(id) {
         const { history } = this.props;
         history.push('/dashboard/project/analysis',{type: this.prevState.target_subtype , target_type: this.prevState.target_type , taskId: id});
@@ -150,5 +131,4 @@ PreviousAnalyticsTable.propTypes = {
 export default compose(
     withRouter,
     withStyles(styles)
-)
-(PreviousAnalyticsTable);
+)(PreviousAnalyticsTable);

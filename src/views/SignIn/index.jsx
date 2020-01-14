@@ -1,43 +1,24 @@
 import React, {Component} from 'react';
 import {Link, withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
-import axios from 'axios'
-
 // Externals
 import PropTypes from 'prop-types';
 import compose from 'recompose/compose';
 import validate from 'validate.js';
 import _ from 'underscore';
-import {toast} from 'react-toastify';
-
 // Material helpers
-import {withStyles} from '@material-ui/core';
+// Material components
+import {Button, CircularProgress, Grid, IconButton, TextField, Typography, withStyles} from '@material-ui/core';
 import request from 'helpers/request.js';
 import endpoints from 'constants/endpoints.json';
 import * as constants from 'constants/constants'
-// Material components
-import {
-    Grid,
-    Button,
-    IconButton,
-    CircularProgress,
-    TextField,
-    Typography
-} from '@material-ui/core';
-
-import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-
 // Material icons
-import {ArrowBack as ArrowBackIcon, Search, Dvr, Public} from '@material-ui/icons';
-
+import {ArrowBack as ArrowBackIcon, Dvr, Public, Search} from '@material-ui/icons';
 // Component styles
 import styles from './styles';
-
 // Form validation schema
 import schema from './schema';
+import theme from "../../theme";
 
 
 class SignIn extends Component {
@@ -238,10 +219,26 @@ class SignIn extends Component {
                             </div>
                             <div className={classes.contentBody}>
                                 <form className={classes.form}>
+                                    {/*<Typography*/}
+                                    {/*>*/}
+                                    {/*    <div className={classes.logodiv}>*/}
+                                    {/*        <img src="/images/logo.png" className={classes.titlelogo}/>*/}
+                                    {/*    </div>*/}
+                                    {/*</Typography>*/}
                                     <Typography
+                                        color={"primary"}
+                                        variant="h1" component="h2"
+                                        style={{display: 'flex',alignSelf: 'flex-end' }}
                                     >
-                                        <div className={classes.logodiv}>
-                                            <img src="/images/logo.png" className={classes.titlelogo}/>
+                                        <div>
+                                            <span  style={{marginRight: theme.spacing.unit}}>A</span>
+                                            <span  style={{marginRight: theme.spacing.unit}}>I</span>
+                                            <span   style={{marginRight: theme.spacing.unit}}>R</span>
+                                            <span   style={{marginRight: theme.spacing.unit}}>W</span>
+                                            <span   style={{marginRight: theme.spacing.unit}}>A</span>
+                                            <span   style={{marginRight: theme.spacing.unit}}>T</span>
+                                            <span   style={{marginRight: theme.spacing.unit}}>C</span>
+                                            <span >H</span>
                                         </div>
                                     </Typography>
                                     <Typography
@@ -344,7 +341,7 @@ SignIn.propTypes = {
     history: PropTypes.object.isRequired
 };
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state) => {
     return {
         user: state.user,
         projects: state.projects

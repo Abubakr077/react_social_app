@@ -1,19 +1,13 @@
-import React, { Component, Fragment } from 'react';
-
+import React, {Component, Fragment} from 'react';
 // Externals
 import classNames from 'classnames';
 import compose from 'recompose/compose';
 import PropTypes from 'prop-types';
-
 // Material helpers
-import { withStyles, withWidth } from '@material-ui/core';
-
 // Material components
-import { Drawer } from '@material-ui/core';
-
+import {Drawer, withStyles, withWidth} from '@material-ui/core';
 // Custom components
-import { Sidebar, Topbar, Footer } from './components';
-
+import {Footer, Sidebar, Topbar} from './components';
 // Component styles
 import styles from './styles';
 

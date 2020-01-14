@@ -1,23 +1,13 @@
 import React, {Component} from 'react';
-import {  withRouter } from 'react-router-dom';
-
+import {withRouter} from 'react-router-dom';
 // Externals
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-
-
 // Material helpers
-import {LinearProgress,  Typography, withStyles} from '@material-ui/core';
-
 // Material components
-import {
-    CircularProgress
-} from '@material-ui/core';
-
+import {CircularProgress, LinearProgress, Typography, withStyles} from '@material-ui/core';
 // Component styles
 import styles from './styles';
-
-
 // Shared components
 import MaterialTable from "material-table";
 

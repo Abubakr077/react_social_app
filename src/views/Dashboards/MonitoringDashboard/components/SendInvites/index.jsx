@@ -1,45 +1,24 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {handleFieldChange} from 'services/form';
-
 // Externals
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-
 // Material helpers
-import {
-  CircularProgress, Dialog, DialogContent, Grid, Table, TableBody, TableCell, TableHead, TableRow, Typography,
-  withStyles
-} from '@material-ui/core';
+import {Button, CircularProgress, Grid, TextField, Typography, withStyles} from '@material-ui/core';
 
-import {
-  Dashboard as DashboardLayout
-
-} from 'layouts';
-
+import {Dashboard as DashboardLayout} from 'layouts';
 // Shared components
-import {
-  Portlet,
-  PortletHeader,
-  PortletLabel,
-  PortletContent,
-  PortletFooter
-} from 'components';
-
+import {Portlet, PortletContent, PortletFooter, PortletHeader, PortletLabel} from 'components';
 // Component styles
 import styles from './styles';
-
 // Shared Resources
 import {lookupProject} from 'services/project';
-import {TextField,Button} from "@material-ui/core";
-import _ from "underscore";
-import validate from "validate.js";
 import schema from "./schema";
 import {toast} from "react-toastify";
-import {Message, optionsError} from "constants/constants";
+import {Message} from "constants/constants";
 
 import request from 'helpers/request.js';
 import * as endpoints from 'constants/endpoints.json';
-import * as constants from 'constants/constants.js';
 import {optionsSuccess} from "../../../../../constants/constants";
 import FormControl from "@material-ui/core/FormControl";
 import InputLabel from "@material-ui/core/InputLabel";
@@ -48,8 +27,6 @@ import MenuItem from "@material-ui/core/MenuItem";
 import SentInvitesTable from "../Tables/SentInvitesTable";
 import confirm from 'helpers/confirmation.js';
 import compose from "recompose/compose";
-import {connect} from "react-redux";
-
 
 class SendInvites extends Component {
 
@@ -251,7 +228,7 @@ class SendInvites extends Component {
 
       if (error.data === 'ERROR: AN INVITE IS ALREADY PEDNING FOR THIS EMAIL!'){
         confirm('An invite is already pending for this email.Are you sure you want to update invite ?').then(
-            (result) => {
+            () => {
               // `proceed` callback
               request({
                 url: endpoints.sendInvite+'force=1',
@@ -281,7 +258,7 @@ class SendInvites extends Component {
                 });
               });
             },
-            (result) => {
+            () => {
               // `cancel` callback
               this.setState({
                 isLoading: false,
@@ -313,6 +290,4 @@ SendInvites.propTypes = {
 export default
 compose(
     withStyles(styles)
-)
-(SendInvites);
-
+)(SendInvites);

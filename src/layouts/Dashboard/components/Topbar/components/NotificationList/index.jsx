@@ -1,40 +1,26 @@
-import React, { Component, Fragment } from 'react';
-import { Link } from 'react-router-dom';
-
+import React, {Component, Fragment} from 'react';
+import {Link} from 'react-router-dom';
 // Externals
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-
 // Material helpers
-import { withStyles } from '@material-ui/core';
-
 // Material components
-import {
-  Button,
-  Divider,
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
-  Typography
-} from '@material-ui/core';
-
+import {Divider, List, ListItem, ListItemIcon, ListItemText, Typography, withStyles} from '@material-ui/core';
 // Material icons
 import {
   ArrowForwardIos as ArrowForwardIosIcon,
+  Code as CodeIcon,
+  InsertChartOutlined as InsertChartIcon,
   Payment as PaymentIcon,
   PeopleOutlined as PeopleIcon,
-  Code as CodeIcon,
   Store as StoreIcon
 } from '@material-ui/icons';
-import { InsertChartOutlined as InsertChartIcon } from '@material-ui/icons';
-import {getPreviousMonitorTasks} from 'services/monitoringJob';
-
 // Component styles
 import styles from './styles';
 import LinearProgress from "@material-ui/core/LinearProgress";
 import compose from "recompose/compose";
 import {connect} from "react-redux";
+
 const icons = {
   order: {
     icon: <PaymentIcon />,

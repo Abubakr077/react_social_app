@@ -1,16 +1,9 @@
-import React, {Component, useState } from "react";
+import React, {Component} from "react";
 import DateFnsUtils from "@date-io/date-fns"; // choose your lib
-import {
-  DatePicker,
-  TimePicker,
-  KeyboardDatePicker,
-  MuiPickersUtilsProvider,
-} from "@material-ui/pickers";
+import {KeyboardDatePicker, MuiPickersUtilsProvider,} from "@material-ui/pickers";
 import moment from 'moment'
+
 class DatePickerInline extends Component {
-  constructor(props) {
-    super(props);
-  }
   state = {
     selectedDate : new Date()
   }

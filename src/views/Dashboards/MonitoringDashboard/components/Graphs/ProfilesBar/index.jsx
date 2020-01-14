@@ -1,10 +1,7 @@
-import React, {Component, PureComponent} from 'react';
-import {
-    BarChart, Bar, Brush, ReferenceLine, XAxis, YAxis, CartesianGrid, Tooltip, Legend, LineChart,
-} from 'recharts';
+import React, {Component} from 'react';
+import {Bar, BarChart, Brush, Legend, Tooltip, XAxis, YAxis,} from 'recharts';
 
 import ResponsiveContainer from "recharts/lib/component/ResponsiveContainer";
-
 
 
 export default class ProfileBar extends Component {

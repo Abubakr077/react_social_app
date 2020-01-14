@@ -1,5 +1,6 @@
 import * as color from "common/colors";
-import { green } from '@material-ui/core/colors';
+import {green} from '@material-ui/core/colors';
+
 export default theme => ({
   root: {},
   portletContent: {

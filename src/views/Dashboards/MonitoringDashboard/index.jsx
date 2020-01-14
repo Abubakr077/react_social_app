@@ -1,38 +1,15 @@
-import React, {Component,PureComponent} from 'react';
-import {
-    LineChart,
-    AreaChart,
-    Area,
-    Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
-    PieChart, Pie, Sector, Cell,
-} from 'recharts';
+import React, {Component} from 'react';
 // Externals
 import PropTypes from 'prop-types';
-
 // Material helpers
-import {withStyles} from '@material-ui/core';
-
 // Material components
-import {
-    Grid
-} from '@material-ui/core';
-
+import {Grid, withStyles} from '@material-ui/core';
 // Shared layouts
-import {
-    Dashboard as DashboardLayout
-
-} from 'layouts';
-
+import {Dashboard as DashboardLayout} from 'layouts';
 // Custom components
-import {
-    TrendsTable,
-    MonitorUsersTable,
-    MonitoringJobsTable,
-    WordClouds
-} from './components';
+import {MonitoringJobsTable} from './components';
 
 import {connect} from 'react-redux';
-import {lookupProject} from 'services/project';
 // Component styles
 const styles = theme => ({
     root: {
@@ -97,7 +74,7 @@ class Dashboard extends Component {
 
 }
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state) => {
     return {
         user: state.user,
         authenticate: state.authenticate,

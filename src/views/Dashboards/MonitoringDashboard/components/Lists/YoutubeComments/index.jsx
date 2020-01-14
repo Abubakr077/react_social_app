@@ -3,80 +3,26 @@ import React, {Component} from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 // Material helpers
-import {
-    Grid,
-    FormControlLabel,
-    withStyles, CircularProgress
-} from '@material-ui/core';
+import {CircularProgress, FormControlLabel, Grid, withStyles} from '@material-ui/core';
 import Checkbox from '@material-ui/core/Checkbox';
 import {
-    ArrowDropDown as ArrowDropDownIcon,
-    ArrowRight as ArrowRightIcon,
-    TurnedIn as TurnedInIcon,
+    Reply as ChatBubbleOutlineOutlinedIcon,
     ThumbUp as FavoriteBorderOutlinedIcon,
-    RepeatOutlined as RepeatOutlinedIcon,
-    Reply as ChatBubbleOutlineOutlinedIcon, Input,
-    FilterListOutlined as FilterListOutlinedIcon
-
+    TurnedIn as TurnedInIcon,
 } from '@material-ui/icons';
-import {
-    Dashboard as DashboardLayout
-
-} from 'layouts';
+import {Dashboard as DashboardLayout} from 'layouts';
 // Component styles
 import styles from './styles';
-import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import Divider from '@material-ui/core/Divider';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
 // Shared components
-import {
-    Portlet,
-    PortletHeader,
-    PortletFooter,
-    PortletToolbar,
-    PortletContent
-} from 'components';
+import {Portlet, PortletContent, PortletHeader} from 'components';
 import request from 'helpers/request.js';
 import * as endpoints from 'constants/endpoints.json';
 
-// local json
-import totalPositiveInfoTweets
-    from '../../JobAnalysis/data/info/100_processed_total_positive_TWITTER_USER_POST_2019-09-19.json';
-import totalNegativeInfoTweets
-    from '../../JobAnalysis/data/info/100_processed_total_negative_TWITTER_USER_POST_2019-09-19.json';
-import totalTwitterTweets from
-        '../../JobAnalysis/data/info/100_processed_date_total_TWITTER_USER_POST_2019-09-19';
-import positiveLineTweets from
-        '../../JobAnalysis/data/info/100_processed_date_positive_TWITTER_USER_POST_2019-09-19.json';
-import negativeLineTweets from
-        '../../JobAnalysis/data/info/100_processed_date_negative_TWITTER_USER_POST_2019-09-19.json';
-import totalPositiveTrendsTweets
-    from '../../JobAnalysis/data/trends/100_processed_total_positive_TWITTER_USER_POST_2019-09-19.json';
-import totalNegativeTrendsTweets
-    from '../../JobAnalysis/data/trends/100_processed_total_negative_TWITTER_USER_POST_2019-09-19.json';
-import totalTwitterTrendTweets from
-        '../../JobAnalysis/data/trends/100_processed_date_total_TWITTER_USER_POST_2019-09-19.json';
-import positiveLineTrendTweets from
-        '../../JobAnalysis/data/trends/100_processed_date_positive_TWITTER_USER_POST_2019-09-19.json';
-import negativeLineTrendTweets from
-        '../../JobAnalysis/data/trends/100_processed_date_negative_TWITTER_USER_POST_2019-09-19.json';
-import assocTrendTweets from
-        '../../JobAnalysis/data/trends/100_processed_assoc_TWITTER_USER_POST_2019-09-19.json';
-import assocInfoTweets from
-        '../../JobAnalysis/data/info/100_processed_assoc_TWITTER_USER_POST_2019-09-19.json';
-import FormControl from "@material-ui/core/FormControl";
-import InputLabel from "@material-ui/core/InputLabel";
-import Select from "@material-ui/core/Select";
-import Chip from "@material-ui/core/Chip";
-import MenuItem from "@material-ui/core/MenuItem";
-import useTheme from "@material-ui/core/styles/useTheme";
-import FormLabel from "@material-ui/core/FormLabel";
-import FormGroup from "@material-ui/core/FormGroup";
-import FormHelperText from "@material-ui/core/FormHelperText";
 import {toast} from "react-toastify";
 import {Message, optionsError} from "../../../../../../constants/constants";
 import NoRecords from "../../../../../NoRecords";
@@ -197,9 +143,9 @@ class YoutubeComments extends Component {
             const recursive = () => {
                 setTimeout(() => {
                     let hasMore = this.state.data.length + 1 < prevState.data.length;
-                    this.setState((prev, props) => ({
+                    this.setState({
                         data: prevState.data.slice(0, prevState.data.length + 1)
-                    }));
+                    });
                     if (hasMore) recursive();
                 }, 0);
             }
@@ -328,7 +274,7 @@ class YoutubeComments extends Component {
                                                                                         color="primary"
                                                                                     />
                                                                                 }
-                                                                                label="is Replay"
+                                                                                label="is Reply"
                                                                                 labelPlacement="end"
                                                                             />
                                                                             <Typography

@@ -1,6 +1,7 @@
 {
   "name": "nccs-social-media",
   "version": "0.2.0",
+  "email": "bakrafzal0332@gmail.com",
   "private": true,
   "scripts": {
     "start": "react-scripts start",

@@ -1,37 +1,20 @@
-import React, {Component, useCallback, useState} from 'react';
-import randomColor from 'randomcolor';
+import React, {Component} from 'react';
 // Externals
 import PropTypes from 'prop-types';
-
-
-
 // Material helpers
-import {
-    Typography,
-    withStyles
-} from '@material-ui/core';
-
-
+import {Typography, withStyles} from '@material-ui/core';
 // Shared components
-import {
-  Portlet,
-  PortletHeader,
-  PortletLabel,
-    PortletContent
-} from 'components';
-
+import {PortletHeader} from 'components';
 // Component styles
 import styles from './styles';
-
 // Shared Resources
 import compose from "recompose/compose";
 import {withRouter} from "react-router-dom";
-import {select} from "d3-selection";
-
 //network graph
-import {ForceGraph3D,ForceGraph2D} from 'react-force-graph';
+import {ForceGraph2D} from 'react-force-graph';
 // import data from './data/miserables.json';
 import data from './data/WITTER_TREND_HATEPOOL_NETWORK_2019-10-30';
+
 const IMAGE_SIZE = 24;
 const FORCE_LINK_DISTANCE = IMAGE_SIZE * 4;
 

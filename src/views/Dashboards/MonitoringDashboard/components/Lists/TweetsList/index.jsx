@@ -3,24 +3,16 @@ import React, {Component} from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 // Material helpers
-import {
-    Grid,
-    FormControlLabel,
-    withStyles, CircularProgress
-} from '@material-ui/core';
+import {CircularProgress, FormControlLabel, Grid, withStyles} from '@material-ui/core';
 import Checkbox from '@material-ui/core/Checkbox';
 import {
-    TurnedIn as TurnedInIcon,
+    ChatBubbleOutlineOutlined as ChatBubbleOutlineOutlinedIcon,
     FavoriteBorderOutlined as FavoriteBorderOutlinedIcon,
+    FilterListOutlined as FilterListOutlinedIcon,
     RepeatOutlined as RepeatOutlinedIcon,
-    ChatBubbleOutlineOutlined as ChatBubbleOutlineOutlinedIcon, Input,
-    FilterListOutlined as FilterListOutlinedIcon
-
+    TurnedIn as TurnedInIcon
 } from '@material-ui/icons';
-import {
-    Dashboard as DashboardLayout
-
-} from 'layouts';
+import {Dashboard as DashboardLayout} from 'layouts';
 // Component styles
 import styles from './styles';
 import ListItem from '@material-ui/core/ListItem';
@@ -29,18 +21,9 @@ import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
 // Shared components
-import {
-    Portlet,
-    PortletHeader,
-    PortletFooter,
-    PortletToolbar,
-    PortletContent
-} from 'components';
+import {Portlet, PortletContent, PortletHeader, PortletToolbar} from 'components';
 import request from 'helpers/request.js';
 import * as endpoints from 'constants/endpoints.json';
-
-// local json
-
 import FormControl from "@material-ui/core/FormControl";
 import InputLabel from "@material-ui/core/InputLabel";
 import Select from "@material-ui/core/Select";
@@ -50,6 +33,8 @@ import FormHelperText from "@material-ui/core/FormHelperText";
 import {toast} from "react-toastify";
 import {Message, optionsError} from "../../../../../../constants/constants";
 import NoRecords from "../../../../../NoRecords";
+
+// local json
 
 
 class TweetsList extends Component {
@@ -309,7 +294,7 @@ class TweetsList extends Component {
                                                                                         color="primary"
                                                                                     />
                                                                                 }
-                                                                                label="is Replay"
+                                                                                label="is Reply"
                                                                                 labelPlacement="end"
                                                                             />
                                                                             <FormControlLabel
@@ -351,6 +336,10 @@ class TweetsList extends Component {
 
 
     handleChange(filter) {
+
+        this.setState({
+            isLoading: true
+        });
         if (!filter.checked) {
             if (filter.type === 'nbr_reply') {
                 this.state.data = this.state.data.sort((a, b) => {
@@ -375,7 +364,8 @@ class TweetsList extends Component {
         this.setState({
             filters: this.state.filters.map(el => (el.id === filter.id ?
                 Object.assign({}, el, {checked: !el.checked})
-                : el))
+                : el)),
+            isLoading: false
         });
     }
 }

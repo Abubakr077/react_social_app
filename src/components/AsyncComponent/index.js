@@ -1,4 +1,5 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
+
 export default function asyncComponent(getComponent) {
     class AsyncComponent extends Component {
         static Component = null;

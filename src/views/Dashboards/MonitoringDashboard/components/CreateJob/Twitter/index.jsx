@@ -17,8 +17,6 @@ import DatePickerInline from '../components/DatePicker'
 import GoogleMap from '../components/GoogleMap';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
-import {Paper as Paper1} from 'components';
-
 // Component styles
 import styles from './style';
 import request from 'helpers/request.js';

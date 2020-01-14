@@ -5,11 +5,6 @@ import {Message, optionsError, optionsSuccess} from "../../constants/constants";
 import React from "react";
 import Request from 'helpers/polling/Request.js';
 
-function lookupJob(id) {
-  this.jobs = localStorage.getItem('jobs');
-  return this.jobs.find(job => job.id === id);
-}
-
 export async function getPreviousMonitorTasks(thisObj,id) {
   thisObj.setState({
     taskId: id,
