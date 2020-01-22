@@ -1,16 +1,16 @@
-import React, {Component, Fragment} from 'react';
-import {Link} from 'react-router-dom';
+import React, { Component, Fragment } from 'react';
+import { Link } from 'react-router-dom';
 // Externals
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 // Material helpers
 // Material components
-import {Button, Divider, List, ListItem, ListItemText, Typography, withStyles} from '@material-ui/core';
+import { Button, Divider, List, ListItem, ListItemText, Typography, withStyles } from '@material-ui/core';
 // Material icons
-import {ArrowForwardIos as ArrowForwardIosIcon} from '@material-ui/icons';
+import { ArrowForwardIos as ArrowForwardIosIcon } from '@material-ui/icons';
 // Component styles
 import styles from './styles';
-import Tooltip from "@material-ui/core/Tooltip";
+import Tooltip from '@material-ui/core/Tooltip';
 
 
 class ProjectsList extends Component {
@@ -22,40 +22,40 @@ class ProjectsList extends Component {
 
     return (
       <div className={rootClassName}>
-        {projects  ? (
+        {projects ? (
           <Fragment>
             <div className={classes.content}>
               <List component="div">
                 {projects.map(membership => (
                   <Link
                     key={membership.project.id}
-                    onClick={()=>{
-                      window.location.reload()
+                    onClick={() => {
+                      window.location.reload();
                     }}
                     to={
-                    {
-                      pathname: `/dashboard/project`,
-                      state: {
-                      project_id: membership.project.id
-                    }
-                    }
+                      {
+                        pathname: `/dashboard/project`,
+                        state: {
+                          project_id: membership.project.id
+                        }
+                      }
                     }
                     // target="_blank"
                   >
                     <Tooltip title="Click to load" placement="left">
-                    <ListItem
-                      className={classes.listItem}
-                      component="div"
-                      onClick={()=>this.onSelectItem(membership)}
-                    >
-                      <ListItemText
-                        classes={{ secondary: classes.listItemTextSecondary }}
-                        primary={membership.project.name}
-                      />
-                      <ArrowForwardIosIcon className={classes.arrowForward} />
-                    </ListItem>
+                      <ListItem
+                        className={classes.listItem}
+                        component="div"
+                        onClick={() => this.onSelectItem(membership)}
+                      >
+                        <ListItemText
+                          classes={{ secondary: classes.listItemTextSecondary }}
+                          primary={membership.project.name}
+                        />
+                        <ArrowForwardIosIcon className={classes.arrowForward}/>
+                      </ListItem>
                     </Tooltip>
-                    <Divider />
+                    <Divider/>
                   </Link>
                 ))}
               </List>
@@ -91,8 +91,8 @@ class ProjectsList extends Component {
   onSelectItem(membership) {
     console.log('here');
     console.log(membership);
-    localStorage.setItem('project_id',membership.project.id);
-    localStorage.setItem('project',JSON.stringify(membership));
+    localStorage.setItem('project_id', membership.project.id);
+    localStorage.setItem('project', JSON.stringify(membership));
     return true;
   }
 }

@@ -3,9 +3,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 // Material helpers
-import {withStyles} from '@material-ui/core';
+import { withStyles } from '@material-ui/core';
 // Material components
-import {Apps as AppsIcon, List as ListIcon} from '@material-ui/icons';
+import { Apps as AppsIcon, List as ListIcon } from '@material-ui/icons';
 // Component styles
 import styles from './styles';
 
@@ -23,9 +23,9 @@ const DisplayMode = props => {
         })}
         onClick={onChange}
       >
-        <AppsIcon className={classes.displayIcon} />
+        <AppsIcon className={classes.displayIcon}/>
       </span>
-      <span className={classes.divider} />
+      <span className={classes.divider}/>
       <span
         className={classNames({
           [classes.option]: true,
@@ -33,7 +33,7 @@ const DisplayMode = props => {
         })}
         onClick={onChange}
       >
-        <ListIcon className={classes.displayIcon} />
+        <ListIcon className={classes.displayIcon}/>
       </span>
     </div>
   );
@@ -48,7 +48,8 @@ DisplayMode.propTypes = {
 
 DisplayMode.defaultProps = {
   mode: 'grid',
-  onChange: () => {}
+  onChange: () => {
+  }
 };
 
 export default withStyles(styles)(DisplayMode);

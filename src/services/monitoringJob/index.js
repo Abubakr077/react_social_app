@@ -1,14 +1,14 @@
 import request from 'helpers/request.js';
 import * as endpoints from 'constants/endpoints.json';
-import {toast} from "react-toastify";
-import {Message, optionsError, optionsSuccess} from "../../constants/constants";
-import React from "react";
+import { toast } from 'react-toastify';
+import { Message, optionsError, optionsSuccess } from '../../constants/constants';
+import React from 'react';
 import Request from 'helpers/polling/Request.js';
 
-export async function getPreviousMonitorTasks(thisObj,id) {
+export async function getPreviousMonitorTasks(thisObj, id) {
   thisObj.setState({
     taskId: id,
-    isLoading: true,
+    isLoading: true
   });
   try {
 
@@ -21,10 +21,10 @@ export async function getPreviousMonitorTasks(thisObj,id) {
         project_id: thisObj.project_id
       }
     }).then((res) => {
-        thisObj.setState({
-          jobTasks: res,
-          isLoading: false
-        })
+      thisObj.setState({
+        jobTasks: res,
+        isLoading: false
+      });
     });
   } catch (error) {
     console.log(error);
@@ -38,7 +38,7 @@ export async function getPreviousMonitorTasks(thisObj,id) {
   }
 }
 
-export async function getJobStatus(thisObj,job,id) {
+export async function getJobStatus(thisObj, job, id) {
   await new Request(endpoints.statusAnalysis + id, {
     headers: {
       user_id: thisObj.user.id,
@@ -48,24 +48,24 @@ export async function getJobStatus(thisObj,job,id) {
   }).poll(20000).get((response) => {
     console.log(response.data);
     // you can cancel polling by returning false
-    const {jobsStatus} = thisObj.state;
+    const { jobsStatus } = thisObj.state;
     thisObj.setState({
       jobsStatus: jobsStatus.map(el => (el.id === job.id ?
-          Object.assign({}, el, {
-            status: response.data.status
-          })
-          : el)),
+        Object.assign({}, el, {
+          status: response.data.status
+        })
+        : el))
     });
     const isCompleted = localStorage.getItem('runningJobId-' + response.data.id);
     if ((isCompleted && isCompleted === 'yes') && response.data.status === 'FINISHED') {
       thisObj.setState({
         jobsStatus: jobsStatus.map(el => (el.id === job.id ?
-            Object.assign({}, el, {
-              loading: false,
-              success: true,
-              status: response.data.status
-            })
-            : el)),
+          Object.assign({}, el, {
+            loading: false,
+            success: true,
+            status: response.data.status
+          })
+          : el))
       });
       toast.success(<Message name={'Task Analytics Completed'}/>, optionsSuccess);
       localStorage.removeItem('runningJobId-' + response.data.id);

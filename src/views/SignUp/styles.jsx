@@ -1,9 +1,9 @@
 export default theme => ({
-  logodiv:{
-    textAlign: 'center',
+  logodiv: {
+    textAlign: 'center'
   },
-  titlelogo:{
-    height: '70px',
+  titlelogo: {
+    height: '70px'
   },
   root: {
     backgroundColor: theme.palette.background.default,
@@ -21,7 +21,7 @@ export default theme => ({
     width: 40,
     height: 40,
     fontSize: '40px',
-    color: theme.palette.common.white,
+    color: theme.palette.common.white
   },
   quote: {
     backgroundColor: theme.palette.common.neutral,
@@ -40,7 +40,7 @@ export default theme => ({
   },
   quoteText: {
     color: theme.palette.common.white,
-    fontSize: '18px',
+    fontSize: '18px'
   },
   name: {
     marginTop: theme.spacing.unit * 3,

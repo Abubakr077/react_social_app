@@ -24,16 +24,16 @@ export default theme => ({
   appBar: {
     transition: theme.transitions.create(['margin', 'width'], {
       easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
+      duration: theme.transitions.duration.leavingScreen
+    })
   },
   appBarShift: {
     width: `calc(100% - ${drawerWidth}px)`,
     marginLeft: drawerWidth,
     transition: theme.transitions.create(['margin', 'width'], {
       easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
+      duration: theme.transitions.duration.enteringScreen
+    })
   },
   appName: {
     display: 'flex',
@@ -43,7 +43,7 @@ export default theme => ({
     marginLeft: 'auto',
     color: theme.palette.common.white
   },
-  projectName:{
+  projectName: {
     color: theme.palette.common.white
   },
   signOutButton: {
@@ -51,7 +51,7 @@ export default theme => ({
     color: theme.palette.common.white
   },
   contextButton: {
-    color: "primary",
+    color: 'primary'
   },
 
   purpleAvatar: {
@@ -59,5 +59,5 @@ export default theme => ({
     backgroundColor: theme.palette.info.main,
     marginLeft: theme.spacing.unit
 
-  },
+  }
 });

@@ -1,14 +1,14 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 // Externals
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 // Material helpers
-import {withStyles} from '@material-ui/core';
+import { withStyles } from '@material-ui/core';
 
-import {Dashboard as DashboardLayout} from 'layouts';
+import { Dashboard as DashboardLayout } from 'layouts';
 // Component styles
 import styles from './styles';
-import {InvitesView} from "./components";
+import { InvitesView } from './components';
 
 
 class Invites extends Component {
@@ -18,13 +18,13 @@ class Invites extends Component {
     const rootClassName = classNames(classes.root, className);
 
     return (
-        <DashboardLayout className={rootClassName}
-                         title="Accept or Reject Invites"
-                         initUser = {true}>
-          <div className={classes.root}>
-              < InvitesView/>
-          </div>
-        </DashboardLayout>
+      <DashboardLayout className={rootClassName}
+                       title="Accept or Reject Invites"
+                       initUser={true}>
+        <div className={classes.root}>
+          < InvitesView/>
+        </div>
+      </DashboardLayout>
     );
   }
 }

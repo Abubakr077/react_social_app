@@ -1,14 +1,14 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 // Externals
 import PropTypes from 'prop-types';
 // Material helpers
-import {withStyles} from '@material-ui/core';
+import { withStyles } from '@material-ui/core';
 
-import {Area, AreaChart, Brush, ResponsiveContainer, Tooltip, XAxis, YAxis,} from 'recharts';
+import { Area, AreaChart, Brush, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 // Component styles
 import styles from './styles';
 // Shared Resources
-import compose from "recompose/compose";
+import compose from 'recompose/compose';
 
 class PNTweetsArea extends Component {
 
@@ -16,20 +16,20 @@ class PNTweetsArea extends Component {
   };
 
   render() {
-    const { classes, className,data, ...rest } = this.props;
+    const { classes, className, data, ...rest } = this.props;
 
     return (
-        <ResponsiveContainer
-            width="100%"
-        >
+      <ResponsiveContainer
+        width="100%"
+      >
         <AreaChart
-            className={classes.item}
-            width={1200}
-            height={300}
-            data={data}
-            margin={{
-              top: 10, right: 30, bottom: 40,
-            }}
+          className={classes.item}
+          width={1200}
+          height={300}
+          data={data}
+          margin={{
+            top: 10, right: 30, bottom: 40
+          }}
         >
           <defs>
             <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
@@ -47,11 +47,13 @@ class PNTweetsArea extends Component {
           </defs>
           {/*<CartesianGrid strokeDasharray="3 3" />*/}
           <XAxis dataKey="date" interval="preserveStartEnd"/>
-          <YAxis />
-          <Tooltip />
-          <Area type="monotone" dataKey="positive" stackId="1" stroke="#45B880"  fillOpacity={1} fill="url(#colorUv)" dot={false}/>
-          <Area type="monotone" dataKey="negative" stackId="2" stroke="#ED4740"  fillOpacity={1} fill="url(#colorPv)" dot={false}/>
-          <Area type="monotone" dataKey="total" stackId="3" stroke="#FFB822"  fillOpacity={0.3}  fill="url(#colorTotal)"
+          <YAxis/>
+          <Tooltip/>
+          <Area type="monotone" dataKey="positive" stackId="1" stroke="#45B880" fillOpacity={1} fill="url(#colorUv)"
+                dot={false}/>
+          <Area type="monotone" dataKey="negative" stackId="2" stroke="#ED4740" fillOpacity={1} fill="url(#colorPv)"
+                dot={false}/>
+          <Area type="monotone" dataKey="total" stackId="3" stroke="#FFB822" fillOpacity={0.3} fill="url(#colorTotal)"
                 activeDot={
                   {
                     r: 8,
@@ -59,12 +61,12 @@ class PNTweetsArea extends Component {
                   }}
           />
           <Brush
-              height={20}
-              dataKey="date"
-              stroke="#0767DB"
+            height={20}
+            dataKey="date"
+            stroke="#0767DB"
           />
         </AreaChart>
-        </ResponsiveContainer>
+      </ResponsiveContainer>
     );
   }
 }
@@ -75,9 +77,8 @@ PNTweetsArea.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default
-compose(
-    withStyles(styles)
+export default compose(
+  withStyles(styles)
 )
 (PNTweetsArea);
 

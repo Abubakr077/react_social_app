@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {Link, withRouter} from 'react-router-dom';
+import React, { Component } from 'react';
+import { Link, withRouter } from 'react-router-dom';
 // Externals
 import PropTypes from 'prop-types';
 import compose from 'recompose/compose';
@@ -18,17 +18,18 @@ import {
   withStyles
 } from '@material-ui/core';
 // Material icons
-import {ArrowBack as ArrowBackIcon, Dvr, Public, Search} from '@material-ui/icons';
+import { ArrowBack as ArrowBackIcon, Dvr, Public, Search } from '@material-ui/icons';
 // Shared utilities
 import validators from 'common/validators';
 // Component styles
 import styles from './styles';
 // Form validation schema
 import schema from './schema';
-import request from "helpers/request";
-import endpoints from "constants/endpoints";
-import {Message, optionsSuccess} from "../../constants/constants";
-import {toast} from 'react-toastify';
+import request from 'helpers/request';
+import endpoints from 'constants/endpoints';
+import { Message, optionsSuccess } from '../../constants/constants';
+import { toast } from 'react-toastify';
+import theme from '../../theme';
 
 validate.validators.checked = validators.checked;
 
@@ -92,40 +93,41 @@ class SignUp extends Component {
       const { values } = this.state;
 
       this.setState({
-        isLoading: true,
+        isLoading: true
       });
 
       await request({
-        url:    endpoints.signUp,
+        url: endpoints.signUp,
         method: 'POST',
-        data:   {
+        data: {
           name: values.name,
           email: values.email,
           password: values.password
         }
-      }).then(()=>{
-        this.setState({isLoading: false,
+      }).then(() => {
+        this.setState({
+          isLoading: false,
           isSignedUp: true
         });
-        toast.success(<Message name={'Sign up Successfully. Login to continue!'}/>,optionsSuccess);
+        toast.success(<Message name={'Sign up Successfully. Login to continue!'}/>, optionsSuccess);
       });
     } catch (error) {
       this.setState({
         isLoading: false,
         serviceError: error.data,
-        submitError: true,
+        submitError: true
       });
     }
   };
-  handleSignIn =() => {
-      const { history } = this.props;
+  handleSignIn = () => {
+    const { history } = this.props;
     history.push('/login');
   };
 
   _handleKeyDown = async (e) => {
-    if (e.key === 'Enter' ) {
+    if (e.key === 'Enter') {
       console.log('entered');
-      if (this.state.isValid){
+      if (this.state.isValid) {
         console.log('signed in');
         await this.handleSignUp();
       }
@@ -171,7 +173,7 @@ class SignUp extends Component {
                   <tr>
                     <td>
                       <IconButton className={classes.largeButton} aria-label="Delete">
-                        <Search className={classes.frontIcons} />
+                        <Search className={classes.frontIcons}/>
                       </IconButton>
                     </td>
                     <td>
@@ -182,14 +184,14 @@ class SignUp extends Component {
                       >
 
                         Monitor profiles, channels, pages, blogs, trends and hashtag simultaneously.
-                </Typography>
+                      </Typography>
                     </td>
                   </tr>
-                  <br />
+                  <br/>
                   <tr>
                     <td>
-                      <IconButton className={classes.largeButton} >
-                        <Dvr className={classes.frontIcons} />
+                      <IconButton className={classes.largeButton}>
+                        <Dvr className={classes.frontIcons}/>
                       </IconButton>
                     </td>
                     <td>
@@ -200,14 +202,14 @@ class SignUp extends Component {
                       >
 
                         Perform visual analytics and generate reports.
-                </Typography>
+                      </Typography>
                     </td>
                   </tr>
-                  <br />
+                  <br/>
                   <tr>
                     <td>
                       <IconButton className={classes.largeButton} aria-label="Delete">
-                        <Public className={classes.frontIcons} />
+                        <Public className={classes.frontIcons}/>
                       </IconButton>
                     </td>
                     <td>
@@ -218,7 +220,7 @@ class SignUp extends Component {
                       >
 
                         Support for Twitter, Facebook, Youtube, and counting....
-                </Typography>
+                      </Typography>
                     </td>
                   </tr>
                 </table>
@@ -228,47 +230,61 @@ class SignUp extends Component {
           </Grid>
           {this.state.isSignedUp ?
             (<Grid
-                className={classes.content}
-                item
-                lg={5}
-                xs={12}
+              className={classes.content}
+              item
+              lg={5}
+              xs={12}
             >
               <div className={classes.content}>
                 <div className={classes.contentHeader}>
                   <IconButton
-                      className={classes.backButton}
-                      onClick={this.handleBack}
+                    className={classes.backButton}
+                    onClick={this.handleBack}
                   >
-                    <ArrowBackIcon />
+                    <ArrowBackIcon/>
                   </IconButton>
                 </div>
                 <div className={classes.contentBody}>
                   <form className={classes.form}>
                     <Typography
+                      color={'primary'}
+                      variant="h1" component="h2"
+                      style={{
+                        display: 'flex',
+                        alignSelf: 'flex-end',
+                        justifyContent: 'center'
+                      }}
                     >
-                      <div className={classes.logodiv}>
-                        <img src="/images/logo.png" className={classes.titlelogo} />
+                      <div>
+                        <span style={{ marginRight: theme.spacing.unit }}>A</span>
+                        <span style={{ marginRight: theme.spacing.unit }}>I</span>
+                        <span style={{ marginRight: theme.spacing.unit }}>R</span>
+                        <span style={{ marginRight: theme.spacing.unit }}>W</span>
+                        <span style={{ marginRight: theme.spacing.unit }}>A</span>
+                        <span style={{ marginRight: theme.spacing.unit }}>T</span>
+                        <span style={{ marginRight: theme.spacing.unit }}>C</span>
+                        <span>H</span>
                       </div>
                     </Typography>
                     <Typography
-                        className={classes.title}
-                        variant="h2"
+                      className={classes.title}
+                      variant="h2"
                     >
                       New Account Created
                     </Typography>
                     <Typography
-                        className={classes.subtitle}
-                        variant="body1"
+                      className={classes.subtitle}
+                      variant="body1"
                     >
                       Your account has been created.Please click below to login.
                     </Typography>
                     <div className={classes.fields}>
                       <Button
-                          className={classes.signUpButton}
-                          color="primary"
-                          onClick={this.handleSignIn}
-                          size="large"
-                          variant="contained"
+                        className={classes.signUpButton}
+                        color="primary"
+                        onClick={this.handleSignIn}
+                        size="large"
+                        variant="contained"
                       >
                         Login Now
                       </Button>
@@ -277,170 +293,184 @@ class SignUp extends Component {
                 </div>
               </div>
             </Grid>) :
-              (<Grid
-                  className={classes.content}
-                  item
-                  lg={5}
-                  xs={12}
-              >
-                <div className={classes.content}>
-                  <div className={classes.contentHeader}>
-                    <IconButton
-                        className={classes.backButton}
-                        onClick={this.handleBack}
-                    >
-                      <ArrowBackIcon />
-                    </IconButton>
-                  </div>
-                  <div className={classes.contentBody}>
-                    <form className={classes.form}>
-                      <Typography
-                      >
-                        <div className={classes.logodiv}>
-                          <img src="/images/logo.png" className={classes.titlelogo} />
-                        </div>
-                      </Typography>
-                      <Typography
-                          className={classes.title}
-                          variant="h2"
-                      >
-                        Create new account
-                      </Typography>
-                      <Typography
-                          className={classes.subtitle}
-                          variant="body1"
-                      >
-                        Use your work email to create new account... it's free.
-                      </Typography>
-                      <div className={classes.fields}>
-                        <TextField
-                            className={classes.textField}
-                            label="Name"
-                            onChange={event =>
-                                this.handleFieldChange('name', event.target.value)
-                            }
-                            value={values.name}
-                            variant="outlined"
-                            onKeyDown={this._handleKeyDown}
-                        />
-                        {showLastNameError && (
-                            <Typography
-                                className={classes.fieldError}
-                                variant="body2"
-                            >
-                              {errors.name[0]}
-                            </Typography>
-                        )}
-                        <TextField
-                            className={classes.textField}
-                            label="Email address"
-                            name="email"
-                            onChange={event =>
-                                this.handleFieldChange('email', event.target.value)
-                            }
-                            value={values.email}
-                            variant="outlined"
-                            onKeyDown={this._handleKeyDown}
-                        />
-                        {showEmailError && (
-                            <Typography
-                                className={classes.fieldError}
-                                variant="body2"
-                            >
-                              {errors.email[0]}
-                            </Typography>
-                        )}
-                        <TextField
-                            className={classes.textField}
-                            label="Password"
-                            onChange={event =>
-                                this.handleFieldChange('password', event.target.value)
-                            }
-                            type="password"
-                            value={values.password}
-                            variant="outlined"
-                            onKeyDown={this._handleKeyDown}
-                        />
-                        {showPasswordError && (
-                            <Typography
-                                className={classes.fieldError}
-                                variant="body2"
-                            >
-                              {errors.password[0]}
-                            </Typography>
-                        )}
-                        <div className={classes.policy}>
-                          <Checkbox
-                              checked={values.policy}
-                              className={classes.policyCheckbox}
-                              color="primary"
-                              name="policy"
-                              onKeyDown={this._handleKeyDown}
-                              onChange={() =>
-                                  this.handleFieldChange('policy', !values.policy)
-                              }
-                          />
-                          <Typography
-                              className={classes.policyText}
-                              variant="body1"
-                          >
-                            I have read the &nbsp;
-                            <Link
-                                className={classes.policyUrl}
-                                to="#"
-                            >
-                              Terms and Conditions
-                            </Link>
-                            .
-                          </Typography>
-                        </div>
-                        {showPolicyError && (
-                            <Typography
-                                className={classes.fieldError}
-                                variant="body2"
-                            >
-                              {errors.policy[0]}
-                            </Typography>
-                        )}
-                      </div>
-                      {submitError && (
-                          <Typography
-                              className={classes.submitError}
-                              variant="subtitle2"
-                          >
-                            {serviceError}
-                          </Typography>
-                      )}
-                      {isLoading ? (
-                          <CircularProgress className={classes.progress} />
-                      ) : (
-                          <Button
-                              className={classes.signUpButton}
-                              color="primary"
-                              disabled={!isValid}
-                              onClick={this.handleSignUp}
-                              size="large"
-                              variant="contained"
-                          >
-                            Sign up now
-                          </Button>
-                      )}
-                      <Typography
-                          className={classes.signIn}
-                          variant="body1"
-                      >
-                        Have an account?{' '}
-                        <Link
-                            className={classes.signInUrl}
-                            to="/login"
-                        >
-                          Sign In
-                        </Link>
-                      </Typography>
-                    </form>
-                  </div>
+            (<Grid
+              className={classes.content}
+              item
+              lg={5}
+              xs={12}
+            >
+              <div className={classes.content}>
+                <div className={classes.contentHeader}>
+                  <IconButton
+                    className={classes.backButton}
+                    onClick={this.handleBack}
+                  >
+                    <ArrowBackIcon/>
+                  </IconButton>
                 </div>
-              </Grid>)
+                <div className={classes.contentBody}>
+                  <form className={classes.form}>
+                    <Typography
+                      color={'primary'}
+                      variant="h1" component="h2"
+                      style={{
+                        display: 'flex',
+                        alignSelf: 'flex-end',
+                        justifyContent: 'center'
+                      }}
+                    >
+                      <div>
+                        <span style={{ marginRight: theme.spacing.unit }}>A</span>
+                        <span style={{ marginRight: theme.spacing.unit }}>I</span>
+                        <span style={{ marginRight: theme.spacing.unit }}>R</span>
+                        <span style={{ marginRight: theme.spacing.unit }}>W</span>
+                        <span style={{ marginRight: theme.spacing.unit }}>A</span>
+                        <span style={{ marginRight: theme.spacing.unit }}>T</span>
+                        <span style={{ marginRight: theme.spacing.unit }}>C</span>
+                        <span>H</span>
+                      </div>
+                    </Typography>
+                    <Typography
+                      className={classes.title}
+                      variant="h2"
+                    >
+                      Create new account
+                    </Typography>
+                    <Typography
+                      className={classes.subtitle}
+                      variant="body1"
+                    >
+                      Use your work email to create new account... it's free.
+                    </Typography>
+                    <div className={classes.fields}>
+                      <TextField
+                        className={classes.textField}
+                        label="Name"
+                        onChange={event =>
+                          this.handleFieldChange('name', event.target.value)
+                        }
+                        value={values.name}
+                        variant="outlined"
+                        onKeyDown={this._handleKeyDown}
+                      />
+                      {showLastNameError && (
+                        <Typography
+                          className={classes.fieldError}
+                          variant="body2"
+                        >
+                          {errors.name[0]}
+                        </Typography>
+                      )}
+                      <TextField
+                        className={classes.textField}
+                        label="Email address"
+                        name="email"
+                        onChange={event =>
+                          this.handleFieldChange('email', event.target.value)
+                        }
+                        value={values.email}
+                        variant="outlined"
+                        onKeyDown={this._handleKeyDown}
+                      />
+                      {showEmailError && (
+                        <Typography
+                          className={classes.fieldError}
+                          variant="body2"
+                        >
+                          {errors.email[0]}
+                        </Typography>
+                      )}
+                      <TextField
+                        className={classes.textField}
+                        label="Password"
+                        onChange={event =>
+                          this.handleFieldChange('password', event.target.value)
+                        }
+                        type="password"
+                        value={values.password}
+                        variant="outlined"
+                        onKeyDown={this._handleKeyDown}
+                      />
+                      {showPasswordError && (
+                        <Typography
+                          className={classes.fieldError}
+                          variant="body2"
+                        >
+                          {errors.password[0]}
+                        </Typography>
+                      )}
+                      <div className={classes.policy}>
+                        <Checkbox
+                          checked={values.policy}
+                          className={classes.policyCheckbox}
+                          color="primary"
+                          name="policy"
+                          onKeyDown={this._handleKeyDown}
+                          onChange={() =>
+                            this.handleFieldChange('policy', !values.policy)
+                          }
+                        />
+                        <Typography
+                          className={classes.policyText}
+                          variant="body1"
+                        >
+                          I have read the &nbsp;
+                          <Link
+                            className={classes.policyUrl}
+                            to="#"
+                          >
+                            Terms and Conditions
+                          </Link>
+                          .
+                        </Typography>
+                      </div>
+                      {showPolicyError && (
+                        <Typography
+                          className={classes.fieldError}
+                          variant="body2"
+                        >
+                          {errors.policy[0]}
+                        </Typography>
+                      )}
+                    </div>
+                    {submitError && (
+                      <Typography
+                        className={classes.submitError}
+                        variant="subtitle2"
+                      >
+                        {serviceError}
+                      </Typography>
+                    )}
+                    {isLoading ? (
+                      <CircularProgress className={classes.progress}/>
+                    ) : (
+                      <Button
+                        className={classes.signUpButton}
+                        color="primary"
+                        disabled={!isValid}
+                        onClick={this.handleSignUp}
+                        size="large"
+                        variant="contained"
+                      >
+                        Sign up now
+                      </Button>
+                    )}
+                    <Typography
+                      className={classes.signIn}
+                      variant="body1"
+                    >
+                      Have an account?{' '}
+                      <Link
+                        className={classes.signInUrl}
+                        to="/login"
+                      >
+                        Sign In
+                      </Link>
+                    </Typography>
+                  </form>
+                </div>
+              </div>
+            </Grid>)
 
           }
 

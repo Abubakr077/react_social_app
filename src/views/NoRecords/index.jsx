@@ -1,9 +1,9 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 // Externals
 import PropTypes from 'prop-types';
 // Material helpers
 // Material components
-import {Grid, Typography, withStyles} from '@material-ui/core';
+import { Grid, Typography, withStyles } from '@material-ui/core';
 
 // Component styles
 const styles = theme => ({
@@ -24,7 +24,7 @@ const styles = theme => ({
 
 class NoRecords extends Component {
   render() {
-    const { classes,title,subTitle } = this.props;
+    const { classes, title, subTitle } = this.props;
 
     return (
       <div className={classes.root}>

@@ -4,28 +4,28 @@ export default theme => ({
     padding: theme.spacing.unit * 4,
     display: 'flex',
     flexDirection: 'column',
-    minHeight: '80vh',
+    minHeight: '80vh'
   },
   field: {
     display: 'flex',
-    margin: theme.spacing.unit * 3,
+    margin: theme.spacing.unit * 3
   },
   textField: {
     width: '420px',
     maxWidth: '100%',
     marginRight: theme.spacing.unit * 3
   },
-    selectField: {
-  width: '210px',
-  maxWidth: '100%',
-  marginRight: theme.spacing.unit * 3
-},
+  selectField: {
+    width: '210px',
+    maxWidth: '100%',
+    marginRight: theme.spacing.unit * 3
+  },
   portletFooter: {
-  paddingLeft: theme.spacing.unit * 3,
-  paddingRight: theme.spacing.unit * 3,
-  paddingTop: theme.spacing.unit * 2,
-  paddingBottom: theme.spacing.unit * 2
-},
+    paddingLeft: theme.spacing.unit * 3,
+    paddingRight: theme.spacing.unit * 3,
+    paddingTop: theme.spacing.unit * 2,
+    paddingBottom: theme.spacing.unit * 2
+  },
   fieldError: {
     color: theme.palette.danger.main,
     marginBottom: theme.spacing.unit * 2,
@@ -40,5 +40,5 @@ export default theme => ({
     color: theme.palette.danger.main,
     alignText: 'center',
     margin: theme.spacing.unit * 2
-  },
+  }
 });

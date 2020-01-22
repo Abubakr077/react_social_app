@@ -7,8 +7,7 @@ export default theme => ({
     flexDirection: 'column',
     padding: theme.spacing(3)
   },
-  content: {
-  },
+  content: {},
   caption: {
     marginBottom: theme.spacing(1)
   },
@@ -18,15 +17,15 @@ export default theme => ({
     height: 35
   },
   card: {
-  '&:hover': {
-    backgroundColor: theme.palette.primary.light,
-    borderLeft: `4px solid ${theme.palette.primary.main}`,
-    borderRadius: '4px',
-    '& $listItemIcon': {
-      color: theme.palette.primary.main,
-      marginLeft: '-4px'
+    '&:hover': {
+      backgroundColor: theme.palette.primary.light,
+      borderLeft: `4px solid ${theme.palette.primary.main}`,
+      borderRadius: '4px',
+      '& $listItemIcon': {
+        color: theme.palette.primary.main,
+        marginLeft: '-4px'
+      }
     }
-  }
   },
   title: {
     marginBottom: theme.spacing(1.5)

@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react';
 import compose from 'recompose/compose';
-import {GoogleApiWrapper, Map, Marker} from "google-maps-react";
+import { GoogleApiWrapper, Map, Marker } from 'google-maps-react';
 import PropTypes from 'prop-types';
-import {withStyles} from '@material-ui/core';
+import { withStyles } from '@material-ui/core';
 
 const MarkersList = props => {
   const { locations, ...markerProps } = props;
@@ -22,10 +22,10 @@ const MarkersList = props => {
 };
 const styles = theme => ({
   map: {
-      height:"300px",
-      position: "relative",
-      // border:"1px solid blue"
-    }  
+    height: '300px',
+    position: 'relative'
+    // border:"1px solid blue"
+  }
 });
 
 class MapContainer extends React.Component {
@@ -36,11 +36,11 @@ class MapContainer extends React.Component {
     };
     this.handleMapClick = this.handleMapClick.bind(this);
   }
-   
+
   handleMapClick = (ref, map, ev) => {
     const location = ev.latLng;
     console.log(location.lat());
-    const loca = location.lat()+"%2C"+location.lng();
+    const loca = location.lat() + '%2C' + location.lng();
     console.log(loca);
     this.props.getLatLong(loca);
     this.setState(prevState => ({
@@ -59,12 +59,13 @@ class MapContainer extends React.Component {
           initialCenter={this.props.center}
           onClick={this.handleMapClick}
         >
-         <MarkersList locations={this.state.locations} icon="images\logos\pin2.gif" />
+          <MarkersList locations={this.state.locations} icon="images\logos\pin2.gif"/>
         </Map>
       </div>
     );
   }
 }
+
 GoogleApiWrapper.propTypes = {
   className: PropTypes.string,
   classes: PropTypes.object.isRequired
@@ -73,7 +74,7 @@ GoogleApiWrapper.propTypes = {
 export default compose(
   withStyles(styles),
   GoogleApiWrapper({
-    apiKey: "AIzaSyDurZQBXjtSzKeieXwtFeGe-jhZu-HEGQU",
+    apiKey: 'AIzaSyDurZQBXjtSzKeieXwtFeGe-jhZu-HEGQU',
     // apiKey: "AIzaSyBNBrWGhiL26l5t76_vdLlTf-Y1ReGC3Oo",
     // apiKey: "AIzaSyAEnVkzBPbqjkjC3Cpjj_wT0T_RAgyd61w",
     // apiKey: "AIzaSyDA1GLJp4PZVXqFgRgpQQQI3ZdSMb116Fw",

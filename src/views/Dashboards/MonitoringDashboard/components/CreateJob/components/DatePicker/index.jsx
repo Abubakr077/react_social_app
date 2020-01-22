@@ -1,37 +1,39 @@
-import React, {Component} from "react";
-import DateFnsUtils from "@date-io/date-fns"; // choose your lib
-import {KeyboardDatePicker, MuiPickersUtilsProvider,} from "@material-ui/pickers";
-import moment from 'moment'
+import React, { Component } from 'react';
+import DateFnsUtils from '@date-io/date-fns'; // choose your lib
+import { KeyboardDatePicker, MuiPickersUtilsProvider } from '@material-ui/pickers';
+import moment from 'moment';
 
 class DatePickerInline extends Component {
   state = {
-    selectedDate : new Date()
-  }
-  handleDateChange(date){
+    selectedDate: new Date()
+  };
+
+  handleDateChange(date) {
     this.setState({
-      selectedDate:date
+      selectedDate: date
     });
     var dateString = moment(date).format('YYYY-MM-DD');
-    this.props.getDate(dateString)
+    this.props.getDate(dateString);
   }
+
   render() {
-    
+
     return (
       <MuiPickersUtilsProvider utils={DateFnsUtils}>
-      <KeyboardDatePicker
-        autoOk
-        margin="dense"
-        variant="inline"
-        inputVariant="outlined"
-        label={this.props.label}
-        format="MM/dd/yyyy"
-        value={this.state.selectedDate}
-        InputAdornmentProps={{ position: "start" }}
-        onChange={date => this.handleDateChange(date)}
-      />
-    </MuiPickersUtilsProvider>
+        <KeyboardDatePicker
+          autoOk
+          margin="dense"
+          variant="inline"
+          inputVariant="outlined"
+          label={this.props.label}
+          format="MM/dd/yyyy"
+          value={this.state.selectedDate}
+          InputAdornmentProps={{ position: 'start' }}
+          onChange={date => this.handleDateChange(date)}
+        />
+      </MuiPickersUtilsProvider>
     );
   }
 }
 
-export default (DatePickerInline)
+export default (DatePickerInline);

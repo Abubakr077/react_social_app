@@ -14,6 +14,6 @@ export default theme => ({
     cursor: 'pointer'
   },
   deleteButton: {
-    color: color.red,
+    color: color.red
   }
 });

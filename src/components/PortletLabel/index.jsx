@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 // Material helpers
 // Material components
-import {Typography, withStyles} from '@material-ui/core';
+import { Typography, withStyles } from '@material-ui/core';
 
 const styles = theme => ({
   root: {

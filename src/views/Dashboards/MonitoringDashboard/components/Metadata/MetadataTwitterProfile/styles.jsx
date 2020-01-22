@@ -5,7 +5,7 @@ export default theme => ({
   },
   info: {},
   followers: {
-    marginLeft: theme.spacing(4),
+    marginLeft: theme.spacing(4)
   },
   locationText: {
     marginTop: theme.spacing.unit,
@@ -13,12 +13,12 @@ export default theme => ({
     alignSelf: 'center'
   },
   username: {
-  marginTop: theme.spacing.unit,
-  color: theme.palette.text.secondary,
-  marginLeft: theme.spacing.unit,
-},
-  followerHead: {
     marginTop: theme.spacing.unit,
+    color: theme.palette.text.secondary,
+    marginLeft: theme.spacing.unit
+  },
+  followerHead: {
+    marginTop: theme.spacing.unit
   },
   dateText: {
     color: theme.palette.text.secondary

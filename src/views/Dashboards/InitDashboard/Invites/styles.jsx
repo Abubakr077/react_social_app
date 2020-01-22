@@ -1,9 +1,9 @@
 export default theme => ({
   root: {
     padding: theme.spacing(3),
-  display: 'flex',
-  flexDirection: 'column',
-  minHeight: '100vh',
+    display: 'flex',
+    flexDirection: 'column',
+    minHeight: '100vh'
   },
   content: {
     alignItems: 'center',
@@ -47,12 +47,12 @@ export default theme => ({
   newCard: {
     display: 'flex',
     justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'center'
   },
   cardActions: {
     squared: false,
     outlined: true,
     elevation: 1,
-    borderRadius: '8px',
+    borderRadius: '8px'
   }
 });

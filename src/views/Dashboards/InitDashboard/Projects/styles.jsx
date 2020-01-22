@@ -1,6 +1,6 @@
 export default theme => ({
   root: {
-    padding: theme.spacing(3),
+    padding: theme.spacing(3)
   },
   content: {
     alignItems: 'center',
@@ -41,7 +41,7 @@ export default theme => ({
     squared: false,
     outlined: true,
     elevation: 1,
-    borderRadius: '8px',
+    borderRadius: '8px'
   },
 
   portletContent: {
@@ -73,10 +73,10 @@ export default theme => ({
     padding: theme.spacing.unit,
     display: 'flex',
     justifyContent: 'center'
-  }  ,
+  },
   dialogueBody: {
     alignItems: 'center',
-    maxWidth: 'lg',
+    maxWidth: 'lg'
 
   },
   textField: {
@@ -92,5 +92,5 @@ export default theme => ({
   },
   button: {
     minHeight: 200
-  },
+  }
 });

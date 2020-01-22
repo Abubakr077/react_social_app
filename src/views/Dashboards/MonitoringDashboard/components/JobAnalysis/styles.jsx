@@ -4,40 +4,40 @@ export default theme => ({
   },
   item: {
     height: '100%',
-    width: '100%',
+    width: '100%'
   },
   contentBody: {
-    display: 'flex',
+    display: 'flex'
   },
   lineBody: {
     webkitBoxSizing: 'border-box',
     boxSizing: 'border-box',
     height: '300px',
-    width: '65%',
+    width: '65%'
   },
   pieBody: {
     webkitBoxSizing: 'border-box',
     boxSizing: 'border-box',
     height: '300px',
-    width: '35%',
+    width: '35%'
   },
   areaBody: {
     webkitBoxSizing: 'border-box',
     boxSizing: 'border-box',
     height: '300px',
-    width: '100%',
+    width: '100%'
   }
-  ,cloudBody:{
+  , cloudBody: {
     webkitBoxSizing: 'border-box',
     boxSizing: 'border-box',
     height: '300px',
-    width: '100%',
+    width: '100%'
   },
-  cloudBody2:{
+  cloudBody2: {
     webkitBoxSizing: 'border-box',
     boxSizing: 'border-box',
     height: '600px',
-    width: '100%',
+    width: '100%'
   },
   details: {
     display: 'flex'
@@ -58,11 +58,11 @@ export default theme => ({
     flexShrink: 0,
     flexGrow: 0
   },
-    progressWrapper: {
-  padding: theme.spacing.unit,
-  display: 'flex',
-  justifyContent: 'center'
-}, newEntryButton: {
+  progressWrapper: {
+    padding: theme.spacing.unit,
+    display: 'flex',
+    justifyContent: 'center'
+  }, newEntryButton: {
     marginLeft: theme.spacing.unit
   }
 });

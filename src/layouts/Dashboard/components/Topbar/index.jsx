@@ -1,12 +1,12 @@
-import React, {Component, Fragment} from 'react';
-import {withRouter} from 'react-router-dom';
+import React, { Component, Fragment } from 'react';
+import { withRouter } from 'react-router-dom';
 // Externals
 import classNames from 'classnames';
 import compose from 'recompose/compose';
 import PropTypes from 'prop-types';
 // Material helpers
 // Material components
-import {Badge, IconButton, Popover, Toolbar, Typography, withStyles} from '@material-ui/core';
+import { Badge, IconButton, Popover, Toolbar, Typography, withStyles } from '@material-ui/core';
 // Material icons
 import {
   ChevronLeft as CloseIcon,
@@ -15,9 +15,9 @@ import {
   NotificationsOutlined as NotificationsIcon
 } from '@material-ui/icons';
 // Shared services
-import {getNotifications} from 'services/notification';
+import { getNotifications } from 'services/notification';
 // Custom components
-import {NotificationList, ProjectsList} from './components';
+import { NotificationList, ProjectsList } from './components';
 // Component styles
 import styles from './styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -33,7 +33,7 @@ class Topbar extends Component {
     notificationsLimit: 4,
     notificationsCount: 5,
     notificationsEl: null,
-    projectsEl: null,
+    projectsEl: null
   };
 
   async getNotifications() {
@@ -68,11 +68,11 @@ class Topbar extends Component {
     const { history } = this.props;
 
     localStorage.clear();
-    localStorage.setItem('isAuthenticated', "false");
+    localStorage.setItem('isAuthenticated', 'false');
 
     history.entries = [];
     history.index = -1;
-    history.push("/login");
+    history.push('/login');
   };
 
   handleShowNotifications = event => {
@@ -123,9 +123,9 @@ class Topbar extends Component {
     const showNotifications = Boolean(notificationsEl);
     const showProjects = Boolean(projectsEl);
 
-    if (!initUser){
+    if (!initUser) {
       const project = JSON.parse(localStorage.getItem('project'));
-      if (project){
+      if (project) {
         this.project = project.project;
       }
     }
@@ -133,61 +133,61 @@ class Topbar extends Component {
     return (
       <Fragment>
         <div className={rootClassName}>
-          <CssBaseline />
+          <CssBaseline/>
           <AppBar
-              position="fixed"
-              className={clsx(classes.appBar, {
-                [classes.appBarShift]: isSidebarOpen,
-              })}
+            position="fixed"
+            className={clsx(classes.appBar, {
+              [classes.appBarShift]: isSidebarOpen
+            })}
           >
-          <Toolbar className={classes.toolbar}>
-            <IconButton
-              className={classes.menuButton}
-              onClick={onToggleSidebar}
-              variant="text"
-            >
-              {isSidebarOpen ? <CloseIcon /> : <MenuIcon />}
-            </IconButton>
-            <Typography
-              className={classes.title}
-              variant="h4"
-              noWrap
-            >
-              {title}
-            </Typography>
-            <IconButton
-              className={classes.notificationsButton}
-              onClick={this.handleShowNotifications}
-            >
-              <Badge
-                badgeContent={notificationsCount}
-                color="primary"
-                variant="dot"
+            <Toolbar className={classes.toolbar}>
+              <IconButton
+                className={classes.menuButton}
+                onClick={onToggleSidebar}
+                variant="text"
               >
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
-            {!initUser&& (
-                <IconButton
-                className={classes.signOutButton}
-                onClick={this.handleShowProjects}
-                variant="outlined"
-            >
+                {isSidebarOpen ? <CloseIcon/> : <MenuIcon/>}
+              </IconButton>
               <Typography
-                  variant="button"
-                  className={classes.projectName}
+                className={classes.title}
+                variant="h4"
+                noWrap
               >
-                {this.getAcronyms(this.project.name)}
+                {title}
               </Typography>
-            </IconButton>
-            )}
-            <IconButton
-              className={classes.signOutButton}
-              onClick={this.handleSignOut}
-            >
-              <InputIcon />
-            </IconButton>
-          </Toolbar>
+              <IconButton
+                className={classes.notificationsButton}
+                onClick={this.handleShowNotifications}
+              >
+                <Badge
+                  badgeContent={notificationsCount}
+                  color="primary"
+                  variant="dot"
+                >
+                  <NotificationsIcon/>
+                </Badge>
+              </IconButton>
+              {!initUser && (
+                <IconButton
+                  className={classes.signOutButton}
+                  onClick={this.handleShowProjects}
+                  variant="outlined"
+                >
+                  <Typography
+                    variant="button"
+                    className={classes.projectName}
+                  >
+                    {this.getAcronyms(this.project.name)}
+                  </Typography>
+                </IconButton>
+              )}
+              <IconButton
+                className={classes.signOutButton}
+                onClick={this.handleSignOut}
+              >
+                <InputIcon/>
+              </IconButton>
+            </Toolbar>
           </AppBar>
         </div>
         <Popover
@@ -209,20 +209,20 @@ class Topbar extends Component {
           />
         </Popover>
         <Popover
-            anchorEl={projectsEl}
-            anchorOrigin={{
-              vertical: 'bottom',
-              horizontal: 'center'
-            }}
-            onClose={this.handleCloseProjects}
-            open={showProjects}
-            transformOrigin={{
-              vertical: 'top',
-              horizontal: 'center'
-            }}
+          anchorEl={projectsEl}
+          anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'center'
+          }}
+          onClose={this.handleCloseProjects}
+          open={showProjects}
+          transformOrigin={{
+            vertical: 'top',
+            horizontal: 'center'
+          }}
         >
-            <ProjectsList
-            />
+          <ProjectsList
+          />
         </Popover>
       </Fragment>
     );
@@ -239,7 +239,8 @@ Topbar.propTypes = {
 };
 
 Topbar.defaultProps = {
-  onToggleSidebar: () => {}
+  onToggleSidebar: () => {
+  }
 };
 
 export default compose(

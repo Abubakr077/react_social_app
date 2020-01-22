@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 // Material helpers
 // Material components
-import {Input, withStyles} from '@material-ui/core';
+import { Input, withStyles } from '@material-ui/core';
 // Material icons
-import {Search as SearchIcon} from '@material-ui/icons';
+import { Search as SearchIcon } from '@material-ui/icons';
 // Component styles
 import styles from './styles';
 
@@ -20,7 +20,7 @@ const SearchInput = props => {
       className={rootClassName}
       style={style}
     >
-      <SearchIcon className={classes.icon} />
+      <SearchIcon className={classes.icon}/>
       <Input
         {...rest}
         className={classes.input}
@@ -39,7 +39,8 @@ SearchInput.propTypes = {
 };
 
 SearchInput.defaultProps = {
-  onChange: () => {}
+  onChange: () => {
+  }
 };
 
 export default withStyles(styles)(SearchInput);

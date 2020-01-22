@@ -1,13 +1,13 @@
-import React, {Component, Fragment} from 'react';
+import React, { Component, Fragment } from 'react';
 // Externals
 import classNames from 'classnames';
 import compose from 'recompose/compose';
 import PropTypes from 'prop-types';
 // Material helpers
 // Material components
-import {Drawer, withStyles, withWidth} from '@material-ui/core';
+import { Drawer, withStyles, withWidth } from '@material-ui/core';
 // Custom components
-import {Footer, Sidebar, Topbar} from './components';
+import { Footer, Sidebar, Topbar } from './components';
 // Component styles
 import styles from './styles';
 
@@ -33,7 +33,7 @@ class Dashboard extends Component {
   };
 
   render() {
-    const { classes, width, title,options, children , initUser } = this.props;
+    const { classes, width, title, options, children, initUser } = this.props;
     const { isOpen } = this.state;
 
     const isMobile = ['xs', 'sm', 'md'].includes(width);
@@ -60,9 +60,9 @@ class Dashboard extends Component {
           variant={isMobile ? 'temporary' : 'persistent'}
         >
           <Sidebar
-              className={classes.sidebar}
-              initUser={initUser}
-              options={options}
+            className={classes.sidebar}
+            initUser={initUser}
+            options={options}
           />
         </Drawer>
         <main
@@ -71,7 +71,7 @@ class Dashboard extends Component {
           })}
         >
           {children}
-          <Footer />
+          <Footer/>
         </main>
       </Fragment>
     );

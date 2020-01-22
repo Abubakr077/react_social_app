@@ -1,11 +1,11 @@
 export default {
-  description:{
+  description: {
     presence: { allowEmpty: false, message: 'is required' }
   },
-  username:{
+  username: {
     presence: { allowEmpty: false, message: 'is required' }
   },
-  unit : {
+  unit: {
     presence: { allowEmpty: false, message: 'is required' }
   }
 };

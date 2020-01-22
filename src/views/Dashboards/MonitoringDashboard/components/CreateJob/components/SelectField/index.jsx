@@ -1,18 +1,18 @@
-import React from "react";
-import {makeStyles} from "@material-ui/core/styles";
-import MenuItem from "@material-ui/core/MenuItem";
-import TextField from "@material-ui/core/TextField";
+import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import MenuItem from '@material-ui/core/MenuItem';
+import TextField from '@material-ui/core/TextField';
 
 
 const useStyles = makeStyles(theme => ({
   container: {
-    display: "flex",
-    flexWrap: "wrap"
+    display: 'flex',
+    flexWrap: 'wrap'
   },
   textField: {
     marginLeft: theme.spacing(0),
     marginRight: theme.spacing(0),
-    width:'100%'
+    width: '100%'
   },
   dense: {
     marginTop: theme.spacing(1)
@@ -23,12 +23,10 @@ const useStyles = makeStyles(theme => ({
 }));
 
 
-export default function OutlinedTextFields({getValue,options,label,disabled,value}) {
+export default function OutlinedTextFields({ getValue, options, label, disabled, value }) {
   const classes = useStyles();
-  const [values, setValues] = React.useState({
+  const [values, setValues] = React.useState({});
 
-  });
-  
 
   const handleChange = name => event => {
     console.log(event.target.value);
@@ -41,12 +39,12 @@ export default function OutlinedTextFields({getValue,options,label,disabled,valu
       <TextField
         id="outlined-select-currency"
         select
-        disabled = {(disabled)? "disabled" : ""}
+        disabled={(disabled) ? 'disabled' : ''}
         label={label}
         className={classes.textField}
         // value={(disabled)?"Posts":values.currency}
         value={value}
-        onChange={handleChange("currency")}
+        onChange={handleChange('currency')}
         SelectProps={{
           MenuProps: {
             className: classes.menu

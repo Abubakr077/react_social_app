@@ -1,4 +1,4 @@
-import * as color from "common/colors";
+import * as color from 'common/colors';
 
 export default theme => ({
   root: {},
@@ -18,10 +18,10 @@ export default theme => ({
     justifyContent: 'center',
     width: '320px',
     maxWidth: '100%',
-    marginRight: theme.spacing(4),
+    marginRight: theme.spacing(4)
   },
-  portlet:{
-    margin: theme.spacing(3),
+  portlet: {
+    margin: theme.spacing(3)
   },
   title: {
     marginLeft: theme.spacing(2),
@@ -33,7 +33,7 @@ export default theme => ({
     alignSelf: 'center'
   },
   fields: {
-    display: 'flex',
+    display: 'flex'
   },
   content: {
     alignItems: 'center',
@@ -42,8 +42,8 @@ export default theme => ({
     paddingBottom: theme.spacing(4)
   },
   deleteIcon: {
-  color: color.red
-},
+    color: color.red
+  },
   blueIcon: {
     color: color.blue
   },
@@ -63,8 +63,8 @@ export default theme => ({
   },
   bigAvatar: {
     marginLeft: 10,
-    marginRight:10,
+    marginRight: 10,
     width: 60,
-    height: 60,
-  },
+    height: 60
+  }
 });

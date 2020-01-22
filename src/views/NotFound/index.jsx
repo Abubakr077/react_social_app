@@ -1,9 +1,9 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 // Externals
 import PropTypes from 'prop-types';
 // Material helpers
 // Material components
-import {Grid, Typography, withStyles} from '@material-ui/core';
+import { Grid, Typography, withStyles } from '@material-ui/core';
 
 // Component styles
 const styles = theme => ({

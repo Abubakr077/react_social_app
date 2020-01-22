@@ -1,5 +1,5 @@
-import * as color from "common/colors";
-import {green} from '@material-ui/core/colors';
+import * as color from 'common/colors';
+import { green } from '@material-ui/core/colors';
 
 export default theme => ({
   root: {},
@@ -19,10 +19,10 @@ export default theme => ({
     justifyContent: 'center',
     width: '620px',
     maxWidth: '100%',
-    marginRight: theme.spacing(4),
+    marginRight: theme.spacing(4)
   },
-  portlet:{
-    margin: theme.spacing(3),
+  portlet: {
+    margin: theme.spacing(3)
     // backgroundColor: theme.palette.background.default,
   },
   title: {
@@ -37,7 +37,7 @@ export default theme => ({
     width: '50%'
   },
   fields: {
-    display: 'flex',
+    display: 'flex'
   },
   content: {
     alignItems: 'center',
@@ -46,8 +46,8 @@ export default theme => ({
     paddingBottom: theme.spacing(4)
   },
   deleteIcon: {
-  color: color.red
-},
+    color: color.red
+  },
   blueIcon: {
     color: theme.palette.info.main
   },
@@ -69,7 +69,7 @@ export default theme => ({
     paddingBottom: theme.spacing.unit * 2,
     alignSelf: 'center',
     width: '620px',
-    maxWidth: '100%',
+    maxWidth: '100%'
 
   },
   wrapper: {
@@ -80,16 +80,16 @@ export default theme => ({
   buttonSuccess: {
     backgroundColor: green[500],
     '&:hover': {
-      backgroundColor: green[700],
-    },
+      backgroundColor: green[700]
+    }
   },
   buttonProgress: {
-  color: green[500],
+    color: green[500],
     alignItems: 'center',
-    verticalAlign: 'middle',
+    verticalAlign: 'middle'
 
-},
-  analyticsButton:{
-  alignItems: 'center',
+  },
+  analyticsButton: {
+    alignItems: 'center'
   }
 });

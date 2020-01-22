@@ -8,5 +8,5 @@ export default {
   },
   role: {
     presence: { allowEmpty: false, message: 'is required' }
-  },
+  }
 };

@@ -1,18 +1,18 @@
 export default theme => ({
   root: {
-    padding: theme.spacing.unit * 3,
+    padding: theme.spacing.unit * 3
   },
   content: {
     alignItems: 'center',
     display: 'flex'
   },
-  platformTwitter:{
+  platformTwitter: {
     width: '20%'
   },
-  platformFacebook:{
+  platformFacebook: {
     width: '20%'
   },
-  platformInsta:{
+  platformInsta: {
     width: '20%'
   },
   title: {
@@ -53,13 +53,13 @@ export default theme => ({
   newCard: {
     display: 'flex',
     justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'center'
   },
   cardActions: {
     squared: false,
     outlined: true,
     elevation: 1,
-    borderRadius: '8px',
+    borderRadius: '8px'
   },
   formControl: {
     margin: theme.spacing(3),
@@ -73,7 +73,7 @@ export default theme => ({
     padding: theme.spacing(2),
     textAlign: 'left',
     margin: theme.spacing.unit * 4,
-    marginTop: theme.spacing.unit * 12,
+    marginTop: theme.spacing.unit * 12
 
-  },
+  }
 });

@@ -1,11 +1,11 @@
-import React, {Component, Fragment} from 'react';
-import {Link} from 'react-router-dom';
+import React, { Component, Fragment } from 'react';
+import { Link } from 'react-router-dom';
 // Externals
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 // Material helpers
 // Material components
-import {Divider, List, ListItem, ListItemIcon, ListItemText, Typography, withStyles} from '@material-ui/core';
+import { Divider, List, ListItem, ListItemIcon, ListItemText, Typography, withStyles } from '@material-ui/core';
 // Material icons
 import {
   ArrowForwardIos as ArrowForwardIosIcon,
@@ -17,31 +17,31 @@ import {
 } from '@material-ui/icons';
 // Component styles
 import styles from './styles';
-import LinearProgress from "@material-ui/core/LinearProgress";
-import compose from "recompose/compose";
-import {connect} from "react-redux";
+import LinearProgress from '@material-ui/core/LinearProgress';
+import compose from 'recompose/compose';
+import { connect } from 'react-redux';
 
 const icons = {
   order: {
-    icon: <PaymentIcon />,
+    icon: <PaymentIcon/>,
     color: 'blue'
   },
   user: {
-    icon: <PeopleIcon />,
+    icon: <PeopleIcon/>,
     color: 'red'
   },
   product: {
-    icon: <StoreIcon />,
+    icon: <StoreIcon/>,
     color: 'green'
   },
   feature: {
-    icon: <CodeIcon />,
+    icon: <CodeIcon/>,
     color: 'purple'
   },
   analyticalTask: {
-    icon: <InsertChartIcon />,
+    icon: <InsertChartIcon/>,
     color: 'blue'
-  },
+  }
 };
 
 class NotificationList extends Component {
@@ -58,11 +58,12 @@ class NotificationList extends Component {
     //   getPreviousMonitorTasks(this,this.props.JobTaskId);
     // }
   }
+
   render() {
     const { className, classes, notifications, onSelect } = this.props;
 
     const rootClassName = classNames(classes.root, className);
-    const {jobTasks} = this.state;
+    const { jobTasks } = this.state;
 
     return (
       <div className={rootClassName}>
@@ -100,11 +101,11 @@ class NotificationList extends Component {
                         primary={notification.title}
                         secondary={notification.when + this.state.JobTaskStatus}
                       />
-                      <ArrowForwardIosIcon className={classes.arrowForward} />
+                      <ArrowForwardIosIcon className={classes.arrowForward}/>
                     </ListItem>
                     <LinearProgress
                     />
-                    <Divider />
+                    <Divider/>
                   </Link>
                 ))}
               </List>
@@ -147,16 +148,17 @@ NotificationList.propTypes = {
 
 NotificationList.defaultProps = {
   notifications: [],
-  onSelect: () => {}
+  onSelect: () => {
+  }
 };
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    JobTaskId: state.JobTaskId,
+    JobTaskId: state.JobTaskId
 
-  }
+  };
 };
 export default compose(
-    connect(mapStateToProps),
-    withStyles(styles)
+  connect(mapStateToProps),
+  withStyles(styles)
 )(NotificationList);

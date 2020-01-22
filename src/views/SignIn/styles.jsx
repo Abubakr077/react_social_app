@@ -1,16 +1,15 @@
-
 export default theme => ({
-  logodiv:{
-    textAlign: 'center',
+  logodiv: {
+    textAlign: 'center'
   },
-  titlelogo:{
-    height: '100px',
+  titlelogo: {
+    height: '100px'
   },
   card: {
-    maxWidth: 345,
+    maxWidth: 345
   },
   media: {
-    height: 140,
+    height: 140
   },
   root: {
     backgroundColor: theme.palette.background.default,
@@ -19,7 +18,7 @@ export default theme => ({
   rootpaper: {
     padding: theme.spacing(3, 2),
     background: 'transparent',
-    borderRadius: 20,
+    borderRadius: 20
   },
   grid: {
     height: '100%'
@@ -46,7 +45,7 @@ export default theme => ({
   },
   quoteText: {
     color: theme.palette.common.white,
-    fontSize: '18px',
+    fontSize: '18px'
   },
   name: {
     marginTop: theme.spacing.unit * 3,
@@ -73,7 +72,7 @@ export default theme => ({
     width: 40,
     height: 40,
     fontSize: '40px',
-    color: theme.palette.common.white,
+    color: theme.palette.common.white
   },
   logoImage: {
     marginLeft: theme.spacing.unit * 4
@@ -180,5 +179,5 @@ export default theme => ({
     alignText: 'center',
     marginBottom: theme.spacing.unit,
     marginTop: theme.spacing.unit * 2
-  },
+  }
 });

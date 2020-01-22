@@ -7,7 +7,7 @@ export default theme => ({
     maxWidth: 276,
     paddingTop: theme.spacing(2),
     paddingLeft: theme.spacing(2),
-    marginRight: '300px',
+    marginRight: '300px'
   }
   ,
   squared: {

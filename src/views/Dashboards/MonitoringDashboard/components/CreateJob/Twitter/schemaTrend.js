@@ -1,13 +1,13 @@
 export default {
-  description:{
+  description: {
     presence: { allowEmpty: false, message: 'is required' }
   },
-  hashtag:{
-    presence: { allowEmpty: false, message: 'is required' },
+  hashtag: {
+    presence: { allowEmpty: false, message: 'is required' }
     // match: '[\\^$.|?*+()',
   }
   ,
-  unit : {
+  unit: {
     presence: { allowEmpty: false, message: 'is required' }
   }
 };
