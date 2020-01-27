@@ -17,11 +17,6 @@ import PerfectScrollbar from 'react-perfect-scrollbar';
 // Browser history
 const browserHistory = createBrowserHistory();
 
-// // Configure ChartJS
-// Chart.helpers.extend(Chart.elements.Rectangle.prototype, {
-//   draw: chartjs.draw
-// });
-
 export default class App extends Component {
   render() {
     return (

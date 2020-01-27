@@ -67,7 +67,6 @@
     "material-table": "^1.48.0",
     "mini-css-extract-plugin": "0.5.0",
     "moment": "^2.24.0",
-    "node-sass": "^4.11.0",
     "optimize-css-assets-webpack-plugin": "5.0.1",
     "pnp-webpack-plugin": "1.2.1",
     "postcss-flexbugs-fixes": "4.1.0",
@@ -105,7 +104,6 @@
     "underscore": "^1.9.1",
     "url-loader": "1.1.2",
     "validate.js": "^0.12.0",
-    "webpack": "^4.19.1",
     "webpack-dev-server": "3.2.1",
     "webpack-manifest-plugin": "2.0.4",
     "workbox-webpack-plugin": "4.2.0"
@@ -113,8 +111,10 @@
   "devDependencies": {
     "eslint-plugin-prettier": "^3.0.1",
     "eslint-plugin-react": "^7.12.4",
+    "node-sass": "^4.13.1",
     "prettier-eslint": "^8.8.2",
-    "prettier-eslint-cli": "^4.7.1"
+    "prettier-eslint-cli": "^4.7.1",
+    "webpack": "^4.41.5"
   },
   "jest": {
     "collectCoverageFrom": [
