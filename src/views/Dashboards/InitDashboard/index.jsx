@@ -51,7 +51,7 @@ class Dashboard extends Component {
         title="Please Select Project"
       >
         <div className={classes.root}>
-          <Projects/>
+         <Projects/>
         </div>
       </DashboardLayout>
     );
@@ -59,7 +59,7 @@ class Dashboard extends Component {
 
 }
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state) => {
   return {
     user: state.user,
     authenticate: state.authenticate
@@ -70,7 +70,5 @@ Dashboard.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default connect(mapStateToProps)
-(withStyles(styles)
-(Dashboard));
+export default connect(mapStateToProps)(withStyles(styles)(Dashboard));
 

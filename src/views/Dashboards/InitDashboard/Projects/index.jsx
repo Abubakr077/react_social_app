@@ -89,7 +89,7 @@ class Projects extends Component {
         });
       }
     }
-  };
+  }
 
   componentWillUnmount() {
     this.signal = false;
@@ -123,10 +123,9 @@ class Projects extends Component {
     }));
   }
 
-  handleCloseSave = async (e) => {
+  handleCloseSave = async () => {
     this.setState({ isLoading: true });
 
-    const { history } = this.props;
     const { values } = this.state;
     const user = JSON.parse(localStorage.getItem('user'));
 
@@ -196,12 +195,13 @@ class Projects extends Component {
                   <Card
                     onClick={this.handleOpen}
                     {...rest}
-                    newCard={true}
+                    newCard
                   >
                     <div className={classes.newCard}>
                       <AddIcon
                         color="primary"
-                        className={classes.extendedIcon}/>
+                        className={classes.extendedIcon}
+                      />
                       <Typography
                         variant="button"
                         color="primary"
@@ -249,15 +249,17 @@ class Projects extends Component {
             <Dialog open={this.state.open}
                     onClose={this.handleClose}
                     className={classes.dialogueBody}
-                    fullWidth={true}
+                    fullWidth
             >
               <DialogTitle
-                id="form-dialog-title">Create New Project</DialogTitle>
+                id="form-dialog-title"
+              >Create New Project</DialogTitle>
 
               <form action="/" method="POST" onSubmit={(e) => {
                 e.preventDefault();
                 this.handleCloseSave();
-              }}>
+              }}
+              >
                 {isLoading && (
                   <div className={classes.progressWrapper}>
                     <CircularProgress/>

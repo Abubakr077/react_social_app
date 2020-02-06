@@ -376,8 +376,6 @@ class Twitter extends Component {
 
   render() {
     const { classes, className, ...rest } = this.props;
-    this.isUserInfo = (this.state.post.job_details.target_subtype === 'INFO' && this.state.post.job_details.target_type === 'USER');
-    this.isUserPosts = (this.state.post.job_details.target_subtype === 'POST' && this.state.post.job_details.target_type === 'USER');
     this.isTrendPosts = (this.state.post.job_details.target_subtype === 'POST' && this.state.post.job_details.target_type === 'TREND');
 
     const {
@@ -424,7 +422,8 @@ class Twitter extends Component {
                 <SelectField getValue={this.getTargetType}
                              value={this.state.post.job_details.target_type}
                              options={target} label={'Monitor'}
-                             disabled={false}/>
+                             disabled={false}
+                />
               </Grid>
             </Paper>
           </Grid>
@@ -434,7 +433,8 @@ class Twitter extends Component {
                 <SelectField getValue={this.getTargetSubtype}
                              value={this.state.post.job_details.target_subtype}
                              options={targetType}
-                             label={'Target'} disabled={this.state.isTargerSubtype}/>
+                             label={'Target'} disabled={this.state.isTargerSubtype}
+                />
               </Grid>
             </Paper>
           </Grid>
@@ -558,7 +558,8 @@ class Twitter extends Component {
                       <SelectField getValue={this.inputSchedule}
                                    options={scheduleOptions} label={'Schedule'}
                                    value={this.state.post.schedule}
-                                   disabled={false}/>
+                                   disabled={false}
+                      />
                     </Grid>
                   </Paper>
                 </Grid>
@@ -594,7 +595,8 @@ class Twitter extends Component {
                     <Grid item xs={12}>
                       <SelectField getValue={this.getNumTweets}
                                    value={this.state.post.job_details.crawl_num_tweets}
-                                   options={numTweet} label={'Total Tweets'}/>
+                                   options={numTweet} label={'Total Tweets'}
+                      />
                     </Grid>
                   </Paper>
                 </Grid>
@@ -604,7 +606,8 @@ class Twitter extends Component {
                       <SelectField getValue={this.getLang}
                                    value={this.state.post.job_details.lang}
                                    options={langs}
-                                   label={'Language'}/>
+                                   label={'Language'}
+                      />
                     </Grid>
                   </Paper>
                 </Grid>
@@ -630,7 +633,8 @@ class Twitter extends Component {
                     <Typography variant="h6" className={classes.mapTitle}> SELECT LOCATION:</Typography>
                     <Grid item xs={12}>
                       <GoogleMap
-                        getLatLong={this.getLatLong} center={{ lat: 28.3753, lng: 73.3451 }} zoom={5}/>
+                        getLatLong={this.getLatLong} center={{ lat: 28.3753, lng: 73.3451 }} zoom={5}
+                      />
                     </Grid>
                   </Paper>
                 </Grid>
@@ -671,7 +675,8 @@ class Twitter extends Component {
                 <SelectField getValue={this.inputSchedule} options={scheduleOptions} label={'Schedule'}
                              value={this.state.post.schedule}
 
-                             disabled={false}/>
+                             disabled={false}
+                />
               </Grid>
             </Paper>
           </Grid>

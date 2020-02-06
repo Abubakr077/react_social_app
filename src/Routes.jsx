@@ -67,7 +67,7 @@ const PrivateRoute = ({ component: Component, ...rest }) =>
               pathname: '/login',
               state: { from: props.location }
             }}
-          />
+            />
       )}
     />
   );
@@ -175,6 +175,5 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)
-(Routes);
+export default connect(mapStateToProps)(Routes);
 

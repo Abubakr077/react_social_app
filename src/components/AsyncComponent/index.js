@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import { Typography } from '@material-ui/core';
 export default function asyncComponent(getComponent) {
   class AsyncComponent extends Component {
     static Component = null;
@@ -22,7 +22,11 @@ export default function asyncComponent(getComponent) {
       if (Component) {
         return <Component {...this.props} />;
       }
-      return null;
+      return <Typography
+        variant="h6"
+             >
+        Loading ...
+      </Typography>;
     }
   }
 

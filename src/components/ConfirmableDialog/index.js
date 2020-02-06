@@ -32,7 +32,8 @@ const Index = ({ show, proceed, dismiss, cancel, confirmation, options }) => {
 
       <DialogActions>
         <Button variant="outlined" color={'primary'}
-                onClick={() => cancel('arguments will be passed to the callback')}>NO</Button>
+                onClick={() => cancel('arguments will be passed to the callback')}
+        >NO</Button>
         <Button variant="outlined" color={'primary'} onClick={() => proceed('same as cancel')}>YES</Button>
       </DialogActions>
     </Dialog>
@@ -40,12 +41,12 @@ const Index = ({ show, proceed, dismiss, cancel, confirmation, options }) => {
 };
 
 Index.propTypes = {
-  show: PropTypes.bool,
-  proceed: PropTypes.func,
   cancel: PropTypes.func,
-  dismiss: PropTypes.func,
   confirmation: PropTypes.string,
-  options: PropTypes.object
+  dismiss: PropTypes.func,
+  options: PropTypes.object,
+  proceed: PropTypes.func,
+  show: PropTypes.bool
 };
 
 // confirmable HOC pass props `show`, `dismiss`, `cancel` and `proceed` to your component.
