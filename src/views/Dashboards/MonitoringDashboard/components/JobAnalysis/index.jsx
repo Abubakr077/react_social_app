@@ -54,11 +54,16 @@ class JobAnalysis extends Component {
       }).then((res) => {
         if (this.signal) {
           if (res.results) {
+            console.log('hereeeeeeeeeeeeeeee');
             this.setState({
               isWordFreqEmpty: Boolean(Object.keys(res.results.unique_word_freq).length),
               isPolarityFreqEmpty: Boolean(Object.keys(res.results.polarity_freq).length),
               isPolarityDistEmpty: Boolean(Object.keys(res.results.polarity_dist).length),
-              isAssocEmpty: Boolean(Object.keys(res.results.assoc).length)
+              isAssocEmpty: Boolean(Object.keys(res.results.assoc).length),
+              isLoading: false,
+              data: res
+            },()=>{
+              console.log(this.state.data.results);
             });
           }
           if (res.metadata) {
@@ -66,10 +71,6 @@ class JobAnalysis extends Component {
               isAccountEmpty: Boolean(Object.keys(res.metadata).length)
             });
           }
-          this.setState({
-            isLoading: false,
-            data: res
-          });
         }
       });
     } catch (error) {
@@ -108,7 +109,7 @@ class JobAnalysis extends Component {
     const job = JSON.parse(localStorage.getItem('job'));
     let showAnalytics = !this.state.isLoading && this.state.data;
     if (showAnalytics) {
-      showAnalytics = this.state.data.metadata && this.state.data.results;
+      showAnalytics = this.state.data.metadata || this.state.data.results;
     }
     const title = 'Analysis of ' + job.description;
     return (

@@ -379,11 +379,9 @@ class Twitter extends Component {
     this.isTrendPosts = (this.state.post.job_details.target_subtype === 'POST' && this.state.post.job_details.target_type === 'TREND');
 
     const {
-      isLoading,
       touched,
       errors,
       isValid,
-      values
     } = this.state;
     const showDescriptionError = touched.description && errors.description;
     const showUserNameError = touched.username && errors.username;
