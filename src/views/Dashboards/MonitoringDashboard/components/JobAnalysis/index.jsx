@@ -4,7 +4,6 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 // Material helpers
 import { CircularProgress, Grid, withStyles } from '@material-ui/core';
-
 import { Dashboard as DashboardLayout } from 'layouts';
 // Shared components
 import { Portlet, PortletContent, PortletHeader, PortletLabel, PortletToolbar } from 'components';
@@ -54,7 +53,6 @@ class JobAnalysis extends Component {
       }).then((res) => {
         if (this.signal) {
           if (res.results) {
-            console.log('hereeeeeeeeeeeeeeee');
             this.setState({
               isWordFreqEmpty: Boolean(Object.keys(res.results.unique_word_freq).length),
               isPolarityFreqEmpty: Boolean(Object.keys(res.results.polarity_freq).length),
@@ -62,8 +60,6 @@ class JobAnalysis extends Component {
               isAssocEmpty: Boolean(Object.keys(res.results.assoc).length),
               isLoading: false,
               data: res
-            },()=>{
-              console.log(this.state.data.results);
             });
           }
           if (res.metadata) {
@@ -84,7 +80,6 @@ class JobAnalysis extends Component {
       }
     }
   }
-
 
   componentWillUnmount() {
     this.signal = false;
@@ -115,7 +110,8 @@ class JobAnalysis extends Component {
     return (
       <DashboardLayout className={rootClassName}
                        title={title}
-                       initUser={false}>
+                       initUser={false}
+      >
         {this.state.isLoading ? (
           <div className={classes.progressWrapper}>
             <CircularProgress/>
@@ -172,7 +168,7 @@ class JobAnalysis extends Component {
                             color="primary"
                             size="small"
                             variant="outlined"
-                            disabled={true}
+                            disabled
                             onClick={() => {
                               const { history } = this.props;
                               const url = this.props.match.url;
@@ -227,14 +223,15 @@ class JobAnalysis extends Component {
                   {this.state.isWordFreqEmpty && <Grid
                     item
                     xs={12}
-                  >
+                                                 >
                     <WordClouds cloudOptions={{
                       isWords: true,
                       title: 'Unique Words Frequency',
                       data: this.state.data.results.unique_word_freq,
                       target_type: this.prevState.target_type,
                       type: this.prevState.type
-                    }}/>
+                    }}
+                    />
                   </Grid>}
                 </div>
               )

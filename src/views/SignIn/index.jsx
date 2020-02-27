@@ -20,6 +20,7 @@ import styles from './styles';
 import schema from './schema';
 import theme from '../../theme';
 
+import confirm from 'helpers/confirmation.js';
 
 class SignIn extends Component {
 
@@ -99,7 +100,15 @@ class SignIn extends Component {
         localStorage.setItem('user', JSON.stringify(res));
         this.props.loginUser(res);
 
-        history.push('/dashboard');
+        confirm('UPGRADE NOW! 30 days left of Trail version.').then(
+          (result) => {
+            // `proceed` callback
+            history.push('/dashboard');
+          },
+          (result) => {
+            // `cancel` callback
+          }
+        );
       });
     } catch (error) {
       this.setState({

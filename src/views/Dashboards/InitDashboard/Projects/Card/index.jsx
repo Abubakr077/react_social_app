@@ -54,7 +54,7 @@ class CustomCard extends Component {
         {...rest}
         className={rootClassName}
       >
-        <Button fullWidth={true}
+        <Button fullWidth
                 className={newCard ? classes.newCardButton : classes.button}
                 onClick={!newCard ? projectDetails : null}
         >
@@ -76,7 +76,8 @@ class CustomCard extends Component {
                       // `cancel` callback
                     }
                   );
-                }}>
+                }}
+                >
                   <RemoveIcon/>
                 </IconButton>
               )}
@@ -91,7 +92,8 @@ class CustomCard extends Component {
                       // `cancel` callback
                     }
                   );
-                }}>
+                }}
+                >
                   <DeleteIcon className={classes.deleteIcon}/>
                 </IconButton>
               )}
