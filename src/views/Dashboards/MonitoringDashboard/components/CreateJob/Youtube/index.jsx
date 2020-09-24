@@ -22,6 +22,7 @@ import request from 'helpers/request.js';
 import { toast } from 'react-toastify';
 import { Message, optionsError } from 'constants/constants';
 import endpoints from 'constants/endpoints.json';
+import VideosList from '../../Lists/VideosList';
 
 
 class Youtube extends Component {
@@ -30,6 +31,7 @@ class Youtube extends Component {
     isValid: false,
     submitError: false,
     serviceError: null,
+    showKeywords: false,
     values: {
       video: '',
       channel: '',
@@ -171,7 +173,8 @@ class Youtube extends Component {
       values,
       touched,
       errors,
-      isValid
+      isValid,
+      showKeywords
     } = this.state;
     const showVideoError = touched.video && errors.video;
     const showChannelError = touched.channel && errors.channel;
@@ -180,6 +183,7 @@ class Youtube extends Component {
     const showUnitError = touched.unit && errors.unit;
     this.prevState = this.props.location.state;
 
+    let isKeyword = values.target_type === 'keyword';
 
     return (
       <div className={rootClassName}>
@@ -271,27 +275,31 @@ class Youtube extends Component {
               </div>
             )
             }
-            <div className={classes.descriptionBody}>
-              <TextField
-                onChange={event =>
-                  handleFieldChange(this, 'description', event.target.value, this.schema)
-                }
-                id="outlined-dense"
-                label="Job Description"
-                className={clsx(classes.textField, classes.dense)}
-                margin="dense"
-                variant="outlined"
-                name="description"
-              />
-              {showDescriptionError && (
-                <Typography
-                  className={classes.fieldError}
-                  variant="body2"
-                >
-                  {errors.description[0]}
-                </Typography>
-              )}
-            </div>
+            {
+              !isKeyword && <div className={classes.descriptionBody}>
+                <TextField
+                  onChange={event =>
+                    handleFieldChange(this, 'description', event.target.value, this.schema)
+                  }
+                  id="outlined-dense"
+                  label="Job Description"
+                  className={clsx(classes.textField, classes.dense)}
+                  margin="dense"
+                  variant="outlined"
+                  name="description"
+                />
+                {showDescriptionError && (
+                  <Typography
+                    className={classes.fieldError}
+                    variant="body2"
+                  >
+                    {errors.description[0]}
+                  </Typography>
+                )}
+              </div>
+            }
+
+
             <div className={classes.selectTypeYoutube}>
               <SelectField
                 value={values.target_type}
@@ -303,6 +311,9 @@ class Youtube extends Component {
                     this.schema.video = {};
                     this.schema.channel = {};
                   } else if (value === 'video') {
+                    this.setState({
+                      showKeywords: false
+                    })
                     this.schema.video = {
                       presence: { allowEmpty: false, message: 'is required' },
                       url: {
@@ -313,6 +324,9 @@ class Youtube extends Component {
                     this.schema.keyword = {};
                     this.schema.channel = {};
                   } else {
+                    this.setState({
+                      showKeywords: false
+                    })
                     this.schema.channel = {
                       presence: { allowEmpty: false, message: 'is required' },
                       url: {
@@ -331,37 +345,44 @@ class Youtube extends Component {
               />
             </div>
           </Grid>
-          <Grid item className={classes.keyWordsBody}>
-            <Grid item xs={6} className={classes.schedule}>
-              <SelectField getValue={this.inputSchedule}
-                           options={scheduleOptions} label={'Schedule'}
-                           value={values.schedule}
-              />
+          {
+            !isKeyword && <Grid item className={classes.keyWordsBody}>
+              <Grid item xs={6} className={classes.schedule}>
+                <SelectField getValue={this.inputSchedule}
+                             options={scheduleOptions} label={'Schedule'}
+                             value={values.schedule}
+                />
+              </Grid>
+              <Grid item xs={6} className={classes.schedule}>
+                <TextField
+                  onChange={event =>
+                    handleFieldChange(this, 'unit', event.target.value, this.schema)
+                  }
+                  id="outlined-dense"
+                  label="Schedule Units"
+                  name="unit"
+                  className={clsx(classes.textField, classes.dense)}
+                  margin="dense"
+                  variant="outlined"
+                  disabled={this.state.isScheduleUnit}
+                  value={values.unit}
+                />
+                {showUnitError && (
+                  <Typography
+                    className={classes.fieldError}
+                    variant="body2"
+                  >
+                    {errors.unit[0]}
+                  </Typography>
+                )}
+              </Grid>
             </Grid>
-            <Grid item xs={6} className={classes.schedule}>
-              <TextField
-                onChange={event =>
-                  handleFieldChange(this, 'unit', event.target.value, this.schema)
-                }
-                id="outlined-dense"
-                label="Schedule Units"
-                name="unit"
-                className={clsx(classes.textField, classes.dense)}
-                margin="dense"
-                variant="outlined"
-                disabled={this.state.isScheduleUnit}
-                value={values.unit}
-              />
-              {showUnitError && (
-                <Typography
-                  className={classes.fieldError}
-                  variant="body2"
-                >
-                  {errors.unit[0]}
-                </Typography>
-              )}
+          }
+          { showKeywords &&
+            <Grid  item xs={10}  className={classes.keyWordsBody}>
+              <VideosList/>
             </Grid>
-          </Grid>
+          }
         </PortletContent>
         <PortletFooter>
           <div className={classes.registerJob}>
@@ -373,6 +394,21 @@ class Youtube extends Component {
             >
               Register Job
             </Button>
+            {
+              isKeyword &&         <Button
+                className={classes.searchButton}
+                color="secondary"
+                variant="contained"
+                onClick={()=>
+                  this.setState({
+                    showKeywords: true
+                  })
+                }
+              >
+                Search
+              </Button>
+            }
+
             {isLoading && (<CircularProgress size={30} className={classes.loading}/>)}
           </div>
         </PortletFooter>

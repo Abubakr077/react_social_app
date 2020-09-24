@@ -1,0 +1,52 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/bin/node', '/usr/bin/npm', 'install', '-g', 'degit' ]
+2 info using npm@6.14.4
+3 info using node@v10.19.0
+4 verbose npm-session 1786796771a31aec
+5 silly install loadCurrentTree
+6 silly install readGlobalPackageData
+7 http fetch GET 200 https://registry.npmjs.org/degit 2320ms
+8 http fetch GET 200 https://registry.npmjs.org/degit/-/degit-2.8.0.tgz 2945ms
+9 silly pacote tag manifest for degit@latest fetched in 5283ms
+10 timing stage:loadCurrentTree Completed in 5301ms
+11 silly install loadIdealTree
+12 silly install cloneCurrentTreeToIdealTree
+13 timing stage:loadIdealTree:cloneCurrentTree Completed in 0ms
+14 silly install loadShrinkwrap
+15 timing stage:loadIdealTree:loadShrinkwrap Completed in 2ms
+16 silly install loadAllDepsIntoIdealTree
+17 silly resolveWithNewModule degit@2.8.0 checking installable status
+18 timing stage:loadIdealTree:loadAllDepsIntoIdealTree Completed in 5ms
+19 timing stage:loadIdealTree Completed in 8ms
+20 silly currentTree lib
+21 silly idealTree lib
+21 silly idealTree └── degit@2.8.0
+22 silly install generateActionsToTake
+23 warn checkPermissions Missing write access to /usr/local/lib
+24 timing stage:rollbackFailedOptional Completed in 1ms
+25 timing stage:runTopLevelLifecycles Completed in 5317ms
+26 verbose stack Error: EACCES: permission denied, access '/usr/local/lib'
+27 verbose cwd /home/abubakar/NCCS/react_social_app
+28 verbose Linux 5.4.0-37-generic
+29 verbose argv "/usr/bin/node" "/usr/bin/npm" "install" "-g" "degit"
+30 verbose node v10.19.0
+31 verbose npm  v6.14.4
+32 error code EACCES
+33 error syscall access
+34 error path /usr/local/lib
+35 error errno -13
+36 error Error: EACCES: permission denied, access '/usr/local/lib'
+36 error  { [Error: EACCES: permission denied, access '/usr/local/lib']
+36 error   stack:
+36 error    'Error: EACCES: permission denied, access \'/usr/local/lib\'',
+36 error   errno: -13,
+36 error   code: 'EACCES',
+36 error   syscall: 'access',
+36 error   path: '/usr/local/lib' }
+37 error The operation was rejected by your operating system.
+37 error It is likely you do not have the permissions to access this file as the current user
+37 error
+37 error If you believe this might be a permissions issue, please double-check the
+37 error permissions of the file and its containing directories, or try running
+37 error the command again as root/Administrator.
+38 verbose exit [ -13, true ]

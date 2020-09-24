@@ -1,0 +1,38 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/bin/node', '/usr/bin/npm', 'install' ]
+2 info using npm@6.14.4
+3 info using node@v10.19.0
+4 verbose npm-session 096c2b3ebaebf8ed
+5 silly install runPreinstallTopLevelLifecycles
+6 silly preinstall nccs-social-media@0.2.0
+7 info lifecycle nccs-social-media@0.2.0~preinstall: nccs-social-media@0.2.0
+8 silly install loadCurrentTree
+9 silly install readLocalPackageData
+10 timing stage:loadCurrentTree Completed in 25ms
+11 silly install loadIdealTree
+12 silly install cloneCurrentTreeToIdealTree
+13 timing stage:loadIdealTree:cloneCurrentTree Completed in 0ms
+14 silly install loadShrinkwrap
+15 timing stage:loadIdealTree:loadShrinkwrap Completed in 1669ms
+16 silly install loadAllDepsIntoIdealTree
+17 warn registry Unexpected warning for https://registry.npmjs.org/: Miscellaneous Warning EACCES: EACCES: permission denied, open '/home/abubakar/NCCS/react_social_app/C:tmpnodejsnpm-cache/_cacache/tmp/5304804d'
+18 warn registry Using stale data from https://registry.npmjs.org/ due to a request error during revalidation.
+19 http fetch GET 200 https://registry.npmjs.org/d3-selection 459ms (from cache)
+20 silly pacote tag manifest for d3-selection@latest fetched in 468ms
+21 verbose stack Error: EACCES: permission denied, open '/home/abubakar/NCCS/react_social_app/C:tmpnodejsnpm-cache/_cacache/tmp/9e14047f'
+22 verbose cwd /home/abubakar/NCCS/react_social_app
+23 verbose Linux 5.4.0-37-generic
+24 verbose argv "/usr/bin/node" "/usr/bin/npm" "install"
+25 verbose node v10.19.0
+26 verbose npm  v6.14.4
+27 error code EACCES
+28 error syscall open
+29 error path /home/abubakar/NCCS/react_social_app/C:tmpnodejsnpm-cache/_cacache/tmp/9e14047f
+30 error errno -13
+31 verbose Error: EACCES: permission denied, open '/home/abubakar/NCCS/react_social_app/C:tmpnodejsnpm-cache/_cacache/tmp/9e14047f'
+32 error Your cache folder contains root-owned files, due to a bug in
+32 error previous versions of npm which has since been addressed.
+32 error
+32 error To permanently fix this problem, please run:
+32 error   sudo chown -R 1000:1000 "/home/abubakar/NCCS/react_social_app/C:tmpnodejsnpm-cache"
+33 verbose exit [ -13, true ]

@@ -32,6 +32,7 @@
     "@svgr/webpack": "4.1.0",
     "@typescript-eslint/eslint-plugin": "1.6.0",
     "@typescript-eslint/parser": "1.6.0",
+    "aframe": "^1.0.4",
     "axios": "^0.19.0",
     "babel-eslint": "10.0.3",
     "babel-loader": "^8.0.4",

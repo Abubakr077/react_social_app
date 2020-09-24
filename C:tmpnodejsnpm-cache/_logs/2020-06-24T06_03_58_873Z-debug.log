@@ -1,0 +1,2416 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/bin/node', '/usr/local/bin/npm', 'install' ]
+2 info using npm@6.14.5
+3 info using node@v10.19.0
+4 verbose npm-session fe7196176c28435e
+5 silly install runPreinstallTopLevelLifecycles
+6 silly preinstall nccs-social-media@0.2.0
+7 info lifecycle nccs-social-media@0.2.0~preinstall: nccs-social-media@0.2.0
+8 silly install loadCurrentTree
+9 silly install readLocalPackageData
+10 timing stage:loadCurrentTree Completed in 19ms
+11 silly install loadIdealTree
+12 silly install cloneCurrentTreeToIdealTree
+13 timing stage:loadIdealTree:cloneCurrentTree Completed in 1ms
+14 silly install loadShrinkwrap
+15 timing stage:loadIdealTree:loadShrinkwrap Completed in 1637ms
+16 silly install loadAllDepsIntoIdealTree
+17 http fetch GET 304 https://registry.npmjs.org/d3-selection 12739ms (from cache)
+18 silly pacote tag manifest for d3-selection@latest fetched in 12749ms
+19 http fetch GET 304 https://registry.npmjs.org/react-router 17456ms (from cache)
+20 silly pacote tag manifest for react-router@latest fetched in 17461ms
+21 http fetch GET 304 https://registry.npmjs.org/mini-create-react-context 750ms (from cache)
+22 silly pacote range manifest for mini-create-react-context@^0.4.0 fetched in 753ms
+23 silly pacote tag manifest for d3-selection@latest fetched in 12ms
+24 silly resolveWithNewModule d3-selection@1.4.1 checking installable status
+25 silly removeObsoleteDep removing d3-selection@1.4.1 from the tree as its been replaced by a newer version or is no longer required
+26 silly pacote tag manifest for react-router@latest fetched in 15ms
+27 silly resolveWithNewModule react-router@5.2.0 checking installable status
+28 silly removeObsoleteDep removing react-router@5.1.2 from the tree as its been replaced by a newer version or is no longer required
+29 silly removeObsoleteDep removing mini-create-react-context@0.3.2 from the tree as its been replaced by a newer version or is no longer required
+30 silly removeObsoleteDep removing gud@1.0.0 from the tree as its been replaced by a newer version or is no longer required
+31 silly removeObsoleteDep removing path-to-regexp@1.8.0 from the tree as its been replaced by a newer version or is no longer required
+32 silly removeObsoleteDep removing isarray@0.0.1 from the tree as its been replaced by a newer version or is no longer required
+33 silly fetchPackageMetaData error for debug@file:debug@github:ngokevin/debug#noTimestamp Could not install from "node_modules/aframe/debug@github:ngokevin/debug#noTimestamp" as it does not contain a package.json file.
+34 silly fetchPackageMetaData error for document-register-element@file:document-register-element@github:dmarcos/document-register-element#8ccc532b7f3744be954574caf3072a5fd260ca90 Could not install from "node_modules/aframe/document-register-element@github:dmarcos/document-register-element#8ccc532b7f3744be954574caf3072a5fd260ca90" as it does not contain a package.json file.
+35 timing stage:rollbackFailedOptional Completed in 0ms
+36 timing stage:runTopLevelLifecycles Completed in 21725ms
+37 silly saveTree nccs-social-media@0.2.0
+37 silly saveTree ├─┬ @babel/core@7.4.3
+37 silly saveTree │ ├─┬ @babel/code-frame@7.8.3
+37 silly saveTree │ │ └─┬ @babel/highlight@7.8.3
+37 silly saveTree │ │   ├─┬ chalk@2.4.2
+37 silly saveTree │ │   │ ├─┬ ansi-styles@3.2.1
+37 silly saveTree │ │   │ │ └─┬ color-convert@1.9.3
+37 silly saveTree │ │   │ │   └── color-name@1.1.3
+37 silly saveTree │ │   │ ├── escape-string-regexp@1.0.5
+37 silly saveTree │ │   │ └─┬ supports-color@5.5.0
+37 silly saveTree │ │   │   └── has-flag@3.0.0
+37 silly saveTree │ │   ├── esutils@2.0.3
+37 silly saveTree │ │   └── js-tokens@4.0.0
+37 silly saveTree │ ├─┬ @babel/generator@7.8.3
+37 silly saveTree │ │ ├─┬ @babel/types@7.8.3
+37 silly saveTree │ │ │ ├── lodash@4.17.15
+37 silly saveTree │ │ │ └── to-fast-properties@2.0.0
+37 silly saveTree │ │ ├── jsesc@2.5.2
+37 silly saveTree │ │ ├── lodash@4.17.15
+37 silly saveTree │ │ └── source-map@0.5.7
+37 silly saveTree │ ├─┬ @babel/helpers@7.8.3
+37 silly saveTree │ │ ├─┬ @babel/template@7.8.3
+37 silly saveTree │ │ │ └── @babel/parser@7.8.3
+37 silly saveTree │ │ └─┬ @babel/traverse@7.8.3
+37 silly saveTree │ │   ├─┬ @babel/helper-function-name@7.8.3
+37 silly saveTree │ │   │ └── @babel/helper-get-function-arity@7.8.3
+37 silly saveTree │ │   ├── @babel/helper-split-export-declaration@7.8.3
+37 silly saveTree │ │   ├─┬ debug@4.1.1
+37 silly saveTree │ │   │ └── ms@2.1.2
+37 silly saveTree │ │   └── globals@11.12.0
+37 silly saveTree │ ├── @babel/parser@7.8.3
+37 silly saveTree │ ├── @babel/template@7.8.3
+37 silly saveTree │ ├── @babel/traverse@7.8.3
+37 silly saveTree │ ├── @babel/types@7.8.3
+37 silly saveTree │ ├─┬ convert-source-map@1.7.0
+37 silly saveTree │ │ └── safe-buffer@5.1.2
+37 silly saveTree │ ├── debug@4.1.1
+37 silly saveTree │ ├─┬ json5@2.1.1
+37 silly saveTree │ │ └── minimist@1.2.0
+37 silly saveTree │ ├── lodash@4.17.15
+37 silly saveTree │ ├─┬ resolve@1.10.0
+37 silly saveTree │ │ └── path-parse@1.0.6
+37 silly saveTree │ ├── semver@5.7.1
+37 silly saveTree │ └── source-map@0.5.7
+37 silly saveTree ├─┬ @material-ui/core@4.9.0
+37 silly saveTree │ ├─┬ @babel/runtime@7.8.3
+37 silly saveTree │ │ └── regenerator-runtime@0.13.3
+37 silly saveTree │ ├─┬ @material-ui/styles@4.9.0
+37 silly saveTree │ │ ├── @emotion/hash@0.7.4
+37 silly saveTree │ │ ├── @material-ui/types@5.0.0
+37 silly saveTree │ │ ├─┬ @material-ui/utils@4.7.1
+37 silly saveTree │ │ │ ├─┬ prop-types@15.7.2
+37 silly saveTree │ │ │ │ ├── loose-envify@1.4.0
+37 silly saveTree │ │ │ │ ├── object-assign@4.1.1
+37 silly saveTree │ │ │ │ └── react-is@16.12.0
+37 silly saveTree │ │ │ └── react-is@16.12.0
+37 silly saveTree │ │ ├── clsx@1.0.4
+37 silly saveTree │ │ ├── csstype@2.6.8
+37 silly saveTree │ │ ├── hoist-non-react-statics@3.3.2
+37 silly saveTree │ │ ├─┬ jss-plugin-camel-case@10.0.3
+37 silly saveTree │ │ │ ├── hyphenate-style-name@1.0.3
+37 silly saveTree │ │ │ └─┬ jss@10.0.3
+37 silly saveTree │ │ │   ├── is-in-browser@1.1.3
+37 silly saveTree │ │ │   └── tiny-warning@1.0.3
+37 silly saveTree │ │ ├── jss-plugin-default-unit@10.0.3
+37 silly saveTree │ │ ├── jss-plugin-global@10.0.3
+37 silly saveTree │ │ ├── jss-plugin-nested@10.0.3
+37 silly saveTree │ │ ├── jss-plugin-props-sort@10.0.3
+37 silly saveTree │ │ ├── jss-plugin-rule-value-function@10.0.3
+37 silly saveTree │ │ ├─┬ jss-plugin-vendor-prefixer@10.0.3
+37 silly saveTree │ │ │ └── css-vendor@2.0.7
+37 silly saveTree │ │ ├── jss@10.0.3
+37 silly saveTree │ │ └── prop-types@15.7.2
+37 silly saveTree │ ├── @material-ui/system@4.7.1
+37 silly saveTree │ ├── @material-ui/types@5.0.0
+37 silly saveTree │ ├── @material-ui/utils@4.7.1
+37 silly saveTree │ ├─┬ @types/react-transition-group@4.2.3
+37 silly saveTree │ │ └─┬ @types/react@16.9.19
+37 silly saveTree │ │   └── @types/prop-types@15.7.3
+37 silly saveTree │ ├── clsx@1.0.4
+37 silly saveTree │ ├── convert-css-length@2.0.1
+37 silly saveTree │ ├── hoist-non-react-statics@3.3.2
+37 silly saveTree │ ├── normalize-scroll-left@0.2.0
+37 silly saveTree │ ├── popper.js@1.16.1
+37 silly saveTree │ ├── prop-types@15.7.2
+37 silly saveTree │ ├── react-is@16.12.0
+37 silly saveTree │ └─┬ react-transition-group@4.3.0
+37 silly saveTree │   └── dom-helpers@5.1.3
+37 silly saveTree ├── @material-ui/icons@4.5.1
+37 silly saveTree ├── @material-ui/styles@4.9.0
+37 silly saveTree ├─┬ @svgr/webpack@4.1.0
+37 silly saveTree │ ├─┬ @babel/plugin-transform-react-constant-elements@7.8.3
+37 silly saveTree │ │ ├── @babel/helper-annotate-as-pure@7.8.3
+37 silly saveTree │ │ └── @babel/helper-plugin-utils@7.8.3
+37 silly saveTree │ ├─┬ @babel/preset-env@7.8.3
+37 silly saveTree │ │ ├─┬ @babel/compat-data@7.8.1
+37 silly saveTree │ │ │ ├─┬ browserslist@4.8.5
+37 silly saveTree │ │ │ │ ├── caniuse-lite@1.0.30001023
+37 silly saveTree │ │ │ │ ├── electron-to-chromium@1.3.340
+37 silly saveTree │ │ │ │ └─┬ node-releases@1.1.47
+37 silly saveTree │ │ │ │   └── semver@6.3.0
+37 silly saveTree │ │ │ ├── invariant@2.2.4
+37 silly saveTree │ │ │ └── semver@5.7.1
+37 silly saveTree │ │ ├─┬ @babel/helper-compilation-targets@7.8.3
+37 silly saveTree │ │ │ ├─┬ levenary@1.1.0
+37 silly saveTree │ │ │ │ └── leven@3.1.0
+37 silly saveTree │ │ │ └── semver@5.7.1
+37 silly saveTree │ │ ├── @babel/helper-module-imports@7.8.3
+37 silly saveTree │ │ ├─┬ @babel/plugin-proposal-async-generator-functions@7.8.3
+37 silly saveTree │ │ │ ├─┬ @babel/helper-remap-async-to-generator@7.8.3
+37 silly saveTree │ │ │ │ └── @babel/helper-wrap-function@7.8.3
+37 silly saveTree │ │ │ └── @babel/plugin-syntax-async-generators@7.8.4
+37 silly saveTree │ │ ├─┬ @babel/plugin-proposal-dynamic-import@7.8.3
+37 silly saveTree │ │ │ └── @babel/plugin-syntax-dynamic-import@7.8.3
+37 silly saveTree │ │ ├─┬ @babel/plugin-proposal-json-strings@7.8.3
+37 silly saveTree │ │ │ └── @babel/plugin-syntax-json-strings@7.8.3
+37 silly saveTree │ │ ├─┬ @babel/plugin-proposal-nullish-coalescing-operator@7.8.3
+37 silly saveTree │ │ │ └── @babel/plugin-syntax-nullish-coalescing-operator@7.8.3
+37 silly saveTree │ │ ├─┬ @babel/plugin-proposal-object-rest-spread@7.8.3
+37 silly saveTree │ │ │ └── @babel/plugin-syntax-object-rest-spread@7.8.3
+37 silly saveTree │ │ ├─┬ @babel/plugin-proposal-optional-catch-binding@7.8.3
+37 silly saveTree │ │ │ └── @babel/plugin-syntax-optional-catch-binding@7.8.3
+37 silly saveTree │ │ ├─┬ @babel/plugin-proposal-optional-chaining@7.8.3
+37 silly saveTree │ │ │ └── @babel/plugin-syntax-optional-chaining@7.8.3
+37 silly saveTree │ │ ├─┬ @babel/plugin-proposal-unicode-property-regex@7.8.3
+37 silly saveTree │ │ │ └─┬ @babel/helper-create-regexp-features-plugin@7.8.3
+37 silly saveTree │ │ │   ├── @babel/helper-regex@7.8.3
+37 silly saveTree │ │ │   └─┬ regexpu-core@4.6.0
+37 silly saveTree │ │ │     ├─┬ regenerate-unicode-properties@8.1.0
+37 silly saveTree │ │ │     │ └── regenerate@1.4.0
+37 silly saveTree │ │ │     ├── regenerate@1.4.0
+37 silly saveTree │ │ │     ├── regjsgen@0.5.1
+37 silly saveTree │ │ │     ├─┬ regjsparser@0.6.2
+37 silly saveTree │ │ │     │ └── jsesc@0.5.0
+37 silly saveTree │ │ │     ├─┬ unicode-match-property-ecmascript@1.0.4
+37 silly saveTree │ │ │     │ ├── unicode-canonical-property-names-ecmascript@1.0.4
+37 silly saveTree │ │ │     │ └── unicode-property-aliases-ecmascript@1.0.5
+37 silly saveTree │ │ │     └── unicode-match-property-value-ecmascript@1.1.0
+37 silly saveTree │ │ ├── @babel/plugin-syntax-async-generators@7.8.4
+37 silly saveTree │ │ ├── @babel/plugin-syntax-dynamic-import@7.8.3
+37 silly saveTree │ │ ├── @babel/plugin-syntax-json-strings@7.8.3
+37 silly saveTree │ │ ├── @babel/plugin-syntax-nullish-coalescing-operator@7.8.3
+37 silly saveTree │ │ ├── @babel/plugin-syntax-object-rest-spread@7.8.3
+37 silly saveTree │ │ ├── @babel/plugin-syntax-optional-catch-binding@7.8.3
+37 silly saveTree │ │ ├── @babel/plugin-syntax-optional-chaining@7.8.3
+37 silly saveTree │ │ ├── @babel/plugin-syntax-top-level-await@7.8.3
+37 silly saveTree │ │ ├── @babel/plugin-transform-arrow-functions@7.8.3
+37 silly saveTree │ │ ├── @babel/plugin-transform-async-to-generator@7.8.3
+37 silly saveTree │ │ ├── @babel/plugin-transform-block-scoped-functions@7.8.3
+37 silly saveTree │ │ ├── @babel/plugin-transform-block-scoping@7.8.3
+37 silly saveTree │ │ ├─┬ @babel/plugin-transform-classes@7.8.3
+37 silly saveTree │ │ │ ├── @babel/helper-define-map@7.8.3
+37 silly saveTree │ │ │ ├── @babel/helper-optimise-call-expression@7.8.3
+37 silly saveTree │ │ │ └─┬ @babel/helper-replace-supers@7.8.3
+37 silly saveTree │ │ │   └── @babel/helper-member-expression-to-functions@7.8.3
+37 silly saveTree │ │ ├── @babel/plugin-transform-computed-properties@7.8.3
+37 silly saveTree │ │ ├── @babel/plugin-transform-destructuring@7.8.3
+37 silly saveTree │ │ ├── @babel/plugin-transform-dotall-regex@7.8.3
+37 silly saveTree │ │ ├── @babel/plugin-transform-duplicate-keys@7.8.3
+37 silly saveTree │ │ ├─┬ @babel/plugin-transform-exponentiation-operator@7.8.3
+37 silly saveTree │ │ │ └─┬ @babel/helper-builder-binary-assignment-operator-visitor@7.8.3
+37 silly saveTree │ │ │   └── @babel/helper-explode-assignable-expression@7.8.3
+37 silly saveTree │ │ ├── @babel/plugin-transform-for-of@7.8.3
+37 silly saveTree │ │ ├── @babel/plugin-transform-function-name@7.8.3
+37 silly saveTree │ │ ├── @babel/plugin-transform-literals@7.8.3
+37 silly saveTree │ │ ├── @babel/plugin-transform-member-expression-literals@7.8.3
+37 silly saveTree │ │ ├─┬ @babel/plugin-transform-modules-amd@7.8.3
+37 silly saveTree │ │ │ ├─┬ @babel/helper-module-transforms@7.8.3
+37 silly saveTree │ │ │ │ └── @babel/helper-simple-access@7.8.3
+37 silly saveTree │ │ │ └─┬ babel-plugin-dynamic-import-node@2.3.0
+37 silly saveTree │ │ │   └─┬ object.assign@4.1.0
+37 silly saveTree │ │ │     ├─┬ define-properties@1.1.3
+37 silly saveTree │ │ │     │ └── object-keys@1.1.1
+37 silly saveTree │ │ │     ├── function-bind@1.1.1
+37 silly saveTree │ │ │     ├── has-symbols@1.0.1
+37 silly saveTree │ │ │     └── object-keys@1.1.1
+37 silly saveTree │ │ ├── @babel/plugin-transform-modules-commonjs@7.8.3
+37 silly saveTree │ │ ├─┬ @babel/plugin-transform-modules-systemjs@7.8.3
+37 silly saveTree │ │ │ └── @babel/helper-hoist-variables@7.8.3
+37 silly saveTree │ │ ├── @babel/plugin-transform-modules-umd@7.8.3
+37 silly saveTree │ │ ├── @babel/plugin-transform-named-capturing-groups-regex@7.8.3
+37 silly saveTree │ │ ├── @babel/plugin-transform-new-target@7.8.3
+37 silly saveTree │ │ ├── @babel/plugin-transform-object-super@7.8.3
+37 silly saveTree │ │ ├─┬ @babel/plugin-transform-parameters@7.8.3
+37 silly saveTree │ │ │ └── @babel/helper-call-delegate@7.8.3
+37 silly saveTree │ │ ├── @babel/plugin-transform-property-literals@7.8.3
+37 silly saveTree │ │ ├─┬ @babel/plugin-transform-regenerator@7.8.3
+37 silly saveTree │ │ │ └─┬ regenerator-transform@0.14.1
+37 silly saveTree │ │ │   └── private@0.1.8
+37 silly saveTree │ │ ├── @babel/plugin-transform-reserved-words@7.8.3
+37 silly saveTree │ │ ├── @babel/plugin-transform-shorthand-properties@7.8.3
+37 silly saveTree │ │ ├── @babel/plugin-transform-spread@7.8.3
+37 silly saveTree │ │ ├── @babel/plugin-transform-sticky-regex@7.8.3
+37 silly saveTree │ │ ├── @babel/plugin-transform-template-literals@7.8.3
+37 silly saveTree │ │ ├── @babel/plugin-transform-typeof-symbol@7.8.3
+37 silly saveTree │ │ ├── @babel/plugin-transform-unicode-regex@7.8.3
+37 silly saveTree │ │ ├── browserslist@4.8.5
+37 silly saveTree │ │ ├─┬ core-js-compat@3.6.4
+37 silly saveTree │ │ │ └── semver@7.0.0
+37 silly saveTree │ │ ├── invariant@2.2.4
+37 silly saveTree │ │ ├── levenary@1.1.0
+37 silly saveTree │ │ └── semver@5.7.1
+37 silly saveTree │ ├─┬ @babel/preset-react@7.8.3
+37 silly saveTree │ │ ├── @babel/plugin-transform-react-display-name@7.8.3
+37 silly saveTree │ │ ├─┬ @babel/plugin-transform-react-jsx-self@7.8.3
+37 silly saveTree │ │ │ └── @babel/plugin-syntax-jsx@7.8.3
+37 silly saveTree │ │ ├── @babel/plugin-transform-react-jsx-source@7.8.3
+37 silly saveTree │ │ └─┬ @babel/plugin-transform-react-jsx@7.8.3
+37 silly saveTree │ │   └── @babel/helper-builder-react-jsx@7.8.3
+37 silly saveTree │ ├─┬ @svgr/core@4.3.3
+37 silly saveTree │ │ ├─┬ @svgr/plugin-jsx@4.3.3
+37 silly saveTree │ │ │ ├─┬ @babel/core@7.8.3
+37 silly saveTree │ │ │ │ ├── gensync@1.0.0-beta.1
+37 silly saveTree │ │ │ │ └── semver@5.7.1
+37 silly saveTree │ │ │ ├─┬ @svgr/babel-preset@4.3.3
+37 silly saveTree │ │ │ │ ├── @svgr/babel-plugin-add-jsx-attribute@4.2.0
+37 silly saveTree │ │ │ │ ├── @svgr/babel-plugin-remove-jsx-attribute@4.2.0
+37 silly saveTree │ │ │ │ ├── @svgr/babel-plugin-remove-jsx-empty-expression@4.2.0
+37 silly saveTree │ │ │ │ ├── @svgr/babel-plugin-replace-jsx-attribute-value@4.2.0
+37 silly saveTree │ │ │ │ ├── @svgr/babel-plugin-svg-dynamic-title@4.3.3
+37 silly saveTree │ │ │ │ ├── @svgr/babel-plugin-svg-em-dimensions@4.2.0
+37 silly saveTree │ │ │ │ ├── @svgr/babel-plugin-transform-react-native-svg@4.2.0
+37 silly saveTree │ │ │ │ └── @svgr/babel-plugin-transform-svg-component@4.2.0
+37 silly saveTree │ │ │ ├── @svgr/hast-util-to-babel-ast@4.3.2
+37 silly saveTree │ │ │ └── svg-parser@2.0.3
+37 silly saveTree │ │ ├── camelcase@5.3.1
+37 silly saveTree │ │ └─┬ cosmiconfig@5.2.1
+37 silly saveTree │ │   ├─┬ import-fresh@2.0.0
+37 silly saveTree │ │   │ ├─┬ caller-path@2.0.0
+37 silly saveTree │ │   │ │ └─┬ caller-callsite@2.0.0
+37 silly saveTree │ │   │ │   └── callsites@2.0.0
+37 silly saveTree │ │   │ └── resolve-from@3.0.0
+37 silly saveTree │ │   ├── is-directory@0.3.1
+37 silly saveTree │ │   ├─┬ js-yaml@3.13.1
+37 silly saveTree │ │   │ ├─┬ argparse@1.0.10
+37 silly saveTree │ │   │ │ └── sprintf-js@1.0.3
+37 silly saveTree │ │   │ └── esprima@4.0.1
+37 silly saveTree │ │   └─┬ parse-json@4.0.0
+37 silly saveTree │ │     ├─┬ error-ex@1.3.2
+37 silly saveTree │ │     │ └── is-arrayish@0.2.1
+37 silly saveTree │ │     └── json-parse-better-errors@1.0.2
+37 silly saveTree │ ├── @svgr/plugin-jsx@4.3.3
+37 silly saveTree │ ├─┬ @svgr/plugin-svgo@4.3.1
+37 silly saveTree │ │ ├─┬ merge-deep@3.0.2
+37 silly saveTree │ │ │ ├── arr-union@3.1.0
+37 silly saveTree │ │ │ ├─┬ clone-deep@0.2.4
+37 silly saveTree │ │ │ │ ├─┬ for-own@0.1.5
+37 silly saveTree │ │ │ │ │ └── for-in@1.0.2
+37 silly saveTree │ │ │ │ ├─┬ is-plain-object@2.0.4
+37 silly saveTree │ │ │ │ │ └── isobject@3.0.1
+37 silly saveTree │ │ │ │ ├─┬ kind-of@3.2.2
+37 silly saveTree │ │ │ │ │ └── is-buffer@1.1.6
+37 silly saveTree │ │ │ │ ├── lazy-cache@1.0.4
+37 silly saveTree │ │ │ │ └─┬ shallow-clone@0.1.2
+37 silly saveTree │ │ │ │   ├── is-extendable@0.1.1
+37 silly saveTree │ │ │ │   ├── kind-of@2.0.1
+37 silly saveTree │ │ │ │   ├── lazy-cache@0.2.7
+37 silly saveTree │ │ │ │   └─┬ mixin-object@2.0.1
+37 silly saveTree │ │ │ │     └── for-in@0.1.8
+37 silly saveTree │ │ │ └── kind-of@3.2.2
+37 silly saveTree │ │ └─┬ svgo@1.3.2
+37 silly saveTree │ │   ├─┬ coa@2.0.2
+37 silly saveTree │ │   │ ├── @types/q@1.5.2
+37 silly saveTree │ │   │ └── q@1.5.1
+37 silly saveTree │ │   ├── css-select-base-adapter@0.1.1
+37 silly saveTree │ │   ├─┬ css-select@2.1.0
+37 silly saveTree │ │   │ ├── boolbase@1.0.0
+37 silly saveTree │ │   │ ├── css-what@3.2.1
+37 silly saveTree │ │   │ ├─┬ domutils@1.7.0
+37 silly saveTree │ │   │ │ ├─┬ dom-serializer@0.2.2
+37 silly saveTree │ │   │ │ │ ├── domelementtype@2.0.1
+37 silly saveTree │ │   │ │ │ └── entities@2.0.0
+37 silly saveTree │ │   │ │ └── domelementtype@1.3.1
+37 silly saveTree │ │   │ └── nth-check@1.0.2
+37 silly saveTree │ │   ├─┬ css-tree@1.0.0-alpha.37
+37 silly saveTree │ │   │ ├── mdn-data@2.0.4
+37 silly saveTree │ │   │ └── source-map@0.6.1
+37 silly saveTree │ │   ├── csso@4.0.2
+37 silly saveTree │ │   ├─┬ mkdirp@0.5.1
+37 silly saveTree │ │   │ └── minimist@0.0.8
+37 silly saveTree │ │   ├─┬ object.values@1.1.1
+37 silly saveTree │ │   │ ├─┬ es-abstract@1.17.4
+37 silly saveTree │ │   │ │ ├─┬ es-to-primitive@1.2.1
+37 silly saveTree │ │   │ │ │ ├── is-callable@1.1.5
+37 silly saveTree │ │   │ │ │ ├── is-date-object@1.0.2
+37 silly saveTree │ │   │ │ │ └── is-symbol@1.0.3
+37 silly saveTree │ │   │ │ ├── has@1.0.3
+37 silly saveTree │ │   │ │ ├── is-callable@1.1.5
+37 silly saveTree │ │   │ │ ├── is-regex@1.0.5
+37 silly saveTree │ │   │ │ ├── object-inspect@1.7.0
+37 silly saveTree │ │   │ │ ├── string.prototype.trimleft@2.1.1
+37 silly saveTree │ │   │ │ └── string.prototype.trimright@2.1.1
+37 silly saveTree │ │   │ └── has@1.0.3
+37 silly saveTree │ │   ├── sax@1.2.4
+37 silly saveTree │ │   ├── stable@0.1.8
+37 silly saveTree │ │   ├── unquote@1.1.1
+37 silly saveTree │ │   └─┬ util.promisify@1.0.1
+37 silly saveTree │ │     └── object.getownpropertydescriptors@2.1.0
+37 silly saveTree │ └─┬ loader-utils@1.2.3
+37 silly saveTree │   ├── big.js@5.2.2
+37 silly saveTree │   ├── emojis-list@2.1.0
+37 silly saveTree │   └── json5@1.0.1
+37 silly saveTree ├─┬ @typescript-eslint/eslint-plugin@1.6.0
+37 silly saveTree │ ├─┬ @typescript-eslint/parser@1.6.0
+37 silly saveTree │ │ ├─┬ @typescript-eslint/typescript-estree@1.6.0
+37 silly saveTree │ │ │ ├── lodash.unescape@4.0.1
+37 silly saveTree │ │ │ └── semver@5.5.0
+37 silly saveTree │ │ ├─┬ eslint-scope@4.0.3
+37 silly saveTree │ │ │ ├─┬ esrecurse@4.2.1
+37 silly saveTree │ │ │ │ └── estraverse@4.3.0
+37 silly saveTree │ │ │ └── estraverse@4.3.0
+37 silly saveTree │ │ └── eslint-visitor-keys@1.1.0
+37 silly saveTree │ ├── @typescript-eslint/typescript-estree@1.6.0
+37 silly saveTree │ ├── requireindex@1.2.0
+37 silly saveTree │ └─┬ tsutils@3.17.1
+37 silly saveTree │   └── tslib@1.10.0
+37 silly saveTree ├── @typescript-eslint/parser@1.6.0
+37 silly saveTree ├─┬ axios@0.19.2
+37 silly saveTree │ └─┬ follow-redirects@1.5.10
+37 silly saveTree │   └─┬ debug@3.1.0
+37 silly saveTree │     └── ms@2.0.0
+37 silly saveTree ├─┬ babel-eslint@10.0.3
+37 silly saveTree │ └── resolve@1.15.0
+37 silly saveTree ├─┬ babel-loader@8.0.6
+37 silly saveTree │ ├─┬ find-cache-dir@2.1.0
+37 silly saveTree │ │ ├── commondir@1.0.1
+37 silly saveTree │ │ ├─┬ make-dir@2.1.0
+37 silly saveTree │ │ │ ├── pify@4.0.1
+37 silly saveTree │ │ │ └── semver@5.7.1
+37 silly saveTree │ │ └─┬ pkg-dir@3.0.0
+37 silly saveTree │ │   └─┬ find-up@3.0.0
+37 silly saveTree │ │     └─┬ locate-path@3.0.0
+37 silly saveTree │ │       ├─┬ p-locate@3.0.0
+37 silly saveTree │ │       │ └─┬ p-limit@2.2.2
+37 silly saveTree │ │       │   └── p-try@2.2.0
+37 silly saveTree │ │       └── path-exists@3.0.0
+37 silly saveTree │ └── pify@4.0.1
+37 silly saveTree ├── babel-plugin-named-asset-import@0.3.5
+37 silly saveTree ├─┬ babel-preset-react-app@9.1.0
+37 silly saveTree │ ├─┬ @babel/core@7.7.4
+37 silly saveTree │ │ └── semver@5.7.1
+37 silly saveTree │ ├─┬ @babel/plugin-proposal-class-properties@7.7.4
+37 silly saveTree │ │ └── @babel/helper-create-class-features-plugin@7.8.3
+37 silly saveTree │ ├─┬ @babel/plugin-proposal-decorators@7.7.4
+37 silly saveTree │ │ └── @babel/plugin-syntax-decorators@7.8.3
+37 silly saveTree │ ├── @babel/plugin-proposal-nullish-coalescing-operator@7.7.4
+37 silly saveTree │ ├─┬ @babel/plugin-proposal-numeric-separator@7.7.4
+37 silly saveTree │ │ └── @babel/plugin-syntax-numeric-separator@7.8.3
+37 silly saveTree │ ├── @babel/plugin-proposal-object-rest-spread@7.7.4
+37 silly saveTree │ ├── @babel/plugin-proposal-optional-chaining@7.7.4
+37 silly saveTree │ ├── @babel/plugin-syntax-dynamic-import@7.7.4
+37 silly saveTree │ ├── @babel/plugin-transform-destructuring@7.7.4
+37 silly saveTree │ ├─┬ @babel/plugin-transform-flow-strip-types@7.7.4
+37 silly saveTree │ │ └── @babel/plugin-syntax-flow@7.8.3
+37 silly saveTree │ ├── @babel/plugin-transform-react-display-name@7.7.4
+37 silly saveTree │ ├─┬ @babel/plugin-transform-runtime@7.7.4
+37 silly saveTree │ │ └── semver@5.7.1
+37 silly saveTree │ ├─┬ @babel/preset-env@7.7.4
+37 silly saveTree │ │ └── js-levenshtein@1.1.6
+37 silly saveTree │ ├── @babel/preset-react@7.7.4
+37 silly saveTree │ ├─┬ @babel/preset-typescript@7.7.4
+37 silly saveTree │ │ └─┬ @babel/plugin-transform-typescript@7.8.3
+37 silly saveTree │ │   └── @babel/plugin-syntax-typescript@7.8.3
+37 silly saveTree │ ├── @babel/runtime@7.7.4
+37 silly saveTree │ ├─┬ babel-plugin-macros@2.7.1
+37 silly saveTree │ │ ├─┬ cosmiconfig@6.0.0
+37 silly saveTree │ │ │ ├── @types/parse-json@4.0.0
+37 silly saveTree │ │ │ ├─┬ import-fresh@3.2.1
+37 silly saveTree │ │ │ │ ├─┬ parent-module@1.0.1
+37 silly saveTree │ │ │ │ │ └── callsites@3.1.0
+37 silly saveTree │ │ │ │ └── resolve-from@4.0.0
+37 silly saveTree │ │ │ ├─┬ parse-json@5.0.0
+37 silly saveTree │ │ │ │ └── lines-and-columns@1.1.6
+37 silly saveTree │ │ │ ├── path-type@4.0.0
+37 silly saveTree │ │ │ └── yaml@1.7.2
+37 silly saveTree │ │ └── resolve@1.15.0
+37 silly saveTree │ └── babel-plugin-transform-react-remove-prop-types@0.4.24
+37 silly saveTree ├── camelcase@5.3.1
+37 silly saveTree ├── case-sensitive-paths-webpack-plugin@2.2.0
+37 silly saveTree ├── classnames@2.2.6
+37 silly saveTree ├── clsx@1.0.4
+37 silly saveTree ├─┬ css-loader@2.1.1
+37 silly saveTree │ ├─┬ icss-utils@4.1.1
+37 silly saveTree │ │ └─┬ postcss@7.0.26
+37 silly saveTree │ │   ├── source-map@0.6.1
+37 silly saveTree │ │   └── supports-color@6.1.0
+37 silly saveTree │ ├── normalize-path@3.0.0
+37 silly saveTree │ ├── postcss-modules-extract-imports@2.0.0
+37 silly saveTree │ ├─┬ postcss-modules-local-by-default@2.0.6
+37 silly saveTree │ │ ├─┬ postcss-selector-parser@6.0.2
+37 silly saveTree │ │ │ ├── cssesc@3.0.0
+37 silly saveTree │ │ │ ├── indexes-of@1.0.1
+37 silly saveTree │ │ │ └── uniq@1.0.1
+37 silly saveTree │ │ └── postcss-value-parser@3.3.1
+37 silly saveTree │ ├── postcss-modules-scope@2.1.1
+37 silly saveTree │ ├─┬ postcss-modules-values@2.0.0
+37 silly saveTree │ │ └── icss-replace-symbols@1.1.0
+37 silly saveTree │ ├── postcss-value-parser@3.3.1
+37 silly saveTree │ ├── postcss@7.0.26
+37 silly saveTree │ └─┬ schema-utils@1.0.0
+37 silly saveTree │   ├── ajv-errors@1.0.1
+37 silly saveTree │   ├── ajv-keywords@3.4.1
+37 silly saveTree │   └─┬ ajv@6.11.0
+37 silly saveTree │     ├── fast-deep-equal@3.1.1
+37 silly saveTree │     ├── fast-json-stable-stringify@2.1.0
+37 silly saveTree │     ├── json-schema-traverse@0.4.1
+37 silly saveTree │     └─┬ uri-js@4.2.2
+37 silly saveTree │       └── punycode@2.1.1
+37 silly saveTree ├── d3-selection@1.4.1
+37 silly saveTree ├── dotenv-expand@4.2.0
+37 silly saveTree ├── dotenv@6.2.0
+37 silly saveTree ├─┬ eslint-config-react-app@4.0.1
+37 silly saveTree │ └── confusing-browser-globals@1.0.9
+37 silly saveTree ├─┬ eslint-loader@2.1.2
+37 silly saveTree │ ├─┬ loader-fs-cache@1.0.2
+37 silly saveTree │ │ └─┬ find-cache-dir@0.1.1
+37 silly saveTree │ │   └─┬ pkg-dir@1.0.0
+37 silly saveTree │ │     └─┬ find-up@1.1.2
+37 silly saveTree │ │       ├─┬ path-exists@2.1.0
+37 silly saveTree │ │       │ └─┬ pinkie-promise@2.0.1
+37 silly saveTree │ │       │   └── pinkie@2.0.4
+37 silly saveTree │ │       └── pinkie-promise@2.0.1
+37 silly saveTree │ ├── object-hash@1.3.1
+37 silly saveTree │ └─┬ rimraf@2.6.3
+37 silly saveTree │   └─┬ glob@7.1.6
+37 silly saveTree │     ├── fs.realpath@1.0.0
+37 silly saveTree │     ├─┬ inflight@1.0.6
+37 silly saveTree │     │ ├─┬ once@1.4.0
+37 silly saveTree │     │ │ └── wrappy@1.0.2
+37 silly saveTree │     │ └── wrappy@1.0.2
+37 silly saveTree │     ├── inherits@2.0.4
+37 silly saveTree │     ├─┬ minimatch@3.0.4
+37 silly saveTree │     │ └─┬ brace-expansion@1.1.11
+37 silly saveTree │     │   ├── balanced-match@1.0.0
+37 silly saveTree │     │   └── concat-map@0.0.1
+37 silly saveTree │     ├── once@1.4.0
+37 silly saveTree │     └── path-is-absolute@1.0.1
+37 silly saveTree ├── eslint-plugin-flowtype@2.50.1
+37 silly saveTree ├─┬ eslint-plugin-import@2.16.0
+37 silly saveTree │ ├── contains-path@0.1.0
+37 silly saveTree │ ├─┬ debug@2.6.9
+37 silly saveTree │ │ └── ms@2.0.0
+37 silly saveTree │ ├─┬ doctrine@1.5.0
+37 silly saveTree │ │ └── isarray@1.0.0
+37 silly saveTree │ ├─┬ eslint-import-resolver-node@0.3.3
+37 silly saveTree │ │ ├─┬ debug@2.6.9
+37 silly saveTree │ │ │ └── ms@2.0.0
+37 silly saveTree │ │ └── resolve@1.15.0
+37 silly saveTree │ ├─┬ eslint-module-utils@2.5.2
+37 silly saveTree │ │ ├─┬ debug@2.6.9
+37 silly saveTree │ │ │ └── ms@2.0.0
+37 silly saveTree │ │ └─┬ pkg-dir@2.0.0
+37 silly saveTree │ │   └─┬ find-up@2.1.0
+37 silly saveTree │ │     └─┬ locate-path@2.0.0
+37 silly saveTree │ │       └─┬ p-locate@2.0.0
+37 silly saveTree │ │         └─┬ p-limit@1.3.0
+37 silly saveTree │ │           └── p-try@1.0.0
+37 silly saveTree │ └─┬ read-pkg-up@2.0.0
+37 silly saveTree │   ├─┬ find-up@2.1.0
+37 silly saveTree │   │ └─┬ locate-path@2.0.0
+37 silly saveTree │   │   └─┬ p-locate@2.0.0
+37 silly saveTree │   │     └─┬ p-limit@1.3.0
+37 silly saveTree │   │       └── p-try@1.0.0
+37 silly saveTree │   └─┬ read-pkg@2.0.0
+37 silly saveTree │     ├─┬ load-json-file@2.0.0
+37 silly saveTree │     │ ├── graceful-fs@4.2.3
+37 silly saveTree │     │ ├── parse-json@2.2.0
+37 silly saveTree │     │ ├── pify@2.3.0
+37 silly saveTree │     │ └── strip-bom@3.0.0
+37 silly saveTree │     ├─┬ normalize-package-data@2.5.0
+37 silly saveTree │     │ ├── hosted-git-info@2.8.5
+37 silly saveTree │     │ ├── semver@5.7.1
+37 silly saveTree │     │ └─┬ validate-npm-package-license@3.0.4
+37 silly saveTree │     │   ├─┬ spdx-correct@3.1.0
+37 silly saveTree │     │   │ ├─┬ spdx-expression-parse@3.0.0
+37 silly saveTree │     │   │ │ ├── spdx-exceptions@2.2.0
+37 silly saveTree │     │   │ │ └── spdx-license-ids@3.0.5
+37 silly saveTree │     │   │ └── spdx-license-ids@3.0.5
+37 silly saveTree │     │   └── spdx-expression-parse@3.0.0
+37 silly saveTree │     └─┬ path-type@2.0.0
+37 silly saveTree │       └── pify@2.3.0
+37 silly saveTree ├─┬ eslint-plugin-jsx-a11y@6.2.1
+37 silly saveTree │ ├─┬ aria-query@3.0.0
+37 silly saveTree │ │ ├── ast-types-flow@0.0.7
+37 silly saveTree │ │ └── commander@2.20.3
+37 silly saveTree │ ├─┬ array-includes@3.1.1
+37 silly saveTree │ │ └── is-string@1.0.5
+37 silly saveTree │ ├── ast-types-flow@0.0.7
+37 silly saveTree │ ├─┬ axobject-query@2.1.1
+37 silly saveTree │ │ └─┬ @babel/runtime-corejs3@7.8.3
+37 silly saveTree │ │   └── core-js-pure@3.6.4
+37 silly saveTree │ ├── damerau-levenshtein@1.0.5
+37 silly saveTree │ ├── emoji-regex@7.0.3
+37 silly saveTree │ └── jsx-ast-utils@2.2.3
+37 silly saveTree ├─┬ eslint-plugin-prettier@3.1.2
+37 silly saveTree │ └─┬ prettier-linter-helpers@1.0.0
+37 silly saveTree │   └── fast-diff@1.2.0
+37 silly saveTree ├── eslint-plugin-react-hooks@1.7.0
+37 silly saveTree ├─┬ eslint-plugin-react@7.12.4
+37 silly saveTree │ ├── doctrine@2.1.0
+37 silly saveTree │ └── object.fromentries@2.0.2
+37 silly saveTree ├─┬ eslint@5.16.0
+37 silly saveTree │ ├─┬ cross-spawn@6.0.5
+37 silly saveTree │ │ ├── nice-try@1.0.5
+37 silly saveTree │ │ ├── path-key@2.0.1
+37 silly saveTree │ │ ├── semver@5.7.1
+37 silly saveTree │ │ ├─┬ shebang-command@1.2.0
+37 silly saveTree │ │ │ └── shebang-regex@1.0.0
+37 silly saveTree │ │ └─┬ which@1.3.1
+37 silly saveTree │ │   └── isexe@2.0.0
+37 silly saveTree │ ├── doctrine@3.0.0
+37 silly saveTree │ ├── eslint-utils@1.4.3
+37 silly saveTree │ ├─┬ espree@5.0.1
+37 silly saveTree │ │ ├── acorn-jsx@5.1.0
+37 silly saveTree │ │ └── acorn@6.4.0
+37 silly saveTree │ ├── esquery@1.0.1
+37 silly saveTree │ ├─┬ file-entry-cache@5.0.1
+37 silly saveTree │ │ └─┬ flat-cache@2.0.1
+37 silly saveTree │ │   ├── flatted@2.0.1
+37 silly saveTree │ │   └── write@1.0.3
+37 silly saveTree │ ├── functional-red-black-tree@1.0.1
+37 silly saveTree │ ├── ignore@4.0.6
+37 silly saveTree │ ├─┬ import-fresh@3.2.1
+37 silly saveTree │ │ └── resolve-from@4.0.0
+37 silly saveTree │ ├── imurmurhash@0.1.4
+37 silly saveTree │ ├─┬ inquirer@6.5.2
+37 silly saveTree │ │ ├── ansi-escapes@3.2.0
+37 silly saveTree │ │ ├─┬ cli-cursor@2.1.0
+37 silly saveTree │ │ │ └─┬ restore-cursor@2.0.0
+37 silly saveTree │ │ │   ├─┬ onetime@2.0.1
+37 silly saveTree │ │ │   │ └── mimic-fn@1.2.0
+37 silly saveTree │ │ │   └── signal-exit@3.0.2
+37 silly saveTree │ │ ├── cli-width@2.2.0
+37 silly saveTree │ │ ├─┬ external-editor@3.1.0
+37 silly saveTree │ │ │ ├── chardet@0.7.0
+37 silly saveTree │ │ │ ├─┬ iconv-lite@0.4.24
+37 silly saveTree │ │ │ │ └── safer-buffer@2.1.2
+37 silly saveTree │ │ │ └─┬ tmp@0.0.33
+37 silly saveTree │ │ │   └── os-tmpdir@1.0.2
+37 silly saveTree │ │ ├── figures@2.0.0
+37 silly saveTree │ │ ├── mute-stream@0.0.7
+37 silly saveTree │ │ ├─┬ run-async@2.3.0
+37 silly saveTree │ │ │ └── is-promise@2.1.0
+37 silly saveTree │ │ ├── rxjs@6.5.4
+37 silly saveTree │ │ ├─┬ string-width@2.1.1
+37 silly saveTree │ │ │ ├── is-fullwidth-code-point@2.0.0
+37 silly saveTree │ │ │ └─┬ strip-ansi@4.0.0
+37 silly saveTree │ │ │   └── ansi-regex@3.0.0
+37 silly saveTree │ │ ├─┬ strip-ansi@5.2.0
+37 silly saveTree │ │ │ └── ansi-regex@4.1.0
+37 silly saveTree │ │ └── through@2.3.8
+37 silly saveTree │ ├── json-stable-stringify-without-jsonify@1.0.1
+37 silly saveTree │ ├─┬ levn@0.3.0
+37 silly saveTree │ │ ├── prelude-ls@1.1.2
+37 silly saveTree │ │ └── type-check@0.3.2
+37 silly saveTree │ ├── natural-compare@1.4.0
+37 silly saveTree │ ├─┬ optionator@0.8.3
+37 silly saveTree │ │ ├── deep-is@0.1.3
+37 silly saveTree │ │ ├── fast-levenshtein@2.0.6
+37 silly saveTree │ │ └── word-wrap@1.2.3
+37 silly saveTree │ ├── path-is-inside@1.0.2
+37 silly saveTree │ ├── progress@2.0.3
+37 silly saveTree │ ├── regexpp@2.0.1
+37 silly saveTree │ ├── semver@5.7.1
+37 silly saveTree │ ├── strip-ansi@4.0.0
+37 silly saveTree │ ├── strip-json-comments@2.0.1
+37 silly saveTree │ ├─┬ table@5.4.6
+37 silly saveTree │ │ ├─┬ slice-ansi@2.1.0
+37 silly saveTree │ │ │ └── astral-regex@1.0.0
+37 silly saveTree │ │ └─┬ string-width@3.1.0
+37 silly saveTree │ │   └─┬ strip-ansi@5.2.0
+37 silly saveTree │ │     └── ansi-regex@4.1.0
+37 silly saveTree │ └── text-table@0.2.0
+37 silly saveTree ├── file-loader@3.0.1
+37 silly saveTree ├─┬ fs-extra@7.0.1
+37 silly saveTree │ ├── jsonfile@4.0.0
+37 silly saveTree │ └── universalify@0.1.2
+37 silly saveTree ├── google-maps-react@2.0.2
+37 silly saveTree ├─┬ history@4.10.1
+37 silly saveTree │ ├── resolve-pathname@3.0.0
+37 silly saveTree │ ├── tiny-invariant@1.0.6
+37 silly saveTree │ └── value-equal@1.0.1
+37 silly saveTree ├─┬ html-webpack-plugin@4.0.0-beta.5
+37 silly saveTree │ ├─┬ html-minifier@3.5.21
+37 silly saveTree │ │ ├─┬ camel-case@3.0.0
+37 silly saveTree │ │ │ ├─┬ no-case@2.3.2
+37 silly saveTree │ │ │ │ └── lower-case@1.1.4
+37 silly saveTree │ │ │ └── upper-case@1.1.3
+37 silly saveTree │ │ ├─┬ clean-css@4.2.2
+37 silly saveTree │ │ │ └── source-map@0.6.1
+37 silly saveTree │ │ ├── commander@2.17.1
+37 silly saveTree │ │ ├── he@1.2.0
+37 silly saveTree │ │ ├── param-case@2.1.1
+37 silly saveTree │ │ ├── relateurl@0.2.7
+37 silly saveTree │ │ └─┬ uglify-js@3.4.10
+37 silly saveTree │ │   ├── commander@2.19.0
+37 silly saveTree │ │   └── source-map@0.6.1
+37 silly saveTree │ ├─┬ pretty-error@2.1.1
+37 silly saveTree │ │ ├─┬ renderkid@2.0.3
+37 silly saveTree │ │ │ ├─┬ css-select@1.2.0
+37 silly saveTree │ │ │ │ ├── css-what@2.1.3
+37 silly saveTree │ │ │ │ └── domutils@1.5.1
+37 silly saveTree │ │ │ ├─┬ dom-converter@0.2.0
+37 silly saveTree │ │ │ │ └── utila@0.4.0
+37 silly saveTree │ │ │ ├─┬ htmlparser2@3.10.1
+37 silly saveTree │ │ │ │ ├── domhandler@2.4.2
+37 silly saveTree │ │ │ │ ├── entities@1.1.2
+37 silly saveTree │ │ │ │ └─┬ readable-stream@3.5.0
+37 silly saveTree │ │ │ │   ├─┬ string_decoder@1.3.0
+37 silly saveTree │ │ │ │   │ └── safe-buffer@5.2.0
+37 silly saveTree │ │ │ │   └── util-deprecate@1.0.2
+37 silly saveTree │ │ │ ├─┬ strip-ansi@3.0.1
+37 silly saveTree │ │ │ │ └── ansi-regex@2.1.1
+37 silly saveTree │ │ │ └── utila@0.4.0
+37 silly saveTree │ │ └── utila@0.4.0
+37 silly saveTree │ ├── tapable@1.1.3
+37 silly saveTree │ └── util.promisify@1.0.0
+37 silly saveTree ├─┬ identity-obj-proxy@3.0.0
+37 silly saveTree │ └── harmony-reflect@1.6.1
+37 silly saveTree ├── is-wsl@1.1.0
+37 silly saveTree ├─┬ jest-environment-jsdom-fourteen@0.1.0
+37 silly saveTree │ ├─┬ jest-mock@24.9.0
+37 silly saveTree │ │ └─┬ @jest/types@24.9.0
+37 silly saveTree │ │   ├── @types/istanbul-lib-coverage@2.0.1
+37 silly saveTree │ │   ├─┬ @types/istanbul-reports@1.1.1
+37 silly saveTree │ │   │ └── @types/istanbul-lib-report@3.0.0
+37 silly saveTree │ │   └─┬ @types/yargs@13.0.6
+37 silly saveTree │ │     └── @types/yargs-parser@15.0.0
+37 silly saveTree │ ├─┬ jest-util@24.9.0
+37 silly saveTree │ │ ├─┬ @jest/console@24.9.0
+37 silly saveTree │ │ │ ├─┬ @jest/source-map@24.9.0
+37 silly saveTree │ │ │ │ ├── callsites@3.1.0
+37 silly saveTree │ │ │ │ └── source-map@0.6.1
+37 silly saveTree │ │ │ └── slash@2.0.0
+37 silly saveTree │ │ ├─┬ @jest/fake-timers@24.9.0
+37 silly saveTree │ │ │ └─┬ jest-message-util@24.9.0
+37 silly saveTree │ │ │   ├── @jest/test-result@24.9.0
+37 silly saveTree │ │ │   ├── @types/stack-utils@1.0.1
+37 silly saveTree │ │ │   ├─┬ micromatch@3.1.10
+37 silly saveTree │ │ │   │ ├── arr-diff@4.0.0
+37 silly saveTree │ │ │   │ ├── array-unique@0.3.2
+37 silly saveTree │ │ │   │ ├─┬ braces@2.3.2
+37 silly saveTree │ │ │   │ │ ├── arr-flatten@1.1.0
+37 silly saveTree │ │ │   │ │ ├── extend-shallow@2.0.1
+37 silly saveTree │ │ │   │ │ ├─┬ fill-range@4.0.0
+37 silly saveTree │ │ │   │ │ │ ├── extend-shallow@2.0.1
+37 silly saveTree │ │ │   │ │ │ ├── is-number@3.0.0
+37 silly saveTree │ │ │   │ │ │ ├── repeat-string@1.6.1
+37 silly saveTree │ │ │   │ │ │ └── to-regex-range@2.1.1
+37 silly saveTree │ │ │   │ │ ├── repeat-element@1.1.3
+37 silly saveTree │ │ │   │ │ ├─┬ snapdragon-node@2.1.1
+37 silly saveTree │ │ │   │ │ │ ├─┬ define-property@1.0.0
+37 silly saveTree │ │ │   │ │ │ │ └─┬ is-descriptor@1.0.2
+37 silly saveTree │ │ │   │ │ │ │   ├─┬ is-accessor-descriptor@1.0.0
+37 silly saveTree │ │ │   │ │ │ │   │ └── kind-of@6.0.3
+37 silly saveTree │ │ │   │ │ │ │   ├── is-data-descriptor@1.0.0
+37 silly saveTree │ │ │   │ │ │ │   └── kind-of@6.0.3
+37 silly saveTree │ │ │   │ │ │ └── snapdragon-util@3.0.1
+37 silly saveTree │ │ │   │ │ ├─┬ snapdragon@0.8.2
+37 silly saveTree │ │ │   │ │ │ ├─┬ base@0.11.2
+37 silly saveTree │ │ │   │ │ │ │ ├─┬ cache-base@1.0.1
+37 silly saveTree │ │ │   │ │ │ │ │ ├─┬ collection-visit@1.0.0
+37 silly saveTree │ │ │   │ │ │ │ │ │ ├─┬ map-visit@1.0.0
+37 silly saveTree │ │ │   │ │ │ │ │ │ │ └── object-visit@1.0.1
+37 silly saveTree │ │ │   │ │ │ │ │ │ └── object-visit@1.0.1
+37 silly saveTree │ │ │   │ │ │ │ │ ├── component-emitter@1.3.0
+37 silly saveTree │ │ │   │ │ │ │ │ ├── get-value@2.0.6
+37 silly saveTree │ │ │   │ │ │ │ │ ├─┬ has-value@1.0.0
+37 silly saveTree │ │ │   │ │ │ │ │ │ └─┬ has-values@1.0.0
+37 silly saveTree │ │ │   │ │ │ │ │ │   └── kind-of@4.0.0
+37 silly saveTree │ │ │   │ │ │ │ │ ├─┬ set-value@2.0.1
+37 silly saveTree │ │ │   │ │ │ │ │ │ ├── extend-shallow@2.0.1
+37 silly saveTree │ │ │   │ │ │ │ │ │ └─┬ split-string@3.1.0
+37 silly saveTree │ │ │   │ │ │ │ │ │   └─┬ extend-shallow@3.0.2
+37 silly saveTree │ │ │   │ │ │ │ │ │     ├── assign-symbols@1.0.0
+37 silly saveTree │ │ │   │ │ │ │ │ │     └── is-extendable@1.0.1
+37 silly saveTree │ │ │   │ │ │ │ │ ├── to-object-path@0.3.0
+37 silly saveTree │ │ │   │ │ │ │ │ ├── union-value@1.0.1
+37 silly saveTree │ │ │   │ │ │ │ │ └─┬ unset-value@1.0.0
+37 silly saveTree │ │ │   │ │ │ │ │   └─┬ has-value@0.3.1
+37 silly saveTree │ │ │   │ │ │ │ │     ├── has-values@0.1.4
+37 silly saveTree │ │ │   │ │ │ │ │     └── isobject@2.1.0
+37 silly saveTree │ │ │   │ │ │ │ ├─┬ class-utils@0.3.6
+37 silly saveTree │ │ │   │ │ │ │ │ ├─┬ define-property@0.2.5
+37 silly saveTree │ │ │   │ │ │ │ │ │ └─┬ is-descriptor@0.1.6
+37 silly saveTree │ │ │   │ │ │ │ │ │   ├── is-accessor-descriptor@0.1.6
+37 silly saveTree │ │ │   │ │ │ │ │ │   ├── is-data-descriptor@0.1.4
+37 silly saveTree │ │ │   │ │ │ │ │ │   └── kind-of@5.1.0
+37 silly saveTree │ │ │   │ │ │ │ │ └─┬ static-extend@0.1.2
+37 silly saveTree │ │ │   │ │ │ │ │   ├── define-property@0.2.5
+37 silly saveTree │ │ │   │ │ │ │ │   └─┬ object-copy@0.1.0
+37 silly saveTree │ │ │   │ │ │ │ │     ├── copy-descriptor@0.1.1
+37 silly saveTree │ │ │   │ │ │ │ │     └── define-property@0.2.5
+37 silly saveTree │ │ │   │ │ │ │ ├── component-emitter@1.3.0
+37 silly saveTree │ │ │   │ │ │ │ ├─┬ define-property@1.0.0
+37 silly saveTree │ │ │   │ │ │ │ │ └─┬ is-descriptor@1.0.2
+37 silly saveTree │ │ │   │ │ │ │ │   ├─┬ is-accessor-descriptor@1.0.0
+37 silly saveTree │ │ │   │ │ │ │ │   │ └── kind-of@6.0.3
+37 silly saveTree │ │ │   │ │ │ │ │   ├── is-data-descriptor@1.0.0
+37 silly saveTree │ │ │   │ │ │ │ │   └── kind-of@6.0.3
+37 silly saveTree │ │ │   │ │ │ │ ├─┬ mixin-deep@1.3.2
+37 silly saveTree │ │ │   │ │ │ │ │ └── is-extendable@1.0.1
+37 silly saveTree │ │ │   │ │ │ │ └── pascalcase@0.1.1
+37 silly saveTree │ │ │   │ │ │ ├─┬ debug@2.6.9
+37 silly saveTree │ │ │   │ │ │ │ └── ms@2.0.0
+37 silly saveTree │ │ │   │ │ │ ├── define-property@0.2.5
+37 silly saveTree │ │ │   │ │ │ ├── extend-shallow@2.0.1
+37 silly saveTree │ │ │   │ │ │ ├── map-cache@0.2.2
+37 silly saveTree │ │ │   │ │ │ ├─┬ source-map-resolve@0.5.3
+37 silly saveTree │ │ │   │ │ │ │ ├── atob@2.1.2
+37 silly saveTree │ │ │   │ │ │ │ ├── decode-uri-component@0.2.0
+37 silly saveTree │ │ │   │ │ │ │ ├── resolve-url@0.2.1
+37 silly saveTree │ │ │   │ │ │ │ ├── source-map-url@0.4.0
+37 silly saveTree │ │ │   │ │ │ │ └── urix@0.1.0
+37 silly saveTree │ │ │   │ │ │ └── use@3.1.1
+37 silly saveTree │ │ │   │ │ ├── split-string@3.1.0
+37 silly saveTree │ │ │   │ │ └─┬ to-regex@3.0.2
+37 silly saveTree │ │ │   │ │   ├─┬ define-property@2.0.2
+37 silly saveTree │ │ │   │ │   │ └─┬ is-descriptor@1.0.2
+37 silly saveTree │ │ │   │ │   │   ├─┬ is-accessor-descriptor@1.0.0
+37 silly saveTree │ │ │   │ │   │   │ └── kind-of@6.0.3
+37 silly saveTree │ │ │   │ │   │   ├── is-data-descriptor@1.0.0
+37 silly saveTree │ │ │   │ │   │   └── kind-of@6.0.3
+37 silly saveTree │ │ │   │ │   ├─┬ regex-not@1.0.2
+37 silly saveTree │ │ │   │ │   │ └─┬ safe-regex@1.1.0
+37 silly saveTree │ │ │   │ │   │   └── ret@0.1.15
+37 silly saveTree │ │ │   │ │   └── safe-regex@1.1.0
+37 silly saveTree │ │ │   │ ├── define-property@2.0.2
+37 silly saveTree │ │ │   │ ├── extend-shallow@3.0.2
+37 silly saveTree │ │ │   │ ├─┬ extglob@2.0.4
+37 silly saveTree │ │ │   │ │ ├─┬ define-property@1.0.0
+37 silly saveTree │ │ │   │ │ │ └─┬ is-descriptor@1.0.2
+37 silly saveTree │ │ │   │ │ │   ├─┬ is-accessor-descriptor@1.0.0
+37 silly saveTree │ │ │   │ │ │   │ └── kind-of@6.0.3
+37 silly saveTree │ │ │   │ │ │   ├── is-data-descriptor@1.0.0
+37 silly saveTree │ │ │   │ │ │   └── kind-of@6.0.3
+37 silly saveTree │ │ │   │ │ ├─┬ expand-brackets@2.1.4
+37 silly saveTree │ │ │   │ │ │ ├─┬ debug@2.6.9
+37 silly saveTree │ │ │   │ │ │ │ └── ms@2.0.0
+37 silly saveTree │ │ │   │ │ │ ├── define-property@0.2.5
+37 silly saveTree │ │ │   │ │ │ ├── extend-shallow@2.0.1
+37 silly saveTree │ │ │   │ │ │ └── posix-character-classes@0.1.1
+37 silly saveTree │ │ │   │ │ ├── extend-shallow@2.0.1
+37 silly saveTree │ │ │   │ │ └── fragment-cache@0.2.1
+37 silly saveTree │ │ │   │ ├── fragment-cache@0.2.1
+37 silly saveTree │ │ │   │ ├── kind-of@6.0.3
+37 silly saveTree │ │ │   │ ├─┬ nanomatch@1.2.13
+37 silly saveTree │ │ │   │ │ ├── is-windows@1.0.2
+37 silly saveTree │ │ │   │ │ ├── kind-of@6.0.3
+37 silly saveTree │ │ │   │ │ └── object.pick@1.3.0
+37 silly saveTree │ │ │   │ ├── object.pick@1.3.0
+37 silly saveTree │ │ │   │ ├── regex-not@1.0.2
+37 silly saveTree │ │ │   │ ├── snapdragon@0.8.2
+37 silly saveTree │ │ │   │ └── to-regex@3.0.2
+37 silly saveTree │ │ │   └── stack-utils@1.0.2
+37 silly saveTree │ │ ├── @jest/source-map@24.9.0
+37 silly saveTree │ │ ├── @jest/test-result@24.9.0
+37 silly saveTree │ │ ├── callsites@3.1.0
+37 silly saveTree │ │ ├─┬ is-ci@2.0.0
+37 silly saveTree │ │ │ └── ci-info@2.0.0
+37 silly saveTree │ │ ├── slash@2.0.0
+37 silly saveTree │ │ └── source-map@0.6.1
+37 silly saveTree │ └─┬ jsdom@14.1.0
+37 silly saveTree │   ├── abab@2.0.3
+37 silly saveTree │   ├─┬ acorn-globals@4.3.4
+37 silly saveTree │   │ └── acorn-walk@6.2.0
+37 silly saveTree │   ├── array-equal@1.0.0
+37 silly saveTree │   ├── cssom@0.3.8
+37 silly saveTree │   ├── cssstyle@1.4.0
+37 silly saveTree │   ├─┬ data-urls@1.1.0
+37 silly saveTree │   │ ├── whatwg-mimetype@2.3.0
+37 silly saveTree │   │ └─┬ whatwg-url@7.1.0
+37 silly saveTree │   │   ├── lodash.sortby@4.7.0
+37 silly saveTree │   │   ├── tr46@1.0.1
+37 silly saveTree │   │   └── webidl-conversions@4.0.2
+37 silly saveTree │   ├── domexception@1.0.1
+37 silly saveTree │   ├─┬ escodegen@1.13.0
+37 silly saveTree │   │ └── source-map@0.6.1
+37 silly saveTree │   ├─┬ html-encoding-sniffer@1.0.2
+37 silly saveTree │   │ └── whatwg-encoding@1.0.5
+37 silly saveTree │   ├── nwsapi@2.2.0
+37 silly saveTree │   ├── parse5@5.1.0
+37 silly saveTree │   ├── pn@1.1.0
+37 silly saveTree │   ├─┬ request-promise-native@1.0.8
+37 silly saveTree │   │ ├── request-promise-core@1.1.3
+37 silly saveTree │   │ ├── stealthy-require@1.1.1
+37 silly saveTree │   │ └─┬ tough-cookie@2.5.0
+37 silly saveTree │   │   └── psl@1.7.0
+37 silly saveTree │   ├─┬ request@2.88.0
+37 silly saveTree │   │ ├── aws-sign2@0.7.0
+37 silly saveTree │   │ ├── aws4@1.9.1
+37 silly saveTree │   │ ├── caseless@0.12.0
+37 silly saveTree │   │ ├─┬ combined-stream@1.0.8
+37 silly saveTree │   │ │ └── delayed-stream@1.0.0
+37 silly saveTree │   │ ├── extend@3.0.2
+37 silly saveTree │   │ ├── forever-agent@0.6.1
+37 silly saveTree │   │ ├─┬ form-data@2.3.3
+37 silly saveTree │   │ │ ├── asynckit@0.4.0
+37 silly saveTree │   │ │ └─┬ mime-types@2.1.26
+37 silly saveTree │   │ │   └── mime-db@1.43.0
+37 silly saveTree │   │ ├─┬ har-validator@5.1.3
+37 silly saveTree │   │ │ └── har-schema@2.0.0
+37 silly saveTree │   │ ├─┬ http-signature@1.2.0
+37 silly saveTree │   │ │ ├── assert-plus@1.0.0
+37 silly saveTree │   │ │ ├─┬ jsprim@1.4.1
+37 silly saveTree │   │ │ │ ├── extsprintf@1.3.0
+37 silly saveTree │   │ │ │ ├── json-schema@0.2.3
+37 silly saveTree │   │ │ │ └─┬ verror@1.10.0
+37 silly saveTree │   │ │ │   └── core-util-is@1.0.2
+37 silly saveTree │   │ │ └─┬ sshpk@1.16.1
+37 silly saveTree │   │ │   ├── asn1@0.2.4
+37 silly saveTree │   │ │   ├─┬ bcrypt-pbkdf@1.0.2
+37 silly saveTree │   │ │   │ └── tweetnacl@0.14.5
+37 silly saveTree │   │ │   ├── dashdash@1.14.1
+37 silly saveTree │   │ │   ├─┬ ecc-jsbn@0.1.2
+37 silly saveTree │   │ │   │ └── jsbn@0.1.1
+37 silly saveTree │   │ │   ├── getpass@0.1.7
+37 silly saveTree │   │ │   ├── jsbn@0.1.1
+37 silly saveTree │   │ │   └── tweetnacl@0.14.5
+37 silly saveTree │   │ ├── is-typedarray@1.0.0
+37 silly saveTree │   │ ├── isstream@0.1.2
+37 silly saveTree │   │ ├── json-stringify-safe@5.0.1
+37 silly saveTree │   │ ├── mime-types@2.1.26
+37 silly saveTree │   │ ├── oauth-sign@0.9.0
+37 silly saveTree │   │ ├── performance-now@2.1.0
+37 silly saveTree │   │ ├── qs@6.5.2
+37 silly saveTree │   │ ├─┬ tough-cookie@2.4.3
+37 silly saveTree │   │ │ └── punycode@1.4.1
+37 silly saveTree │   │ ├── tunnel-agent@0.6.0
+37 silly saveTree │   │ └── uuid@3.4.0
+37 silly saveTree │   ├─┬ saxes@3.1.11
+37 silly saveTree │   │ └── xmlchars@2.2.0
+37 silly saveTree │   ├── symbol-tree@3.2.4
+37 silly saveTree │   ├── tough-cookie@2.5.0
+37 silly saveTree │   ├─┬ w3c-hr-time@1.0.1
+37 silly saveTree │   │ └── browser-process-hrtime@0.1.3
+37 silly saveTree │   ├─┬ w3c-xmlserializer@1.1.2
+37 silly saveTree │   │ └── xml-name-validator@3.0.0
+37 silly saveTree │   ├── webidl-conversions@4.0.2
+37 silly saveTree │   ├── whatwg-encoding@1.0.5
+37 silly saveTree │   ├── whatwg-mimetype@2.3.0
+37 silly saveTree │   ├── whatwg-url@7.1.0
+37 silly saveTree │   ├─┬ ws@6.2.1
+37 silly saveTree │   │ └── async-limiter@1.0.1
+37 silly saveTree │   └── xml-name-validator@3.0.0
+37 silly saveTree ├─┬ jest-resolve@24.7.1
+37 silly saveTree │ ├─┬ browser-resolve@1.11.3
+37 silly saveTree │ │ └── resolve@1.1.7
+37 silly saveTree │ ├── jest-pnp-resolver@1.2.1
+37 silly saveTree │ └── realpath-native@1.1.0
+37 silly saveTree ├─┬ jest-watch-typeahead@0.3.0
+37 silly saveTree │ ├─┬ jest-watcher@24.9.0
+37 silly saveTree │ │ └── string-length@2.0.0
+37 silly saveTree │ ├── string-length@2.0.0
+37 silly saveTree │ └─┬ strip-ansi@5.2.0
+37 silly saveTree │   └── ansi-regex@4.1.0
+37 silly saveTree ├─┬ jest@24.7.1
+37 silly saveTree │ ├─┬ import-local@2.0.0
+37 silly saveTree │ │ └── resolve-cwd@2.0.0
+37 silly saveTree │ └─┬ jest-cli@24.9.0
+37 silly saveTree │   ├─┬ @jest/core@24.9.0
+37 silly saveTree │   │ ├─┬ @jest/reporters@24.9.0
+37 silly saveTree │   │ │ ├─┬ @jest/environment@24.9.0
+37 silly saveTree │   │ │ │ └─┬ @jest/transform@24.9.0
+37 silly saveTree │   │ │ │   ├─┬ babel-plugin-istanbul@5.2.0
+37 silly saveTree │   │ │ │   │ ├─┬ istanbul-lib-instrument@3.3.0
+37 silly saveTree │   │ │ │   │ │ ├── istanbul-lib-coverage@2.0.5
+37 silly saveTree │   │ │ │   │ │ └── semver@6.0.0
+37 silly saveTree │   │ │ │   │ └─┬ test-exclude@5.2.3
+37 silly saveTree │   │ │ │   │   ├─┬ read-pkg-up@4.0.0
+37 silly saveTree │   │ │ │   │   │ └─┬ read-pkg@3.0.0
+37 silly saveTree │   │ │ │   │   │   ├─┬ load-json-file@4.0.0
+37 silly saveTree │   │ │ │   │   │   │ └── pify@3.0.0
+37 silly saveTree │   │ │ │   │   │   └── path-type@3.0.0
+37 silly saveTree │   │ │ │   │   └── require-main-filename@2.0.0
+37 silly saveTree │   │ │ │   ├─┬ jest-haste-map@24.9.0
+37 silly saveTree │   │ │ │   │ ├─┬ anymatch@2.0.0
+37 silly saveTree │   │ │ │   │ │ └─┬ normalize-path@2.1.1
+37 silly saveTree │   │ │ │   │ │   └── remove-trailing-separator@1.1.0
+37 silly saveTree │   │ │ │   │ ├─┬ fb-watchman@2.0.1
+37 silly saveTree │   │ │ │   │ │ └─┬ bser@2.1.1
+37 silly saveTree │   │ │ │   │ │   └── node-int64@0.4.0
+37 silly saveTree │   │ │ │   │ ├─┬ fsevents@1.2.11
+37 silly saveTree │   │ │ │   │ │ ├─┬ bindings@1.5.0
+37 silly saveTree │   │ │ │   │ │ │ └── file-uri-to-path@1.0.0
+37 silly saveTree │   │ │ │   │ │ ├── nan@2.14.0
+37 silly saveTree │   │ │ │   │ │ └─┬ node-pre-gyp@0.14.0
+37 silly saveTree │   │ │ │   │ │   ├── detect-libc@1.0.3
+37 silly saveTree │   │ │ │   │ │   ├─┬ mkdirp@0.5.1
+37 silly saveTree │   │ │ │   │ │   │ └── minimist@0.0.8
+37 silly saveTree │   │ │ │   │ │   ├─┬ needle@2.4.0
+37 silly saveTree │   │ │ │   │ │   │ ├─┬ debug@3.2.6
+37 silly saveTree │   │ │ │   │ │   │ │ └── ms@2.1.2
+37 silly saveTree │   │ │ │   │ │   │ ├─┬ iconv-lite@0.4.24
+37 silly saveTree │   │ │ │   │ │   │ │ └── safer-buffer@2.1.2
+37 silly saveTree │   │ │ │   │ │   │ └── sax@1.2.4
+37 silly saveTree │   │ │ │   │ │   ├─┬ nopt@4.0.1
+37 silly saveTree │   │ │ │   │ │   │ ├── abbrev@1.1.1
+37 silly saveTree │   │ │ │   │ │   │ └─┬ osenv@0.1.5
+37 silly saveTree │   │ │ │   │ │   │   ├── os-homedir@1.0.2
+37 silly saveTree │   │ │ │   │ │   │   └── os-tmpdir@1.0.2
+37 silly saveTree │   │ │ │   │ │   ├─┬ npm-packlist@1.4.7
+37 silly saveTree │   │ │ │   │ │   │ ├─┬ ignore-walk@3.0.3
+37 silly saveTree │   │ │ │   │ │   │ │ └─┬ minimatch@3.0.4
+37 silly saveTree │   │ │ │   │ │   │ │   └─┬ brace-expansion@1.1.11
+37 silly saveTree │   │ │ │   │ │   │ │     ├── balanced-match@1.0.0
+37 silly saveTree │   │ │ │   │ │   │ │     └── concat-map@0.0.1
+37 silly saveTree │   │ │ │   │ │   │ └─┬ npm-bundled@1.1.1
+37 silly saveTree │   │ │ │   │ │   │   └── npm-normalize-package-bin@1.0.1
+37 silly saveTree │   │ │ │   │ │   ├─┬ npmlog@4.1.2
+37 silly saveTree │   │ │ │   │ │   │ ├─┬ are-we-there-yet@1.1.5
+37 silly saveTree │   │ │ │   │ │   │ │ ├── delegates@1.0.0
+37 silly saveTree │   │ │ │   │ │   │ │ └─┬ readable-stream@2.3.6
+37 silly saveTree │   │ │ │   │ │   │ │   ├── core-util-is@1.0.2
+37 silly saveTree │   │ │ │   │ │   │ │   ├── inherits@2.0.4
+37 silly saveTree │   │ │ │   │ │   │ │   ├── isarray@1.0.0
+37 silly saveTree │   │ │ │   │ │   │ │   ├── process-nextick-args@2.0.1
+37 silly saveTree │   │ │ │   │ │   │ │   ├── safe-buffer@5.1.2
+37 silly saveTree │   │ │ │   │ │   │ │   ├── string_decoder@1.1.1
+37 silly saveTree │   │ │ │   │ │   │ │   └── util-deprecate@1.0.2
+37 silly saveTree │   │ │ │   │ │   │ ├── console-control-strings@1.1.0
+37 silly saveTree │   │ │ │   │ │   │ ├─┬ gauge@2.7.4
+37 silly saveTree │   │ │ │   │ │   │ │ ├── aproba@1.2.0
+37 silly saveTree │   │ │ │   │ │   │ │ ├── has-unicode@2.0.1
+37 silly saveTree │   │ │ │   │ │   │ │ ├── object-assign@4.1.1
+37 silly saveTree │   │ │ │   │ │   │ │ ├── signal-exit@3.0.2
+37 silly saveTree │   │ │ │   │ │   │ │ ├─┬ string-width@1.0.2
+37 silly saveTree │   │ │ │   │ │   │ │ │ ├── code-point-at@1.1.0
+37 silly saveTree │   │ │ │   │ │   │ │ │ ├─┬ is-fullwidth-code-point@1.0.0
+37 silly saveTree │   │ │ │   │ │   │ │ │ │ └── number-is-nan@1.0.1
+37 silly saveTree │   │ │ │   │ │   │ │ │ └─┬ strip-ansi@3.0.1
+37 silly saveTree │   │ │ │   │ │   │ │ │   └── ansi-regex@2.1.1
+37 silly saveTree │   │ │ │   │ │   │ │ ├── strip-ansi@3.0.1
+37 silly saveTree │   │ │ │   │ │   │ │ └── wide-align@1.1.3
+37 silly saveTree │   │ │ │   │ │   │ └── set-blocking@2.0.0
+37 silly saveTree │   │ │ │   │ │   ├─┬ rc@1.2.8
+37 silly saveTree │   │ │ │   │ │   │ ├── deep-extend@0.6.0
+37 silly saveTree │   │ │ │   │ │   │ ├── ini@1.3.5
+37 silly saveTree │   │ │ │   │ │   │ ├── minimist@1.2.0
+37 silly saveTree │   │ │ │   │ │   │ └── strip-json-comments@2.0.1
+37 silly saveTree │   │ │ │   │ │   ├─┬ rimraf@2.7.1
+37 silly saveTree │   │ │ │   │ │   │ └─┬ glob@7.1.6
+37 silly saveTree │   │ │ │   │ │   │   ├── fs.realpath@1.0.0
+37 silly saveTree │   │ │ │   │ │   │   ├─┬ inflight@1.0.6
+37 silly saveTree │   │ │ │   │ │   │   │ ├─┬ once@1.4.0
+37 silly saveTree │   │ │ │   │ │   │   │ │ └── wrappy@1.0.2
+37 silly saveTree │   │ │ │   │ │   │   │ └── wrappy@1.0.2
+37 silly saveTree │   │ │ │   │ │   │   ├── once@1.4.0
+37 silly saveTree │   │ │ │   │ │   │   └── path-is-absolute@1.0.1
+37 silly saveTree │   │ │ │   │ │   ├── semver@5.7.1
+37 silly saveTree │   │ │ │   │ │   └─┬ tar@4.4.13
+37 silly saveTree │   │ │ │   │ │     ├── chownr@1.1.3
+37 silly saveTree │   │ │ │   │ │     ├─┬ fs-minipass@1.2.7
+37 silly saveTree │   │ │ │   │ │     │ └─┬ minipass@2.9.0
+37 silly saveTree │   │ │ │   │ │     │   └── yallist@3.1.1
+37 silly saveTree │   │ │ │   │ │     ├── minipass@2.9.0
+37 silly saveTree │   │ │ │   │ │     ├── minizlib@1.3.3
+37 silly saveTree │   │ │ │   │ │     └── yallist@3.1.1
+37 silly saveTree │   │ │ │   │ ├── jest-serializer@24.9.0
+37 silly saveTree │   │ │ │   │ ├─┬ jest-worker@24.9.0
+37 silly saveTree │   │ │ │   │ │ ├── merge-stream@2.0.0
+37 silly saveTree │   │ │ │   │ │ └── supports-color@6.1.0
+37 silly saveTree │   │ │ │   │ ├─┬ sane@4.1.0
+37 silly saveTree │   │ │ │   │ │ ├─┬ @cnakazawa/watch@1.0.3
+37 silly saveTree │   │ │ │   │ │ │ └── exec-sh@0.3.4
+37 silly saveTree │   │ │ │   │ │ ├─┬ capture-exit@2.0.0
+37 silly saveTree │   │ │ │   │ │ │ └── rsvp@4.8.5
+37 silly saveTree │   │ │ │   │ │ ├── exec-sh@0.3.4
+37 silly saveTree │   │ │ │   │ │ ├─┬ execa@1.0.0
+37 silly saveTree │   │ │ │   │ │ │ ├─┬ get-stream@4.1.0
+37 silly saveTree │   │ │ │   │ │ │ │ └─┬ pump@3.0.0
+37 silly saveTree │   │ │ │   │ │ │ │   └── end-of-stream@1.4.4
+37 silly saveTree │   │ │ │   │ │ │ ├── is-stream@1.1.0
+37 silly saveTree │   │ │ │   │ │ │ ├── npm-run-path@2.0.2
+37 silly saveTree │   │ │ │   │ │ │ ├── p-finally@1.0.0
+37 silly saveTree │   │ │ │   │ │ │ └── strip-eof@1.0.0
+37 silly saveTree │   │ │ │   │ │ └─┬ walker@1.0.7
+37 silly saveTree │   │ │ │   │ │   └─┬ makeerror@1.0.11
+37 silly saveTree │   │ │ │   │ │     └── tmpl@1.0.4
+37 silly saveTree │   │ │ │   │ └── walker@1.0.7
+37 silly saveTree │   │ │ │   ├── jest-regex-util@24.9.0
+37 silly saveTree │   │ │ │   ├─┬ pirates@4.0.1
+37 silly saveTree │   │ │ │   │ └── node-modules-regexp@1.0.0
+37 silly saveTree │   │ │ │   ├── source-map@0.6.1
+37 silly saveTree │   │ │ │   └── write-file-atomic@2.4.1
+37 silly saveTree │   │ │ ├── @jest/transform@24.9.0
+37 silly saveTree │   │ │ ├── exit@0.1.2
+37 silly saveTree │   │ │ ├── istanbul-lib-coverage@2.0.5
+37 silly saveTree │   │ │ ├── istanbul-lib-instrument@3.3.0
+37 silly saveTree │   │ │ ├─┬ istanbul-lib-report@2.0.8
+37 silly saveTree │   │ │ │ └── supports-color@6.1.0
+37 silly saveTree │   │ │ ├─┬ istanbul-lib-source-maps@3.0.6
+37 silly saveTree │   │ │ │ └── source-map@0.6.1
+37 silly saveTree │   │ │ ├─┬ istanbul-reports@2.2.7
+37 silly saveTree │   │ │ │ └── html-escaper@2.0.0
+37 silly saveTree │   │ │ ├── jest-haste-map@24.9.0
+37 silly saveTree │   │ │ ├── jest-resolve@24.9.0
+37 silly saveTree │   │ │ ├─┬ jest-runtime@24.9.0
+37 silly saveTree │   │ │ │ ├─┬ jest-config@24.9.0
+37 silly saveTree │   │ │ │ │ ├─┬ @jest/test-sequencer@24.9.0
+37 silly saveTree │   │ │ │ │ │ └─┬ jest-runner@24.9.0
+37 silly saveTree │   │ │ │ │ │   ├─┬ jest-docblock@24.9.0
+37 silly saveTree │   │ │ │ │ │   │ └── detect-newline@2.1.0
+37 silly saveTree │   │ │ │ │ │   ├─┬ jest-jasmine2@24.9.0
+37 silly saveTree │   │ │ │ │ │   │ ├── co@4.6.0
+37 silly saveTree │   │ │ │ │ │   │ ├─┬ expect@24.9.0
+37 silly saveTree │   │ │ │ │ │   │ │ ├── jest-get-type@24.9.0
+37 silly saveTree │   │ │ │ │ │   │ │ └─┬ jest-matcher-utils@24.9.0
+37 silly saveTree │   │ │ │ │ │   │ │   ├─┬ jest-diff@24.9.0
+37 silly saveTree │   │ │ │ │ │   │ │   │ ├── diff-sequences@24.9.0
+37 silly saveTree │   │ │ │ │ │   │ │   │ └─┬ pretty-format@24.9.0
+37 silly saveTree │   │ │ │ │ │   │ │   │   └── ansi-regex@4.1.0
+37 silly saveTree │   │ │ │ │ │   │ │   └── pretty-format@24.9.0
+37 silly saveTree │   │ │ │ │ │   │ ├── is-generator-fn@2.1.0
+37 silly saveTree │   │ │ │ │ │   │ ├── jest-each@24.9.0
+37 silly saveTree │   │ │ │ │ │   │ ├── jest-matcher-utils@24.9.0
+37 silly saveTree │   │ │ │ │ │   │ ├─┬ jest-snapshot@24.9.0
+37 silly saveTree │   │ │ │ │ │   │ │ ├── jest-resolve@24.9.0
+37 silly saveTree │   │ │ │ │ │   │ │ └── semver@6.3.0
+37 silly saveTree │   │ │ │ │ │   │ ├── pretty-format@24.9.0
+37 silly saveTree │   │ │ │ │ │   │ └── throat@4.1.0
+37 silly saveTree │   │ │ │ │ │   ├── jest-leak-detector@24.9.0
+37 silly saveTree │   │ │ │ │ │   ├── jest-resolve@24.9.0
+37 silly saveTree │   │ │ │ │ │   ├─┬ source-map-support@0.5.16
+37 silly saveTree │   │ │ │ │ │   │ ├── buffer-from@1.1.1
+37 silly saveTree │   │ │ │ │ │   │ └── source-map@0.6.1
+37 silly saveTree │   │ │ │ │ │   └── throat@4.1.0
+37 silly saveTree │   │ │ │ │ ├─┬ babel-jest@24.9.0
+37 silly saveTree │   │ │ │ │ │ ├─┬ @types/babel__core@7.1.3
+37 silly saveTree │   │ │ │ │ │ │ ├── @types/babel__generator@7.6.1
+37 silly saveTree │   │ │ │ │ │ │ ├── @types/babel__template@7.0.2
+37 silly saveTree │   │ │ │ │ │ │ └── @types/babel__traverse@7.0.8
+37 silly saveTree │   │ │ │ │ │ └─┬ babel-preset-jest@24.9.0
+37 silly saveTree │   │ │ │ │ │   └── babel-plugin-jest-hoist@24.9.0
+37 silly saveTree │   │ │ │ │ ├─┬ jest-environment-jsdom@24.9.0
+37 silly saveTree │   │ │ │ │ │ └─┬ jsdom@11.12.0
+37 silly saveTree │   │ │ │ │ │   ├── acorn@5.7.3
+37 silly saveTree │   │ │ │ │ │   ├── left-pad@1.3.0
+37 silly saveTree │   │ │ │ │ │   ├── parse5@4.0.0
+37 silly saveTree │   │ │ │ │ │   ├── whatwg-url@6.5.0
+37 silly saveTree │   │ │ │ │ │   └── ws@5.2.2
+37 silly saveTree │   │ │ │ │ ├── jest-environment-node@24.9.0
+37 silly saveTree │   │ │ │ │ ├── jest-get-type@24.9.0
+37 silly saveTree │   │ │ │ │ ├── jest-jasmine2@24.9.0
+37 silly saveTree │   │ │ │ │ ├── jest-resolve@24.9.0
+37 silly saveTree │   │ │ │ │ ├── jest-validate@24.9.0
+37 silly saveTree │   │ │ │ │ └── pretty-format@24.9.0
+37 silly saveTree │   │ │ │ ├── jest-resolve@24.9.0
+37 silly saveTree │   │ │ │ ├── jest-snapshot@24.9.0
+37 silly saveTree │   │ │ │ ├── jest-validate@24.9.0
+37 silly saveTree │   │ │ │ └─┬ yargs@13.3.0
+37 silly saveTree │   │ │ │   ├─┬ cliui@5.0.0
+37 silly saveTree │   │ │ │   │ ├─┬ string-width@3.1.0
+37 silly saveTree │   │ │ │   │ │ └─┬ strip-ansi@5.2.0
+37 silly saveTree │   │ │ │   │ │   └── ansi-regex@4.1.0
+37 silly saveTree │   │ │ │   │ ├── strip-ansi@5.2.0
+37 silly saveTree │   │ │ │   │ └─┬ wrap-ansi@5.1.0
+37 silly saveTree │   │ │ │   │   ├─┬ string-width@3.1.0
+37 silly saveTree │   │ │ │   │   │ └─┬ strip-ansi@5.2.0
+37 silly saveTree │   │ │ │   │   │   └── ansi-regex@4.1.0
+37 silly saveTree │   │ │ │   │   └── strip-ansi@5.2.0
+37 silly saveTree │   │ │ │   ├── get-caller-file@2.0.5
+37 silly saveTree │   │ │ │   ├── require-directory@2.1.1
+37 silly saveTree │   │ │ │   ├── set-blocking@2.0.0
+37 silly saveTree │   │ │ │   ├─┬ string-width@3.1.0
+37 silly saveTree │   │ │ │   │ └─┬ strip-ansi@5.2.0
+37 silly saveTree │   │ │ │   │   └── ansi-regex@4.1.0
+37 silly saveTree │   │ │ │   ├── which-module@2.0.0
+37 silly saveTree │   │ │ │   ├── y18n@4.0.0
+37 silly saveTree │   │ │ │   └─┬ yargs-parser@13.1.1
+37 silly saveTree │   │ │ │     └── decamelize@1.2.0
+37 silly saveTree │   │ │ ├── jest-worker@24.9.0
+37 silly saveTree │   │ │ ├─┬ node-notifier@5.4.3
+37 silly saveTree │   │ │ │ ├── growly@1.3.0
+37 silly saveTree │   │ │ │ ├── semver@5.7.1
+37 silly saveTree │   │ │ │ └── shellwords@0.1.1
+37 silly saveTree │   │ │ └── source-map@0.6.1
+37 silly saveTree │   │ ├── @jest/transform@24.9.0
+37 silly saveTree │   │ ├── exit@0.1.2
+37 silly saveTree │   │ ├── jest-changed-files@24.9.0
+37 silly saveTree │   │ ├── jest-config@24.9.0
+37 silly saveTree │   │ ├── jest-haste-map@24.9.0
+37 silly saveTree │   │ ├── jest-regex-util@24.9.0
+37 silly saveTree │   │ ├── jest-resolve-dependencies@24.9.0
+37 silly saveTree │   │ ├── jest-resolve@24.9.0
+37 silly saveTree │   │ ├── jest-runner@24.9.0
+37 silly saveTree │   │ ├── jest-runtime@24.9.0
+37 silly saveTree │   │ ├── jest-snapshot@24.9.0
+37 silly saveTree │   │ ├── jest-validate@24.9.0
+37 silly saveTree │   │ ├─┬ p-each-series@1.0.0
+37 silly saveTree │   │ │ └── p-reduce@1.0.0
+37 silly saveTree │   │ └─┬ strip-ansi@5.2.0
+37 silly saveTree │   │   └── ansi-regex@4.1.0
+37 silly saveTree │   ├── exit@0.1.2
+37 silly saveTree │   ├── jest-config@24.9.0
+37 silly saveTree │   ├── jest-validate@24.9.0
+37 silly saveTree │   ├─┬ prompts@2.3.0
+37 silly saveTree │   │ ├── kleur@3.0.3
+37 silly saveTree │   │ └── sisteransi@1.0.4
+37 silly saveTree │   └── yargs@13.3.0
+37 silly saveTree ├─┬ material-table@1.56.1
+37 silly saveTree │ ├─┬ @date-io/date-fns@1.3.13
+37 silly saveTree │ │ └── @date-io/core@1.3.13
+37 silly saveTree │ ├─┬ @material-ui/pickers@3.2.10
+37 silly saveTree │ │ ├── @types/styled-jsx@2.2.8
+37 silly saveTree │ │ └── rifm@0.7.0
+37 silly saveTree │ ├── date-fns@2.9.0
+37 silly saveTree │ ├── debounce@1.2.0
+37 silly saveTree │ ├── fast-deep-equal@2.0.1
+37 silly saveTree │ ├── filefy@0.1.10
+37 silly saveTree │ ├─┬ react-beautiful-dnd@11.0.3
+37 silly saveTree │ │ ├─┬ @babel/runtime-corejs2@7.8.3
+37 silly saveTree │ │ │ └── core-js@2.6.11
+37 silly saveTree │ │ ├── css-box-model@1.2.0
+37 silly saveTree │ │ ├── memoize-one@5.1.1
+37 silly saveTree │ │ ├── raf-schd@4.0.2
+37 silly saveTree │ │ ├── react-redux@7.1.3
+37 silly saveTree │ │ ├─┬ redux@4.0.5
+37 silly saveTree │ │ │ └── symbol-observable@1.2.0
+37 silly saveTree │ │ └── use-memo-one@1.1.1
+37 silly saveTree │ └── react-double-scrollbar@0.0.15
+37 silly saveTree ├─┬ mini-css-extract-plugin@0.5.0
+37 silly saveTree │ └─┬ webpack-sources@1.4.3
+37 silly saveTree │   ├── source-list-map@2.0.1
+37 silly saveTree │   └── source-map@0.6.1
+37 silly saveTree ├── moment@2.24.0
+37 silly saveTree ├─┬ node-sass@4.13.1
+37 silly saveTree │ ├── async-foreach@0.1.3
+37 silly saveTree │ ├─┬ chalk@1.1.3
+37 silly saveTree │ │ ├── ansi-styles@2.2.1
+37 silly saveTree │ │ ├─┬ has-ansi@2.0.0
+37 silly saveTree │ │ │ └── ansi-regex@2.1.1
+37 silly saveTree │ │ ├─┬ strip-ansi@3.0.1
+37 silly saveTree │ │ │ └── ansi-regex@2.1.1
+37 silly saveTree │ │ └── supports-color@2.0.0
+37 silly saveTree │ ├─┬ cross-spawn@3.0.1
+37 silly saveTree │ │ └─┬ lru-cache@4.1.5
+37 silly saveTree │ │   ├── pseudomap@1.0.2
+37 silly saveTree │ │   └── yallist@2.1.2
+37 silly saveTree │ ├─┬ gaze@1.1.3
+37 silly saveTree │ │ └── globule@1.3.0
+37 silly saveTree │ ├── get-stdin@4.0.1
+37 silly saveTree │ ├── in-publish@2.0.0
+37 silly saveTree │ ├─┬ meow@3.7.0
+37 silly saveTree │ │ ├─┬ camelcase-keys@2.1.0
+37 silly saveTree │ │ │ ├── camelcase@2.1.1
+37 silly saveTree │ │ │ └── map-obj@1.0.1
+37 silly saveTree │ │ ├─┬ loud-rejection@1.6.0
+37 silly saveTree │ │ │ └─┬ currently-unhandled@0.4.1
+37 silly saveTree │ │ │   └── array-find-index@1.0.2
+37 silly saveTree │ │ ├── map-obj@1.0.1
+37 silly saveTree │ │ ├─┬ read-pkg-up@1.0.1
+37 silly saveTree │ │ │ ├─┬ find-up@1.1.2
+37 silly saveTree │ │ │ │ └── path-exists@2.1.0
+37 silly saveTree │ │ │ └─┬ read-pkg@1.1.0
+37 silly saveTree │ │ │   ├─┬ load-json-file@1.1.0
+37 silly saveTree │ │ │   │ ├── parse-json@2.2.0
+37 silly saveTree │ │ │   │ ├── pify@2.3.0
+37 silly saveTree │ │ │   │ └─┬ strip-bom@2.0.0
+37 silly saveTree │ │ │   │   └── is-utf8@0.2.1
+37 silly saveTree │ │ │   └── path-type@1.1.0
+37 silly saveTree │ │ ├─┬ redent@1.0.0
+37 silly saveTree │ │ │ ├─┬ indent-string@2.1.0
+37 silly saveTree │ │ │ │ └─┬ repeating@2.0.1
+37 silly saveTree │ │ │ │   └─┬ is-finite@1.0.2
+37 silly saveTree │ │ │ │     └── number-is-nan@1.0.1
+37 silly saveTree │ │ │ └── strip-indent@1.0.1
+37 silly saveTree │ │ └── trim-newlines@1.0.0
+37 silly saveTree │ ├─┬ node-gyp@3.8.0
+37 silly saveTree │ │ ├── fstream@1.0.12
+37 silly saveTree │ │ ├─┬ nopt@3.0.6
+37 silly saveTree │ │ │ └── abbrev@1.1.1
+37 silly saveTree │ │ ├─┬ npmlog@4.1.2
+37 silly saveTree │ │ │ ├─┬ are-we-there-yet@1.1.5
+37 silly saveTree │ │ │ │ ├── delegates@1.0.0
+37 silly saveTree │ │ │ │ └─┬ readable-stream@2.3.7
+37 silly saveTree │ │ │ │   ├── process-nextick-args@2.0.1
+37 silly saveTree │ │ │ │   └── string_decoder@1.1.1
+37 silly saveTree │ │ │ ├── console-control-strings@1.1.0
+37 silly saveTree │ │ │ └─┬ gauge@2.7.4
+37 silly saveTree │ │ │   ├── aproba@1.2.0
+37 silly saveTree │ │ │   ├── has-unicode@2.0.1
+37 silly saveTree │ │ │   ├─┬ string-width@1.0.2
+37 silly saveTree │ │ │   │ ├── code-point-at@1.1.0
+37 silly saveTree │ │ │   │ ├── is-fullwidth-code-point@1.0.0
+37 silly saveTree │ │ │   │ └─┬ strip-ansi@3.0.1
+37 silly saveTree │ │ │   │   └── ansi-regex@2.1.1
+37 silly saveTree │ │ │   ├── strip-ansi@3.0.1
+37 silly saveTree │ │ │   └── wide-align@1.1.3
+37 silly saveTree │ │ ├─┬ osenv@0.1.5
+37 silly saveTree │ │ │ └── os-homedir@1.0.2
+37 silly saveTree │ │ ├── semver@5.3.0
+37 silly saveTree │ │ └─┬ tar@2.2.2
+37 silly saveTree │ │   └── block-stream@0.0.9
+37 silly saveTree │ ├── npmlog@4.1.2
+37 silly saveTree │ ├─┬ sass-graph@2.2.4
+37 silly saveTree │ │ ├─┬ scss-tokenizer@0.2.3
+37 silly saveTree │ │ │ ├── js-base64@2.5.1
+37 silly saveTree │ │ │ └─┬ source-map@0.4.4
+37 silly saveTree │ │ │   └── amdefine@1.0.1
+37 silly saveTree │ │ └─┬ yargs@7.1.0
+37 silly saveTree │ │   ├── camelcase@3.0.0
+37 silly saveTree │ │   ├─┬ cliui@3.2.0
+37 silly saveTree │ │   │ ├─┬ string-width@1.0.2
+37 silly saveTree │ │   │ │ ├── is-fullwidth-code-point@1.0.0
+37 silly saveTree │ │   │ │ └─┬ strip-ansi@3.0.1
+37 silly saveTree │ │   │ │   └── ansi-regex@2.1.1
+37 silly saveTree │ │   │ ├── strip-ansi@3.0.1
+37 silly saveTree │ │   │ └── wrap-ansi@2.1.0
+37 silly saveTree │ │   ├── get-caller-file@1.0.3
+37 silly saveTree │ │   ├─┬ os-locale@1.4.0
+37 silly saveTree │ │   │ └─┬ lcid@1.0.0
+37 silly saveTree │ │   │   └── invert-kv@1.0.0
+37 silly saveTree │ │   ├─┬ read-pkg-up@1.0.1
+37 silly saveTree │ │   │ ├─┬ find-up@1.1.2
+37 silly saveTree │ │   │ │ └── path-exists@2.1.0
+37 silly saveTree │ │   │ └─┬ read-pkg@1.1.0
+37 silly saveTree │ │   │   ├─┬ load-json-file@1.1.0
+37 silly saveTree │ │   │   │ ├── parse-json@2.2.0
+37 silly saveTree │ │   │   │ ├── pify@2.3.0
+37 silly saveTree │ │   │   │ └── strip-bom@2.0.0
+37 silly saveTree │ │   │   └── path-type@1.1.0
+37 silly saveTree │ │   ├── require-main-filename@1.0.1
+37 silly saveTree │ │   ├── string-width@1.0.2
+37 silly saveTree │ │   ├── which-module@1.0.0
+37 silly saveTree │ │   ├── y18n@3.2.1
+37 silly saveTree │ │   └── yargs-parser@5.0.0
+37 silly saveTree │ ├─┬ stdout-stream@1.4.1
+37 silly saveTree │ │ └─┬ readable-stream@2.3.7
+37 silly saveTree │ │   └── string_decoder@1.1.1
+37 silly saveTree │ └── true-case-path@1.0.3
+37 silly saveTree ├─┬ optimize-css-assets-webpack-plugin@5.0.1
+37 silly saveTree │ ├─┬ cssnano@4.1.10
+37 silly saveTree │ │ ├─┬ cssnano-preset-default@4.0.7
+37 silly saveTree │ │ │ ├─┬ css-declaration-sorter@4.0.1
+37 silly saveTree │ │ │ │ └── timsort@0.3.0
+37 silly saveTree │ │ │ ├── cssnano-util-raw-cache@4.0.1
+37 silly saveTree │ │ │ ├─┬ postcss-calc@7.0.1
+37 silly saveTree │ │ │ │ ├── css-unit-converter@1.1.1
+37 silly saveTree │ │ │ │ └─┬ postcss-selector-parser@5.0.0
+37 silly saveTree │ │ │ │   └── cssesc@2.0.0
+37 silly saveTree │ │ │ ├─┬ postcss-colormin@4.0.3
+37 silly saveTree │ │ │ │ └─┬ color@3.1.2
+37 silly saveTree │ │ │ │   └─┬ color-string@1.5.3
+37 silly saveTree │ │ │ │     └─┬ simple-swizzle@0.2.2
+37 silly saveTree │ │ │ │       └── is-arrayish@0.3.2
+37 silly saveTree │ │ │ ├── postcss-convert-values@4.0.1
+37 silly saveTree │ │ │ ├── postcss-discard-comments@4.0.2
+37 silly saveTree │ │ │ ├── postcss-discard-duplicates@4.0.2
+37 silly saveTree │ │ │ ├── postcss-discard-empty@4.0.1
+37 silly saveTree │ │ │ ├── postcss-discard-overridden@4.0.1
+37 silly saveTree │ │ │ ├─┬ postcss-merge-longhand@4.0.11
+37 silly saveTree │ │ │ │ ├── css-color-names@0.0.4
+37 silly saveTree │ │ │ │ └─┬ stylehacks@4.0.3
+37 silly saveTree │ │ │ │   └─┬ postcss-selector-parser@3.1.1
+37 silly saveTree │ │ │ │     └─┬ dot-prop@4.2.0
+37 silly saveTree │ │ │ │       └── is-obj@1.0.1
+37 silly saveTree │ │ │ ├─┬ postcss-merge-rules@4.0.3
+37 silly saveTree │ │ │ │ ├─┬ caniuse-api@3.0.0
+37 silly saveTree │ │ │ │ │ ├── lodash.memoize@4.1.2
+37 silly saveTree │ │ │ │ │ └── lodash.uniq@4.5.0
+37 silly saveTree │ │ │ │ ├── cssnano-util-same-parent@4.0.1
+37 silly saveTree │ │ │ │ ├── postcss-selector-parser@3.1.1
+37 silly saveTree │ │ │ │ └── vendors@1.0.4
+37 silly saveTree │ │ │ ├── postcss-minify-font-values@4.0.2
+37 silly saveTree │ │ │ ├─┬ postcss-minify-gradients@4.0.2
+37 silly saveTree │ │ │ │ ├── cssnano-util-get-arguments@4.0.0
+37 silly saveTree │ │ │ │ └─┬ is-color-stop@1.1.0
+37 silly saveTree │ │ │ │   ├── hex-color-regex@1.1.0
+37 silly saveTree │ │ │ │   ├── hsl-regex@1.0.0
+37 silly saveTree │ │ │ │   ├── hsla-regex@1.0.0
+37 silly saveTree │ │ │ │   ├── rgb-regex@1.0.1
+37 silly saveTree │ │ │ │   └── rgba-regex@1.0.0
+37 silly saveTree │ │ │ ├─┬ postcss-minify-params@4.0.2
+37 silly saveTree │ │ │ │ ├── alphanum-sort@1.0.2
+37 silly saveTree │ │ │ │ └── uniqs@2.0.0
+37 silly saveTree │ │ │ ├─┬ postcss-minify-selectors@4.0.2
+37 silly saveTree │ │ │ │ └── postcss-selector-parser@3.1.1
+37 silly saveTree │ │ │ ├── postcss-normalize-charset@4.0.1
+37 silly saveTree │ │ │ ├─┬ postcss-normalize-display-values@4.0.2
+37 silly saveTree │ │ │ │ └── cssnano-util-get-match@4.0.0
+37 silly saveTree │ │ │ ├── postcss-normalize-positions@4.0.2
+37 silly saveTree │ │ │ ├── postcss-normalize-repeat-style@4.0.2
+37 silly saveTree │ │ │ ├── postcss-normalize-string@4.0.2
+37 silly saveTree │ │ │ ├── postcss-normalize-timing-functions@4.0.2
+37 silly saveTree │ │ │ ├── postcss-normalize-unicode@4.0.1
+37 silly saveTree │ │ │ ├─┬ postcss-normalize-url@4.0.1
+37 silly saveTree │ │ │ │ ├── is-absolute-url@2.1.0
+37 silly saveTree │ │ │ │ └── normalize-url@3.3.0
+37 silly saveTree │ │ │ ├── postcss-normalize-whitespace@4.0.2
+37 silly saveTree │ │ │ ├── postcss-ordered-values@4.1.2
+37 silly saveTree │ │ │ ├── postcss-reduce-initial@4.0.3
+37 silly saveTree │ │ │ ├── postcss-reduce-transforms@4.0.2
+37 silly saveTree │ │ │ ├─┬ postcss-svgo@4.0.2
+37 silly saveTree │ │ │ │ └─┬ is-svg@3.0.0
+37 silly saveTree │ │ │ │   └── html-comment-regex@1.1.2
+37 silly saveTree │ │ │ └── postcss-unique-selectors@4.0.1
+37 silly saveTree │ │ └── is-resolvable@1.1.0
+37 silly saveTree │ └── last-call-webpack-plugin@3.0.0
+37 silly saveTree ├─┬ pnp-webpack-plugin@1.2.1
+37 silly saveTree │ └── ts-pnp@1.1.2
+37 silly saveTree ├── postcss-flexbugs-fixes@4.1.0
+37 silly saveTree ├─┬ postcss-loader@3.0.0
+37 silly saveTree │ └─┬ postcss-load-config@2.1.0
+37 silly saveTree │   └─┬ import-cwd@2.1.0
+37 silly saveTree │     └── import-from@2.1.0
+37 silly saveTree ├─┬ postcss-normalize@7.0.1
+37 silly saveTree │ ├── @csstools/normalize.css@9.0.1
+37 silly saveTree │ └── postcss-browser-comments@2.0.0
+37 silly saveTree ├─┬ postcss-preset-env@6.6.0
+37 silly saveTree │ ├─┬ autoprefixer@9.7.4
+37 silly saveTree │ │ ├── normalize-range@0.1.2
+37 silly saveTree │ │ ├── num2fraction@1.2.2
+37 silly saveTree │ │ └── postcss-value-parser@4.0.2
+37 silly saveTree │ ├── css-blank-pseudo@0.1.4
+37 silly saveTree │ ├─┬ css-has-pseudo@0.10.0
+37 silly saveTree │ │ └─┬ postcss-selector-parser@5.0.0
+37 silly saveTree │ │   └── cssesc@2.0.0
+37 silly saveTree │ ├── css-prefers-color-scheme@3.1.1
+37 silly saveTree │ ├── cssdb@4.4.0
+37 silly saveTree │ ├── postcss-attribute-case-insensitive@4.0.2
+37 silly saveTree │ ├─┬ postcss-color-functional-notation@2.0.1
+37 silly saveTree │ │ └─┬ postcss-values-parser@2.0.1
+37 silly saveTree │ │   └── flatten@1.0.3
+37 silly saveTree │ ├─┬ postcss-color-gray@5.0.0
+37 silly saveTree │ │ └── @csstools/convert-colors@1.4.0
+37 silly saveTree │ ├── postcss-color-hex-alpha@5.0.3
+37 silly saveTree │ ├── postcss-color-mod-function@3.0.3
+37 silly saveTree │ ├── postcss-color-rebeccapurple@4.0.1
+37 silly saveTree │ ├── postcss-custom-media@7.0.8
+37 silly saveTree │ ├── postcss-custom-properties@8.0.11
+37 silly saveTree │ ├─┬ postcss-custom-selectors@5.1.2
+37 silly saveTree │ │ └─┬ postcss-selector-parser@5.0.0
+37 silly saveTree │ │   └── cssesc@2.0.0
+37 silly saveTree │ ├─┬ postcss-dir-pseudo-class@5.0.0
+37 silly saveTree │ │ └─┬ postcss-selector-parser@5.0.0
+37 silly saveTree │ │   └── cssesc@2.0.0
+37 silly saveTree │ ├── postcss-double-position-gradients@1.0.0
+37 silly saveTree │ ├── postcss-env-function@2.0.2
+37 silly saveTree │ ├── postcss-focus-visible@4.0.0
+37 silly saveTree │ ├── postcss-focus-within@3.0.0
+37 silly saveTree │ ├── postcss-font-variant@4.0.0
+37 silly saveTree │ ├── postcss-gap-properties@2.0.0
+37 silly saveTree │ ├── postcss-image-set-function@3.0.1
+37 silly saveTree │ ├─┬ postcss-initial@3.0.2
+37 silly saveTree │ │ └─┬ lodash.template@4.5.0
+37 silly saveTree │ │   ├── lodash._reinterpolate@3.0.0
+37 silly saveTree │ │   └── lodash.templatesettings@4.2.0
+37 silly saveTree │ ├── postcss-lab-function@2.0.1
+37 silly saveTree │ ├── postcss-logical@3.0.0
+37 silly saveTree │ ├── postcss-media-minmax@4.0.0
+37 silly saveTree │ ├── postcss-nesting@7.0.1
+37 silly saveTree │ ├── postcss-overflow-shorthand@2.0.0
+37 silly saveTree │ ├── postcss-page-break@2.0.0
+37 silly saveTree │ ├── postcss-place@4.0.1
+37 silly saveTree │ ├─┬ postcss-pseudo-class-any-link@6.0.0
+37 silly saveTree │ │ └─┬ postcss-selector-parser@5.0.0
+37 silly saveTree │ │   └── cssesc@2.0.0
+37 silly saveTree │ ├── postcss-replace-overflow-wrap@3.0.0
+37 silly saveTree │ ├── postcss-selector-matches@4.0.0
+37 silly saveTree │ └── postcss-selector-not@4.0.0
+37 silly saveTree ├── postcss-safe-parser@4.0.1
+37 silly saveTree ├─┬ prettier-eslint-cli@4.7.1
+37 silly saveTree │ ├── arrify@1.0.1
+37 silly saveTree │ ├─┬ babel-runtime@6.26.0
+37 silly saveTree │ │ └── regenerator-runtime@0.11.1
+37 silly saveTree │ ├── boolify@1.0.1
+37 silly saveTree │ ├─┬ camelcase-keys@4.2.0
+37 silly saveTree │ │ ├── camelcase@4.1.0
+37 silly saveTree │ │ ├── map-obj@2.0.0
+37 silly saveTree │ │ └── quick-lru@1.1.0
+37 silly saveTree │ ├─┬ chalk@2.3.0
+37 silly saveTree │ │ └─┬ supports-color@4.5.0
+37 silly saveTree │ │   └── has-flag@2.0.0
+37 silly saveTree │ ├── common-tags@1.8.0
+37 silly saveTree │ ├─┬ eslint@4.19.1
+37 silly saveTree │ │ ├─┬ ajv@5.5.2
+37 silly saveTree │ │ │ ├── fast-deep-equal@1.1.0
+37 silly saveTree │ │ │ └── json-schema-traverse@0.3.1
+37 silly saveTree │ │ ├─┬ babel-code-frame@6.26.0
+37 silly saveTree │ │ │ ├─┬ chalk@1.1.3
+37 silly saveTree │ │ │ │ ├── ansi-styles@2.2.1
+37 silly saveTree │ │ │ │ ├─┬ strip-ansi@3.0.1
+37 silly saveTree │ │ │ │ │ └── ansi-regex@2.1.1
+37 silly saveTree │ │ │ │ └── supports-color@2.0.0
+37 silly saveTree │ │ │ └── js-tokens@3.0.2
+37 silly saveTree │ │ ├─┬ concat-stream@1.6.2
+37 silly saveTree │ │ │ ├─┬ readable-stream@2.3.7
+37 silly saveTree │ │ │ │ └── string_decoder@1.1.1
+37 silly saveTree │ │ │ └── typedarray@0.0.6
+37 silly saveTree │ │ ├── cross-spawn@5.1.0
+37 silly saveTree │ │ ├── debug@3.2.6
+37 silly saveTree │ │ ├── doctrine@2.1.0
+37 silly saveTree │ │ ├── eslint-scope@3.7.3
+37 silly saveTree │ │ ├─┬ espree@3.5.4
+37 silly saveTree │ │ │ ├─┬ acorn-jsx@3.0.1
+37 silly saveTree │ │ │ │ └── acorn@3.3.0
+37 silly saveTree │ │ │ └── acorn@5.7.3
+37 silly saveTree │ │ ├─┬ file-entry-cache@2.0.0
+37 silly saveTree │ │ │ └─┬ flat-cache@1.3.4
+37 silly saveTree │ │ │   ├── circular-json@0.3.3
+37 silly saveTree │ │ │   └── write@0.2.1
+37 silly saveTree │ │ ├── ignore@3.3.10
+37 silly saveTree │ │ ├─┬ inquirer@3.3.0
+37 silly saveTree │ │ │ ├─┬ external-editor@2.2.0
+37 silly saveTree │ │ │ │ └── chardet@0.4.2
+37 silly saveTree │ │ │ ├─┬ rx-lite-aggregates@4.0.8
+37 silly saveTree │ │ │ │ └── rx-lite@4.0.8
+37 silly saveTree │ │ │ └── rx-lite@4.0.8
+37 silly saveTree │ │ ├── pluralize@7.0.0
+37 silly saveTree │ │ ├── regexpp@1.1.0
+37 silly saveTree │ │ ├─┬ require-uncached@1.0.3
+37 silly saveTree │ │ │ ├─┬ caller-path@0.1.0
+37 silly saveTree │ │ │ │ └── callsites@0.2.0
+37 silly saveTree │ │ │ └── resolve-from@1.0.1
+37 silly saveTree │ │ ├── semver@5.7.1
+37 silly saveTree │ │ └─┬ table@4.0.2
+37 silly saveTree │ │   ├── ajv-keywords@2.1.1
+37 silly saveTree │ │   └── slice-ansi@1.0.0
+37 silly saveTree │ ├─┬ find-up@2.1.0
+37 silly saveTree │ │ └─┬ locate-path@2.0.0
+37 silly saveTree │ │   └─┬ p-locate@2.0.0
+37 silly saveTree │ │     └─┬ p-limit@1.3.0
+37 silly saveTree │ │       └── p-try@1.0.0
+37 silly saveTree │ ├── get-stdin@5.0.1
+37 silly saveTree │ ├── ignore@3.3.10
+37 silly saveTree │ ├── indent-string@3.2.0
+37 silly saveTree │ ├─┬ loglevel-colored-level-prefix@1.0.0
+37 silly saveTree │ │ ├─┬ chalk@1.1.3
+37 silly saveTree │ │ │ ├── ansi-styles@2.2.1
+37 silly saveTree │ │ │ ├─┬ strip-ansi@3.0.1
+37 silly saveTree │ │ │ │ └── ansi-regex@2.1.1
+37 silly saveTree │ │ │ └── supports-color@2.0.0
+37 silly saveTree │ │ └── loglevel@1.6.6
+37 silly saveTree │ ├─┬ messageformat@1.1.1
+37 silly saveTree │ │ ├── glob@7.0.6
+37 silly saveTree │ │ ├── make-plural@4.3.0
+37 silly saveTree │ │ ├── messageformat-parser@1.1.0
+37 silly saveTree │ │ └── reserved-words@0.1.2
+37 silly saveTree │ ├─┬ prettier-eslint@8.8.2
+37 silly saveTree │ │ ├── dlv@1.1.3
+37 silly saveTree │ │ ├─┬ eslint@4.19.1
+37 silly saveTree │ │ │ ├─┬ ajv@5.5.2
+37 silly saveTree │ │ │ │ ├── fast-deep-equal@1.1.0
+37 silly saveTree │ │ │ │ └── json-schema-traverse@0.3.1
+37 silly saveTree │ │ │ ├── cross-spawn@5.1.0
+37 silly saveTree │ │ │ ├── debug@3.2.6
+37 silly saveTree │ │ │ ├── doctrine@2.1.0
+37 silly saveTree │ │ │ ├── eslint-scope@3.7.3
+37 silly saveTree │ │ │ ├─┬ espree@3.5.4
+37 silly saveTree │ │ │ │ ├─┬ acorn-jsx@3.0.1
+37 silly saveTree │ │ │ │ │ └── acorn@3.3.0
+37 silly saveTree │ │ │ │ └── acorn@5.7.3
+37 silly saveTree │ │ │ ├─┬ file-entry-cache@2.0.0
+37 silly saveTree │ │ │ │ └─┬ flat-cache@1.3.4
+37 silly saveTree │ │ │ │   └── write@0.2.1
+37 silly saveTree │ │ │ ├── ignore@3.3.10
+37 silly saveTree │ │ │ ├─┬ inquirer@3.3.0
+37 silly saveTree │ │ │ │ └─┬ external-editor@2.2.0
+37 silly saveTree │ │ │ │   └── chardet@0.4.2
+37 silly saveTree │ │ │ ├── regexpp@1.1.0
+37 silly saveTree │ │ │ ├── semver@5.7.1
+37 silly saveTree │ │ │ └─┬ table@4.0.2
+37 silly saveTree │ │ │   ├── ajv-keywords@2.1.1
+37 silly saveTree │ │ │   └── slice-ansi@1.0.0
+37 silly saveTree │ │ ├── indent-string@3.2.0
+37 silly saveTree │ │ ├── lodash.merge@4.6.2
+37 silly saveTree │ │ ├── prettier@1.19.1
+37 silly saveTree │ │ ├── pretty-format@23.6.0
+37 silly saveTree │ │ ├── require-relative@0.8.7
+37 silly saveTree │ │ ├─┬ typescript-eslint-parser@16.0.1
+37 silly saveTree │ │ │ └── semver@5.5.0
+37 silly saveTree │ │ ├── typescript@2.9.2
+37 silly saveTree │ │ └─┬ vue-eslint-parser@2.0.3
+37 silly saveTree │ │   ├── debug@3.2.6
+37 silly saveTree │ │   ├── eslint-scope@3.7.3
+37 silly saveTree │ │   └─┬ espree@3.5.4
+37 silly saveTree │ │     ├─┬ acorn-jsx@3.0.1
+37 silly saveTree │ │     │ └── acorn@3.3.0
+37 silly saveTree │ │     └── acorn@5.7.3
+37 silly saveTree │ ├─┬ rxjs@5.5.12
+37 silly saveTree │ │ └── symbol-observable@1.0.1
+37 silly saveTree │ └─┬ yargs@10.0.3
+37 silly saveTree │   ├─┬ cliui@3.2.0
+37 silly saveTree │   │ ├─┬ string-width@1.0.2
+37 silly saveTree │   │ │ ├── is-fullwidth-code-point@1.0.0
+37 silly saveTree │   │ │ └─┬ strip-ansi@3.0.1
+37 silly saveTree │   │ │   └── ansi-regex@2.1.1
+37 silly saveTree │   │ ├── strip-ansi@3.0.1
+37 silly saveTree │   │ └─┬ wrap-ansi@2.1.0
+37 silly saveTree │   │   ├─┬ string-width@1.0.2
+37 silly saveTree │   │   │ ├── is-fullwidth-code-point@1.0.0
+37 silly saveTree │   │   │ └── strip-ansi@3.0.1
+37 silly saveTree │   │   └── strip-ansi@3.0.1
+37 silly saveTree │   ├── get-caller-file@1.0.3
+37 silly saveTree │   ├─┬ os-locale@2.1.0
+37 silly saveTree │   │ ├─┬ execa@0.7.0
+37 silly saveTree │   │ │ └── get-stream@3.0.0
+37 silly saveTree │   │ └── mem@1.1.0
+37 silly saveTree │   ├── require-main-filename@1.0.1
+37 silly saveTree │   ├── y18n@3.2.1
+37 silly saveTree │   └── yargs-parser@8.1.0
+37 silly saveTree ├── prettier-eslint@8.8.2
+37 silly saveTree ├── prop-types@15.7.2
+37 silly saveTree ├── randomcolor@0.5.4
+37 silly saveTree ├─┬ react-app-polyfill@1.0.5
+37 silly saveTree │ ├── core-js@3.6.4
+37 silly saveTree │ ├─┬ promise@8.0.3
+37 silly saveTree │ │ └── asap@2.0.6
+37 silly saveTree │ ├── raf@3.4.1
+37 silly saveTree │ └── whatwg-fetch@3.0.0
+37 silly saveTree ├── react-confirm@0.1.18
+37 silly saveTree ├─┬ react-dev-utils@9.1.0
+37 silly saveTree │ ├── @babel/code-frame@7.5.5
+37 silly saveTree │ ├── address@1.1.2
+37 silly saveTree │ ├── browserslist@4.7.0
+37 silly saveTree │ ├─┬ detect-port-alt@1.1.6
+37 silly saveTree │ │ └─┬ debug@2.6.9
+37 silly saveTree │ │   └── ms@2.0.0
+37 silly saveTree │ ├── filesize@3.6.1
+37 silly saveTree │ ├─┬ fork-ts-checker-webpack-plugin@1.5.0
+37 silly saveTree │ │ ├─┬ chokidar@2.1.8
+37 silly saveTree │ │ │ ├── async-each@1.0.3
+37 silly saveTree │ │ │ ├─┬ glob-parent@3.1.0
+37 silly saveTree │ │ │ │ ├─┬ is-glob@3.1.0
+37 silly saveTree │ │ │ │ │ └── is-extglob@2.1.1
+37 silly saveTree │ │ │ │ └── path-dirname@1.0.2
+37 silly saveTree │ │ │ ├─┬ is-binary-path@1.0.1
+37 silly saveTree │ │ │ │ └── binary-extensions@1.13.1
+37 silly saveTree │ │ │ ├── is-glob@4.0.1
+37 silly saveTree │ │ │ ├─┬ readdirp@2.2.1
+37 silly saveTree │ │ │ │ └─┬ readable-stream@2.3.7
+37 silly saveTree │ │ │ │   └── string_decoder@1.1.1
+37 silly saveTree │ │ │ └── upath@1.2.0
+37 silly saveTree │ │ ├── semver@5.7.1
+37 silly saveTree │ │ └─┬ worker-rpc@0.1.1
+37 silly saveTree │ │   └── microevent.ts@0.1.1
+37 silly saveTree │ ├─┬ global-modules@2.0.0
+37 silly saveTree │ │ └─┬ global-prefix@3.0.0
+37 silly saveTree │ │   ├── ini@1.3.5
+37 silly saveTree │ │   └── kind-of@6.0.3
+37 silly saveTree │ ├─┬ globby@8.0.2
+37 silly saveTree │ │ ├─┬ array-union@1.0.2
+37 silly saveTree │ │ │ └── array-uniq@1.0.3
+37 silly saveTree │ │ ├─┬ dir-glob@2.0.0
+37 silly saveTree │ │ │ └─┬ path-type@3.0.0
+37 silly saveTree │ │ │   └── pify@3.0.0
+37 silly saveTree │ │ ├─┬ fast-glob@2.2.7
+37 silly saveTree │ │ │ ├─┬ @mrmlnc/readdir-enhanced@2.2.1
+37 silly saveTree │ │ │ │ ├── call-me-maybe@1.0.1
+37 silly saveTree │ │ │ │ └── glob-to-regexp@0.3.0
+37 silly saveTree │ │ │ ├── @nodelib/fs.stat@1.1.3
+37 silly saveTree │ │ │ └── merge2@1.3.0
+37 silly saveTree │ │ ├── ignore@3.3.10
+37 silly saveTree │ │ ├── pify@3.0.0
+37 silly saveTree │ │ └── slash@1.0.0
+37 silly saveTree │ ├─┬ gzip-size@5.1.1
+37 silly saveTree │ │ └── duplexer@0.1.1
+37 silly saveTree │ ├── immer@1.10.0
+37 silly saveTree │ ├─┬ inquirer@6.5.0
+37 silly saveTree │ │ └─┬ strip-ansi@5.2.0
+37 silly saveTree │ │   └── ansi-regex@4.1.0
+37 silly saveTree │ ├── is-root@2.1.0
+37 silly saveTree │ ├── open@6.4.0
+37 silly saveTree │ ├─┬ pkg-up@2.0.0
+37 silly saveTree │ │ └─┬ find-up@2.1.0
+37 silly saveTree │ │   └─┬ locate-path@2.0.0
+37 silly saveTree │ │     └─┬ p-locate@2.0.0
+37 silly saveTree │ │       └─┬ p-limit@1.3.0
+37 silly saveTree │ │         └── p-try@1.0.0
+37 silly saveTree │ ├── react-error-overlay@6.0.4
+37 silly saveTree │ ├── recursive-readdir@2.2.2
+37 silly saveTree │ ├── shell-quote@1.7.2
+37 silly saveTree │ ├─┬ sockjs-client@1.4.0
+37 silly saveTree │ │ ├── debug@3.2.6
+37 silly saveTree │ │ ├─┬ eventsource@1.0.7
+37 silly saveTree │ │ │ └─┬ original@1.0.2
+37 silly saveTree │ │ │   └─┬ url-parse@1.4.7
+37 silly saveTree │ │ │     ├── querystringify@2.1.1
+37 silly saveTree │ │ │     └── requires-port@1.0.0
+37 silly saveTree │ │ ├─┬ faye-websocket@0.11.3
+37 silly saveTree │ │ │ └─┬ websocket-driver@0.7.3
+37 silly saveTree │ │ │   ├── http-parser-js@0.4.10
+37 silly saveTree │ │ │   └── websocket-extensions@0.1.3
+37 silly saveTree │ │ ├── json3@3.3.3
+37 silly saveTree │ │ └── url-parse@1.4.7
+37 silly saveTree │ └── strip-ansi@5.2.0
+37 silly saveTree ├─┬ react-dom@16.12.0
+37 silly saveTree │ └── scheduler@0.18.0
+37 silly saveTree ├─┬ react-force-graph@1.30.1
+37 silly saveTree │ ├─┬ 3d-force-graph-ar@1.2.0
+37 silly saveTree │ │ ├─┬ aframe-forcegraph-component@2.24.1
+37 silly saveTree │ │ │ ├── accessor-fn@1.2.2
+37 silly saveTree │ │ │ └─┬ three-forcegraph@1.29.5
+37 silly saveTree │ │ │   ├─┬ d3-force-3d@2.0.3
+37 silly saveTree │ │ │   │ ├── d3-binarytree@0.1.5
+37 silly saveTree │ │ │   │ ├── d3-dispatch@1.0.6
+37 silly saveTree │ │ │   │ ├── d3-octree@0.1.5
+37 silly saveTree │ │ │   │ ├── d3-quadtree@1.0.7
+37 silly saveTree │ │ │   │ └── d3-timer@1.0.10
+37 silly saveTree │ │ │   ├─┬ d3-scale-chromatic@1.5.0
+37 silly saveTree │ │ │   │ ├── d3-color@1.4.0
+37 silly saveTree │ │ │   │ └── d3-interpolate@1.4.0
+37 silly saveTree │ │ │   ├─┬ d3-scale@3.2.1
+37 silly saveTree │ │ │   │ ├── d3-array@2.4.0
+37 silly saveTree │ │ │   │ ├── d3-format@1.4.3
+37 silly saveTree │ │ │   │ ├─┬ d3-time-format@2.2.3
+37 silly saveTree │ │ │   │ │ └── d3-time@1.1.0
+37 silly saveTree │ │ │   │ └── d3-time@1.1.0
+37 silly saveTree │ │ │   ├─┬ data-joint@1.2.1
+37 silly saveTree │ │ │   │ └── index-array-by@1.2.7
+37 silly saveTree │ │ │   ├── kapsule@1.12.1
+37 silly saveTree │ │ │   ├─┬ ngraph.forcelayout@1.0.0
+37 silly saveTree │ │ │   │ ├── ngraph.events@1.2.1
+37 silly saveTree │ │ │   │ └─┬ ngraph.physics.simulator@1.0.0
+37 silly saveTree │ │ │   │   ├── ngraph.expose@1.0.0
+37 silly saveTree │ │ │   │   ├── ngraph.merge@1.0.0
+37 silly saveTree │ │ │   │   ├── ngraph.physics.primitives@1.0.0
+37 silly saveTree │ │ │   │   ├─┬ ngraph.quadtreebh@1.0.0
+37 silly saveTree │ │ │   │   │ └── ngraph.random@1.0.0
+37 silly saveTree │ │ │   │   └── ngraph.random@1.0.0
+37 silly saveTree │ │ │   ├─┬ ngraph.forcelayout3d@1.0.0
+37 silly saveTree │ │ │   │ └── ngraph.quadtreebh3d@1.0.0
+37 silly saveTree │ │ │   ├── ngraph.graph@19.0.2
+37 silly saveTree │ │ │   └── tinycolor2@1.4.1
+37 silly saveTree │ │ └── kapsule@1.12.1
+37 silly saveTree │ ├─┬ 3d-force-graph-vr@1.31.0
+37 silly saveTree │ │ ├─┬ aframe-extras@6.1.0
+37 silly saveTree │ │ │ └── three-pathfinding@0.7.0
+37 silly saveTree │ │ └─┬ aframe@1.0.3
+37 silly saveTree │ │   ├── custom-event-polyfill@1.0.7
+37 silly saveTree │ │   ├── deep-assign@2.0.0
+37 silly saveTree │ │   ├─┬ load-bmfont@1.4.0
+37 silly saveTree │ │   │ ├── buffer-equal@0.0.1
+37 silly saveTree │ │   │ ├── mime@1.6.0
+37 silly saveTree │ │   │ ├── parse-bmfont-ascii@1.0.6
+37 silly saveTree │ │   │ ├── parse-bmfont-binary@1.0.6
+37 silly saveTree │ │   │ ├─┬ parse-bmfont-xml@1.1.4
+37 silly saveTree │ │   │ │ ├── xml-parse-from-string@1.0.1
+37 silly saveTree │ │   │ │ └─┬ xml2js@0.4.23
+37 silly saveTree │ │   │ │   └── xmlbuilder@11.0.1
+37 silly saveTree │ │   │ ├── phin@2.9.3
+37 silly saveTree │ │   │ ├─┬ xhr@2.5.0
+37 silly saveTree │ │   │ │ ├─┬ global@4.3.2
+37 silly saveTree │ │   │ │ │ ├─┬ min-document@2.19.0
+37 silly saveTree │ │   │ │ │ │ └── dom-walk@0.1.1
+37 silly saveTree │ │   │ │ │ └── process@0.5.2
+37 silly saveTree │ │   │ │ ├── is-function@1.0.1
+37 silly saveTree │ │   │ │ ├── parse-headers@2.0.3
+37 silly saveTree │ │   │ │ └── xtend@4.0.2
+37 silly saveTree │ │   │ └── xtend@4.0.2
+37 silly saveTree │ │   ├── present@0.0.6
+37 silly saveTree │ │   ├── promise-polyfill@3.1.0
+37 silly saveTree │ │   ├── super-animejs@3.1.0
+37 silly saveTree │ │   ├── super-three@0.111.5
+37 silly saveTree │ │   ├─┬ three-bmfont-text@github:dmarcos/three-bmfont-text#1babdf8507c731a18f8af3b807292e2b9740955e
+37 silly saveTree │ │   │ ├── array-shuffle@1.0.1
+37 silly saveTree │ │   │ ├─┬ layout-bmfont-text@1.3.4
+37 silly saveTree │ │   │ │ ├── as-number@1.0.0
+37 silly saveTree │ │   │ │ └── word-wrapper@1.0.7
+37 silly saveTree │ │   │ ├─┬ nice-color-palettes@1.0.1
+37 silly saveTree │ │   │ │ ├─┬ map-limit@0.0.1
+37 silly saveTree │ │   │ │ │ └── once@1.3.3
+37 silly saveTree │ │   │ │ ├── new-array@1.0.0
+37 silly saveTree │ │   │ │ └─┬ xhr-request@1.1.0
+37 silly saveTree │ │   │ │   ├── buffer-to-arraybuffer@0.0.5
+37 silly saveTree │ │   │ │   ├─┬ query-string@5.1.1
+37 silly saveTree │ │   │ │   │ └── strict-uri-encode@1.1.0
+37 silly saveTree │ │   │ │   ├─┬ simple-get@2.8.1
+37 silly saveTree │ │   │ │   │ ├─┬ decompress-response@3.3.0
+37 silly saveTree │ │   │ │   │ │ └── mimic-response@1.0.1
+37 silly saveTree │ │   │ │   │ └── simple-concat@1.0.0
+37 silly saveTree │ │   │ │   ├── timed-out@4.0.1
+37 silly saveTree │ │   │ │   └── url-set-query@1.0.0
+37 silly saveTree │ │   │ └─┬ quad-indices@2.0.1
+37 silly saveTree │ │   │   ├── an-array@1.0.0
+37 silly saveTree │ │   │   └── dtype@2.0.0
+37 silly saveTree │ │   └─┬ webvr-polyfill@0.10.11
+37 silly saveTree │ │     └─┬ cardboard-vr-display@1.0.18
+37 silly saveTree │ │       ├── gl-preserve-state@1.0.0
+37 silly saveTree │ │       ├── nosleep.js@0.7.0
+37 silly saveTree │ │       └── webvr-polyfill-dpdb@1.0.17
+37 silly saveTree │ ├─┬ 3d-force-graph@1.58.0
+37 silly saveTree │ │ ├── three-dragcontrols@0.88.2
+37 silly saveTree │ │ ├─┬ three-render-objects@1.12.1
+37 silly saveTree │ │ │ ├── @tweenjs/tween.js@18.5.0
+37 silly saveTree │ │ │ ├── polished@3.4.3
+37 silly saveTree │ │ │ ├── three-fly-controls@1.1.0
+37 silly saveTree │ │ │ ├── three-orbit-controls@82.1.0
+37 silly saveTree │ │ │ └── three-trackballcontrols@0.0.8
+37 silly saveTree │ │ └── three@0.112.1
+37 silly saveTree │ ├─┬ force-graph@1.24.0
+37 silly saveTree │ │ ├── bezier-js@2.5.1
+37 silly saveTree │ │ ├── canvas-color-tracker@1.1.0
+37 silly saveTree │ │ ├── d3-drag@1.2.5
+37 silly saveTree │ │ ├─┬ d3-zoom@1.8.3
+37 silly saveTree │ │ │ └─┬ d3-transition@1.3.2
+37 silly saveTree │ │ │   └── d3-ease@1.0.6
+37 silly saveTree │ │ └── lodash.throttle@4.1.1
+37 silly saveTree │ └─┬ react-kapsule@2.1.4
+37 silly saveTree │   ├── fromentries@1.2.0
+37 silly saveTree │   └── jerrypick@1.0.1
+37 silly saveTree ├─┬ react-perfect-scrollbar@1.5.3
+37 silly saveTree │ └── perfect-scrollbar@1.5.0
+37 silly saveTree ├── react-redux@7.1.3
+37 silly saveTree ├── react-router-dom@5.1.2
+37 silly saveTree ├── react-router@5.2.0
+37 silly saveTree ├─┬ react-scripts@3.3.0
+37 silly saveTree │ ├─┬ @babel/core@7.7.4
+37 silly saveTree │ │ ├── resolve@1.12.2
+37 silly saveTree │ │ └── semver@5.7.1
+37 silly saveTree │ ├── @svgr/webpack@4.3.3
+37 silly saveTree │ ├─┬ @typescript-eslint/eslint-plugin@2.17.0
+37 silly saveTree │ │ ├─┬ @typescript-eslint/experimental-utils@2.17.0
+37 silly saveTree │ │ │ ├── @types/json-schema@7.0.4
+37 silly saveTree │ │ │ ├─┬ @typescript-eslint/typescript-estree@2.17.0
+37 silly saveTree │ │ │ │ └── semver@6.3.0
+37 silly saveTree │ │ │ └── eslint-scope@5.0.0
+37 silly saveTree │ │ └── regexpp@3.0.0
+37 silly saveTree │ ├─┬ @typescript-eslint/parser@2.17.0
+37 silly saveTree │ │ ├── @types/eslint-visitor-keys@1.0.0
+37 silly saveTree │ │ └─┬ @typescript-eslint/typescript-estree@2.17.0
+37 silly saveTree │ │   └── semver@6.3.0
+37 silly saveTree │ ├─┬ css-loader@3.2.0
+37 silly saveTree │ │ ├─┬ postcss-modules-local-by-default@3.0.2
+37 silly saveTree │ │ │ └── postcss-value-parser@4.0.2
+37 silly saveTree │ │ ├── postcss-modules-values@3.0.0
+37 silly saveTree │ │ ├── postcss-value-parser@4.0.2
+37 silly saveTree │ │ └── schema-utils@2.6.4
+37 silly saveTree │ ├── dotenv-expand@5.1.0
+37 silly saveTree │ ├── dotenv@8.2.0
+37 silly saveTree │ ├── eslint-config-react-app@5.1.0
+37 silly saveTree │ ├─┬ eslint-loader@3.0.2
+37 silly saveTree │ │ └── fs-extra@8.1.0
+37 silly saveTree │ ├── eslint-plugin-flowtype@3.13.0
+37 silly saveTree │ ├─┬ eslint-plugin-import@2.18.2
+37 silly saveTree │ │ ├─┬ debug@2.6.9
+37 silly saveTree │ │ │ └── ms@2.0.0
+37 silly saveTree │ │ └── doctrine@1.5.0
+37 silly saveTree │ ├─┬ eslint-plugin-jsx-a11y@6.2.3
+37 silly saveTree │ │ └── emoji-regex@7.0.3
+37 silly saveTree │ ├─┬ eslint-plugin-react@7.16.0
+37 silly saveTree │ │ ├── doctrine@2.1.0
+37 silly saveTree │ │ └── object.entries@1.1.1
+37 silly saveTree │ ├─┬ eslint@6.8.0
+37 silly saveTree │ │ ├── eslint-scope@5.0.0
+37 silly saveTree │ │ ├─┬ espree@6.1.2
+37 silly saveTree │ │ │ └── acorn@7.1.0
+37 silly saveTree │ │ ├── glob-parent@5.1.0
+37 silly saveTree │ │ ├─┬ globals@12.3.0
+37 silly saveTree │ │ │ └── type-fest@0.8.1
+37 silly saveTree │ │ ├─┬ import-fresh@3.2.1
+37 silly saveTree │ │ │ └── resolve-from@4.0.0
+37 silly saveTree │ │ ├─┬ inquirer@7.0.4
+37 silly saveTree │ │ │ ├── ansi-escapes@4.3.0
+37 silly saveTree │ │ │ ├─┬ cli-cursor@3.1.0
+37 silly saveTree │ │ │ │ └─┬ restore-cursor@3.1.0
+37 silly saveTree │ │ │ │   └─┬ onetime@5.1.0
+37 silly saveTree │ │ │ │     └── mimic-fn@2.1.0
+37 silly saveTree │ │ │ ├── figures@3.1.0
+37 silly saveTree │ │ │ ├── mute-stream@0.0.8
+37 silly saveTree │ │ │ ├─┬ string-width@4.2.0
+37 silly saveTree │ │ │ │ ├── emoji-regex@8.0.0
+37 silly saveTree │ │ │ │ ├── is-fullwidth-code-point@3.0.0
+37 silly saveTree │ │ │ │ └─┬ strip-ansi@6.0.0
+37 silly saveTree │ │ │ │   └── ansi-regex@5.0.0
+37 silly saveTree │ │ │ └─┬ strip-ansi@5.2.0
+37 silly saveTree │ │ │   └── ansi-regex@4.1.0
+37 silly saveTree │ │ ├── regexpp@2.0.1
+37 silly saveTree │ │ ├── strip-ansi@5.2.0
+37 silly saveTree │ │ ├── strip-json-comments@3.0.1
+37 silly saveTree │ │ └── v8-compile-cache@2.1.0
+37 silly saveTree │ ├── file-loader@4.3.0
+37 silly saveTree │ ├── fs-extra@8.1.0
+37 silly saveTree │ ├── fsevents@2.1.2
+37 silly saveTree │ ├── jest-resolve@24.9.0
+37 silly saveTree │ ├─┬ jest-watch-typeahead@0.4.2
+37 silly saveTree │ │ ├── slash@3.0.0
+37 silly saveTree │ │ └── string-length@3.1.0
+37 silly saveTree │ ├─┬ jest@24.9.0
+37 silly saveTree │ │ └── jest-cli@24.9.0
+37 silly saveTree │ ├─┬ mini-css-extract-plugin@0.8.0
+37 silly saveTree │ │ ├─┬ normalize-url@1.9.1
+37 silly saveTree │ │ │ ├── prepend-http@1.0.4
+37 silly saveTree │ │ │ ├── query-string@4.3.4
+37 silly saveTree │ │ │ └─┬ sort-keys@1.1.2
+37 silly saveTree │ │ │   └── is-plain-obj@1.1.0
+37 silly saveTree │ │ └── schema-utils@1.0.0
+37 silly saveTree │ ├── optimize-css-assets-webpack-plugin@5.0.3
+37 silly saveTree │ ├─┬ pnp-webpack-plugin@1.5.0
+37 silly saveTree │ │ └── ts-pnp@1.1.5
+37 silly saveTree │ ├─┬ postcss-normalize@8.0.1
+37 silly saveTree │ │ ├── @csstools/normalize.css@10.1.0
+37 silly saveTree │ │ ├── postcss-browser-comments@3.0.0
+37 silly saveTree │ │ └── sanitize.css@10.0.0
+37 silly saveTree │ ├── postcss-preset-env@6.7.0
+37 silly saveTree │ ├─┬ react-dev-utils@10.0.0
+37 silly saveTree │ │ ├── @babel/code-frame@7.5.5
+37 silly saveTree │ │ ├── browserslist@4.7.3
+37 silly saveTree │ │ ├─┬ fork-ts-checker-webpack-plugin@3.1.0
+37 silly saveTree │ │ │ └── semver@5.7.1
+37 silly saveTree │ │ ├─┬ inquirer@6.5.0
+37 silly saveTree │ │ │ ├── ansi-escapes@3.2.0
+37 silly saveTree │ │ │ ├─┬ cli-cursor@2.1.0
+37 silly saveTree │ │ │ │ └─┬ restore-cursor@2.0.0
+37 silly saveTree │ │ │ │   └─┬ onetime@2.0.1
+37 silly saveTree │ │ │ │     └── mimic-fn@1.2.0
+37 silly saveTree │ │ │ ├── figures@2.0.0
+37 silly saveTree │ │ │ ├── mute-stream@0.0.7
+37 silly saveTree │ │ │ └─┬ string-width@2.1.1
+37 silly saveTree │ │ │   ├── is-fullwidth-code-point@2.0.0
+37 silly saveTree │ │ │   └─┬ strip-ansi@4.0.0
+37 silly saveTree │ │ │     └── ansi-regex@3.0.0
+37 silly saveTree │ │ └─┬ open@7.0.0
+37 silly saveTree │ │   └── is-wsl@2.1.1
+37 silly saveTree │ ├─┬ resolve-url-loader@3.1.1
+37 silly saveTree │ │ ├─┬ adjust-sourcemap-loader@2.0.0
+37 silly saveTree │ │ │ ├─┬ assert@1.4.1
+37 silly saveTree │ │ │ │ └─┬ util@0.10.3
+37 silly saveTree │ │ │ │   └── inherits@2.0.1
+37 silly saveTree │ │ │ ├── camelcase@5.0.0
+37 silly saveTree │ │ │ ├── object-path@0.11.4
+37 silly saveTree │ │ │ └── regex-parser@2.2.10
+37 silly saveTree │ │ ├─┬ compose-function@3.0.3
+37 silly saveTree │ │ │ └── arity-n@1.0.4
+37 silly saveTree │ │ ├─┬ es6-iterator@2.0.3
+37 silly saveTree │ │ │ ├─┬ d@1.0.1
+37 silly saveTree │ │ │ │ ├─┬ es5-ext@0.10.53
+37 silly saveTree │ │ │ │ │ ├─┬ es6-symbol@3.1.3
+37 silly saveTree │ │ │ │ │ │ └─┬ ext@1.4.0
+37 silly saveTree │ │ │ │ │ │   └── type@2.0.0
+37 silly saveTree │ │ │ │ │ └── next-tick@1.0.0
+37 silly saveTree │ │ │ │ └── type@1.2.0
+37 silly saveTree │ │ │ ├── es5-ext@0.10.53
+37 silly saveTree │ │ │ └── es6-symbol@3.1.3
+37 silly saveTree │ │ ├─┬ postcss@7.0.21
+37 silly saveTree │ │ │ ├── source-map@0.6.1
+37 silly saveTree │ │ │ └── supports-color@6.1.0
+37 silly saveTree │ │ ├── rework-visit@1.0.0
+37 silly saveTree │ │ ├─┬ rework@1.0.1
+37 silly saveTree │ │ │ ├── convert-source-map@0.3.5
+37 silly saveTree │ │ │ └─┬ css@2.2.4
+37 silly saveTree │ │ │   └── source-map@0.6.1
+37 silly saveTree │ │ └── source-map@0.6.1
+37 silly saveTree │ ├── resolve@1.12.2
+37 silly saveTree │ ├─┬ sass-loader@8.0.0
+37 silly saveTree │ │ ├─┬ clone-deep@4.0.1
+37 silly saveTree │ │ │ ├── kind-of@6.0.3
+37 silly saveTree │ │ │ └── shallow-clone@3.0.1
+37 silly saveTree │ │ └── neo-async@2.6.1
+37 silly saveTree │ ├── semver@6.3.0
+37 silly saveTree │ ├── style-loader@1.0.0
+37 silly saveTree │ ├─┬ terser-webpack-plugin@2.2.1
+37 silly saveTree │ │ ├─┬ cacache@13.0.1
+37 silly saveTree │ │ │ ├── chownr@1.1.3
+37 silly saveTree │ │ │ ├── figgy-pudding@3.5.1
+37 silly saveTree │ │ │ ├─┬ fs-minipass@2.1.0
+37 silly saveTree │ │ │ │ └─┬ minipass@3.1.1
+37 silly saveTree │ │ │ │   └── yallist@4.0.0
+37 silly saveTree │ │ │ ├── infer-owner@1.0.4
+37 silly saveTree │ │ │ ├─┬ lru-cache@5.1.1
+37 silly saveTree │ │ │ │ └── yallist@3.1.1
+37 silly saveTree │ │ │ ├── minipass-collect@1.0.2
+37 silly saveTree │ │ │ ├── minipass-flush@1.0.5
+37 silly saveTree │ │ │ ├── minipass-pipeline@1.2.2
+37 silly saveTree │ │ │ ├── minipass@3.1.1
+37 silly saveTree │ │ │ ├─┬ move-concurrently@1.0.1
+37 silly saveTree │ │ │ │ ├─┬ copy-concurrently@1.0.5
+37 silly saveTree │ │ │ │ │ ├─┬ fs-write-stream-atomic@1.0.10
+37 silly saveTree │ │ │ │ │ │ ├── iferr@0.1.5
+37 silly saveTree │ │ │ │ │ │ └─┬ readable-stream@2.3.7
+37 silly saveTree │ │ │ │ │ │   └── string_decoder@1.1.1
+37 silly saveTree │ │ │ │ │ ├── iferr@0.1.5
+37 silly saveTree │ │ │ │ │ └── run-queue@1.0.3
+37 silly saveTree │ │ │ │ ├── fs-write-stream-atomic@1.0.10
+37 silly saveTree │ │ │ │ └── run-queue@1.0.3
+37 silly saveTree │ │ │ ├─┬ p-map@3.0.0
+37 silly saveTree │ │ │ │ └─┬ aggregate-error@3.0.1
+37 silly saveTree │ │ │ │   ├── clean-stack@2.2.0
+37 silly saveTree │ │ │ │   └── indent-string@4.0.0
+37 silly saveTree │ │ │ ├── promise-inflight@1.0.1
+37 silly saveTree │ │ │ ├── rimraf@2.7.1
+37 silly saveTree │ │ │ ├── ssri@7.1.0
+37 silly saveTree │ │ │ └─┬ unique-filename@1.1.1
+37 silly saveTree │ │ │   └── unique-slug@2.0.2
+37 silly saveTree │ │ ├─┬ find-cache-dir@3.2.0
+37 silly saveTree │ │ │ ├── make-dir@3.0.0
+37 silly saveTree │ │ │ └─┬ pkg-dir@4.2.0
+37 silly saveTree │ │ │   └─┬ find-up@4.1.0
+37 silly saveTree │ │ │     ├─┬ locate-path@5.0.0
+37 silly saveTree │ │ │     │ └── p-locate@4.1.0
+37 silly saveTree │ │ │     └── path-exists@4.0.0
+37 silly saveTree │ │ ├── serialize-javascript@2.1.2
+37 silly saveTree │ │ ├── source-map@0.6.1
+37 silly saveTree │ │ └─┬ terser@4.6.3
+37 silly saveTree │ │   └── source-map@0.6.1
+37 silly saveTree │ ├── ts-pnp@1.1.5
+37 silly saveTree │ ├─┬ url-loader@2.3.0
+37 silly saveTree │ │ └── mime@2.4.4
+37 silly saveTree │ ├─┬ webpack-dev-server@3.9.0
+37 silly saveTree │ │ ├── ansi-html@0.0.7
+37 silly saveTree │ │ ├─┬ bonjour@3.5.0
+37 silly saveTree │ │ │ ├── array-flatten@2.1.2
+37 silly saveTree │ │ │ ├─┬ deep-equal@1.1.1
+37 silly saveTree │ │ │ │ ├── is-arguments@1.0.4
+37 silly saveTree │ │ │ │ ├── object-is@1.0.2
+37 silly saveTree │ │ │ │ └── regexp.prototype.flags@1.3.0
+37 silly saveTree │ │ │ ├── dns-equal@1.0.0
+37 silly saveTree │ │ │ ├─┬ dns-txt@2.0.2
+37 silly saveTree │ │ │ │ └── buffer-indexof@1.1.1
+37 silly saveTree │ │ │ ├── multicast-dns-service-types@1.1.0
+37 silly saveTree │ │ │ └─┬ multicast-dns@6.2.3
+37 silly saveTree │ │ │   ├─┬ dns-packet@1.3.1
+37 silly saveTree │ │ │   │ └── ip@1.1.5
+37 silly saveTree │ │ │   └── thunky@1.1.0
+37 silly saveTree │ │ ├─┬ compression@1.7.4
+37 silly saveTree │ │ │ ├─┬ accepts@1.3.7
+37 silly saveTree │ │ │ │ └── negotiator@0.6.2
+37 silly saveTree │ │ │ ├── bytes@3.0.0
+37 silly saveTree │ │ │ ├── compressible@2.0.18
+37 silly saveTree │ │ │ ├─┬ debug@2.6.9
+37 silly saveTree │ │ │ │ └── ms@2.0.0
+37 silly saveTree │ │ │ ├── on-headers@1.0.2
+37 silly saveTree │ │ │ └── vary@1.1.2
+37 silly saveTree │ │ ├── connect-history-api-fallback@1.6.0
+37 silly saveTree │ │ ├─┬ del@4.1.1
+37 silly saveTree │ │ │ ├─┬ @types/glob@7.1.1
+37 silly saveTree │ │ │ │ ├── @types/events@3.0.0
+37 silly saveTree │ │ │ │ ├── @types/minimatch@3.0.3
+37 silly saveTree │ │ │ │ └── @types/node@13.5.0
+37 silly saveTree │ │ │ ├─┬ globby@6.1.0
+37 silly saveTree │ │ │ │ └── pify@2.3.0
+37 silly saveTree │ │ │ ├── is-path-cwd@2.2.0
+37 silly saveTree │ │ │ ├─┬ is-path-in-cwd@2.1.0
+37 silly saveTree │ │ │ │ └── is-path-inside@2.1.0
+37 silly saveTree │ │ │ └── p-map@2.1.0
+37 silly saveTree │ │ ├─┬ express@4.17.1
+37 silly saveTree │ │ │ ├── array-flatten@1.1.1
+37 silly saveTree │ │ │ ├─┬ body-parser@1.19.0
+37 silly saveTree │ │ │ │ ├── bytes@3.1.0
+37 silly saveTree │ │ │ │ ├── content-type@1.0.4
+37 silly saveTree │ │ │ │ ├─┬ debug@2.6.9
+37 silly saveTree │ │ │ │ │ └── ms@2.0.0
+37 silly saveTree │ │ │ │ ├── depd@1.1.2
+37 silly saveTree │ │ │ │ ├─┬ http-errors@1.7.2
+37 silly saveTree │ │ │ │ │ ├── inherits@2.0.3
+37 silly saveTree │ │ │ │ │ ├── setprototypeof@1.1.1
+37 silly saveTree │ │ │ │ │ ├── statuses@1.5.0
+37 silly saveTree │ │ │ │ │ └── toidentifier@1.0.0
+37 silly saveTree │ │ │ │ ├─┬ on-finished@2.3.0
+37 silly saveTree │ │ │ │ │ └── ee-first@1.1.1
+37 silly saveTree │ │ │ │ ├── qs@6.7.0
+37 silly saveTree │ │ │ │ ├─┬ raw-body@2.4.0
+37 silly saveTree │ │ │ │ │ ├── bytes@3.1.0
+37 silly saveTree │ │ │ │ │ └── unpipe@1.0.0
+37 silly saveTree │ │ │ │ └─┬ type-is@1.6.18
+37 silly saveTree │ │ │ │   └── media-typer@0.3.0
+37 silly saveTree │ │ │ ├── content-disposition@0.5.3
+37 silly saveTree │ │ │ ├── content-type@1.0.4
+37 silly saveTree │ │ │ ├── cookie-signature@1.0.6
+37 silly saveTree │ │ │ ├── cookie@0.4.0
+37 silly saveTree │ │ │ ├─┬ debug@2.6.9
+37 silly saveTree │ │ │ │ └── ms@2.0.0
+37 silly saveTree │ │ │ ├── depd@1.1.2
+37 silly saveTree │ │ │ ├── encodeurl@1.0.2
+37 silly saveTree │ │ │ ├── escape-html@1.0.3
+37 silly saveTree │ │ │ ├── etag@1.8.1
+37 silly saveTree │ │ │ ├─┬ finalhandler@1.1.2
+37 silly saveTree │ │ │ │ ├─┬ debug@2.6.9
+37 silly saveTree │ │ │ │ │ └── ms@2.0.0
+37 silly saveTree │ │ │ │ └── parseurl@1.3.3
+37 silly saveTree │ │ │ ├── fresh@0.5.2
+37 silly saveTree │ │ │ ├── merge-descriptors@1.0.1
+37 silly saveTree │ │ │ ├── methods@1.1.2
+37 silly saveTree │ │ │ ├── on-finished@2.3.0
+37 silly saveTree │ │ │ ├── parseurl@1.3.3
+37 silly saveTree │ │ │ ├── path-to-regexp@0.1.7
+37 silly saveTree │ │ │ ├─┬ proxy-addr@2.0.5
+37 silly saveTree │ │ │ │ ├── forwarded@0.1.2
+37 silly saveTree │ │ │ │ └── ipaddr.js@1.9.0
+37 silly saveTree │ │ │ ├── qs@6.7.0
+37 silly saveTree │ │ │ ├── range-parser@1.2.1
+37 silly saveTree │ │ │ ├─┬ send@0.17.1
+37 silly saveTree │ │ │ │ ├─┬ debug@2.6.9
+37 silly saveTree │ │ │ │ │ └── ms@2.0.0
+37 silly saveTree │ │ │ │ ├── destroy@1.0.4
+37 silly saveTree │ │ │ │ └── ms@2.1.1
+37 silly saveTree │ │ │ ├── serve-static@1.14.1
+37 silly saveTree │ │ │ ├── setprototypeof@1.1.1
+37 silly saveTree │ │ │ ├── statuses@1.5.0
+37 silly saveTree │ │ │ ├── type-is@1.6.18
+37 silly saveTree │ │ │ └── utils-merge@1.0.1
+37 silly saveTree │ │ ├── html-entities@1.2.1
+37 silly saveTree │ │ ├─┬ http-proxy-middleware@0.19.1
+37 silly saveTree │ │ │ └─┬ http-proxy@1.18.0
+37 silly saveTree │ │ │   └── eventemitter3@4.0.0
+37 silly saveTree │ │ ├─┬ internal-ip@4.3.0
+37 silly saveTree │ │ │ └─┬ default-gateway@4.2.0
+37 silly saveTree │ │ │   └── ip-regex@2.1.0
+37 silly saveTree │ │ ├── ip@1.1.5
+37 silly saveTree │ │ ├── is-absolute-url@3.0.3
+37 silly saveTree │ │ ├── killable@1.0.1
+37 silly saveTree │ │ ├── opn@5.5.0
+37 silly saveTree │ │ ├─┬ p-retry@3.0.1
+37 silly saveTree │ │ │ └── retry@0.12.0
+37 silly saveTree │ │ ├─┬ portfinder@1.0.25
+37 silly saveTree │ │ │ ├── async@2.6.3
+37 silly saveTree │ │ │ └── debug@3.2.6
+37 silly saveTree │ │ ├── schema-utils@1.0.0
+37 silly saveTree │ │ ├─┬ selfsigned@1.10.7
+37 silly saveTree │ │ │ └── node-forge@0.9.0
+37 silly saveTree │ │ ├─┬ serve-index@1.9.1
+37 silly saveTree │ │ │ ├── batch@0.6.1
+37 silly saveTree │ │ │ ├─┬ debug@2.6.9
+37 silly saveTree │ │ │ │ └── ms@2.0.0
+37 silly saveTree │ │ │ └─┬ http-errors@1.6.3
+37 silly saveTree │ │ │   ├── inherits@2.0.3
+37 silly saveTree │ │ │   └── setprototypeof@1.1.0
+37 silly saveTree │ │ ├─┬ sockjs@0.3.19
+37 silly saveTree │ │ │ └── faye-websocket@0.10.0
+37 silly saveTree │ │ ├─┬ spdy@4.0.1
+37 silly saveTree │ │ │ ├── handle-thing@2.0.0
+37 silly saveTree │ │ │ ├── http-deceiver@1.2.7
+37 silly saveTree │ │ │ ├── select-hose@2.0.0
+37 silly saveTree │ │ │ └─┬ spdy-transport@3.0.0
+37 silly saveTree │ │ │   ├── detect-node@2.0.4
+37 silly saveTree │ │ │   ├─┬ hpack.js@2.1.6
+37 silly saveTree │ │ │   │ ├── obuf@1.1.2
+37 silly saveTree │ │ │   │ ├─┬ readable-stream@2.3.7
+37 silly saveTree │ │ │   │ │ └── string_decoder@1.1.1
+37 silly saveTree │ │ │   │ └─┬ wbuf@1.7.3
+37 silly saveTree │ │ │   │   └── minimalistic-assert@1.0.1
+37 silly saveTree │ │ │   ├── obuf@1.1.2
+37 silly saveTree │ │ │   └── wbuf@1.7.3
+37 silly saveTree │ │ ├─┬ strip-ansi@3.0.1
+37 silly saveTree │ │ │ └── ansi-regex@2.1.1
+37 silly saveTree │ │ ├── supports-color@6.1.0
+37 silly saveTree │ │ ├─┬ url@0.11.0
+37 silly saveTree │ │ │ ├── punycode@1.3.2
+37 silly saveTree │ │ │ └── querystring@0.2.0
+37 silly saveTree │ │ ├─┬ webpack-dev-middleware@3.7.2
+37 silly saveTree │ │ │ ├─┬ memory-fs@0.4.1
+37 silly saveTree │ │ │ │ ├─┬ errno@0.1.7
+37 silly saveTree │ │ │ │ │ └── prr@1.0.1
+37 silly saveTree │ │ │ │ └─┬ readable-stream@2.3.7
+37 silly saveTree │ │ │ │   └── string_decoder@1.1.1
+37 silly saveTree │ │ │ ├── mime@2.4.4
+37 silly saveTree │ │ │ └─┬ webpack-log@2.0.0
+37 silly saveTree │ │ │   └── ansi-colors@3.2.4
+37 silly saveTree │ │ ├── webpack-log@2.0.0
+37 silly saveTree │ │ ├── ws@6.2.1
+37 silly saveTree │ │ └─┬ yargs@12.0.5
+37 silly saveTree │ │   ├─┬ cliui@4.1.0
+37 silly saveTree │ │   │ ├─┬ string-width@2.1.1
+37 silly saveTree │ │   │ │ ├── is-fullwidth-code-point@2.0.0
+37 silly saveTree │ │   │ │ └─┬ strip-ansi@4.0.0
+37 silly saveTree │ │   │ │   └── ansi-regex@3.0.0
+37 silly saveTree │ │   │ ├── strip-ansi@4.0.0
+37 silly saveTree │ │   │ └─┬ wrap-ansi@2.1.0
+37 silly saveTree │ │   │   ├─┬ string-width@1.0.2
+37 silly saveTree │ │   │   │ ├── is-fullwidth-code-point@1.0.0
+37 silly saveTree │ │   │   │ └─┬ strip-ansi@3.0.1
+37 silly saveTree │ │   │   │   └── ansi-regex@2.1.1
+37 silly saveTree │ │   │   └── strip-ansi@3.0.1
+37 silly saveTree │ │   ├── get-caller-file@1.0.3
+37 silly saveTree │ │   ├─┬ os-locale@3.1.0
+37 silly saveTree │ │   │ ├─┬ lcid@2.0.0
+37 silly saveTree │ │   │ │ └── invert-kv@2.0.0
+37 silly saveTree │ │   │ └─┬ mem@4.3.0
+37 silly saveTree │ │   │   ├─┬ map-age-cleaner@0.1.3
+37 silly saveTree │ │   │   │ └── p-defer@1.0.0
+37 silly saveTree │ │   │   ├── mimic-fn@2.1.0
+37 silly saveTree │ │   │   └── p-is-promise@2.1.0
+37 silly saveTree │ │   ├── require-main-filename@1.0.1
+37 silly saveTree │ │   ├─┬ string-width@2.1.1
+37 silly saveTree │ │   │ ├── is-fullwidth-code-point@2.0.0
+37 silly saveTree │ │   │ └─┬ strip-ansi@4.0.0
+37 silly saveTree │ │   │   └── ansi-regex@3.0.0
+37 silly saveTree │ │   └── yargs-parser@11.1.1
+37 silly saveTree │ ├─┬ webpack-manifest-plugin@2.2.0
+37 silly saveTree │ │ └── fs-extra@7.0.1
+37 silly saveTree │ ├─┬ webpack@4.41.2
+37 silly saveTree │ │ ├─┬ @webassemblyjs/ast@1.8.5
+37 silly saveTree │ │ │ ├─┬ @webassemblyjs/helper-module-context@1.8.5
+37 silly saveTree │ │ │ │ └── mamacro@0.0.3
+37 silly saveTree │ │ │ ├── @webassemblyjs/helper-wasm-bytecode@1.8.5
+37 silly saveTree │ │ │ └─┬ @webassemblyjs/wast-parser@1.8.5
+37 silly saveTree │ │ │   ├── @webassemblyjs/floating-point-hex-parser@1.8.5
+37 silly saveTree │ │ │   ├── @webassemblyjs/helper-api-error@1.8.5
+37 silly saveTree │ │ │   ├─┬ @webassemblyjs/helper-code-frame@1.8.5
+37 silly saveTree │ │ │   │ └─┬ @webassemblyjs/wast-printer@1.8.5
+37 silly saveTree │ │ │   │   └── @xtuc/long@4.2.2
+37 silly saveTree │ │ │   ├── @webassemblyjs/helper-fsm@1.8.5
+37 silly saveTree │ │ │   └── @xtuc/long@4.2.2
+37 silly saveTree │ │ ├── @webassemblyjs/helper-module-context@1.8.5
+37 silly saveTree │ │ ├─┬ @webassemblyjs/wasm-edit@1.8.5
+37 silly saveTree │ │ │ ├── @webassemblyjs/helper-buffer@1.8.5
+37 silly saveTree │ │ │ ├─┬ @webassemblyjs/helper-wasm-section@1.8.5
+37 silly saveTree │ │ │ │ └─┬ @webassemblyjs/wasm-gen@1.8.5
+37 silly saveTree │ │ │ │   ├─┬ @webassemblyjs/ieee754@1.8.5
+37 silly saveTree │ │ │ │   │ └── @xtuc/ieee754@1.2.0
+37 silly saveTree │ │ │ │   ├── @webassemblyjs/leb128@1.8.5
+37 silly saveTree │ │ │ │   └── @webassemblyjs/utf8@1.8.5
+37 silly saveTree │ │ │ ├── @webassemblyjs/wasm-gen@1.8.5
+37 silly saveTree │ │ │ ├─┬ @webassemblyjs/wasm-opt@1.8.5
+37 silly saveTree │ │ │ │ └── @webassemblyjs/wasm-parser@1.8.5
+37 silly saveTree │ │ │ └── @webassemblyjs/wasm-parser@1.8.5
+37 silly saveTree │ │ ├── @webassemblyjs/wasm-parser@1.8.5
+37 silly saveTree │ │ ├── acorn@6.4.0
+37 silly saveTree │ │ ├── chrome-trace-event@1.0.2
+37 silly saveTree │ │ ├─┬ enhanced-resolve@4.1.1
+37 silly saveTree │ │ │ └─┬ memory-fs@0.5.0
+37 silly saveTree │ │ │   └─┬ readable-stream@2.3.7
+37 silly saveTree │ │ │     └── string_decoder@1.1.1
+37 silly saveTree │ │ ├── eslint-scope@4.0.3
+37 silly saveTree │ │ ├── loader-runner@2.4.0
+37 silly saveTree │ │ ├─┬ node-libs-browser@2.2.1
+37 silly saveTree │ │ │ ├─┬ browserify-zlib@0.2.0
+37 silly saveTree │ │ │ │ └── pako@1.0.10
+37 silly saveTree │ │ │ ├─┬ buffer@4.9.2
+37 silly saveTree │ │ │ │ ├── base64-js@1.3.1
+37 silly saveTree │ │ │ │ └── ieee754@1.1.13
+37 silly saveTree │ │ │ ├── console-browserify@1.2.0
+37 silly saveTree │ │ │ ├── constants-browserify@1.0.0
+37 silly saveTree │ │ │ ├─┬ crypto-browserify@3.12.0
+37 silly saveTree │ │ │ │ ├─┬ browserify-cipher@1.0.1
+37 silly saveTree │ │ │ │ │ ├─┬ browserify-aes@1.2.0
+37 silly saveTree │ │ │ │ │ │ ├── buffer-xor@1.0.3
+37 silly saveTree │ │ │ │ │ │ ├── cipher-base@1.0.4
+37 silly saveTree │ │ │ │ │ │ ├─┬ create-hash@1.2.0
+37 silly saveTree │ │ │ │ │ │ │ ├─┬ md5.js@1.3.5
+37 silly saveTree │ │ │ │ │ │ │ │ └── hash-base@3.0.4
+37 silly saveTree │ │ │ │ │ │ │ ├── ripemd160@2.0.2
+37 silly saveTree │ │ │ │ │ │ │ └── sha.js@2.4.11
+37 silly saveTree │ │ │ │ │ │ └── evp_bytestokey@1.0.3
+37 silly saveTree │ │ │ │ │ ├─┬ browserify-des@1.0.2
+37 silly saveTree │ │ │ │ │ │ └── des.js@1.0.1
+37 silly saveTree │ │ │ │ │ └── evp_bytestokey@1.0.3
+37 silly saveTree │ │ │ │ ├─┬ browserify-sign@4.0.4
+37 silly saveTree │ │ │ │ │ ├── bn.js@4.11.8
+37 silly saveTree │ │ │ │ │ ├─┬ browserify-rsa@4.0.1
+37 silly saveTree │ │ │ │ │ │ └── randombytes@2.1.0
+37 silly saveTree │ │ │ │ │ ├── create-hmac@1.1.7
+37 silly saveTree │ │ │ │ │ ├─┬ elliptic@6.5.2
+37 silly saveTree │ │ │ │ │ │ ├── brorand@1.1.0
+37 silly saveTree │ │ │ │ │ │ ├── hash.js@1.1.7
+37 silly saveTree │ │ │ │ │ │ ├─┬ hmac-drbg@1.0.1
+37 silly saveTree │ │ │ │ │ │ │ └── minimalistic-crypto-utils@1.0.1
+37 silly saveTree │ │ │ │ │ │ └── minimalistic-crypto-utils@1.0.1
+37 silly saveTree │ │ │ │ │ └─┬ parse-asn1@5.1.5
+37 silly saveTree │ │ │ │ │   ├── asn1.js@4.10.1
+37 silly saveTree │ │ │ │ │   └── pbkdf2@3.0.17
+37 silly saveTree │ │ │ │ ├── create-ecdh@4.0.3
+37 silly saveTree │ │ │ │ ├── create-hash@1.2.0
+37 silly saveTree │ │ │ │ ├── create-hmac@1.1.7
+37 silly saveTree │ │ │ │ ├─┬ diffie-hellman@5.0.3
+37 silly saveTree │ │ │ │ │ └── miller-rabin@4.0.1
+37 silly saveTree │ │ │ │ ├── pbkdf2@3.0.17
+37 silly saveTree │ │ │ │ ├── public-encrypt@4.0.3
+37 silly saveTree │ │ │ │ ├── randombytes@2.1.0
+37 silly saveTree │ │ │ │ └── randomfill@1.0.4
+37 silly saveTree │ │ │ ├── domain-browser@1.2.0
+37 silly saveTree │ │ │ ├── events@3.1.0
+37 silly saveTree │ │ │ ├── https-browserify@1.0.0
+37 silly saveTree │ │ │ ├── os-browserify@0.3.0
+37 silly saveTree │ │ │ ├── path-browserify@0.0.1
+37 silly saveTree │ │ │ ├── process@0.11.10
+37 silly saveTree │ │ │ ├── punycode@1.4.1
+37 silly saveTree │ │ │ ├── querystring-es3@0.2.1
+37 silly saveTree │ │ │ ├─┬ readable-stream@2.3.7
+37 silly saveTree │ │ │ │ └── string_decoder@1.1.1
+37 silly saveTree │ │ │ ├─┬ stream-browserify@2.0.2
+37 silly saveTree │ │ │ │ └─┬ readable-stream@2.3.7
+37 silly saveTree │ │ │ │   └── string_decoder@1.1.1
+37 silly saveTree │ │ │ ├─┬ stream-http@2.8.3
+37 silly saveTree │ │ │ │ ├── builtin-status-codes@3.0.0
+37 silly saveTree │ │ │ │ ├─┬ readable-stream@2.3.7
+37 silly saveTree │ │ │ │ │ └── string_decoder@1.1.1
+37 silly saveTree │ │ │ │ └── to-arraybuffer@1.0.1
+37 silly saveTree │ │ │ ├─┬ timers-browserify@2.0.11
+37 silly saveTree │ │ │ │ └── setimmediate@1.0.5
+37 silly saveTree │ │ │ ├── tty-browserify@0.0.0
+37 silly saveTree │ │ │ ├─┬ util@0.11.1
+37 silly saveTree │ │ │ │ └── inherits@2.0.3
+37 silly saveTree │ │ │ └── vm-browserify@1.1.2
+37 silly saveTree │ │ ├── schema-utils@1.0.0
+37 silly saveTree │ │ ├─┬ terser-webpack-plugin@1.4.3
+37 silly saveTree │ │ │ ├─┬ cacache@12.0.3
+37 silly saveTree │ │ │ │ ├── bluebird@3.7.2
+37 silly saveTree │ │ │ │ ├─┬ lru-cache@5.1.1
+37 silly saveTree │ │ │ │ │ └── yallist@3.1.1
+37 silly saveTree │ │ │ │ ├─┬ mississippi@3.0.0
+37 silly saveTree │ │ │ │ │ ├─┬ duplexify@3.7.1
+37 silly saveTree │ │ │ │ │ │ ├─┬ readable-stream@2.3.7
+37 silly saveTree │ │ │ │ │ │ │ └── string_decoder@1.1.1
+37 silly saveTree │ │ │ │ │ │ └── stream-shift@1.0.1
+37 silly saveTree │ │ │ │ │ ├─┬ flush-write-stream@1.1.1
+37 silly saveTree │ │ │ │ │ │ └─┬ readable-stream@2.3.7
+37 silly saveTree │ │ │ │ │ │   └── string_decoder@1.1.1
+37 silly saveTree │ │ │ │ │ ├─┬ from2@2.3.0
+37 silly saveTree │ │ │ │ │ │ └─┬ readable-stream@2.3.7
+37 silly saveTree │ │ │ │ │ │   └── string_decoder@1.1.1
+37 silly saveTree │ │ │ │ │ ├─┬ parallel-transform@1.2.0
+37 silly saveTree │ │ │ │ │ │ ├── cyclist@1.0.1
+37 silly saveTree │ │ │ │ │ │ └─┬ readable-stream@2.3.7
+37 silly saveTree │ │ │ │ │ │   └── string_decoder@1.1.1
+37 silly saveTree │ │ │ │ │ ├─┬ pumpify@1.5.1
+37 silly saveTree │ │ │ │ │ │ └── pump@2.0.1
+37 silly saveTree │ │ │ │ │ ├── stream-each@1.2.3
+37 silly saveTree │ │ │ │ │ └─┬ through2@2.0.5
+37 silly saveTree │ │ │ │ │   └─┬ readable-stream@2.3.7
+37 silly saveTree │ │ │ │ │     └── string_decoder@1.1.1
+37 silly saveTree │ │ │ │ └── ssri@6.0.1
+37 silly saveTree │ │ │ ├─┬ find-cache-dir@2.1.0
+37 silly saveTree │ │ │ │ ├─┬ make-dir@2.1.0
+37 silly saveTree │ │ │ │ │ └── semver@5.7.1
+37 silly saveTree │ │ │ │ └── pkg-dir@3.0.0
+37 silly saveTree │ │ │ ├── is-wsl@1.1.0
+37 silly saveTree │ │ │ ├── source-map@0.6.1
+37 silly saveTree │ │ │ └── worker-farm@1.7.0
+37 silly saveTree │ │ └── watchpack@1.6.0
+37 silly saveTree │ └─┬ workbox-webpack-plugin@4.3.1
+37 silly saveTree │   ├─┬ json-stable-stringify@1.0.1
+37 silly saveTree │   │ └── jsonify@0.0.0
+37 silly saveTree │   └─┬ workbox-build@4.3.1
+37 silly saveTree │     ├─┬ @hapi/joi@15.1.1
+37 silly saveTree │     │ ├── @hapi/address@2.1.4
+37 silly saveTree │     │ ├── @hapi/bourne@1.3.2
+37 silly saveTree │     │ ├── @hapi/hoek@8.5.0
+37 silly saveTree │     │ └── @hapi/topo@3.1.6
+37 silly saveTree │     ├── fs-extra@4.0.3
+37 silly saveTree │     ├── pretty-bytes@5.3.0
+37 silly saveTree │     ├─┬ stringify-object@3.3.0
+37 silly saveTree │     │ ├── get-own-enumerable-property-symbols@3.0.2
+37 silly saveTree │     │ └── is-regexp@1.0.0
+37 silly saveTree │     ├─┬ strip-comments@1.0.2
+37 silly saveTree │     │ ├─┬ babel-extract-comments@1.0.0
+37 silly saveTree │     │ │ └── babylon@6.18.0
+37 silly saveTree │     │ └─┬ babel-plugin-transform-object-rest-spread@6.26.0
+37 silly saveTree │     │   └── babel-plugin-syntax-object-rest-spread@6.13.0
+37 silly saveTree │     ├─┬ workbox-background-sync@4.3.1
+37 silly saveTree │     │ └── workbox-core@4.3.1
+37 silly saveTree │     ├── workbox-broadcast-update@4.3.1
+37 silly saveTree │     ├── workbox-cacheable-response@4.3.1
+37 silly saveTree │     ├── workbox-core@4.3.1
+37 silly saveTree │     ├── workbox-expiration@4.3.1
+37 silly saveTree │     ├─┬ workbox-google-analytics@4.3.1
+37 silly saveTree │     │ ├── workbox-routing@4.3.1
+37 silly saveTree │     │ └── workbox-strategies@4.3.1
+37 silly saveTree │     ├── workbox-navigation-preload@4.3.1
+37 silly saveTree │     ├── workbox-precaching@4.3.1
+37 silly saveTree │     ├── workbox-range-requests@4.3.1
+37 silly saveTree │     ├── workbox-routing@4.3.1
+37 silly saveTree │     ├── workbox-strategies@4.3.1
+37 silly saveTree │     ├── workbox-streams@4.3.1
+37 silly saveTree │     ├── workbox-sw@4.3.1
+37 silly saveTree │     └── workbox-window@4.3.1
+37 silly saveTree ├── react-toastify@5.5.0
+37 silly saveTree ├─┬ react-wordcloud@1.1.1
+37 silly saveTree │ ├── @types/d3-array@2.0.0
+37 silly saveTree │ ├─┬ @types/d3-cloud@1.2.2
+37 silly saveTree │ │ └── @types/d3@3.5.43
+37 silly saveTree │ ├── @types/d3-scale-chromatic@1.3.1
+37 silly saveTree │ ├─┬ @types/d3-scale@2.1.1
+37 silly saveTree │ │ └── @types/d3-time@1.0.10
+37 silly saveTree │ ├── @types/d3-selection@1.4.1
+37 silly saveTree │ ├── @types/d3-transition@1.1.5
+37 silly saveTree │ ├── @types/seedrandom@2.4.28
+37 silly saveTree │ ├── d3-cloud@1.2.5
+37 silly saveTree │ ├── resize-observer-polyfill@1.5.1
+37 silly saveTree │ ├── seedrandom@3.0.5
+37 silly saveTree │ └── tippy.js@4.3.5
+37 silly saveTree ├── react@16.12.0
+37 silly saveTree ├─┬ recharts@1.8.5
+37 silly saveTree │ ├─┬ d3-scale@2.2.2
+37 silly saveTree │ │ ├── d3-array@1.2.4
+37 silly saveTree │ │ └── d3-collection@1.0.7
+37 silly saveTree │ ├─┬ d3-shape@1.3.7
+37 silly saveTree │ │ └── d3-path@1.0.9
+37 silly saveTree │ ├─┬ react-resize-detector@2.3.0
+37 silly saveTree │ │ └── lodash.debounce@4.0.8
+37 silly saveTree │ ├─┬ react-smooth@1.0.5
+37 silly saveTree │ │ └─┬ react-transition-group@2.9.0
+37 silly saveTree │ │   ├── dom-helpers@3.4.0
+37 silly saveTree │ │   └── react-lifecycles-compat@3.0.4
+37 silly saveTree │ ├─┬ recharts-scale@0.4.3
+37 silly saveTree │ │ └── decimal.js-light@2.5.0
+37 silly saveTree │ └─┬ reduce-css-calc@1.3.0
+37 silly saveTree │   ├── balanced-match@0.4.2
+37 silly saveTree │   ├── math-expression-evaluator@1.2.22
+37 silly saveTree │   └── reduce-function-call@1.0.3
+37 silly saveTree ├─┬ recompose@0.30.0
+37 silly saveTree │ ├── change-emitter@0.1.6
+37 silly saveTree │ ├─┬ fbjs@0.8.17
+37 silly saveTree │ │ ├── core-js@1.2.7
+37 silly saveTree │ │ ├─┬ isomorphic-fetch@2.2.1
+37 silly saveTree │ │ │ └─┬ node-fetch@1.7.3
+37 silly saveTree │ │ │   └── encoding@0.1.12
+37 silly saveTree │ │ ├── promise@7.3.1
+37 silly saveTree │ │ └── ua-parser-js@0.7.21
+37 silly saveTree │ └── hoist-non-react-statics@2.5.5
+37 silly saveTree ├── redux-thunk@2.3.0
+37 silly saveTree ├── redux@4.0.5
+37 silly saveTree ├── resolve@1.10.0
+37 silly saveTree ├─┬ sass-loader@7.1.0
+37 silly saveTree │ ├─┬ clone-deep@2.0.2
+37 silly saveTree │ │ ├── for-own@1.0.0
+37 silly saveTree │ │ ├── kind-of@6.0.3
+37 silly saveTree │ │ └─┬ shallow-clone@1.0.0
+37 silly saveTree │ │   └── kind-of@5.1.0
+37 silly saveTree │ ├── lodash.tail@4.1.1
+37 silly saveTree │ ├── pify@3.0.0
+37 silly saveTree │ └── semver@5.7.1
+37 silly saveTree ├── semver@6.0.0
+37 silly saveTree ├── style-loader@0.23.1
+37 silly saveTree ├─┬ terser-webpack-plugin@1.2.3
+37 silly saveTree │ ├─┬ cacache@11.3.3
+37 silly saveTree │ │ ├─┬ lru-cache@5.1.1
+37 silly saveTree │ │ │ └── yallist@3.1.1
+37 silly saveTree │ │ └── ssri@6.0.1
+37 silly saveTree │ ├── serialize-javascript@1.9.1
+37 silly saveTree │ ├── source-map@0.6.1
+37 silly saveTree │ └── terser@3.17.0
+37 silly saveTree ├── three-spritetext@1.2.1
+37 silly saveTree ├── three@0.109.0
+37 silly saveTree ├── ts-pnp@1.1.2
+37 silly saveTree ├── underscore@1.9.2
+37 silly saveTree ├─┬ url-loader@1.1.2
+37 silly saveTree │ └── mime@2.4.4
+37 silly saveTree ├── validate.js@0.12.0
+37 silly saveTree ├─┬ webpack-dev-server@3.2.1
+37 silly saveTree │ ├─┬ del@3.0.0
+37 silly saveTree │ │ ├─┬ globby@6.1.0
+37 silly saveTree │ │ │ └── pify@2.3.0
+37 silly saveTree │ │ ├── is-path-cwd@1.0.0
+37 silly saveTree │ │ ├─┬ is-path-in-cwd@1.0.1
+37 silly saveTree │ │ │ └── is-path-inside@1.0.1
+37 silly saveTree │ │ ├── p-map@1.2.0
+37 silly saveTree │ │ └── pify@3.0.0
+37 silly saveTree │ ├── semver@5.7.1
+37 silly saveTree │ ├─┬ sockjs-client@1.3.0
+37 silly saveTree │ │ └── debug@3.2.6
+37 silly saveTree │ ├─┬ strip-ansi@3.0.1
+37 silly saveTree │ │ └── ansi-regex@2.1.1
+37 silly saveTree │ ├── supports-color@6.1.0
+37 silly saveTree │ └─┬ yargs@12.0.2
+37 silly saveTree │   ├─┬ cliui@4.1.0
+37 silly saveTree │   │ ├─┬ strip-ansi@4.0.0
+37 silly saveTree │   │ │ └── ansi-regex@3.0.0
+37 silly saveTree │   │ └─┬ wrap-ansi@2.1.0
+37 silly saveTree │   │   └─┬ string-width@1.0.2
+37 silly saveTree │   │     └── is-fullwidth-code-point@1.0.0
+37 silly saveTree │   ├─┬ decamelize@2.0.0
+37 silly saveTree │   │ └── xregexp@4.0.0
+37 silly saveTree │   ├── get-caller-file@1.0.3
+37 silly saveTree │   ├─┬ os-locale@3.1.0
+37 silly saveTree │   │ └─┬ lcid@2.0.0
+37 silly saveTree │   │   └── invert-kv@2.0.0
+37 silly saveTree │   ├── require-main-filename@1.0.1
+37 silly saveTree │   └─┬ yargs-parser@10.1.0
+37 silly saveTree │     └── camelcase@4.1.0
+37 silly saveTree ├── webpack-manifest-plugin@2.0.4
+37 silly saveTree ├─┬ webpack@4.41.5
+37 silly saveTree │ └─┬ terser-webpack-plugin@1.4.3
+37 silly saveTree │   ├─┬ cacache@12.0.3
+37 silly saveTree │   │ ├─┬ lru-cache@5.1.1
+37 silly saveTree │   │ │ └── yallist@3.1.1
+37 silly saveTree │   │ └── ssri@6.0.1
+37 silly saveTree │   └── source-map@0.6.1
+37 silly saveTree └── workbox-webpack-plugin@4.2.0
+38 verbose stack Error: ENOENT: no such file or directory, open '/home/abubakar/NCCS/react_social_app/node_modules/aframe/debug@github:ngokevin/debug#noTimestamp/package.json'
+39 verbose cwd /home/abubakar/NCCS/react_social_app
+40 verbose Linux 5.4.0-37-generic
+41 verbose argv "/usr/bin/node" "/usr/local/bin/npm" "install"
+42 verbose node v10.19.0
+43 verbose npm  v6.14.5
+44 error code ENOLOCAL
+45 error Could not install from "node_modules/aframe/debug@github:ngokevin/debug#noTimestamp" as it does not contain a package.json file.
+46 verbose exit [ 1, true ]

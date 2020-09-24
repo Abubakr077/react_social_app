@@ -89,6 +89,9 @@ export default theme => ({
   },
   registerJob: {
     alignSelf: 'center'
+  },
+  searchButton: {
+    marginLeft: "2%"
   }
 
 });
