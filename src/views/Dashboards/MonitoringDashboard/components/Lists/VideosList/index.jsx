@@ -34,23 +34,21 @@ import DescriptionOutlinedIcon from '@material-ui/icons/DescriptionOutlined';
 
 class VideosList extends Component {
 
-  state = {
-    isLoading: false,
-    data: []
-  };
-  tempData = [];
+
 
   constructor(props) {
     super(props);
+    this.state = {
+      isLoading: false,
+      data: []
+    };
+    this.tempData = [];
     this.user = JSON.parse(localStorage.getItem('user'));
     this.project_id = localStorage.getItem('project_id');
-
   }
 
   async getTweets() {
-
     try {
-
       this.setState({ isLoading: true });
       // const response = await fetch(dataJSON)
       // const data = await response;
@@ -97,6 +95,14 @@ class VideosList extends Component {
       };
     }
   }
+  // showAlert() {
+  //   alert("Im an alert");
+  // }
+
+// video link get from keyword type
+//   videoLink=()=> {
+//    alert("hello")
+//   }
 
   render() {
 
@@ -109,9 +115,11 @@ class VideosList extends Component {
 
     return (
       <div className={classes.root}>
+        {
+          data.map(tweet => (
         <Portlet className={classes.listItem}>
           <PortletHeader noDivider className={classes.header}>
-            <Typography variant="h2">Keyword Videos</Typography>
+            <Typography variant="h2">Keywords Search Result</Typography>
           </PortletHeader>
           <PortletContent
             noPadding
@@ -129,15 +137,14 @@ class VideosList extends Component {
               item
               xs={12}
             >
-              {
-                data.map(tweet => (
+
                   <React.Fragment>
                     <Portlet>
                       <PortletContent
                         noPadding
                       >
                         <ListItem button alignItems="flex-start" component="a"
-                                  href={tweet.thumbnail}>
+                                  onClick={()=>this.props.getVideoLink()}>
                           <ListItemAvatar>
                             <Avatar alt="Remy Sharp" src={tweet.thumbnail}
                                     className={classes.bigAvatar}/>
@@ -177,7 +184,7 @@ class VideosList extends Component {
                                       <Typography
                                         className={classes.locationText}
                                         variant="body1"
-                                      >{tweet.channel_name}
+                                      >{tweet.link}
                                       </Typography>
                                     </div>
                                     <div className={classes.details1}>
@@ -198,12 +205,12 @@ class VideosList extends Component {
                       </PortletContent>
                     </Portlet>
                   </React.Fragment>
-                ))
-              }
+
             </Grid>)}
           </PortletContent>
         </Portlet>
-
+          ))
+        }
       </div>
     );
   }

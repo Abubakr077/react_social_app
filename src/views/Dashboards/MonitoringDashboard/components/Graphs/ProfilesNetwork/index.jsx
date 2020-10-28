@@ -13,8 +13,9 @@ import { withRouter } from 'react-router-dom';
 //network graph
 import { ForceGraph2D } from 'react-force-graph';
 // import data from './data/miserables.json';
-import data from './data/WITTER_TREND_HATEPOOL_NETWORK_2019-10-30';
-
+import data from './data/newdatal.json';
+//import data from './data/WITTER_TREND_HATEPOOL_NETWORK_2019-10-30';
+import ForceGraph3D from '3d-force-graph';
 const IMAGE_SIZE = 24;
 const FORCE_LINK_DISTANCE = IMAGE_SIZE * 4;
 
@@ -41,12 +42,13 @@ class ProfilesNetwork extends Component {
   }
 
   render() {
-    const { classes, className, cloudOptions, ...rest } = this.props;
+
+    const { classes, className, name,cloudOptions, Graph,...rest } = this.props;
     return (
 
-      <div>
+      <div >
         <PortletHeader noDivider>
-          <Typography variant="h2">Network Of Hate Profiles</Typography>
+          <Typography variant="h2">Network Of Hate Profiles {name}</Typography>
         </PortletHeader>
 
         {/*<ForceGraph3D*/}
@@ -70,39 +72,27 @@ class ProfilesNetwork extends Component {
         <ForceGraph2D
           ref={el => this.fg = el}
           graphData={data}
-          nodeAutoColorBy="group"
-          nodeVal={IMAGE_SIZE}
-          linkDirectionalArrowLength={3.5}
-          linkDirectionalArrowRelPos={1}
-          linkDirectionalParticles="value"
-          // linkDirectionalParticleColor={() => 'blue'}
-          linkAutoColorBy="group"
-          linkDirectionalParticleSpeed={d => d.value * 0.002}
-          nodeLabel="id"
-          onNodeDragEnd={node => {
-            node.fx = node.x;
-            node.fy = node.y;
-          }}
-          onNodeClick={(node, event) => {
-            console.log(node);
-            const { history } = this.props;
-            history.push('/dashboard/project/analysis', { type: 'INFO', target_type: 'USER' });
-          }}
-          nodeCanvasObject={(node, ctx, globalScale) => {
-            const fontSize = 12 / globalScale;
-            // ctx.font = `${fontSize}px Sans-Serif`;
+          nodeColor="node_color"
+          backgroundColor="#FFFFFF"
+          linkDirectionalArrowLength={3}
+          //linkAutoColorBy="name"
+          linkDirectionalParticles={1}
+          nodeRelSize={5}
+          //nodeAutoColorBy="node_color"
+          nodeLabel="name"
+          linkColor="#F8FAFC"
+          linkDirectionalParticle={1}
 
-            const imageWidth = ctx.measureText(node.img / 12).width;
-            const bckgDimensions = [imageWidth, fontSize].map(n => n + fontSize * 3); // some padding
-            ctx.fillStyle = node.color;
-            ctx.fillRect(node.x - bckgDimensions[0] / 2, node.y - bckgDimensions[1] / 2, ...bckgDimensions);
-            ctx.textAlign = 'center';
-            ctx.textBaseline = 'middle';
-            ctx.fillStyle = node.color;
-            // ctx.fillText(label, node.x, node.y);
-            this._paintNode(node, ctx);
+          //onNodeHover={node => elem.style.cursor = node ? 'pointer' : null}
+          onNodeClick={(node, event) => {
+            console.log('node: ',node);
+            const { history } = this.props;
+            history.push('/dashboard/project/analysis/profile_analysis/', { name: node.name, color: node.node_color });
           }}
+
+
         />
+
       </div>
 
     );

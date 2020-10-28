@@ -25,7 +25,7 @@ export default function asyncComponent(getComponent) {
       return <Typography
         variant="h6"
              >
-        Loading ...
+        Loading...
       </Typography>;
     }
   }

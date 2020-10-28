@@ -182,7 +182,7 @@ export const numTweet = [
 ];
 export const youtubeTypes = [
   {
-    name: 'Key Word',
+    name: 'Keyword',
     code: 'keyword',
     disabled: true
   },
@@ -195,4 +195,23 @@ export const youtubeTypes = [
     code: 'channel',
     disabled: true
   }
+];
+export const networkgraph = [
+  {
+    name: 'Upload File',
+    code: 'keyword',
+    disabled: true
+  },
+]
+export const facebookTypes = [
+  {
+    name: 'Keyword',
+    code: 'keyword',
+    disabled: true
+  },
+  {
+    name: 'Profile URL',
+    code: 'profile'
+  },
+
 ];

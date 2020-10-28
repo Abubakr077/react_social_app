@@ -19,6 +19,7 @@ import request from 'helpers/request.js';
 import * as endpoints from 'constants/endpoints.json';
 import NoRecords from '../../../../NoRecords';
 import ProfilesNetwork from '../Graphs/ProfilesNetwork';
+import LargestNetwork from '../Graphs/LargestNetwork';
 
 
 class TrendHatePool extends Component {
@@ -120,8 +121,9 @@ class TrendHatePool extends Component {
             <Grid
               item
               xs={12}
-              className={classes.marginTable}>
-              <ProfilesNetwork/>
+              className={classes.marginTable}
+            >
+              <LargestNetwork />
             </Grid>
           </div>) : (
           <div>

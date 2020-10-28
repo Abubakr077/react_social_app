@@ -21,7 +21,7 @@ import {
   DashboardOutlined as DashboardIcon,
   ExpandLess,
   ExpandMore,
-  HowToVoteOutlined as InvitesIcon,
+  HowToVoteOutlined as InvitesIcon, Map,
   PeopleOutlined as PeopleIcon,
   PlaylistAddOutlined as CreateIcon,
   SettingsOutlined as SettingsIcon,
@@ -169,6 +169,20 @@ class Sidebar extends Component {
                   classes={{ primary: classes.listItemText }}
                   primary="View Jobs"/>
               </ListItem>
+              <ListItem activeClassName={classes.activeListItemNested}
+                        className={classes.listItemNested}
+                        component={NavLink}
+                        to="/dashboard/project/analysis/network_graph"
+              >
+                <ListItemIcon className={classes.listItemIcon}>
+                  <CreateIcon/>
+                </ListItemIcon>
+                <ListItemText
+                  classes={{ primary: classes.listItemText }}
+                  primary="Network Graph"/>
+              </ListItem>
+              {/*Graph Nav Link*/}
+
               {/*{options.isTweetsRoute && (*/}
               {/*    <ListItem activeClassName={classes.activeListItemNested}*/}
               {/*                                     className={classes.listItemNested}*/}
@@ -182,9 +196,23 @@ class Sidebar extends Component {
               {/*        classes={{primary: classes.listItemText}}*/}
               {/*        primary="View Tweets"/>*/}
               {/*</ListItem>)}*/}
+              {/*<ListItem*/}
+              {/*  activeClassName={classes.activeListItem}*/}
+              {/*  className={classes.listItem}*/}
+              {/*  component={NavLink}*/}
+              {/*  to="/dashboard/project/analysis/network_graph"*/}
+              {/*>*/}
+              {/*  <ListItemIcon className={classes.listItemIcon}>*/}
+              {/*    <Map/>*/}
+              {/*  </ListItemIcon>*/}
+              {/*  <ListItemText*/}
+              {/*    classes={{ primary: classes.listItemText }}*/}
+              {/*    primary="Network Graph"*/}
+              {/*  />*/}
+              {/*</ListItem>*/}
             </List>
-          </Collapse>
 
+          </Collapse>
 
           {/*<ListItem*/}
           {/*    activeClassName={classes.activeListItem}*/}
@@ -214,7 +242,7 @@ class Sidebar extends Component {
           {/*        primary="Trends"*/}
           {/*    />*/}
           {/*</ListItem>*/}
-          <ListItem
+          {/* <ListItem
             activeClassName={classes.activeListItem}
             className={classes.listItem}
             component={NavLink}
@@ -227,7 +255,8 @@ class Sidebar extends Component {
               classes={{ primary: classes.listItemText }}
               primary="Activity Log"
             />
-          </ListItem>
+          </ListItem> */}
+
           <ListItem
             activeClassName={classes.activeListItem}
             className={classes.listItem}
@@ -242,6 +271,7 @@ class Sidebar extends Component {
               primary="Project Invites"
             />
           </ListItem>
+
           <ListItem
             activeClassName={classes.activeListItem}
             className={classes.listItem}

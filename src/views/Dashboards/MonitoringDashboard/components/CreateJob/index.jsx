@@ -11,6 +11,7 @@ import Twitter from './Twitter';
 import Paper from '@material-ui/core/Paper';
 import Facebook from './Facebook';
 import Youtube from './Youtube';
+import Like from './Like';
 
 class CreateJob extends Component {
   constructor(props) {
@@ -66,7 +67,7 @@ class CreateJob extends Component {
                 value="facebook"
                 control={<Radio color="primary"/>}
                 label="Facebook"
-                disabled={true}
+                disabled={false}
               />
               <FormControlLabel
                 className={classes.platformInsta}
@@ -75,13 +76,25 @@ class CreateJob extends Component {
                 label="Instagram"
                 disabled={true}
               />
+              <FormControlLabel
+                className={classes.platformLinkedin}
+                value="like"
+                control={<Radio color="primary"/>}
+                label="Likedin"
+                disabled={true}
+              />
             </RadioGroup>
           </FormControl>
           {this.state.value === 'twitter' ? <Twitter/> :
             this.state.value === 'youtube' ? (
                 <Youtube/>
+              ):
+              this.state.value === 'like' ? (
+                <Like/>
               )
-              : <Facebook/>}
+              : <Facebook/>
+               
+              }
         </Paper>
 
       </DashboardLayout>

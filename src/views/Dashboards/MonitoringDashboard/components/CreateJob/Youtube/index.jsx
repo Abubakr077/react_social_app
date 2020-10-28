@@ -23,43 +23,54 @@ import { toast } from 'react-toastify';
 import { Message, optionsError } from 'constants/constants';
 import endpoints from 'constants/endpoints.json';
 import VideosList from '../../Lists/VideosList';
+import ListItem from '@material-ui/core/ListItem';
+import {getTweets} from '../../Lists/VideosList';
 
+const user = {
+  city: 'ISLAMABAD',
 
+};
 class Youtube extends Component {
-  state = {
-    isLoading: false,
-    isValid: false,
-    submitError: false,
-    serviceError: null,
-    showKeywords: false,
-    values: {
-      video: '',
-      channel: '',
-      target_type: 'video',
-      keyword: '',
-      description: '',
-      unit: '',
-      schedule: ''
-    },
-    touched: {
-      video: false,
-      channel: false,
-      target_type: false,
-      keyword: false,
-      description: false,
-      unit: false,
-      schedule: false
-    },
-    errors: {
-      video: null,
-      channel: null,
-      target_type: null,
-      keyword: null,
-      description: null,
-      unit: null,
-      schedule: null
-    }
-  };
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      isLoading: false,
+      isValid: false,
+      submitError: false,
+      serviceError: null,
+      showKeywords: false,
+      data: [],
+      values: {
+        video: '',
+        channel: '',
+        target_type: 'video',
+        keyword: '',
+        description: '',
+        unit: '',
+        schedule: ''
+      },
+      touched: {
+        video: true,
+        channel: false,
+        target_type: false,
+        keyword: false,
+        description: false,
+        unit: false,
+        schedule: false
+      },
+      errors: {
+        video: null,
+        channel: null,
+        target_type: null,
+        keyword: null,
+        description: null,
+        unit: null,
+        schedule: null
+      }
+    };
+    // this.handleClick = this.handleClick.bind(this);
+  }
   inputSchedule = (val) => {
     if (val === 'EVERY_N_MINUTES') {
       this.schema.unit = {
@@ -164,8 +175,27 @@ class Youtube extends Component {
     }
   };
 
-  render() {
+// video link get from keyword type
+  getVideoLink=()=> {
+    if (this.state.values.target_type = 'video') {
+      this.setState({
+        showKeywords: true
+      })
+      this.schema.video = {
+        presence: { allowEmpty: false, message: 'is required' },
+        url: {
+          url: true,
+          message: 'is not valid',
+        }
+      };
+      this.state.values.video = 'jawad';
+      this.schema.keyword = {};
+      this.schema.channel = {};
+    }
+    window.scrollTo(0, 0);
+  }
 
+  render() {
     const { classes, className, ...rest } = this.props;
     const rootClassName = classNames(classes.root, className);
     const {
@@ -174,6 +204,7 @@ class Youtube extends Component {
       touched,
       errors,
       isValid,
+      data,
       showKeywords
     } = this.state;
     const showVideoError = touched.video && errors.video;
@@ -181,16 +212,16 @@ class Youtube extends Component {
     const showKeywordError = touched.keyword && errors.keyword;
     const showDescriptionError = touched.description && errors.description;
     const showUnitError = touched.unit && errors.unit;
-    this.prevState = this.props.location.state;
+    this.job = JSON.parse(localStorage.getItem('job'));
 
     let isKeyword = values.target_type === 'keyword';
-
+    // let isVideo = values.target_type === 'video';
     return (
       <div className={rootClassName}>
 
         <div className={classes.keyWordsHeader}>
           <PortletLabel
-            title="Search By Keywords"
+            title='Search By Keywords'
             subtitle="you can get results directly from video link and channel link too"
           />
         </div>
@@ -209,7 +240,9 @@ class Youtube extends Component {
                   autoFocus
                   onChange={event =>
                     handleFieldChange(this, 'keyword', event.target.value, this.schema)
+
                   }
+
                   type="text"
                   value={values.keyword}
                 >
@@ -378,9 +411,12 @@ class Youtube extends Component {
               </Grid>
             </Grid>
           }
+          {/* show fields on search click*/}
           { showKeywords &&
             <Grid  item xs={10}  className={classes.keyWordsBody}>
-              <VideosList/>
+
+              <VideosList getVideoLink={this.getVideoLink.bind(this)}/>
+
             </Grid>
           }
         </PortletContent>
@@ -399,6 +435,7 @@ class Youtube extends Component {
                 className={classes.searchButton}
                 color="secondary"
                 variant="contained"
+
                 onClick={()=>
                   this.setState({
                     showKeywords: true

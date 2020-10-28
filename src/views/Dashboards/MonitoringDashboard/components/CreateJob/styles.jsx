@@ -15,6 +15,9 @@ export default theme => ({
   platformInsta: {
     width: '20%'
   },
+  platformlinkedin: {
+    width: '20%'
+  },
   title: {
     color: theme.palette.text.secondary,
     fontWeight: 700

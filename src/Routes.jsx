@@ -14,9 +14,21 @@ const YoutubeComments = asyncComponent(() =>
 const SignIn = asyncComponent(() =>
   import('./views/SignIn').then(module => module.default)
 );
+const BlankPage = asyncComponent(() =>
+  import('./views/BlankPage').then(module => module.default)
+);
 const NotFound = asyncComponent(() =>
   import('./views/NotFound').then(module => module.default)
 );
+const Settings = asyncComponent(() =>
+  import('./views/Settings').then(module => module.default)
+);
+const Account = asyncComponent(() =>
+  import('./views/Account').then(module => module.default)
+);
+// const Activities = asyncComponent(() =>
+//   import('./views/Activities').then(module => module.default)
+// );
 const Dashboard = asyncComponent(() =>
   import('./views/Dashboards/InitDashboard').then(module => module.default)
 );
@@ -38,6 +50,12 @@ const TweetsList = asyncComponent(() =>
 );
 const TrendHatePool = asyncComponent(() =>
   import('./views/Dashboards/MonitoringDashboard/components/TrendHatePool').then(module => module.default)
+);
+const ProfileAnalysis = asyncComponent(() =>
+  import('./views/Dashboards/MonitoringDashboard/components/ProfileAnalysis').then(module => module.default)
+);
+const NetworkGraph = asyncComponent(() =>
+  import('./views/Dashboards/MonitoringDashboard/components/NetworkGraph').then(module => module.default)
 );
 const CompareWNews = asyncComponent(() =>
   import('./views/Dashboards/MonitoringDashboard/components/CompareWNews').then(module => module.default)
@@ -135,11 +153,21 @@ class Routes extends Component {
           path="/dashboard/project/analysis/hate_pool"
         />
         <PrivateRoute
+          component={ProfileAnalysis}
+          exact
+          path="/dashboard/project/analysis/profile_analysis"
+        />
+
+        <PrivateRoute
           component={CompareWNews}
           exact
           path="/dashboard/project/analysis/compare"
         />
-
+        <Route
+          component={NetworkGraph}
+          exact
+          path="/dashboard/project/analysis/network_graph"
+        />
         <Route
           component={SignUp}
           exact
@@ -155,6 +183,28 @@ class Routes extends Component {
           component={NotFound}
           exact
           path="/not-found"
+        />
+
+        <Route
+          component={Settings}
+          exact
+          path="/settings"
+        />
+         <Route
+          component={Account}
+          exact
+          path="/account"
+        />
+
+        {/*<Route*/}
+        {/*  component={Activities}*/}
+        {/*  exact*/}
+        {/*  path="/activities"*/}
+        {/*/>*/}
+        <Route
+          component={BlankPage}
+          exact
+          path="/blank-page"
         />
 
         <Route

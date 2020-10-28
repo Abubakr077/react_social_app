@@ -95,7 +95,11 @@ class ProfilesTable extends Component {
             ]}
             data={this.state.profiles}
             title="Profiles"
-            onRowClick={(event, rowData, togglePanel) => this.goToAnalysis(rowData)}
+            onRowClick={(event, rowData, togglePanel) => {
+              const { history } = this.props;
+              history.push('/dashboard/project/analysis/profile_analysis', { name: rowData.user_name, avatar: rowData.user_avatar, screen: rowData.user_screen_name});
+            }}
+
             options={{
               search: true,
               paging: true,
@@ -110,10 +114,10 @@ class ProfilesTable extends Component {
     );
   }
 
-  goToAnalysis() {
-    const { history } = this.props;
-    history.push('/dashboard/project/analysis', { type: 'INFO', target_type: 'USER' });
-  }
+  // goToAnalysis() {
+  //   const { history } = this.props;
+  //   history.push('/dashboard/project/analysis/profile_analysis', { title: profiles.rowData.user_name , field: 'user_screen_name'  });
+  // }
 
 }
 

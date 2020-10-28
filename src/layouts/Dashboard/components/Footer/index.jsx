@@ -31,7 +31,7 @@ class Footer extends Component {
           className={classes.company}
           variant="body1"
         >
-          Social Media Forensics &copy; NCCS. 2019
+          Social Media Forensics &copy; NCCS. 2020
         </Typography>
         <Typography variant="caption">
           Monitor profiles, channels, pages, blogs, trends and hashtag simultaneously.Perform visual analytics and

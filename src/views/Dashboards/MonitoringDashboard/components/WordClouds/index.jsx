@@ -95,7 +95,7 @@ function getCallback(callback, props, cloudOptions) {
           }
         }
       })
-      .transition()
+      // .transition()
       .attr('font-size', isActive ? '130%' : '100%');
   };
 }
