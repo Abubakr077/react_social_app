@@ -80,7 +80,7 @@ class CreateJob extends Component {
                 className={classes.platformLinkedin}
                 value="like"
                 control={<Radio color="primary"/>}
-                label="Likedin"
+                label="LinkedIn"
                 disabled={true}
               />
             </RadioGroup>

@@ -4,15 +4,6 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 // Material helpers
 import { CircularProgress, FormControlLabel, Grid, withStyles } from '@material-ui/core';
-import Checkbox from '@material-ui/core/Checkbox';
-import {
-  ChatBubbleOutlineOutlined as ChatBubbleOutlineOutlinedIcon,
-  FavoriteBorderOutlined as FavoriteBorderOutlinedIcon,
-  FilterListOutlined as FilterListOutlinedIcon,
-  RepeatOutlined as RepeatOutlinedIcon,
-  TurnedIn as TurnedInIcon
-} from '@material-ui/icons';
-import { Dashboard as DashboardLayout } from 'layouts';
 // Component styles
 import styles from './styles';
 import ListItem from '@material-ui/core/ListItem';
@@ -34,19 +25,20 @@ import DescriptionOutlinedIcon from '@material-ui/icons/DescriptionOutlined';
 
 class VideosList extends Component {
 
-
+  state = {
+    isLoading: false,
+    data: []
+  };
+  tempData = [];
 
   constructor(props) {
     super(props);
-    this.state = {
-      isLoading: false,
-      data: []
-    };
-    this.tempData = [];
     this.user = JSON.parse(localStorage.getItem('user'));
     this.project_id = localStorage.getItem('project_id');
+    this.state={
+      show:true
+    }
   }
-
   async getTweets() {
     try {
       this.setState({ isLoading: true });
@@ -71,13 +63,11 @@ class VideosList extends Component {
       }
     }
   };
-
   componentDidMount() {
     this.signal = true;
     window.scrollTo(0, 0);
     this.getTweets();
   }
-
   componentWillUnmount() {
     this.signal = false;
   }
@@ -95,15 +85,9 @@ class VideosList extends Component {
       };
     }
   }
-  // showAlert() {
-  //   alert("Im an alert");
+  // sayHello() {
+  //   alert('Hello!');
   // }
-
-// video link get from keyword type
-//   videoLink=()=> {
-//    alert("hello")
-//   }
-
   render() {
 
     const { classes, className, ...rest } = this.props;
@@ -115,8 +99,6 @@ class VideosList extends Component {
 
     return (
       <div className={classes.root}>
-        {
-          data.map(tweet => (
         <Portlet className={classes.listItem}>
           <PortletHeader noDivider className={classes.header}>
             <Typography variant="h2">Keywords Search Result</Typography>
@@ -137,14 +119,15 @@ class VideosList extends Component {
               item
               xs={12}
             >
-
+              {
+                data.map(tweet => (
                   <React.Fragment>
                     <Portlet>
                       <PortletContent
                         noPadding
                       >
                         <ListItem button alignItems="flex-start" component="a"
-                                  onClick={()=>this.props.getVideoLink()}>
+                                  onClick={()=>this.props.getVideoLink(tweet.link,tweet.title)}>
                           <ListItemAvatar>
                             <Avatar alt="Remy Sharp" src={tweet.thumbnail}
                                     className={classes.bigAvatar}/>
@@ -184,7 +167,7 @@ class VideosList extends Component {
                                       <Typography
                                         className={classes.locationText}
                                         variant="body1"
-                                      >{tweet.link}
+                                      >{tweet.channel_name}
                                       </Typography>
                                     </div>
                                     <div className={classes.details1}>
@@ -205,12 +188,12 @@ class VideosList extends Component {
                       </PortletContent>
                     </Portlet>
                   </React.Fragment>
-
+                ))
+              }
             </Grid>)}
           </PortletContent>
         </Portlet>
-          ))
-        }
+
       </div>
     );
   }
